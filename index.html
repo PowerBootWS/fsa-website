@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Steam Ahead – 2nd Class Power Engineering Exam Prep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #1B2A4A;
+      --navy-light: #243560;
+      --steel:      #3A6EA5;
+      --steel-light:#4D88C2;
+      --orange:     #E8720C;
+      --orange-glow:#FF8C2A;
+      --amber:      #F5A623;
+      --charcoal:   #2D2D2D;
+      --gray-dark:  #444;
+      --gray-mid:   #7a8899;
+      --gray-light: #C8D0DA;
+      --off-white:  #F4F5F7;
+      --green:      #3D7A5F;
+      --green-light:#52A882;
+      --white:      #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--navy);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    /* ── TOPNAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(27,42,74,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(58,110,165,0.25);
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-icon {
+      width: 34px; height: 34px;
+      background: var(--orange);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 0.55rem 1.4rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .nav-cta:hover { background: var(--orange-glow); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 9rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(58,110,165,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,110,165,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Atmospheric glow */
+    .glow-orb {
+      position: absolute;
+      top: 15%; right: -15%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(232,114,12,0.10) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-orb-2 {
+      position: absolute;
+      bottom: 5%; left: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(58,110,165,0.10) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(232,114,12,0.12);
+      border: 1px solid rgba(232,114,12,0.35);
+      color: var(--amber);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.93;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    h1 .accent-line {
+      display: block;
+      color: var(--steel-light);
+      font-size: 0.55em;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2em;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--gray-light);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-desc strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.2rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--orange-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(232,114,12,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gray-light);
+      border: 1px solid rgba(200,208,218,0.3);
+      padding: 1rem 1.8rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--steel-light); color: var(--white); }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(58,110,165,0.25);
+      flex-wrap: wrap;
+    }
+
+    .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-value .unit { font-size: 1.2rem; color: var(--gray-mid); }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      letter-spacing: 0.04em;
+      margin-top: 0.3rem;
+      max-width: 120px;
+      line-height: 1.4;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: rgba(20,32,58,0.7);
+      border-top: 1px solid rgba(58,110,165,0.2);
+      border-bottom: 1px solid rgba(58,110,165,0.2);
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gray-mid);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .trust-icon { color: var(--amber); font-size: 1.1rem; }
+
+    /* ── SECTION SCAFFOLD ── */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray-mid);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .dark-section {
+      background: rgba(10,18,32,0.6);
+      border-top: 1px solid rgba(58,110,165,0.15);
+      border-bottom: 1px solid rgba(58,110,165,0.15);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .pillar-card {
+      background: rgba(27,42,74,0.45);
+      border: 1px solid rgba(58,110,165,0.2);
+      border-radius: 8px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .pillar-card:hover { border-color: rgba(58,110,165,0.45); }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .pillar-card.orange-top::before { background: var(--orange); }
+    .pillar-card.steel-top::before  { background: var(--steel); }
+    .pillar-card.amber-top::before  { background: var(--amber); }
+    .pillar-card.green-top::before  { background: var(--green-light); }
+
+    .pillar-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--gray-light);
+    }
+
+    .pillar-desc strong { color: var(--white); font-weight: 500; }
+
+    .vs-callout {
+      margin-top: 1.2rem;
+      background: rgba(0,0,0,0.25);
+      border-radius: 5px;
+      padding: 0.8rem 1rem;
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    .vs-callout .vs-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .vs-callout .vs-them { color: var(--gray-mid); }
+    .vs-callout .vs-us   { color: var(--green-light); font-weight: 500; }
+
+    /* ── PAPERS ── */
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .paper-card {
+      background: rgba(27,42,74,0.4);
+      border: 1px solid rgba(58,110,165,0.18);
+      border-radius: 7px;
+      padding: 1.4rem;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .paper-card:hover {
+      border-color: rgba(232,114,12,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    .paper-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .paper-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .paper-desc {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    .paper-tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    .tag-calc {
+      background: rgba(232,114,12,0.15);
+      color: var(--amber);
+      border: 1px solid rgba(232,114,12,0.25);
+    }
+    .tag-theory {
+      background: rgba(58,110,165,0.15);
+      color: var(--steel-light);
+      border: 1px solid rgba(58,110,165,0.25);
+    }
+    .tag-regs {
+      background: rgba(61,122,95,0.15);
+      color: var(--green-light);
+      border: 1px solid rgba(61,122,95,0.25);
+    }
+
+    .papers-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.4rem;
+      background: rgba(232,114,12,0.08);
+      border: 1px solid rgba(232,114,12,0.2);
+      border-radius: 5px;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+
+    .papers-note .note-icon { color: var(--orange); font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+    /* ── COMPARISON ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    .compare-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      border-bottom: 2px solid rgba(58,110,165,0.25);
+      color: var(--gray-mid);
+    }
+
+    .compare-table th.highlight {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .compare-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid rgba(58,110,165,0.1);
+      vertical-align: top;
+      color: var(--gray-light);
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    .compare-table .feature-col {
+      font-weight: 500;
+      color: var(--off-white);
+    }
+
+    .compare-table .them-col { color: var(--gray-mid); }
+
+    .compare-table .us-col {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .compare-table .us-col .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      background: rgba(82,168,130,0.15);
+      color: var(--green-light);
+      border: 1px solid rgba(82,168,130,0.25);
+      border-radius: 2px;
+      padding: 0.1rem 0.45rem;
+      margin-left: 0.4rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+    }
+
+    td.them-col .x { color: #888; }
+    .check-green { color: var(--green-light); margin-right: 0.25rem; }
+
+    /* ── PRICING ── */
+    .pricing-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.12fr;
+      gap: 1.8rem;
+      align-items: stretch;
+      margin-top: 3rem;
+    }
+
+    .price-card {
+      background: rgba(27,42,74,0.5);
+      border: 1px solid rgba(58,110,165,0.2);
+      border-radius: 10px;
+      padding: 2.2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-card.popular {
+      background: rgba(36,53,96,0.75);
+      border-color: var(--orange);
+      box-shadow: 0 0 50px rgba(232,114,12,0.12);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.9rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .popular .plan-name { color: var(--amber); }
+
+    .plan-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .plan-price sup {
+      font-size: 1.5rem;
+      vertical-align: super;
+      line-height: 0;
+      color: var(--gray-mid);
+    }
+
+    .plan-cycle {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-top: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-tagline {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(58,110,165,0.2);
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+      flex: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      color: var(--gray-light);
+      line-height: 1.45;
+    }
+
+    .check  { color: var(--green-light); flex-shrink: 0; margin-top: 0.05rem; }
+    .cross  { color: var(--gray-dark);   flex-shrink: 0; margin-top: 0.05rem; }
+
+    .btn-plan {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 5px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-plan-outline {
+      background: transparent;
+      border: 1px solid rgba(58,110,165,0.35);
+      color: var(--steel-light);
+    }
+    .btn-plan-outline:hover { border-color: var(--steel-light); color: var(--white); }
+
+    .btn-plan-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+    .btn-plan-primary:hover { background: var(--orange-glow); box-shadow: 0 8px 24px rgba(232,114,12,0.3); }
+
+    .coming-soon-bar {
+      margin-top: 1.5rem;
+      background: rgba(27,42,74,0.5);
+      border: 1px dashed rgba(58,110,165,0.35);
+      border-radius: 7px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cs-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 0.25rem;
+    }
+    .cs-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .cs-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gray-light);
+    }
+    .cs-badge {
+      background: rgba(58,110,165,0.15);
+      border: 1px solid rgba(58,110,165,0.3);
+      color: var(--steel-light);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 3px;
+    }
+
+    /* ── FAQ / TRUST ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .faq-card {
+      padding: 1.5rem;
+      border-left: 3px solid rgba(58,110,165,0.3);
+    }
+
+    .faq-card.orange-border { border-color: rgba(232,114,12,0.4); }
+    .faq-card.amber-border  { border-color: rgba(245,166,35,0.4); }
+
+    .faq-q {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-a {
+      font-size: 0.875rem;
+      color: var(--gray-mid);
+      line-height: 1.65;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, rgba(36,53,96,0.9) 0%, rgba(27,42,74,0.95) 100%);
+      border-top: 1px solid rgba(58,110,165,0.2);
+      border-bottom: 1px solid rgba(58,110,165,0.2);
+      padding: 5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(232,114,12,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-band h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .cta-band h2 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .cta-band p {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+      position: relative;
+    }
+
+    .cta-band .btn-primary { position: relative; font-size: 1.2rem; padding: 1.1rem 2.8rem; }
+
+    .cta-fine {
+      margin-top: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080F1C;
+      border-top: 1px solid rgba(58,110,165,0.15);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--orange); }
+    .footer-tagline {
+      font-size: 0.75rem;
+      color: var(--gray-mid);
+      margin-top: 0.25rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+    }
+    .footer-links a { color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy { font-size: 0.75rem; color: var(--gray-dark); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(58,110,165,0.3) 30%, rgba(232,114,12,0.25) 70%, transparent);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.65s ease both;
+    }
+    .hero-badge   { animation-delay: 0.05s; }
+    h1            { animation-delay: 0.15s; }
+    .hero-desc    { animation-delay: 0.25s; }
+    .hero-actions { animation-delay: 0.35s; }
+    .hero-stats   { animation-delay: 0.45s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .pillars { grid-template-columns: 1fr; }
+      .papers-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; padding: 1.2rem 1.5rem; }
+      .section-wrap { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .compare-table { font-size: 0.8rem; }
+    }
+
+    @media (max-width: 600px) {
+      .papers-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">♨️</div>
+      Full <span>Steam</span> Ahead
+    </div>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="https://account.fullsteamahead.ca/affiliate/campaign">Affiliates</a></li>
+    </ul>
+    <a href="https://enrollment.fullsteamahead.ca"><button class="nav-cta">Start Today →</button></a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow-orb"></div>
+    <div class="glow-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">SOPEEC Interprovincial Exam Aligned — Canada</div>
+      <h1>
+        A Smarter Way to Prepare for<br>
+        <em>2nd Class</em> Power Engineering<br>Exams.
+      </h1>
+      <p class="hero-desc">
+        Guided learning, interactive AI support, and access to <strong>all six papers under one subscription</strong> — designed for working operators who need a flexible, effective way to earn their ticket.
+      </p>
+      <div class="hero-actions">
+        <a href="https://enrollment.fullsteamahead.ca"><button class="btn-primary">Start Your Subscription →</button></a>
+        <button class="btn-secondary">See How It Works</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-value">6</div>
+          <div class="stat-label">Papers included in one subscription</div>
+        </div>
+        <div>
+          <div class="stat-value">6–12<span class="unit">mo</span></div>
+          <div class="stat-label">Realistic study timeline, no pressure</div>
+        </div>
+        <div>
+          <div class="stat-value">$99<span class="unit">/mo</span></div>
+          <div class="stat-label">vs. ~$1,400 per paper elsewhere</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">📋</span> SOPEEC Exam Aligned</div>
+    <div class="trust-item"><span class="trust-icon">🇨🇦</span> Built for Canadian Operators</div>
+    <div class="trust-item"><span class="trust-icon">🤖</span> Interactive AI Tutoring</div>
+    <div class="trust-item"><span class="trust-icon">🔓</span> Cancel Anytime</div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how" class="dark-section">
+    <div class="section-wrap">
+      <div class="section-label">Why This Works Better</div>
+      <h2 class="section-title">Active Learning, Not Passive Watching</h2>
+      <p class="section-sub">Most courses are built for content delivery. Ours is built for exam performance.</p>
+
+      <div class="pillars">
+
+        <div class="pillar-card orange-top">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-title">Step-by-Step Calculation Coaching</div>
+          <p class="pillar-desc">
+            Instead of watching a full worked solution, you're guided <strong>one step at a time</strong> — understanding why a formula applies before using it, and separating the decision from the arithmetic. This is how calculations are actually marked on your exam.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: Watch video, copy answer, move on</div>
+            <div class="vs-us">✓ Full Steam Ahead: Work through each step with guided feedback</div>
+          </div>
+        </div>
+
+        <div class="pillar-card steel-top">
+          <div class="pillar-icon">🤖</div>
+          <div class="pillar-title">AI Support That Adapts to You</div>
+          <p class="pillar-desc">
+            Stuck on a concept at 11pm after a 12-hour shift? Our <strong>interactive AI tutor</strong> answers your questions in context, explains why you got something wrong, and adapts practice to target your weak spots — not just a random mix of questions.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: Fixed question bank, static answers</div>
+            <div class="vs-us">✓ Full Steam Ahead: Ask "why?" at the exact moment you're confused</div>
+          </div>
+        </div>
+
+        <div class="pillar-card amber-top">
+          <div class="pillar-icon">🧠</div>
+          <div class="pillar-title">Built for Retention, Not Exposure</div>
+          <p class="pillar-desc">
+            Watching a slide deck gives you exposure. Our model breaks content into <strong>small logical steps</strong>, walks you through how to think through problems, and reinforces learning immediately. The goal isn't to finish the course — it's to pass the exam.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">The common frustration</div>
+            <div class="vs-them">"I watched all the videos but still don't know how to solve the problem on my own."</div>
+          </div>
+        </div>
+
+        <div class="pillar-card green-top">
+          <div class="pillar-icon">📅</div>
+          <div class="pillar-title">Study at a Realistic Pace</div>
+          <p class="pillar-desc">
+            Working 12-hour shifts while raising a family isn't the same as being a full-time student. One subscription, all six papers, study over <strong>6–12 months</strong> without penalties, repurchases, or fixed timelines. Pause and resume as life allows.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: ~$1,400/paper, locked timeline, repurchase if plans change</div>
+            <div class="vs-us">✓ Full Steam Ahead: One price, all papers, your timeline</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE PAPERS -->
+  <div id="papers">
+    <div class="section-wrap">
+      <div class="section-label">What's Included</div>
+      <h2 class="section-title">All Six 2nd Class Exam Papers</h2>
+      <p class="section-sub">One subscription covers the complete certification — structured around the SOPEEC interprovincial syllabus with no picking and choosing, no surprise add-ons.</p>
+
+      <div class="papers-grid">
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2A1</div>
+          <div class="paper-name">Applied Mechanics, ASME Code & Administration</div>
+          <p class="paper-desc">ASME Code calculations for pressure vessels and boilers, applied mechanics including stress/strain and fluid flow, plus industrial administration and management fundamentals.</p>
+          <span class="paper-tag tag-calc">Calculation Heavy</span>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2A2</div>
+          <div class="paper-name">Thermodynamics, Metallurgy & Materials Testing</div>
+          <p class="paper-desc">Applied thermodynamics including steam cycles and gas laws, metallurgy fundamentals, heat treatment, welding, corrosion, and non-destructive testing methods.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2A3</div>
+          <div class="paper-name">Boilers, Pumps & Water Treatment</div>
+          <p class="paper-desc">Boiler design, construction, operation and inspection procedures, pump applications and maintenance, feedwater treatment, and internal boiler water chemistry control.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2B1</div>
+          <div class="paper-name">Heat Engines, Lubrication, Piping & Mechanical Drawing</div>
+          <p class="paper-desc">Steam turbines, internal combustion engines, gas turbines, lubrication systems, piping design and support, plus mechanical drawing interpretation.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2B2</div>
+          <div class="paper-name">Power Plant Systems, Instrumentation, Fuels & Environment</div>
+          <p class="paper-desc">Feedwater and steam systems, control instrumentation, combustion and fuels, environmental protection equipment, and emissions monitoring.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-num">Paper 2B3</div>
+          <div class="paper-name">Electrotechnology, Compression & Refrigeration</div>
+          <p class="paper-desc">AC/DC theory, generators, motors, transformers, electrical protection systems, air and gas compression principles, and industrial refrigeration systems.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+      </div>
+
+      <div class="papers-note">
+        <span class="note-icon">💡</span>
+        <span>All six papers are included under a single monthly subscription, structured around SOPEEC interprovincial exam objectives. You can study them in any order, focus on your weaker areas, and take as long as you need — the platform adapts to your progress, not the other way around.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="dark-section">
+    <div class="section-wrap">
+      <div class="section-label">Side by Side</div>
+      <h2 class="section-title">How We Stack Up</h2>
+      <p class="section-sub">Traditional programs were built for classrooms. This one was built for working operators.</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:35%">Feature</th>
+            <th>Traditional Courses</th>
+            <th class="highlight">Full Steam Ahead</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-col">Cost per paper</td>
+            <td class="them-col">~$1,400 per paper ($8,400+ total)</td>
+            <td class="us-col">$99/month — all 6 papers included <span class="pill">Save Thousands</span></td>
+          </tr>
+          <tr>
+            <td class="feature-col">Study timeline</td>
+            <td class="them-col">Fixed schedule, limited access windows</td>
+            <td class="us-col"><span class="check-green">✓</span>6–12 months at your own pace</td>
+          </tr>
+          <tr>
+            <td class="feature-col">If plans change</td>
+            <td class="them-col">Repurchase required</td>
+            <td class="us-col"><span class="check-green">✓</span>Cancel and resume anytime</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Learning format</td>
+            <td class="them-col">Pre-recorded lectures, static slides</td>
+            <td class="us-col"><span class="check-green">✓</span>Guided video + step-by-step interactive problems</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Calculation support</td>
+            <td class="them-col">Full solutions shown at once</td>
+            <td class="us-col"><span class="check-green">✓</span>Step-by-step coaching with explanation at each stage</td>
+          </tr>
+          <tr>
+            <td class="feature-col">When you're stuck</td>
+            <td class="them-col"><span class="x">✗</span> Rewatch the video or search forums</td>
+            <td class="us-col"><span class="check-green">✓</span>Ask the AI tutor in context, get an immediate explanation</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Practice exams</td>
+            <td class="them-col">Fixed question bank, same every time</td>
+            <td class="us-col"><span class="check-green">✓</span>Adaptive — focuses on what you need to work on most</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Mobile / flexible access</td>
+            <td class="them-col">Varies; often desktop only</td>
+            <td class="us-col"><span class="check-green">✓</span>Study on any device, on your schedule</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <div id="pricing">
+    <div class="pricing-wrap">
+      <div class="section-label" style="text-align:center">Simple Pricing</div>
+      <h2 class="section-title" style="text-align:center">One Price. All Papers.</h2>
+      <p class="section-sub" style="text-align:center; margin:0.5rem auto 0;">No per-paper charges, no hidden fees, no pressure.</p>
+
+      <div class="pricing-grid">
+
+        <!-- 3rd Class - Coming Soon -->
+        <div class="price-card">
+          <div class="plan-name">3rd Class</div>
+          <div class="plan-price"><sup>$</sup>69</div>
+          <div class="plan-cycle">per month</div>
+          <p class="plan-tagline">The same active learning approach, built for 3rd Class certification. All papers included.</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> All 3rd Class papers included</li>
+            <li><span class="check">✓</span> Step-by-step calculation coaching</li>
+            <li><span class="check">✓</span> Guided video explanations</li>
+            <li><span class="check">✓</span> Interactive AI tutoring</li>
+            <li><span class="check">✓</span> Adaptive practice exams</li>
+            <li><span class="check">✓</span> Cancel anytime</li>
+          </ul>
+          <button class="btn-plan btn-plan-outline" disabled style="opacity:0.5;cursor:not-allowed;">Coming Soon</button>
+        </div>
+
+        <!-- 2nd Class - Primary -->
+        <div class="price-card popular">
+          <div class="popular-badge">Available Now</div>
+          <div class="plan-name">2nd Class</div>
+          <div class="plan-price"><sup>$</sup>99</div>
+          <div class="plan-cycle">per month — cancel anytime</div>
+          <p class="plan-tagline">Full access to all six 2nd Class papers. Study at your pace over 6–12 months with AI-powered support the whole way.</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> All 6 papers — A1, A2, B1, B2, C, D</li>
+            <li><span class="check">✓</span> Step-by-step calculation coaching</li>
+            <li><span class="check">✓</span> Guided video explanations</li>
+            <li><span class="check">✓</span> Interactive AI tutoring, anytime</li>
+            <li><span class="check">✓</span> Adaptive practice exams</li>
+            <li><span class="check">✓</span> Study on any device</li>
+            <li><span class="check">✓</span> No fixed timeline or deadlines</li>
+            <li><span class="check">✓</span> Cancel and resume anytime</li>
+          </ul>
+          <a href="https://enrollment.fullsteamahead.ca"><button class="btn-plan btn-plan-primary">Start Your Subscription →</button></a>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.2rem; text-align:center; font-size:0.8rem; color:var(--gray-mid);">
+        At $99/month over 12 months, that's $1,188 for all six papers — compared to ~$1,400 per paper from traditional providers.
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Stop Watching. Start <em>Passing.</em></h2>
+    <p>You've put in the field hours. Now it's time to earn the ticket. Full Steam Ahead is built to get you there — on your schedule, without breaking the bank.</p>
+    <a href="https://enrollment.fullsteamahead.ca"><button class="btn-primary">Start Your Subscription Today</button></a>
+    <p class="cta-fine">Cancel anytime. No contracts. Study on any device.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq">
+    <div class="section-wrap">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">FAQ</h2>
+
+      <div class="faq-grid">
+
+        <div class="faq-card orange-border">
+          <div class="faq-q">Do I need to study papers in order?</div>
+          <p class="faq-a">No. You have access to all six papers from day one and can study them in any sequence. Many learners start with their strongest subject to build momentum, then move to the heavier calculation papers.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">What if I need more than 12 months?</div>
+          <p class="faq-a">Just keep your subscription active. There are no penalties for taking longer. The 6–12 month window is a guideline based on typical working operators, not a hard deadline.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">How does the AI tutoring work?</div>
+          <p class="faq-a">When you're working through a problem or concept and get stuck, you can ask a question right in context. The AI explains why — not just what — and adapts follow-up questions to address the specific gap in your understanding.</p>
+        </div>
+
+        <div class="faq-card amber-border">
+          <div class="faq-q">Can I pause my subscription?</div>
+          <p class="faq-a">Yes. Life on shift doesn't always allow for steady study time. You can cancel anytime and resubscribe when you're ready — your progress is saved.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">Is this aligned to SOPEEC exams?</div>
+          <p class="faq-a">Yes. Content is structured around 2nd Class exam objectives as set out by SOPEEC for interprovincial certification. The focus is on how problems are actually marked and what examiners are looking for in your solutions.</p>
+        </div>
+
+        <div class="faq-card orange-border">
+          <div class="faq-q">I've been out of school for years. Will this work for me?</div>
+          <p class="faq-a">That's exactly who this is built for. The step-by-step approach and AI tutoring are specifically powerful for operators returning to technical study — no assumption of recent classroom experience.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
