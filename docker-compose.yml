@@ -3,5 +3,11 @@ services:
     build: .
     container_name: fsa-website
     ports:
-      - "8080:80"
+      - "8087:80"
     restart: unless-stopped
+    networks:
+      - cloudflare
+
+networks:
+  cloudflare:
+    external: true
