@@ -26,7 +26,23 @@
     <a href="/" class="logo">
       <img src="/assets/FSA Logo Main - Light.png" alt="Full Steam Ahead" class="logo-img">
     </a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile-links">
+    <a href="/#how">How It Works</a>
+    <a href="/#papers">Papers</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="https://articles.fullsteamahead.ca">Guides</a>
+    <a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a>
+    <a href="https://account.fullsteamahead.ca">Account</a>
+    <a href="https://enrollment.fullsteamahead.ca"><button class="nav-mobile-cta">Start Today →</button></a>
+  </div>
 
   <div class="container">
     <h1>Terms of Use</h1>
@@ -225,5 +241,23 @@
     <p>&copy; 2025 Full Steam Ahead. All rights reserved. | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-of-use.html">Terms of Use</a></p>
   </footer>
 
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.nav-mobile-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.nav-mobile-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
 </body>
 </html>
