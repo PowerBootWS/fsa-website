@@ -1062,6 +1062,197 @@ footer {
   align-items: center;
 }
 
+/* ── AFFILIATE PAGE ── */
+.affiliate-hero {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.affiliate-rate {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-glow) 100%);
+  border-radius: 12px;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rate-value {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+}
+
+.rate-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.affiliate-tagline {
+  font-size: 1.25rem;
+  color: var(--gray-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.affiliate-benefits {
+  margin: 3rem 0;
+}
+
+.affiliate-benefits h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  background: rgba(36, 53, 96, 0.5);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.benefit-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.benefit-card p {
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  line-height: 1.5;
+}
+
+.affiliate-example {
+  margin: 3rem 0;
+}
+
+.affiliate-example h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.example-table {
+  background: rgba(36, 53, 96, 0.5);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.example-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(58, 110, 165, 0.15);
+}
+
+.example-row:last-child {
+  border-bottom: none;
+}
+
+.example-row.header {
+  background: rgba(58, 110, 165, 0.15);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.example-row span {
+  text-align: center;
+}
+
+.example-row span:first-child {
+  text-align: left;
+}
+
+.example-row.highlight {
+  background: rgba(232, 114, 12, 0.15);
+  font-weight: 600;
+  color: var(--orange-glow);
+}
+
+.example-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gray-mid);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.affiliate-form-section {
+  margin: 3rem 0;
+}
+
+.affiliate-form-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.affiliate-form-section > p {
+  text-align: center;
+  color: var(--gray-mid);
+  margin-bottom: 2rem;
+}
+
+.form-embed {
+  background: rgba(36, 53, 96, 0.3);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 704px;
+}
+
+@media (max-width: 700px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  .example-row {
+    font-size: 0.85rem;
+  }
+  .example-row span {
+    font-size: 0.75rem;
+  }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav {
