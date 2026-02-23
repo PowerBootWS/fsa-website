@@ -1,2 +1,0 @@
-sed -i 's|<a href="https://enrollment.fullsteamahead.ca" class="nav-cta-link"><button class="nav-cta">Start Today →</button></a>|  <div class="nav-right">\n    <a href="https://enrollment.fullsteamahead.ca" class="nav-cta-link"><button class="nav-cta">Start Today &rarr;</button></a>|g' /home/debian/fullsteamaheadhome/index.html
-sed -i 's|    </button>\n  </nav>|    </button>\n  </div>\n  </nav>|g' /home/debian/fullsteamaheadhome/index.html
