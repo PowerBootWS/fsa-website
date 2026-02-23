@@ -36,8 +36,28 @@
       <li><a href="https://account.fullsteamahead.ca">Account</a></li>
       <li><a href="/affiliate.html">Affiliates</a></li>
     </ul>
-    <a href="https://enrollment.fullsteamahead.ca"><button class="nav-cta">Start Today →</button></a>
+    <div class="nav-right">
+      <a href="https://enrollment.fullsteamahead.ca"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -389,5 +409,49 @@
     </div>
     <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
   </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        btn.classList.add('is-open');
+        menu.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        btn.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      btn.addEventListener('click', function () {
+        btn.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (e) {
+        var nav = document.querySelector('nav');
+        if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          closeMenu();
+          btn.focus();
+        }
+      });
+    }());
+  </script>
 </body>
 </html>
