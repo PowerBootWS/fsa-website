@@ -1255,7 +1255,6 @@ footer {
   border: 1px solid rgba(58, 110, 165, 0.2);
   border-radius: 8px;
   padding: 0.5rem;
-  min-height: 704px;
 }
 
 @media (max-width: 700px) {
