@@ -112,6 +112,7 @@ nav {
   cursor: pointer;
   padding: 4px;
   z-index: 110;
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -1263,18 +1264,22 @@ footer {
 @media (max-width: 900px) {
   nav {
     padding: 0 1.5rem;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
   }
+  .logo { justify-self: start; }
+  .hamburger { justify-self: center; display: flex; }
+  .nav-right { justify-self: end; gap: 1rem; }
+
   nav, .nav-simple {
     padding: 1rem 1.5rem;
   }
   .nav-links { display: none; }
-  .nav-right { gap: 1rem; }
   .nav-cta {
     padding: 0.45rem 1rem;
     font-size: 0.85rem;
   }
-  .hamburger { display: flex; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .hero h1 { max-width: 100%; }
   .pillars { grid-template-columns: 1fr; }
