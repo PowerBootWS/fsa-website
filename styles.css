@@ -93,6 +93,12 @@ nav {
 }
 .nav-cta:hover { background: var(--orange-glow); transform: translateY(-1px); }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 /* Hamburger menu button */
 .hamburger {
   display: none;
@@ -1263,7 +1269,11 @@ footer {
     padding: 1rem 1.5rem;
   }
   .nav-links { display: none; }
-  .nav-cta { display: none; }
+  .nav-right { gap: 1rem; }
+  .nav-cta {
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+  }
   .hamburger { display: flex; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .hero h1 { max-width: 100%; }
@@ -1278,6 +1288,12 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .nav-right { gap: 0.5rem; }
+  .nav-cta {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
   .papers-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 2rem; }
 }
