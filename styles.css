@@ -1255,6 +1255,11 @@ footer {
   border: 1px solid rgba(58, 110, 165, 0.2);
   border-radius: 8px;
   padding: 0.5rem;
+  min-height: auto !important;
+}
+
+.form-embed iframe {
+  height: auto !important;
 }
 
 @media (max-width: 700px) {
