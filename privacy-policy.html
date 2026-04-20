@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFF5FB8R8"></script>
@@ -22,11 +22,40 @@
 </head>
 <body>
 
-  <nav class="nav-simple">
+  <nav>
     <a href="/" class="logo">
       <img src="/assets/FSA Logo Main - Light.png" alt="Full Steam Ahead" class="logo-img">
     </a>
+    <ul class="nav-links">
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#papers">Papers</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://enrollment.fullsteamahead.ca"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#papers">Papers</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
 
   <div class="container">
     <h1>Privacy Policy</h1>
@@ -124,8 +153,37 @@
 
   </div>
 
-  <footer class="simple-footer">
-    <p>&copy; 2025 Full Steam Ahead. All rights reserved. | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-of-use.html">Terms of Use</a></p>
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
   </footer>
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      function openMenu() { btn.classList.add('is-open'); menu.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false'); }
+      function closeMenu() { btn.classList.remove('is-open'); menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true'); }
+      btn.addEventListener('click', function () { btn.classList.contains('is-open') ? closeMenu() : openMenu(); });
+      menu.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMenu); });
+      document.addEventListener('click', function (e) {
+        var nav = document.querySelector('nav');
+        if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) { closeMenu(); btn.focus(); } });
+    }());
+
+    window.addEventListener('scroll', function () {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
 </body>
 </html>
