@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Steam Ahead – 2nd Class Power Engineering Exam Prep</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-v2.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFF5FB8R8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5ZFF5FB8R8');
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <img src="/assets/FSA Logo Main - Light.png" alt="Full Steam Ahead" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://enrollment.fullsteamahead.ca"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://articles.fullsteamahead.ca">Guides</a></li>
+      <li><a href="https://account.fullsteamahead.ca/communities/groups/lets-connect/home">Community</a></li>
+      <li><a href="https://account.fullsteamahead.ca">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="glow-orb"></div>
+    <div class="glow-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Power Engineering Online Learning for Working Professionals</div>
+      <h1>
+        The Smart Way to Pass Your
+        <em>Power Engineering</em> Exams.
+      </h1>
+      <p class="hero-desc">
+        Guided learning, interactive AI support, and access to <strong>all six 2nd class papers under one subscription</strong> — designed for working operators who need a flexible, effective way to earn their ticket.
+      </p>
+      <div class="hero-actions">
+        <a href="https://enrollment.fullsteamahead.ca"><button class="btn-primary">Start Your Subscription →</button></a>
+        <a href="#how"><button class="btn-secondary">See How It Works</button></a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-value"><span class="count-num" data-count-to="6">6</span></div>
+          <div class="stat-label">Papers included in one subscription</div>
+        </div>
+        <div>
+          <div class="stat-value">6–12<span class="unit">mo</span></div>
+          <div class="stat-label">Realistic study timeline, no pressure</div>
+        </div>
+        <div>
+          <div class="stat-value">$<span class="count-num" data-count-to="99">99</span><span class="unit">/mo</span></div>
+          <div class="stat-label">vs. ~$1,400 per paper elsewhere</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-track">
+      <div class="trust-item"><span class="trust-icon">📋</span> SOPEEC Exam Aligned</div>
+      <div class="trust-item"><span class="trust-icon">🇨🇦</span> Built for Canadian Operators</div>
+      <div class="trust-item"><span class="trust-icon">🤖</span> Interactive AI Tutoring</div>
+      <div class="trust-item"><span class="trust-icon">🔓</span> Cancel Anytime</div>
+      <div class="trust-item"><span class="trust-icon">📋</span> SOPEEC Exam Aligned</div>
+      <div class="trust-item"><span class="trust-icon">🇨🇦</span> Built for Canadian Operators</div>
+      <div class="trust-item"><span class="trust-icon">🤖</span> Interactive AI Tutoring</div>
+      <div class="trust-item"><span class="trust-icon">🔓</span> Cancel Anytime</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how" class="dark-section">
+    <div class="section-wrap">
+      <div class="section-label">Why This Works Better</div>
+      <h2 class="section-title">Active Learning, Not Passive Watching</h2>
+      <p class="section-sub">Most courses are built for content delivery. Ours is built for exam performance.</p>
+
+      <div class="pillars">
+
+        <div class="pillar-card orange-top reveal" data-delay="0">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-title">Step-by-Step Calculation Coaching</div>
+          <p class="pillar-desc">
+            Instead of watching a full worked solution, you're guided <strong>one step at a time</strong> — understanding why a formula applies before using it, and separating the decision from the arithmetic. This is how calculations are actually marked on your exam.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: Watch video, copy answer, move on</div>
+            <div class="vs-us">✓ Full Steam Ahead: Work through each step with guided feedback</div>
+          </div>
+        </div>
+
+        <div class="pillar-card steel-top reveal" data-delay="100">
+          <div class="pillar-icon">🤖</div>
+          <div class="pillar-title">AI Support That Adapts to You</div>
+          <p class="pillar-desc">
+            Stuck on a concept at 11pm after a 12-hour shift? Our <strong>interactive AI tutor</strong> answers your questions in context, explains why you got something wrong, and adapts practice to target your weak spots — not just a random mix of questions.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: Fixed question bank, static answers</div>
+            <div class="vs-us">✓ Full Steam Ahead: Ask "why?" at the exact moment you're confused</div>
+          </div>
+        </div>
+
+        <div class="pillar-card amber-top reveal" data-delay="200">
+          <div class="pillar-icon">🧠</div>
+          <div class="pillar-title">Built for Retention, Not Exposure</div>
+          <p class="pillar-desc">
+            Watching a slide deck gives you exposure. Our model breaks content into <strong>small logical steps</strong>, walks you through how to think through problems, and reinforces learning immediately. The goal isn't to finish the course — it's to pass the exam.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">The common frustration</div>
+            <div class="vs-them">"I watched all the videos but still don't know how to solve the problem on my own."</div>
+          </div>
+        </div>
+
+        <div class="pillar-card green-top reveal" data-delay="300">
+          <div class="pillar-icon">📅</div>
+          <div class="pillar-title">Study at a Realistic Pace</div>
+          <p class="pillar-desc">
+            Working 12-hour shifts while raising a family isn't the same as being a full-time student. One subscription, all six papers, study over <strong>6–12 months</strong> without penalties, repurchases, or fixed timelines. Pause and resume as life allows.
+          </p>
+          <div class="vs-callout">
+            <div class="vs-label">Compare</div>
+            <div class="vs-them">❌ Traditional: ~$1,400/paper, locked timeline, repurchase if plans change</div>
+            <div class="vs-us">✓ Full Steam Ahead: One price, all papers, your timeline</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THE PAPERS -->
+  <div id="papers">
+    <div class="section-wrap">
+      <div class="section-label">What's Included</div>
+      <h2 class="section-title">All Six 2nd Class Exam Papers</h2>
+      <p class="section-sub">One subscription covers the complete certification — structured around the SOPEEC interprovincial syllabus with no picking and choosing, no surprise add-ons.</p>
+
+      <div class="papers-grid">
+
+        <div class="paper-card reveal" data-delay="0">
+          <div class="paper-num">Paper 2A1</div>
+          <div class="paper-name">Applied Mechanics, ASME Code & Administration</div>
+          <p class="paper-desc">ASME Code calculations for pressure vessels and boilers, applied mechanics including stress/strain and fluid flow, plus industrial administration and management fundamentals.</p>
+          <span class="paper-tag tag-calc">Calculation Heavy</span>
+        </div>
+
+        <div class="paper-card reveal" data-delay="80">
+          <div class="paper-num">Paper 2A2</div>
+          <div class="paper-name">Thermodynamics, Metallurgy & Materials Testing</div>
+          <p class="paper-desc">Applied thermodynamics including steam cycles and gas laws, metallurgy fundamentals, heat treatment, welding, corrosion, and non-destructive testing methods.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card reveal" data-delay="160">
+          <div class="paper-num">Paper 2A3</div>
+          <div class="paper-name">Boilers, Pumps & Water Treatment</div>
+          <p class="paper-desc">Boiler design, construction, operation and inspection procedures, pump applications and maintenance, feedwater treatment, and internal boiler water chemistry control.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card reveal" data-delay="240">
+          <div class="paper-num">Paper 2B1</div>
+          <div class="paper-name">Heat Engines, Lubrication, Piping & Mechanical Drawing</div>
+          <p class="paper-desc">Steam turbines, internal combustion engines, gas turbines, lubrication systems, piping design and support, plus mechanical drawing interpretation.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card reveal" data-delay="320">
+          <div class="paper-num">Paper 2B2</div>
+          <div class="paper-name">Power Plant Systems, Instrumentation, Fuels & Environment</div>
+          <p class="paper-desc">Feedwater and steam systems, control instrumentation, combustion and fuels, environmental protection equipment, and emissions monitoring.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+        <div class="paper-card reveal" data-delay="400">
+          <div class="paper-num">Paper 2B3</div>
+          <div class="paper-name">Electrotechnology, Compression & Refrigeration</div>
+          <p class="paper-desc">AC/DC theory, generators, motors, transformers, electrical protection systems, air and gas compression principles, and industrial refrigeration systems.</p>
+          <span class="paper-tag tag-theory">Theory + Application</span>
+        </div>
+
+      </div>
+
+      <div class="papers-note">
+        <span class="note-icon">💡</span>
+        <span>All six papers are included under a single monthly subscription, structured around SOPEEC interprovincial exam objectives. You can study them in any order, focus on your weaker areas, and take as long as you need — the platform adapts to your progress, not the other way around.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="dark-section">
+    <div class="section-wrap">
+      <div class="section-label">Side by Side</div>
+      <h2 class="section-title">How We Stack Up</h2>
+      <p class="section-sub">Traditional programs were built for classrooms. This one was built for working operators.</p>
+
+      <table class="compare-table reveal-left">
+        <thead>
+          <tr>
+            <th style="width:35%">Feature</th>
+            <th>Traditional Courses</th>
+            <th class="highlight">Full Steam Ahead</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-col">Cost per paper</td>
+            <td class="them-col">~$1,400 per paper ($8,400+ total)</td>
+            <td class="us-col">$99/month — all 6 papers included <span class="pill">Save Thousands</span></td>
+          </tr>
+          <tr>
+            <td class="feature-col">Study timeline</td>
+            <td class="them-col">Fixed schedule, limited access windows</td>
+            <td class="us-col"><span class="check-green">✓</span>6–12 months at your own pace</td>
+          </tr>
+          <tr>
+            <td class="feature-col">If plans change</td>
+            <td class="them-col">Repurchase required</td>
+            <td class="us-col"><span class="check-green">✓</span>Cancel and resume anytime</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Learning format</td>
+            <td class="them-col">Pre-recorded lectures, static slides</td>
+            <td class="us-col"><span class="check-green">✓</span>Guided video + step-by-step interactive problems</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Calculation support</td>
+            <td class="them-col">Full solutions shown at once</td>
+            <td class="us-col"><span class="check-green">✓</span>Step-by-step coaching with explanation at each stage</td>
+          </tr>
+          <tr>
+            <td class="feature-col">When you're stuck</td>
+            <td class="them-col"><span class="x">✗</span> Rewatch the video or search forums</td>
+            <td class="us-col"><span class="check-green">✓</span>Ask the AI tutor in context, get an immediate explanation</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Practice exams</td>
+            <td class="them-col">Fixed question bank, same every time</td>
+            <td class="us-col"><span class="check-green">✓</span>Adaptive — focuses on what you need to work on most</td>
+          </tr>
+          <tr>
+            <td class="feature-col">Mobile / flexible access</td>
+            <td class="them-col">Varies; often desktop only</td>
+            <td class="us-col"><span class="check-green">✓</span>Study on any device, on your schedule</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <div id="pricing">
+    <div class="pricing-wrap">
+      <div class="section-label" style="text-align:center">Simple Pricing</div>
+      <h2 class="section-title" style="text-align:center">One Price. All Papers.</h2>
+      <p class="section-sub" style="text-align:center; margin:0.5rem auto 0;">No per-paper charges, no hidden fees, no pressure.</p>
+
+      <div class="pricing-grid">
+
+        <!-- 3rd Class - Coming Soon -->
+        <div class="price-card reveal" data-delay="0">
+          <div class="plan-name">3rd Class</div>
+          <div class="plan-price plan-price-soon">Coming Soon</div>
+          <div class="plan-cycle">&nbsp;</div>
+          <p class="plan-tagline">The same active learning approach, built for 3rd Class certification. All papers included.</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> All 3rd Class papers included</li>
+            <li><span class="check">✓</span> Step-by-step calculation coaching</li>
+            <li><span class="check">✓</span> Guided video explanations</li>
+            <li><span class="check">✓</span> Interactive AI tutoring</li>
+            <li><span class="check">✓</span> Adaptive practice exams</li>
+            <li><span class="check">✓</span> Cancel anytime</li>
+          </ul>
+          <button class="btn-plan btn-plan-outline" disabled style="opacity:0.5;cursor:not-allowed;">Coming Soon</button>
+        </div>
+
+        <!-- 2nd Class - Primary -->
+        <div class="price-card popular reveal" data-delay="150">
+          <div class="popular-badge">Available Now</div>
+          <div class="plan-name">2nd Class</div>
+          <div class="plan-price-wrap">
+            <div class="plan-price-was"><sup>$</sup>149</div>
+            <div class="plan-price"><sup>$</sup>99</div>
+          </div>
+          <div class="plan-launch-badge">Launch Special</div>
+          <div class="plan-cycle">per month — cancel anytime</div>
+          <p class="plan-tagline">Full access to all six 2nd Class papers. Study at your pace over 6–12 months with AI-powered support the whole way.</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> All 6 papers — A1, A2, A3, B1, B2, B3</li>
+            <li><span class="check">✓</span> Step-by-step calculation coaching</li>
+            <li><span class="check">✓</span> Guided video explanations</li>
+            <li><span class="check">✓</span> Interactive AI tutoring, anytime</li>
+            <li><span class="check">✓</span> Adaptive practice exams</li>
+            <li><span class="check">✓</span> Study on any device</li>
+            <li><span class="check">✓</span> No fixed timeline or deadlines</li>
+            <li><span class="check">✓</span> Cancel and resume anytime</li>
+          </ul>
+          <a href="https://enrollment.fullsteamahead.ca"><button class="btn-plan btn-plan-primary">Start Your Subscription →</button></a>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.2rem; text-align:center; font-size:0.8rem; color:var(--gray-mid);">
+        At $99/month over 12 months, that's $1,188 for all six papers — compared to ~$1,400 per paper from traditional providers.
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Stop Watching. Start <em>Passing.</em></h2>
+    <p>You've put in the field hours. Now it's time to earn the ticket. Full Steam Ahead is built to get you there — on your schedule, without breaking the bank.</p>
+    <a href="https://enrollment.fullsteamahead.ca"><button class="btn-primary">Start Your Subscription Today</button></a>
+    <p class="cta-fine">Cancel anytime. No contracts. Study on any device.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq">
+    <div class="section-wrap">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">FAQ</h2>
+
+      <div class="faq-grid">
+
+        <div class="faq-card orange-border reveal" data-delay="0">
+          <div class="faq-q">Do I need to study papers in order?</div>
+          <p class="faq-a">No. You have access to all six papers from day one and can study them in any sequence. Many learners start with their strongest subject to build momentum, then move to the heavier calculation papers.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="60">
+          <div class="faq-q">What if I need more than 12 months?</div>
+          <p class="faq-a">Just keep your subscription active. There are no penalties for taking longer. The 6–12 month window is a guideline based on typical working operators, not a hard deadline.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="120">
+          <div class="faq-q">How does the AI tutoring work?</div>
+          <p class="faq-a">When you're working through a problem or concept and get stuck, you can ask a question right in context. The AI explains why — not just what — and adapts follow-up questions to address the specific gap in your understanding.</p>
+        </div>
+
+        <div class="faq-card amber-border reveal" data-delay="180">
+          <div class="faq-q">Can I pause my subscription?</div>
+          <p class="faq-a">Yes. Life on shift doesn't always allow for steady study time. You can cancel anytime and resubscribe when you're ready — your progress is saved.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="240">
+          <div class="faq-q">Is this aligned to SOPEEC exams?</div>
+          <p class="faq-a">Yes. Content is structured around 2nd Class exam objectives as set out by SOPEEC for interprovincial certification. The focus is on how problems are actually marked and what examiners are looking for in your solutions.</p>
+        </div>
+
+        <div class="faq-card orange-border reveal" data-delay="300">
+          <div class="faq-q">I've been out of school for years. Will this work for me?</div>
+          <p class="faq-a">That's exactly who this is built for. The step-by-step approach and AI tutoring are specifically powerful for operators returning to technical study — no assumption of recent classroom experience.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        btn.classList.add('is-open');
+        menu.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        btn.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      btn.addEventListener('click', function () {
+        btn.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (e) {
+        var nav = document.querySelector('nav');
+        if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          closeMenu();
+          btn.focus();
+        }
+      });
+    }());
+  </script>
+
+  <!-- Scroll reveal -->
+  <script>
+    (function () {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var delay = parseInt(entry.target.dataset.delay || 0);
+            setTimeout(function () {
+              entry.target.classList.add('is-visible');
+            }, delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal, .reveal-left').forEach(function (el) {
+        observer.observe(el);
+      });
+    }());
+  </script>
+
+  <!-- Hero canvas -->
+  <script>
+    (function () {
+      var canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, particles = [], scanX = 0;
+      var animating = true;
+
+      function resize() {
+        var hero = canvas.parentElement;
+        W = canvas.width  = hero.offsetWidth;
+        H = canvas.height = hero.offsetHeight;
+      }
+
+      function initParticles() {
+        particles = [];
+        for (var i = 0; i < 50; i++) {
+          particles.push({
+            x:  Math.random() * W,
+            y:  Math.random() * H,
+            vy: -(0.2 + Math.random() * 0.5),
+            r:  0.8 + Math.random() * 1.2,
+            a:  0.05 + Math.random() * 0.12,
+            da: (Math.random() - 0.5) * 0.003
+          });
+        }
+      }
+
+      function draw() {
+        if (!animating) return;
+        ctx.clearRect(0, 0, W, H);
+
+        // Grid
+        ctx.strokeStyle = 'rgba(58,110,165,0.07)';
+        ctx.lineWidth = 1;
+        for (var x = 0; x < W; x += 44) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+        }
+        for (var y = 0; y < H; y += 44) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+
+        // Scan line
+        scanX = (scanX + 0.4) % W;
+        var grad = ctx.createLinearGradient(scanX - 80, 0, scanX + 80, 0);
+        grad.addColorStop(0, 'transparent');
+        grad.addColorStop(0.5, 'rgba(232,114,12,0.07)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(scanX - 80, 0, 160, H);
+
+        // Particles
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.y += p.vy;
+          p.a += p.da;
+          if (p.a <= 0.03 || p.a >= 0.18) p.da *= -1;
+          if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(232,114,12,' + p.a + ')';
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          animating = false;
+        } else {
+          animating = true;
+          requestAnimationFrame(draw);
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        resize();
+        initParticles();
+      });
+
+      resize();
+      initParticles();
+      requestAnimationFrame(draw);
+    }());
+  </script>
+
+  <!-- Stat counters + nav scroll state + scroll-driven trust bar -->
+  <script>
+    (function () {
+      // Nav scroll darkening
+      var nav = document.querySelector('nav');
+      var trustTrack = document.querySelector('.trust-track');
+
+      // Trust bar: one full loop over the first 3x viewport heights of scroll
+      // loopWidth is half the track's scrollWidth (since items are duplicated)
+      var loopWidth = 0;
+
+      function updateTrustBar() {
+        if (!trustTrack || loopWidth === 0) return;
+        // Map scrollY → 0..loopWidth, then mod to loop infinitely
+        var speed = 0.6; // px of track movement per px of page scroll
+        var offset = (window.scrollY * speed) % loopWidth;
+        trustTrack.style.transform = 'translateX(-' + offset + 'px)';
+      }
+
+      window.addEventListener('scroll', function () {
+        // Nav
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+        // Trust bar
+        updateTrustBar();
+      }, { passive: true });
+
+      // Measure loop width after layout
+      window.addEventListener('load', function () {
+        if (trustTrack) {
+          loopWidth = trustTrack.scrollWidth / 2;
+        }
+      });
+      // Also try on DOMContentLoaded in case load fires late
+      if (trustTrack) {
+        loopWidth = trustTrack.scrollWidth / 2;
+      }
+
+      // Counter animation
+      function animateCounter(el) {
+        var target = parseInt(el.dataset.countTo, 10);
+        var duration = 1200;
+        var startTime = null;
+        function step(now) {
+          if (!startTime) startTime = now;
+          var elapsed = now - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      setTimeout(function () {
+        document.querySelectorAll('.count-num[data-count-to]').forEach(animateCounter);
+      }, 700);
+    }());
+  </script>
+</body>
+</html>
