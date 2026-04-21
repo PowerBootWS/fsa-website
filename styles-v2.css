@@ -1411,19 +1411,20 @@ footer {
 .affiliate-form-section > p {
   text-align: center;
   color: var(--gray-mid);
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .form-embed {
-  background: rgba(36, 53, 96, 0.3);
-  border: 1px solid rgba(58, 110, 165, 0.2);
-  border-radius: 8px;
-  padding: 0.5rem;
-  min-height: auto !important;
+  padding: 0;
+  background: none;
+  background-color: transparent;
+  border: none;
 }
 
 .form-embed iframe {
-  height: auto !important;
+  display: block;
+  width: 100%;
+  border: none;
 }
 
 @media (max-width: 700px) {
