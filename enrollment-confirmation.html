@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>You're Enrolled – Full Steam Ahead</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +19,34 @@
     gtag('js', new Date());
     gtag('config', 'G-5ZFF5FB8R8');
   </script>
+
+  <!-- Affiliate lead tracking -->
+  <script type="text/javascript">
+    var email = "<user-email>";
+    var uid = "<user-stripe-customer-id>";
+    if (window.affiliateManager){
+      window.affiliateManager.trackLead({email: email,uid: uid});
+    } else {
+      _affiliateManager=window._affiliateManager||[];window._affiliateManager=_affiliateManager;
+      _affiliateManager.push(["event","signup"]);
+      _affiliateManager.push(["email",email]);
+      _affiliateManager.push(["uid",uid]);
+    }
+  </script>
 </head>
 <body>
+
+  <script>
+    // Access guard: page must be reached with ?ref=enrolled
+    // Set your redirect URL in enrollment.fullsteamahead.ca to:
+    // https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('ref') !== 'enrolled') {
+        window.location.replace('/');
+      }
+    })();
+  </script>
 
   <nav>
     <a href="/" class="logo">
