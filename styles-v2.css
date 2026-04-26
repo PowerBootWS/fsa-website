@@ -1395,6 +1395,128 @@ footer {
   font-style: italic;
 }
 
+/* ── AFFILIATE DETAILS ── */
+.affiliate-details {
+  margin: 3rem 0;
+}
+
+.affiliate-details h2,
+.affiliate-faq h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-item {
+  background: rgba(36, 53, 96, 0.5);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.detail-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-mid);
+  margin-bottom: 0.4rem;
+}
+
+.detail-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--orange-glow);
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+
+.detail-note {
+  font-size: 0.8rem;
+  color: var(--gray-mid);
+  line-height: 1.5;
+}
+
+.payout-callout {
+  background: rgba(36, 53, 96, 0.5);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-left: 4px solid var(--orange);
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+}
+
+.payout-callout-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.payout-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.payout-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.payout-text {
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.payout-text a {
+  color: var(--orange-glow);
+  text-decoration: none;
+}
+
+.payout-text a:hover {
+  text-decoration: underline;
+}
+
+/* ── AFFILIATE FAQ ── */
+.affiliate-faq {
+  margin: 3rem 0;
+}
+
+@media (max-width: 900px) {
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .payout-callout-inner {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
 .affiliate-form-section {
   margin: 3rem 0;
 }
@@ -1436,6 +1558,325 @@ footer {
   }
   .example-row span {
     font-size: 0.75rem;
+  }
+}
+
+/* ── AFFILIATE CONFIRMATION PAGE ── */
+.confirm-hero {
+  text-align: center;
+  padding: 3rem 0 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.confirm-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-glow) 100%);
+  font-size: 1.75rem;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+}
+
+.confirm-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.confirm-sub {
+  font-size: 1.1rem;
+  color: var(--gray-light);
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.confirm-email-tip {
+  display: inline-block;
+  background: rgba(36, 53, 96, 0.6);
+  border: 1px solid rgba(58, 110, 165, 0.3);
+  border-left: 4px solid var(--orange);
+  border-radius: 6px;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--gray-light);
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+.confirm-email-tip strong {
+  color: var(--white);
+}
+
+.email-addr {
+  color: var(--orange-glow);
+  font-weight: 600;
+}
+
+/* Sections */
+.confirm-section {
+  margin: 3rem 0;
+}
+
+.confirm-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.confirm-section-intro {
+  font-size: 0.95rem;
+  color: var(--gray-mid);
+  line-height: 1.65;
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+/* Portal URL badge */
+.confirm-portal-url {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(232, 114, 12, 0.12);
+  border: 1px solid rgba(232, 114, 12, 0.3);
+  border-radius: 8px;
+  padding: 0.85rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.portal-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-mid);
+}
+
+.portal-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--orange-glow);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.portal-link:hover {
+  text-decoration: underline;
+}
+
+/* Numbered steps */
+.confirm-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.confirm-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(58, 110, 165, 0.15);
+}
+
+.confirm-step:last-child {
+  border-bottom: none;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(232, 114, 12, 0.15);
+  border: 2px solid var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--orange-glow);
+  margin-top: 0.1rem;
+}
+
+.step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.step-body p {
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.step-body p a {
+  color: var(--orange-glow);
+  text-decoration: none;
+}
+
+.step-body p a:hover {
+  text-decoration: underline;
+}
+
+.step-body p strong {
+  color: var(--white);
+}
+
+/* Portal features grid */
+.portal-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.portal-feature {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  background: rgba(36, 53, 96, 0.5);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.feature-icon-wrap {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.feature-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.portal-feature p {
+  font-size: 0.85rem;
+  color: var(--gray-mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Screen cards */
+.affiliate-screens {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 0.5rem;
+}
+
+.screen-card {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.screen-card-reverse {
+  grid-template-columns: 1.6fr 1fr;
+}
+
+.screen-card-reverse .screen-text {
+  order: 2;
+}
+
+.screen-card-reverse .screen-img-wrap {
+  order: 1;
+}
+
+.screen-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.6rem;
+}
+
+.screen-text p {
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.screen-img-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(58, 110, 165, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.screen-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Support */
+.confirm-support {
+  margin: 3rem 0 1rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(36, 53, 96, 0.4);
+  border: 1px solid rgba(58, 110, 165, 0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+  line-height: 1.6;
+}
+
+.confirm-support a {
+  color: var(--orange-glow);
+  text-decoration: none;
+}
+
+.confirm-support a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .portal-features {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-card,
+  .screen-card-reverse {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .screen-card-reverse .screen-text {
+    order: 0;
+  }
+
+  .screen-card-reverse .screen-img-wrap {
+    order: 0;
   }
 }
 

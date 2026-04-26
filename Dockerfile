@@ -7,6 +7,8 @@ COPY home-v2.html /usr/share/nginx/html/home-v2.html
 COPY privacy-policy.html /usr/share/nginx/html/privacy-policy.html
 COPY terms-of-use.html /usr/share/nginx/html/terms-of-use.html
 COPY affiliate.html /usr/share/nginx/html/affiliate.html
+COPY affiliate-confirmation.html /usr/share/nginx/html/affiliate-confirmation.html
+COPY enrollment-confirmation.html /usr/share/nginx/html/enrollment-confirmation.html
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY styles-v2.css /usr/share/nginx/html/styles-v2.css
 COPY assets/ /usr/share/nginx/html/assets/
