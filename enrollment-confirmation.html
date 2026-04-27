@@ -63,6 +63,21 @@
     })();
   </script>
 
+  <!-- DEBUG BANNER — remove once GHL params are confirmed -->
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var entries = [];
+      params.forEach(function (val, key) { entries.push(key + ' = ' + val); });
+      var msg = entries.length ? entries.join('\n') : '(no query parameters received)';
+      console.log('[FSA Debug] Query parameters received:\n' + msg);
+      var banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#e8720c;color:#fff;font-family:monospace;font-size:14px;padding:12px 16px;white-space:pre-wrap;border-bottom:3px solid #000;';
+      banner.textContent = '🔍 DEBUG — Query params received:\n' + msg;
+      document.body.appendChild(banner);
+    })();
+  </script>
+
   <nav>
     <a href="/" class="logo">
       <img src="/assets/FSA Logo Main - Light.png" alt="Full Steam Ahead" class="logo-img">
