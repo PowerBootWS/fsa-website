@@ -35,17 +35,20 @@
   })();
   </script>
 
-  <!-- Affiliate lead tracking -->
+  <!-- Affiliate lead tracking (Option 2 — redirect page)
+       Reads email from the URL param GHL appends to the redirect URL.
+       GHL redirect URL should be:
+       https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
+       This script must stay near the loader above — do not move it. -->
   <script type="text/javascript">
-    var email = "<user-email>";
-    var uid = "<user-stripe-customer-id>";
-    if (window.affiliateManager){
-      window.affiliateManager.trackLead({email: email,uid: uid});
+    var _amEmail = new URLSearchParams(window.location.search).get('email') || '';
+    if (window.affiliateManager) {
+      window.affiliateManager.trackLead({ email: _amEmail });
     } else {
-      _affiliateManager=window._affiliateManager||[];window._affiliateManager=_affiliateManager;
-      _affiliateManager.push(["event","signup"]);
-      _affiliateManager.push(["email",email]);
-      _affiliateManager.push(["uid",uid]);
+      _affiliateManager = window._affiliateManager || [];
+      window._affiliateManager = _affiliateManager;
+      _affiliateManager.push(["event", "signup"]);
+      _affiliateManager.push(["email", _amEmail]);
     }
   </script>
 </head>
