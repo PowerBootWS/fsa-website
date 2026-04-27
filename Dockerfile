@@ -2,8 +2,7 @@ FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html
-COPY index.html /usr/share/nginx/html/coming-soon.html
-COPY home-v2.html /usr/share/nginx/html/home-v2.html
+COPY coming-soon.html /usr/share/nginx/html/coming-soon.html
 COPY privacy-policy.html /usr/share/nginx/html/privacy-policy.html
 COPY terms-of-use.html /usr/share/nginx/html/terms-of-use.html
 COPY affiliate.html /usr/share/nginx/html/affiliate.html
