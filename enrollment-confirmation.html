@@ -20,47 +20,44 @@
     gtag('config', 'G-5ZFF5FB8R8');
   </script>
 
-  <!-- Affiliate manager loader (must come before lead tracking) -->
-  <script type="text/javascript">
-    (function() {
-      var t = document.createElement("script");
-      t.type = "text/javascript", t.async = !0, t.src = 'https://link.msgsndr.com/js/am.js', t.onload = t.onreadystatechange = function() {
-          var t = this.readyState;
-          if (!t || "complete" == t || "loaded" == t) try {
-            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca')
-          } catch (t) {}
-      };
-      var e = document.getElementsByTagName("script")[0];
-      e.parentNode.insertBefore(t, e)
-  })();
-  </script>
-
-  <!-- Affiliate lead tracking (Option 2 — redirect page, purchase confirmation)
-       Reads email from the URL param GHL appends to the redirect URL.
-       GHL redirect URL should be:
+  <!-- Affiliate manager loader + lead tracking (purchase confirmation)
+       GHL redirect URL must be:
        https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
 
-       How this works (from am.js source):
-       - am.js only exposes trackLead (no trackCustomer method exists)
-       - trackLeadWithRedirect reads window._affiliateManager queue on load,
-         looking specifically for ["event","signup"] then the email entry
-       - trackLead requires am_id + am_fingerprint cookies set from the
-         original affiliate link visit; silently no-ops if missing
-       - am_signed_up deduplication cookie: if trackLead already fired for
-         this email on the homepage visit, it will no-op here too — this
-         is expected GHL behaviour; the lead is already attributed
+       WHY we call trackLead directly from onload instead of using the queue:
+       am.js only consumes window._affiliateManager queue inside
+       trackLeadWithRedirect(), which is gated behind `if (am_id in URL)`.
+       On this page there is no am_id in the URL, so the queue is never
+       read. We must call trackLead() ourselves once am.js has initialised.
 
-       This script must stay near the loader above — do not move it. -->
+       trackLead() checks for am_id + am_fingerprint cookies (set when the
+       visitor first arrived via the affiliate link) and silently no-ops if
+       they are absent — so this is safe to fire on every page load. -->
   <script type="text/javascript">
-    var _amEmail = new URLSearchParams(window.location.search).get('email') || '';
-    if (window.affiliateManager) {
-      window.affiliateManager.trackLead({ email: _amEmail });
-    } else {
-      _affiliateManager = window._affiliateManager || [];
-      window._affiliateManager = _affiliateManager;
-      _affiliateManager.push(["event", "signup"]);
-      _affiliateManager.push(["email", _amEmail]);
-    }
+    (function() {
+      var email = new URLSearchParams(window.location.search).get('email') || '';
+      var t = document.createElement("script");
+      t.type = "text/javascript";
+      t.async = true;
+      t.src = 'https://link.msgsndr.com/js/am.js';
+      t.onload = t.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (!rs || rs === "complete" || rs === "loaded") {
+          try {
+            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca');
+            // init() is async (validate() calls fetch) — give it a tick to
+            // set cookies before we attempt trackLead
+            setTimeout(function() {
+              if (email) {
+                affiliateManager.trackLead({ email: email });
+              }
+            }, 500);
+          } catch(e) {}
+        }
+      };
+      var e = document.getElementsByTagName("script")[0];
+      e.parentNode.insertBefore(t, e);
+    })();
   </script>
 </head>
 <body>
