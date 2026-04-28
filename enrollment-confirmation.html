@@ -35,20 +35,30 @@
   })();
   </script>
 
-  <!-- Affiliate customer tracking (Option 2 — redirect page, purchase conversion)
+  <!-- Affiliate lead tracking (Option 2 — redirect page, purchase confirmation)
        Reads email from the URL param GHL appends to the redirect URL.
        GHL redirect URL should be:
        https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
-       This script must stay near the loader above — do not move it.
-       Uses "customer" event (not "signup") because this is a completed purchase. -->
+
+       How this works (from am.js source):
+       - am.js only exposes trackLead (no trackCustomer method exists)
+       - trackLeadWithRedirect reads window._affiliateManager queue on load,
+         looking specifically for ["event","signup"] then the email entry
+       - trackLead requires am_id + am_fingerprint cookies set from the
+         original affiliate link visit; silently no-ops if missing
+       - am_signed_up deduplication cookie: if trackLead already fired for
+         this email on the homepage visit, it will no-op here too — this
+         is expected GHL behaviour; the lead is already attributed
+
+       This script must stay near the loader above — do not move it. -->
   <script type="text/javascript">
     var _amEmail = new URLSearchParams(window.location.search).get('email') || '';
     if (window.affiliateManager) {
-      window.affiliateManager.trackCustomer({ email: _amEmail });
+      window.affiliateManager.trackLead({ email: _amEmail });
     } else {
       _affiliateManager = window._affiliateManager || [];
       window._affiliateManager = _affiliateManager;
-      _affiliateManager.push(["event", "customer"]);
+      _affiliateManager.push(["event", "signup"]);
       _affiliateManager.push(["email", _amEmail]);
     }
   </script>
