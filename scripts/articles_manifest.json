@@ -1,0 +1,613 @@
+{
+  "articles": [
+    {
+      "id": "P1",
+      "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam",
+      "slug": "2nd-class-power-engineering-exam-guide",
+      "keyword": "2nd class power engineering exam",
+      "supporting_keywords": ["power engineer exam", "power engineering test", "absa exams", "power engineer requirements"],
+      "category": "Exam Strategy",
+      "word_target": 3500,
+      "type": "pillar",
+      "notes": "Comprehensive authority guide covering the full exam picture: what SOPEEC tests, paper breakdown (A1–B3), how scoring works, what pass rates look like, how operators typically prepare, common failure points, and the study-to-exam sequence. This is the hub for all Cluster A articles — link to A1 through A6 where natural. Cross-link to P2 (study methods) and P3 (careers). End with strong CTA.",
+      "pillar_slug": null,
+      "published_date": "2026-04-30",
+      "intro": "Everything you need to know to pass the SOPEEC 2nd class power engineering exam — from paper structure and scoring to study strategy and exam-day execution.",
+      "meta_description": "The complete guide to passing your 2nd class power engineering exam in Canada. SOPEEC paper breakdown, scoring, study strategy, and what to expect on exam day.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "what you can do with a 2nd class certificate"},
+        {"slug": "multiple-choice-power-engineering-strategy", "anchor_text": "how to approach multiple-choice questions"},
+        {"slug": "power-engineering-exam-time-management", "anchor_text": "time management on exam day"},
+        {"slug": "2nd-class-exam-day-what-to-expect", "anchor_text": "what to expect on exam day"},
+        {"slug": "past-papers-2nd-class-power-engineering", "anchor_text": "practice with past papers"}
+      ],
+      "related_cards": [
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A proven study system built around how working operators actually retain technical material."},
+        {"slug": "multiple-choice-power-engineering-strategy", "title": "How to Approach Multiple-Choice Power Engineering Questions", "category": "Exam Strategy", "description": "Techniques for elimination, handling trick wording, and pacing yourself through each paper."},
+        {"slug": "2nd-class-exam-day-what-to-expect", "title": "What to Expect on Exam Day: 2nd Class Power Engineering", "category": "Exam Strategy", "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "2nd Class Exam Guide"
+      }
+    },
+    {
+      "id": "P2",
+      "title": "How to Study for Power Engineering Exams: A Practical System",
+      "slug": "how-to-study-for-power-engineering-exams",
+      "keyword": "how to study for power engineering exams",
+      "supporting_keywords": ["power engineering course", "power engineering online course", "power engineering"],
+      "category": "Study Methods",
+      "word_target": 3000,
+      "type": "pillar",
+      "notes": "Authority guide on study systems that actually work for working power engineers. Cover the core principles: active recall beats passive review, spaced repetition schedules, past paper practice as the highest-ROI activity, and how to build a realistic study block around shift work. This is the hub for Cluster B — link to B1 through B6 where natural. Cross-link to P1 (exam guide) and P3 (careers). End with strong CTA.",
+      "pillar_slug": null,
+      "published_date": "2026-04-30",
+      "intro": "A practical study system for 2nd class power engineering exams, built around how working operators actually learn and retain technical material.",
+      "meta_description": "How to study for power engineering exams — a practical system using active recall, spaced repetition, and past paper practice built for working Canadian operators.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "what a 2nd class certificate opens up for your career"},
+        {"slug": "active-recall-power-engineering", "anchor_text": "active recall vs. passive review"},
+        {"slug": "spaced-repetition-power-engineering", "anchor_text": "spaced repetition scheduling"},
+        {"slug": "past-papers-2nd-class-power-engineering", "anchor_text": "past paper practice"},
+        {"slug": "study-schedule-power-engineering-job", "anchor_text": "building a study schedule around shift work"}
+      ],
+      "related_cards": [
+        {"slug": "active-recall-power-engineering", "title": "Active Recall vs. Passive Review: What Actually Works for Power Engineering", "category": "Study Methods", "description": "Why re-reading your notes fails — and what to do instead."},
+        {"slug": "past-papers-2nd-class-power-engineering", "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class", "category": "Study Methods", "description": "How to use past papers effectively, analyze your mistakes, and close knowledge gaps fast."},
+        {"slug": "study-schedule-power-engineering-job", "title": "How to Build a Study Schedule Around a Full-Time Power Engineering Job", "category": "Study Methods", "description": "Time-blocking for shift workers with realistic session lengths that don't burn you out."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "How to Study"
+      }
+    },
+    {
+      "id": "P3",
+      "title": "What You Can Do With a 2nd Class Power Engineering Certificate",
+      "slug": "2nd-class-power-engineering-certificate-careers",
+      "keyword": "2nd class power engineering jobs",
+      "supporting_keywords": ["power engineer job", "power engineering jobs", "power engineers jobs", "power engineering jobs alberta", "2nd class power engineering jobs"],
+      "category": "Career & Industry",
+      "word_target": 3000,
+      "type": "pillar",
+      "notes": "Authority guide on career outcomes after getting your 2nd class. Cover: what roles become available (chief engineer, shift engineer), industries that hire (oil & gas, utilities, mining, hospitals), salary ranges by province, how fast promotion typically happens, and how the cert changes your professional standing. This is the hub for Cluster C — link to C1 through C5 where natural. Cross-link to P1 (exam guide). End with strong CTA.",
+      "pillar_slug": null,
+      "published_date": "2026-04-30",
+      "intro": "A 2nd class power engineering certificate changes your career options significantly. Here's what roles open up, what they pay, and what to realistically expect in Canada.",
+      "meta_description": "What you can do with a 2nd class power engineering certificate in Canada — roles, industries, salary ranges by province, and how fast you can expect a promotion.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete guide to passing the 2nd class exam"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "chief engineer vs. shift engineer roles"},
+        {"slug": "2nd-class-power-engineering-salary-canada", "anchor_text": "2nd class power engineering salary ranges"},
+        {"slug": "industries-2nd-class-power-engineers", "anchor_text": "industries that hire 2nd class power engineers"},
+        {"slug": "2nd-class-power-engineer-promotion-timeline", "anchor_text": "how long before you can expect a promotion"},
+        {"slug": "3rd-class-vs-2nd-class-power-engineering", "anchor_text": "how 2nd class differs from 3rd class"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-salary-canada", "title": "2nd Class Power Engineering Salary: What to Expect in Canada", "category": "Career & Industry", "description": "Salary ranges by province and sector, and the real value of holding a 2nd class certificate."},
+        {"slug": "industries-2nd-class-power-engineers", "title": "Industries That Hire 2nd Class Power Engineers (and What They Pay)", "category": "Career & Industry", "description": "Oil & gas, utilities, mining, pulp & paper, hospitals — where the jobs are and what they pay."},
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Career Outcomes"
+      }
+    },
+    {
+      "id": "A1",
+      "title": "How to Approach Multiple-Choice Power Engineering Questions",
+      "slug": "multiple-choice-power-engineering-strategy",
+      "keyword": "power engineering multiple choice tips",
+      "supporting_keywords": ["power engineering test", "power engineer exam"],
+      "category": "Exam Strategy",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Practical techniques for working through SOPEEC multiple-choice questions: elimination process, how to spot distractor answers, handling 'except' and 'which of the following is NOT' questions, how long to spend per question before moving on, and when to trust your first instinct. Operators should finish reading with a clear change in how they attack the exam paper.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Multiple-choice questions reward technique as much as knowledge. Here's how to approach each question on the SOPEEC exam to maximize your score.",
+      "meta_description": "Proven techniques for SOPEEC multiple-choice questions — elimination, spotting distractors, handling 'except' questions, and pacing yourself through each exam paper.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "sopeec-multiple-choice-traps", "anchor_text": "common traps in SOPEEC multiple-choice questions"},
+        {"slug": "power-engineering-exam-time-management", "anchor_text": "managing your time across the full paper"}
+      ],
+      "related_cards": [
+        {"slug": "sopeec-multiple-choice-traps", "title": "The Most Common Traps in 2nd Class SOPEEC Multiple-Choice Questions", "category": "Exam Strategy", "description": "Gotchas around units, 'except' questions, and misleading calculation shortcuts — and how to avoid them."},
+        {"slug": "power-engineering-exam-time-management", "title": "How to Manage Your Time During the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Per-question pacing, flagging strategy, and how to use your review time effectively."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "Multiple-Choice Strategy"
+      }
+    },
+    {
+      "id": "A2",
+      "title": "The Most Common Traps in 2nd Class SOPEEC Multiple-Choice Questions",
+      "slug": "sopeec-multiple-choice-traps",
+      "keyword": "SOPEEC exam traps",
+      "supporting_keywords": ["absa exams", "power engineer exam", "power engineering test"],
+      "category": "Exam Strategy",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Specific, concrete traps that catch operators off guard in SOPEEC exams: unit conversion errors, questions that hinge on a single qualifier (always/never/except), calculation questions where a shortcut leads to a wrong answer, questions testing regulation awareness vs. technical knowledge, and answer options that are true but not the best answer. Practical and direct — not general test-taking advice.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Knowing the material isn't always enough — SOPEEC questions are designed to catch specific mistakes. Here are the traps that catch operators out most often.",
+      "meta_description": "The most common traps in SOPEEC 2nd class multiple-choice questions — unit errors, 'except' questions, misleading shortcuts, and how to avoid each one.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "multiple-choice-power-engineering-strategy", "anchor_text": "how to approach multiple-choice questions systematically"},
+        {"slug": "power-engineering-exam-time-management", "anchor_text": "time management during the exam"}
+      ],
+      "related_cards": [
+        {"slug": "multiple-choice-power-engineering-strategy", "title": "How to Approach Multiple-Choice Power Engineering Questions", "category": "Exam Strategy", "description": "Elimination technique, distractor spotting, and per-question pacing for SOPEEC exam papers."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."},
+        {"slug": "past-papers-2nd-class-power-engineering", "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class", "category": "Study Methods", "description": "How to use past papers to expose knowledge gaps and build exam-ready pattern recognition."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "SOPEEC Exam Traps"
+      }
+    },
+    {
+      "id": "A3",
+      "title": "How to Manage Your Time During the 2nd Class Power Engineering Exam",
+      "slug": "power-engineering-exam-time-management",
+      "keyword": "power engineering exam time management",
+      "supporting_keywords": ["power engineer exam", "power engineering test"],
+      "category": "Exam Strategy",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Concrete time management for SOPEEC papers: how many minutes per question, how to flag and move on without losing your place, when to stop on a question you're stuck on vs. spending more time, how to use the last 10 minutes effectively, and what happens if you run short. Practical numbers and decision rules, not vague advice.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Running out of time is one of the most common reasons operators lose marks they actually knew. Here's how to pace yourself through a SOPEEC exam paper.",
+      "meta_description": "Time management for the 2nd class SOPEEC power engineering exam — per-question pacing, flagging strategy, review time, and how to stop running out of time.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "multiple-choice-power-engineering-strategy", "anchor_text": "how to approach each question methodically"},
+        {"slug": "mental-prep-power-engineering-exam", "anchor_text": "mental preparation before the exam"}
+      ],
+      "related_cards": [
+        {"slug": "multiple-choice-power-engineering-strategy", "title": "How to Approach Multiple-Choice Power Engineering Questions", "category": "Exam Strategy", "description": "Elimination, distractor spotting, and how to handle questions you're unsure about."},
+        {"slug": "mental-prep-power-engineering-exam", "title": "Mental Preparation for the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Mindset, pre-exam routine, and how to handle a blank-mind moment mid-paper."},
+        {"slug": "2nd-class-exam-day-what-to-expect", "title": "What to Expect on Exam Day: 2nd Class Power Engineering", "category": "Exam Strategy", "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "Exam Time Management"
+      }
+    },
+    {
+      "id": "A4",
+      "title": "Mental Preparation for the 2nd Class Power Engineering Exam",
+      "slug": "mental-prep-power-engineering-exam",
+      "keyword": "power engineering exam anxiety",
+      "supporting_keywords": ["power engineer exam"],
+      "category": "Exam Strategy",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Practical mental prep for operators sitting a high-stakes professional exam: how to build exam-day confidence without over-relying on last-minute cramming, pre-exam routines the night before and morning of, what to do when your mind goes blank mid-question, and reframing the exam as a technical problem rather than a personal test. Written for experienced operators who know the material but struggle with exam performance.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Knowing the material and performing under exam conditions are two different skills. Here's how to prepare mentally for your 2nd class power engineering exam.",
+      "meta_description": "Mental preparation for the 2nd class power engineering exam — pre-exam routines, handling blank-mind moments, and building the confidence to perform when it counts.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "power-engineering-exam-stress", "anchor_text": "managing exam stress in the days before"},
+        {"slug": "study-schedule-power-engineering-job", "anchor_text": "building a consistent study schedule"}
+      ],
+      "related_cards": [
+        {"slug": "power-engineering-exam-stress", "title": "How to Handle Exam Stress as a Power Engineer", "category": "Exam Strategy", "description": "Physiological techniques, sleep, and the week-before routine that keeps you sharp on exam day."},
+        {"slug": "power-engineering-exam-time-management", "title": "How to Manage Your Time During the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Per-question pacing and how to stop running out of time mid-paper."},
+        {"slug": "2nd-class-exam-day-what-to-expect", "title": "What to Expect on Exam Day: 2nd Class Power Engineering", "category": "Exam Strategy", "description": "Logistics, allowed materials, and the most common day-of mistakes operators make."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "Mental Prep"
+      }
+    },
+    {
+      "id": "A5",
+      "title": "How to Handle Exam Stress as a Power Engineer",
+      "slug": "power-engineering-exam-stress",
+      "keyword": "power engineering exam stress",
+      "supporting_keywords": ["power engineer exam"],
+      "category": "Exam Strategy",
+      "word_target": 1300,
+      "type": "cluster",
+      "notes": "Practical techniques for managing stress in the week before a SOPEEC exam: sleep hygiene, avoiding last-minute cramming that increases anxiety, physiological techniques (breathing, light exercise), managing the morning-of nerves, and what to do if stress affects performance during the paper. Grounded and practical — operators don't want therapy-speak.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Stress before a professional exam is normal — but how you manage it in the days leading up affects your actual performance. Here's what works for working operators.",
+      "meta_description": "How to handle exam stress before your 2nd class power engineering exam — sleep, routine, breathing techniques, and what to do when nerves hit during the paper.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "mental-prep-power-engineering-exam", "anchor_text": "mental preparation for the exam"},
+        {"slug": "2nd-class-exam-day-what-to-expect", "anchor_text": "what to expect on exam day"}
+      ],
+      "related_cards": [
+        {"slug": "mental-prep-power-engineering-exam", "title": "Mental Preparation for the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Pre-exam routines, handling blank-mind moments, and building exam-day confidence."},
+        {"slug": "2nd-class-exam-day-what-to-expect", "title": "What to Expect on Exam Day: 2nd Class Power Engineering", "category": "Exam Strategy", "description": "Logistics, allowed materials, and the most common day-of mistakes operators make."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "Exam Stress"
+      }
+    },
+    {
+      "id": "A6",
+      "title": "What to Expect on Exam Day: 2nd Class Power Engineering",
+      "slug": "2nd-class-exam-day-what-to-expect",
+      "keyword": "2nd class power engineering exam day",
+      "supporting_keywords": ["absa exams", "power engineer requirements", "power engineer exam"],
+      "category": "Exam Strategy",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Logistics and format for SOPEEC 2nd class exam day: where exams are written, ID requirements, what you can bring (reference materials, calculators), how the paper is structured and administered, what happens if you finish early, what happens if you need to leave, and the most common logistical mistakes operators make. This is pure exam-day practical info — not study advice.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-04-30",
+      "intro": "Walking into the exam room knowing exactly what to expect removes one layer of stress. Here's what actually happens on 2nd class SOPEEC exam day.",
+      "meta_description": "What to expect on 2nd class power engineering exam day — ID requirements, allowed materials, paper format, timing, and the most common day-of mistakes to avoid.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "power-engineering-exam-time-management", "anchor_text": "time management during the paper"},
+        {"slug": "mental-prep-power-engineering-exam", "anchor_text": "mental preparation before the exam"}
+      ],
+      "related_cards": [
+        {"slug": "power-engineering-exam-time-management", "title": "How to Manage Your Time During the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Per-question pacing and flagging strategy for SOPEEC exam papers."},
+        {"slug": "mental-prep-power-engineering-exam", "title": "Mental Preparation for the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Pre-exam routines and how to handle blank-mind moments mid-paper."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "Exam Day"
+      }
+    },
+    {
+      "id": "B1",
+      "title": "Active Recall vs. Passive Review: What Actually Works for Power Engineering",
+      "slug": "active-recall-power-engineering",
+      "keyword": "active recall power engineering study",
+      "supporting_keywords": ["power engineering", "power engineer"],
+      "category": "Study Methods",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Why re-reading notes, re-watching videos, and highlighting feel productive but don't work for technical exam prep. Explain active recall in concrete terms for a power engineering audience: practice questions, self-quizzing on formulas, explaining procedures out loud, working problems without looking at the solution. Give a practical daily study session structure that uses active recall throughout. Not academic — grounded in what operators can actually do after a shift.",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "Most operators study the same way they were taught in school — re-reading and highlighting. It doesn't work for professional exams. Here's what does.",
+      "meta_description": "Active recall vs. passive review for power engineering study — why re-reading fails and how to use self-quizzing and practice problems to actually retain technical material.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "spaced-repetition-power-engineering", "anchor_text": "how to schedule review with spaced repetition"},
+        {"slug": "past-papers-2nd-class-power-engineering", "anchor_text": "past paper practice"}
+      ],
+      "related_cards": [
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."},
+        {"slug": "spaced-repetition-power-engineering", "title": "Spaced Repetition for Power Engineering: A Practical Guide", "category": "Study Methods", "description": "How to schedule your review sessions so material sticks for the long haul."},
+        {"slug": "past-papers-2nd-class-power-engineering", "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class", "category": "Study Methods", "description": "Why past papers beat notes, and how to turn wrong answers into genuine learning."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "Active Recall"
+      }
+    },
+    {
+      "id": "B2",
+      "title": "Spaced Repetition for Power Engineering: A Practical Guide",
+      "slug": "spaced-repetition-power-engineering",
+      "keyword": "spaced repetition power engineering",
+      "supporting_keywords": ["power engineering"],
+      "category": "Study Methods",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "The core principle of spaced repetition and why it matters for power engineering exam prep (lots of formulas, regulations, and equipment sequences that need to be retrieved reliably). Give a concrete review schedule — how soon to revisit material you just learned vs. material you know well. What tools/approaches work (Anki, paper index cards, a simple spreadsheet). How to apply this to exam paper sections. Practical and operator-appropriate — not a study-science lecture.",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "Spaced repetition is the most efficient way to retain technical material long enough to pass a professional exam. Here's how to apply it to power engineering study.",
+      "meta_description": "Spaced repetition for power engineering study — how to schedule review sessions so formulas, regulations, and procedures stay locked in through exam day.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "active-recall-power-engineering", "anchor_text": "active recall techniques"},
+        {"slug": "study-schedule-power-engineering-job", "anchor_text": "building a study schedule around your shifts"}
+      ],
+      "related_cards": [
+        {"slug": "active-recall-power-engineering", "title": "Active Recall vs. Passive Review: What Actually Works for Power Engineering", "category": "Study Methods", "description": "Why re-reading fails — and the practice techniques that actually build retention."},
+        {"slug": "study-schedule-power-engineering-job", "title": "How to Build a Study Schedule Around a Full-Time Power Engineering Job", "category": "Study Methods", "description": "Time-blocking for shift workers with realistic session lengths that don't burn you out."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "Spaced Repetition"
+      }
+    },
+    {
+      "id": "B3",
+      "title": "How to Use AI Tutoring to Study for Your Power Engineering Exam",
+      "slug": "ai-tutoring-power-engineering-study",
+      "keyword": "AI power engineering exam prep",
+      "supporting_keywords": ["power engineering online course", "power engineering course", "power engineering test"],
+      "category": "Study Methods",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "What AI tutoring actually offers for power engineering study: on-demand explanation of concepts you don't understand, walking through calculations step-by-step, adapting to your weak areas, available outside business hours (ideal for shift workers). Be honest about what it can and can't do. This article ties directly to the Full Steam Ahead product — make the connection explicit without being salesy. Strong conversion article — lead to CTA and to B5 (past papers).",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "AI tutoring is genuinely useful for power engineering exam prep — but only if you use it the right way. Here's what it can and can't do for you.",
+      "meta_description": "How to use AI tutoring for power engineering exam prep — what it's good for, what it can't replace, and how Full Steam Ahead uses AI to support 2nd class study.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "past-papers-2nd-class-power-engineering", "anchor_text": "past paper practice as the highest-ROI study activity"},
+        {"slug": "active-recall-power-engineering", "anchor_text": "active recall techniques"}
+      ],
+      "related_cards": [
+        {"slug": "past-papers-2nd-class-power-engineering", "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class", "category": "Study Methods", "description": "Why past papers beat notes, and how to use AI to analyze your mistakes."},
+        {"slug": "active-recall-power-engineering", "title": "Active Recall vs. Passive Review: What Actually Works for Power Engineering", "category": "Study Methods", "description": "Why re-reading fails — and the practice techniques that actually build retention."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "AI Tutoring"
+      }
+    },
+    {
+      "id": "B4",
+      "title": "How to Build a Study Schedule Around a Full-Time Power Engineering Job",
+      "slug": "study-schedule-power-engineering-job",
+      "keyword": "study while working power engineering",
+      "supporting_keywords": ["power engineering course"],
+      "category": "Study Methods",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Concrete study scheduling for working shift operators: how to block realistic study time on rotating shifts, how long a session needs to be to be effective (shorter than most think), what to do on days where you're too tired to study deeply (lighter review is still valuable), and how to build a 6–12 month plan that doesn't burn you out. Acknowledge the reality of shift fatigue without making excuses for not studying.",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "Studying for a professional exam while working full-time is hard. Here's how to build a study schedule that actually survives contact with shift work.",
+      "meta_description": "How to build a study schedule for power engineering exams while working full-time — time-blocking for rotating shifts, realistic session lengths, and avoiding burnout.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "how-long-to-prepare-2nd-class-exam", "anchor_text": "how long to realistically prepare for the 2nd class exam"},
+        {"slug": "spaced-repetition-power-engineering", "anchor_text": "spacing your review sessions"}
+      ],
+      "related_cards": [
+        {"slug": "how-long-to-prepare-2nd-class-exam", "title": "How Long Does It Take to Prepare for the 2nd Class Power Engineering Exam?", "category": "Study Methods", "description": "Realistic timelines, factors that affect your prep window, and how to self-assess your readiness."},
+        {"slug": "spaced-repetition-power-engineering", "title": "Spaced Repetition for Power Engineering: A Practical Guide", "category": "Study Methods", "description": "How to schedule review sessions so material stays locked in for the long haul."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "Study Schedule"
+      }
+    },
+    {
+      "id": "B5",
+      "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class",
+      "slug": "past-papers-2nd-class-power-engineering",
+      "keyword": "2nd class power engineering practice exams",
+      "supporting_keywords": ["absa exams", "power engineer exam", "power engineering test"],
+      "category": "Study Methods",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Why practicing on actual past papers is more valuable than any other study activity: exam-format familiarity, time pressure practice, identifying your actual weak areas vs. what you think you know, and building pattern recognition on the types of questions SOPEEC uses. How to use wrong answers productively. How many papers to work through before the exam. This ties directly to the Full Steam Ahead product — make the connection explicit. Strong conversion path article.",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "Working through past exam papers is the single most effective thing you can do to prepare for a SOPEEC exam. Here's why — and how to do it right.",
+      "meta_description": "Why past paper practice is the highest-ROI study method for 2nd class power engineering — how to use wrong answers, how many papers to work through, and where to get them.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "ai-tutoring-power-engineering-study", "anchor_text": "AI tutoring to understand your wrong answers"},
+        {"slug": "multiple-choice-power-engineering-strategy", "anchor_text": "multiple-choice technique to apply when practicing"}
+      ],
+      "related_cards": [
+        {"slug": "ai-tutoring-power-engineering-study", "title": "How to Use AI Tutoring to Study for Your Power Engineering Exam", "category": "Study Methods", "description": "How AI tutoring helps you understand wrong answers and close knowledge gaps faster."},
+        {"slug": "multiple-choice-power-engineering-strategy", "title": "How to Approach Multiple-Choice Power Engineering Questions", "category": "Exam Strategy", "description": "Elimination, distractor spotting, and pacing — apply this when practicing on past papers."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "Past Paper Practice"
+      }
+    },
+    {
+      "id": "B6",
+      "title": "How Long Does It Take to Prepare for the 2nd Class Power Engineering Exam?",
+      "slug": "how-long-to-prepare-2nd-class-exam",
+      "keyword": "how long to study 2nd class power engineering",
+      "supporting_keywords": ["power engineering course", "absa exams"],
+      "category": "Study Methods",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Realistic timelines for 2nd class exam prep: typical range (6–18 months), what makes the difference (how recently you studied 3rd class material, how many hours per week you can commit, which papers you're attempting), and how to self-assess your current readiness. Warn against both under-preparing and indefinitely delaying. Include a rough milestone framework operators can use to gauge if they're on track.",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-04-30",
+      "intro": "There's no single answer — but operators who pass usually spend between 6 and 18 months preparing. Here's how to figure out where you land and whether you're on track.",
+      "meta_description": "How long to study for the 2nd class power engineering exam — realistic timelines, what affects your prep window, and how to gauge whether you're on track to pass.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "study-schedule-power-engineering-job", "anchor_text": "building a study schedule that fits your schedule"},
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"}
+      ],
+      "related_cards": [
+        {"slug": "study-schedule-power-engineering-job", "title": "How to Build a Study Schedule Around a Full-Time Power Engineering Job", "category": "Study Methods", "description": "Time-blocking for shift workers with realistic session lengths that don't burn you out."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "How Long to Prepare"
+      }
+    },
+    {
+      "id": "C1",
+      "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks",
+      "slug": "2nd-class-chief-engineer-roles",
+      "keyword": "2nd class power engineer chief engineer",
+      "supporting_keywords": ["power engineer job", "power engineers jobs"],
+      "category": "Career & Industry",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Role-level breakdown: what a Chief Engineer does vs. a Shift Engineer, what plant sizes and jurisdiction/province requirements require a 2nd class ticket, and where exactly a 2nd class unlocks roles that a 3rd class cannot. Include provincial variations (Alberta ABSA, BC TSBC, Ontario TSSA). Focus on practical professional advancement — operators want to know what door this certificate opens.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-04-30",
+      "intro": "A 2nd class power engineering certificate opens up chief and senior engineer roles that a 3rd class cannot. Here's what those roles involve and what's required to get them.",
+      "meta_description": "Chief engineer vs. shift engineer — what a 2nd class power engineering certificate unlocks, role requirements by province, and what plants need a 2nd class ticket.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "2nd-class-power-engineering-salary-canada", "anchor_text": "2nd class power engineering salary ranges"},
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete guide to passing the 2nd class exam"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-salary-canada", "title": "2nd Class Power Engineering Salary: What to Expect in Canada", "category": "Career & Industry", "description": "Salary ranges by province and sector, and the real value of holding a 2nd class certificate."},
+        {"slug": "industries-2nd-class-power-engineers", "title": "Industries That Hire 2nd Class Power Engineers (and What They Pay)", "category": "Career & Industry", "description": "Oil & gas, utilities, mining, pulp & paper, hospitals — where the jobs are and what they pay."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Chief Engineer Roles"
+      }
+    },
+    {
+      "id": "C2",
+      "title": "2nd Class Power Engineering Salary: What to Expect in Canada",
+      "slug": "2nd-class-power-engineering-salary-canada",
+      "keyword": "2nd class power engineering salary",
+      "supporting_keywords": ["power engineer salary", "power engineers salary", "salary for power engineer"],
+      "category": "Career & Industry",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Concrete salary data: ranges by province (Alberta, BC, Ontario, Saskatchewan), ranges by sector (oil & gas vs. utilities vs. mining vs. hospitals vs. pulp & paper), and how much the cert itself typically adds to base pay vs. experience. Acknowledge that actual numbers vary and will change over time — give ranges and context, not false precision. This article validates the investment of getting the cert.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-04-30",
+      "intro": "A 2nd class power engineering certificate typically brings a meaningful pay increase — but the number depends heavily on your province and sector. Here's what to expect.",
+      "meta_description": "2nd class power engineering salary in Canada — ranges by province and sector, how much the certificate adds to base pay, and what affects your earning potential.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "industries-2nd-class-power-engineers", "anchor_text": "industries that hire 2nd class power engineers"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "what roles a 2nd class certificate unlocks"}
+      ],
+      "related_cards": [
+        {"slug": "industries-2nd-class-power-engineers", "title": "Industries That Hire 2nd Class Power Engineers (and What They Pay)", "category": "Career & Industry", "description": "Oil & gas, utilities, mining, pulp & paper, hospitals — where the jobs are and what they pay."},
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Salary"
+      }
+    },
+    {
+      "id": "C3",
+      "title": "Industries That Hire 2nd Class Power Engineers (and What They Pay)",
+      "slug": "industries-2nd-class-power-engineers",
+      "keyword": "2nd class power engineer industries",
+      "supporting_keywords": ["power engineering jobs alberta", "power engineering jobs in alberta", "power engineering jobs"],
+      "category": "Career & Industry",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Industry-by-industry breakdown for 2nd class power engineers: oil & gas, electric utilities, mining, pulp & paper, hospitals/health facilities, large commercial buildings, government/municipalities. For each: typical plant types, what a 2nd class engineer does there, approximate pay range, demand level, and any unique pros/cons. Alberta focus given the keyword data, but cover BC, Ontario, and Saskatchewan too.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-04-30",
+      "intro": "A 2nd class power engineering certificate is valued across a wide range of industries — and which one you choose significantly affects your salary, schedule, and career trajectory.",
+      "meta_description": "Industries that hire 2nd class power engineers — oil & gas, utilities, mining, pulp & paper, hospitals, and more. What each sector pays and what the work actually involves.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "2nd-class-power-engineering-salary-canada", "anchor_text": "2nd class power engineering salary ranges by province"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "what chief and senior engineer roles look like"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-salary-canada", "title": "2nd Class Power Engineering Salary: What to Expect in Canada", "category": "Career & Industry", "description": "Salary ranges by province and sector, and how much the certificate affects base pay."},
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Industries"
+      }
+    },
+    {
+      "id": "C4",
+      "title": "How Long After Getting Your 2nd Class Can You Expect a Promotion?",
+      "slug": "2nd-class-power-engineer-promotion-timeline",
+      "keyword": "2nd class power engineer career progression",
+      "supporting_keywords": ["power engineer job", "power engineers jobs"],
+      "category": "Career & Industry",
+      "word_target": 1300,
+      "type": "cluster",
+      "notes": "Realistic promotion timelines after getting a 2nd class: what the typical range looks like (immediate for some, 6–24 months for others), what factors determine it (current employer needs, plant size, provincial requirements, whether you're already working at the right class level), and what operators can do to accelerate the process. Honest about the fact that the cert alone doesn't guarantee promotion — position availability matters.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-04-30",
+      "intro": "Getting your 2nd class doesn't automatically mean a promotion — but it changes your leverage significantly. Here's a realistic look at the timeline and what affects it.",
+      "meta_description": "How long after getting your 2nd class power engineering certificate can you expect a promotion — typical timelines, what affects it, and how to accelerate career progression.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "what roles open up with a 2nd class certificate"},
+        {"slug": "industries-2nd-class-power-engineers", "anchor_text": "industries that hire 2nd class power engineers"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."},
+        {"slug": "industries-2nd-class-power-engineers", "title": "Industries That Hire 2nd Class Power Engineers (and What They Pay)", "category": "Career & Industry", "description": "Where the jobs are, what they pay, and what the work actually involves."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Promotion Timeline"
+      }
+    },
+    {
+      "id": "C5",
+      "title": "3rd Class vs. 2nd Class Power Engineering: What Actually Changes?",
+      "slug": "3rd-class-vs-2nd-class-power-engineering",
+      "keyword": "3rd class vs 2nd class power engineering",
+      "supporting_keywords": ["2nd class power engineering jobs", "power engineer requirements"],
+      "category": "Career & Industry",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "For operators on the fence about pursuing 2nd class: what actually changes technically (scope of plant you can run, plant class jurisdiction), what changes in terms of career (roles, pay, responsibility), and what the upgrade actually costs in time and effort. Be direct about the value case — this article should nudge undecided 3rd class operators to commit. Strong internal links to P1 (exam guide) and P2 (study methods) to onboard them into the prep funnel.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-04-30",
+      "intro": "If you have your 3rd class and you're wondering whether upgrading to 2nd class is worth it — here's an honest breakdown of what actually changes and what it costs you to get there.",
+      "meta_description": "3rd class vs. 2nd class power engineering — what changes technically and career-wise, whether upgrading is worth it, and what the exam prep actually involves.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "what a 2nd class certificate does for your career"},
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete guide to passing the 2nd class exam"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "3rd vs. 2nd Class"
+      }
+    }
+  ]
+}

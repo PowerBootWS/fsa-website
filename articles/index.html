@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles-v2.css">
+  <link rel="stylesheet" href="/styles-v2.css?v=2">
   <link rel="stylesheet" href="/articles/articles.css">
 
   <!-- Google tag (gtag.js) -->
@@ -271,16 +271,32 @@
   </footer>
 
   <script>
-    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
+    function openMenu() {
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      hamburger.classList.add('is-open');
+      mobileMenu.classList.add('is-open');
+    }
+    function closeMenu() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+    }
     hamburger.addEventListener('click', () => {
-      const open = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!open));
-      mobileMenu.setAttribute('aria-hidden', String(open));
-      mobileMenu.classList.toggle('open', !open);
+      hamburger.classList.contains('is-open') ? closeMenu() : openMenu();
     });
-    // Nav scroll style
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav');
+      if (mobileMenu.classList.contains('is-open') && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu();
+    });
     window.addEventListener('scroll', () => {
       document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
     });
