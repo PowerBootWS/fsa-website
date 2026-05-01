@@ -1911,6 +1911,8 @@ footer {
   .pillars { grid-template-columns: 1fr; }
   .papers-grid { grid-template-columns: 1fr 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.popular { order: -1; }
+  .price-card:not(.popular) { order: 1; }
   .faq-grid { grid-template-columns: 1fr; }
   .trust-track { gap: 2.5rem; }
   .section-wrap { padding: 4rem 1.5rem; }
@@ -1931,6 +1933,271 @@ footer {
     margin-top: -24px;
     padding-top: calc(4rem + 24px);
   }
+}
+
+/* ── VIDEO MODAL ── */
+.video-trigger-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.2rem;
+}
+
+.btn-watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  border: 1px solid var(--steel);
+  border-left: 4px solid var(--steel);
+  color: var(--steel-light);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.6rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.btn-watch:hover {
+  border-color: var(--orange);
+  border-left-color: var(--orange);
+  color: var(--amber-hot);
+  background: rgba(232,114,12,0.06);
+}
+
+.btn-watch .play-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  flex-shrink: 0;
+}
+
+.btn-watch .play-icon::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 9px;
+  border-color: transparent transparent transparent currentColor;
+  margin-left: 2px;
+}
+
+.video-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(5,9,15,0.93);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.video-modal-overlay.is-open {
+  display: flex;
+}
+
+.video-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  border: 1px solid var(--plate-edge);
+  border-top: 3px solid var(--orange);
+  background: var(--iron);
+  box-shadow: 0 0 80px rgba(0,0,0,0.8);
+}
+
+.video-modal-close {
+  position: absolute;
+  top: -2.2rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--gray-light);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+  transition: color 0.2s;
+}
+
+.video-modal-close:hover { color: var(--white); }
+
+.video-modal-close::before {
+  content: '✕';
+  font-size: 0.9rem;
+}
+
+.video-modal-ratio {
+  padding: 56.25% 0 0 0;
+  position: relative;
+}
+
+.video-modal-ratio iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-left: 3px solid var(--steel-dim);
+  border-radius: 0;
+  padding: 1.6rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: border-left-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.15rem;
+  right: 0.9rem;
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(232,114,12,0.08);
+  pointer-events: none;
+  transition: color 0.25s;
+}
+
+.testimonial-card:hover {
+  border-left-color: var(--orange);
+  background: rgba(28,35,51,0.95);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.testimonial-card:hover::before {
+  color: rgba(232,114,12,0.14);
+}
+
+.testimonial-text {
+  font-size: 0.865rem;
+  color: var(--gray-light);
+  line-height: 1.72;
+  flex: 1;
+  position: relative;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--plate-edge);
+}
+
+.testimonial-footer::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+.testimonial-author {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+}
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── DIAGNOSTIC BAND ── */
+.diagnostic-band {
+  background: var(--plate);
+  border-top: 1px solid var(--plate-edge);
+  border-bottom: 1px solid var(--plate-edge);
+  padding: 3rem;
+}
+.diagnostic-band-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.diagnostic-band-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+.diagnostic-band-sub {
+  font-size: 0.95rem;
+  color: var(--gray-mid);
+  max-width: 520px;
+  line-height: 1.6;
+}
+.diagnostic-band-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.diagnostic-band-btn { white-space: nowrap; }
+.diagnostic-band-fine {
+  font-size: 0.72rem;
+  color: var(--gray-mid);
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .diagnostic-band { padding: 2rem 1.5rem; }
+  .diagnostic-band-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .diagnostic-band-right { align-items: flex-start; }
 }
 
 /* ── REDUCED MOTION ── */
