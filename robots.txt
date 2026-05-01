@@ -3,4 +3,4 @@ Allow: /
 Disallow: /enrollment-confirmation.html
 Disallow: /affiliate-confirmation.html
 
-Sitemap: https://www.fullsteamahead.ca/sitemap.xml
+Sitemap: https://fullsteamahead.ca/sitemap.xml

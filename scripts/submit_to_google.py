@@ -13,7 +13,7 @@ Usage:
   python3 scripts/submit_to_google.py --sitemap-only
 
   # Request indexing for a single URL:
-  python3 scripts/submit_to_google.py --url https://www.fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/
+  python3 scripts/submit_to_google.py --url https://fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/
 
 Requires:
   pip3 install google-auth google-auth-oauthlib google-api-python-client
@@ -30,7 +30,7 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 
 CLIENT_SECRET_FILE = SCRIPT_DIR / "google_client_secret.json"
 TOKEN_FILE = SCRIPT_DIR / "google_token.json"
-SITEMAP_URL = "https://www.fullsteamahead.ca/sitemap.xml"
+SITEMAP_URL = "https://fullsteamahead.ca/sitemap.xml"
 SITE_URL = "sc-domain:fullsteamahead.ca"  # domain property format as shown in GSC
 
 SCOPES = [
@@ -39,32 +39,32 @@ SCOPES = [
 
 # All article URLs to request indexing for
 ALL_URLS = [
-    "https://www.fullsteamahead.ca/",
-    "https://www.fullsteamahead.ca/articles/",
+    "https://fullsteamahead.ca/",
+    "https://fullsteamahead.ca/articles/",
     # Pillars
-    "https://www.fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/",
-    "https://www.fullsteamahead.ca/articles/how-to-study-for-power-engineering-exams/",
-    "https://www.fullsteamahead.ca/articles/2nd-class-power-engineering-certificate-careers/",
+    "https://fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/",
+    "https://fullsteamahead.ca/articles/how-to-study-for-power-engineering-exams/",
+    "https://fullsteamahead.ca/articles/2nd-class-power-engineering-certificate-careers/",
     # Cluster A
-    "https://www.fullsteamahead.ca/articles/multiple-choice-power-engineering-strategy/",
-    "https://www.fullsteamahead.ca/articles/sopeec-multiple-choice-traps/",
-    "https://www.fullsteamahead.ca/articles/power-engineering-exam-time-management/",
-    "https://www.fullsteamahead.ca/articles/mental-prep-power-engineering-exam/",
-    "https://www.fullsteamahead.ca/articles/power-engineering-exam-stress/",
-    "https://www.fullsteamahead.ca/articles/2nd-class-exam-day-what-to-expect/",
+    "https://fullsteamahead.ca/articles/multiple-choice-power-engineering-strategy/",
+    "https://fullsteamahead.ca/articles/sopeec-multiple-choice-traps/",
+    "https://fullsteamahead.ca/articles/power-engineering-exam-time-management/",
+    "https://fullsteamahead.ca/articles/mental-prep-power-engineering-exam/",
+    "https://fullsteamahead.ca/articles/power-engineering-exam-stress/",
+    "https://fullsteamahead.ca/articles/2nd-class-exam-day-what-to-expect/",
     # Cluster B
-    "https://www.fullsteamahead.ca/articles/active-recall-power-engineering/",
-    "https://www.fullsteamahead.ca/articles/spaced-repetition-power-engineering/",
-    "https://www.fullsteamahead.ca/articles/ai-tutoring-power-engineering-study/",
-    "https://www.fullsteamahead.ca/articles/study-schedule-power-engineering-job/",
-    "https://www.fullsteamahead.ca/articles/past-papers-2nd-class-power-engineering/",
-    "https://www.fullsteamahead.ca/articles/how-long-to-prepare-2nd-class-exam/",
+    "https://fullsteamahead.ca/articles/active-recall-power-engineering/",
+    "https://fullsteamahead.ca/articles/spaced-repetition-power-engineering/",
+    "https://fullsteamahead.ca/articles/ai-tutoring-power-engineering-study/",
+    "https://fullsteamahead.ca/articles/study-schedule-power-engineering-job/",
+    "https://fullsteamahead.ca/articles/past-papers-2nd-class-power-engineering/",
+    "https://fullsteamahead.ca/articles/how-long-to-prepare-2nd-class-exam/",
     # Cluster C
-    "https://www.fullsteamahead.ca/articles/2nd-class-chief-engineer-roles/",
-    "https://www.fullsteamahead.ca/articles/2nd-class-power-engineering-salary-canada/",
-    "https://www.fullsteamahead.ca/articles/industries-2nd-class-power-engineers/",
-    "https://www.fullsteamahead.ca/articles/2nd-class-power-engineer-promotion-timeline/",
-    "https://www.fullsteamahead.ca/articles/3rd-class-vs-2nd-class-power-engineering/",
+    "https://fullsteamahead.ca/articles/2nd-class-chief-engineer-roles/",
+    "https://fullsteamahead.ca/articles/2nd-class-power-engineering-salary-canada/",
+    "https://fullsteamahead.ca/articles/industries-2nd-class-power-engineers/",
+    "https://fullsteamahead.ca/articles/2nd-class-power-engineer-promotion-timeline/",
+    "https://fullsteamahead.ca/articles/3rd-class-vs-2nd-class-power-engineering/",
 ]
 
 

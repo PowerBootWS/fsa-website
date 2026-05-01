@@ -22,7 +22,7 @@
 
   <!-- Affiliate manager loader + lead tracking (purchase confirmation)
        GHL redirect URL must be:
-       https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
+       https://fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
 
        WHY we call trackLead directly from onload instead of using the queue:
        am.js only consumes window._affiliateManager queue inside
@@ -65,7 +65,7 @@
   <script>
     // Access guard: page must be reached with ?ref=enrolled
     // Set your redirect URL in enrollment.fullsteamahead.ca to:
-    // https://www.fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled
+    // https://fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled
     (function () {
       var params = new URLSearchParams(window.location.search);
       if (params.get('ref') !== 'enrolled') {
