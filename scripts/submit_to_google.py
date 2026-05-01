@@ -31,7 +31,7 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 CLIENT_SECRET_FILE = SCRIPT_DIR / "google_client_secret.json"
 TOKEN_FILE = SCRIPT_DIR / "google_token.json"
 SITEMAP_URL = "https://www.fullsteamahead.ca/sitemap.xml"
-SITE_URL = "https://www.fullsteamahead.ca/"  # must match GSC property exactly
+SITE_URL = "sc-domain:fullsteamahead.ca"  # domain property format as shown in GSC
 
 SCOPES = [
     "https://www.googleapis.com/auth/webmasters",
@@ -91,12 +91,23 @@ def get_credentials():
                 print(f"ERROR: {CLIENT_SECRET_FILE} not found.")
                 sys.exit(1)
             flow = InstalledAppFlow.from_client_secrets_file(str(CLIENT_SECRET_FILE), SCOPES)
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_local_server(port=8888)
 
         TOKEN_FILE.write_text(creds.to_json())
         print(f"Token saved to {TOKEN_FILE}")
 
     return creds
+
+
+def list_properties(service):
+    """List all verified GSC properties — useful for confirming the correct siteUrl format."""
+    print("\nVerified Search Console properties:")
+    try:
+        result = service.sites().list().execute()
+        for site in result.get("siteEntry", []):
+            print(f"  {site['siteUrl']}  ({site['permissionLevel']})")
+    except Exception as e:
+        print(f"  Error listing properties: {e}")
 
 
 def submit_sitemap(service):
@@ -149,6 +160,7 @@ def main():
 
     service = build("searchconsole", "v1", credentials=creds)
 
+    list_properties(service)
     submit_sitemap(service)
 
     if not args.sitemap_only:
