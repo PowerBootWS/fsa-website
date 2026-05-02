@@ -1517,6 +1517,16 @@ footer {
   }
 }
 
+.affiliate-disclaimer {
+  text-align: center;
+  color: var(--gray-mid);
+  font-size: 0.85rem;
+  margin: 2rem auto 0;
+  max-width: 640px;
+  border-top: 1px solid var(--gray-dark);
+  padding-top: 1.5rem;
+}
+
 .affiliate-form-section {
   margin: 3rem 0;
 }
