@@ -2,7 +2,7 @@
 """
 FSA Article Generator
 Generates article HTML using Claude Sonnet via OpenRouter and publishes it
-into the fullsteamaheadhome article template.
+into the fsa-website article template.
 
 Usage:
   # Generate a single article by ID:
