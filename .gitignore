@@ -3,3 +3,6 @@
 .env
 scripts/google_client_secret.json
 scripts/google_token.json
+.claude/
+.kilo/
+project-overview-sample.md
