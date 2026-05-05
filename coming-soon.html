@@ -168,6 +168,41 @@
 </script>
 </head>
 <body>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://enrollment.fullsteamahead.ca" rel="nofollow noopener"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
+
   <div class="coming-soon-page">
     <div class="coming-soon-logo">
       <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead">
@@ -226,6 +261,59 @@
       tick();
       setInterval(tick, 1000);
     })();
+  </script>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        btn.classList.add('is-open');
+        menu.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        btn.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      btn.addEventListener('click', function () {
+        btn.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (e) {
+        var nav = document.querySelector('nav');
+        if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          closeMenu();
+          btn.focus();
+        }
+      });
+    }());
+  </script>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+      }, { passive: true });
+    }());
   </script>
 </body>
 </html>
