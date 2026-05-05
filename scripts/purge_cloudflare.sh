@@ -6,7 +6,7 @@
 set -e
 
 # Load .env if present and vars not already set
-ENV_FILE="$(dirname "$0")/../.env"
+ENV_FILE="$(dirname "$0")/../../.env"
 if [ -f "$ENV_FILE" ] && [ -z "$CF_ZONE_ID" ]; then
   set -a
   source "$ENV_FILE"
