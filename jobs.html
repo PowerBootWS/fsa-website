@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Engineering Jobs — Full Steam Ahead</title>
+  <meta name="description" content="Browse active Power Engineering job opportunities across Canada. Filter by class level and location.">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-v2.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFF5FB8R8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZFF5FB8R8');
+  </script>
+
+  <!-- Affiliate tracking -->
+  <script type="text/javascript">
+    (function() {
+      var t = document.createElement("script");
+      t.type = "text/javascript", t.async = !0, t.src = 'https://link.msgsndr.com/js/am.js', t.onload = t.onreadystatechange = function() {
+          var t = this.readyState;
+          if (!t || "complete" == t || "loaded" == t) try {
+            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca')
+          } catch (t) {}
+      };
+      var e = document.getElementsByTagName("script")[0];
+      e.parentNode.insertBefore(t, e)
+    })();
+  </script>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Full Steam Ahead">
+  <meta property="og:title" content="Power Engineering Jobs — Full Steam Ahead">
+  <meta property="og:description" content="Browse active Power Engineering job opportunities across Canada.">
+  <meta property="og:url" content="https://fullsteamahead.ca/jobs.html">
+  <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://enrollment.fullsteamahead.ca" rel="nofollow noopener"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
+
+  <!-- JOB BOARD CONTENT -->
+  <div class="jobs-hero">
+    <div class="jobs-hero-inner">
+      <div class="section-label">Career Board</div>
+      <h1>Power Engineering Jobs</h1>
+      <p class="jobs-hero-sub">Active opportunities for ticketed Power Engineers across Canada. Updated daily.</p>
+    </div>
+  </div>
+
+  <div class="jobs-wrap">
+    <!-- Filters -->
+    <div class="jobs-filters" id="jobs-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="1st Class">1st Class</button>
+      <button class="filter-btn" data-filter="2nd Class">2nd Class</button>
+      <button class="filter-btn" data-filter="3rd Class">3rd Class</button>
+      <button class="filter-btn" data-filter="4th Class">4th Class</button>
+      <button class="filter-btn" data-filter="5th Class">5th Class</button>
+      <button class="filter-btn" data-filter="Chief Engineer">Chief</button>
+    </div>
+
+    <!-- Loading state -->
+    <div class="jobs-loading" id="jobs-loading">
+      <div class="jobs-spinner"></div>
+      <p>Loading active jobs...</p>
+    </div>
+
+    <!-- Error state -->
+    <div class="jobs-error" id="jobs-error" style="display:none;">
+      <p>Unable to load jobs right now. Please check back shortly.</p>
+    </div>
+
+    <!-- Job list -->
+    <div class="jobs-grid" id="jobs-grid"></div>
+
+    <!-- Job detail -->
+    <div class="job-detail" id="job-detail" style="display:none;">
+      <a href="/jobs.html" class="job-detail-back">← Back to all jobs</a>
+      <div class="job-detail-card">
+        <div class="job-detail-header">
+          <img class="job-detail-logo" id="detail-logo" src="" alt="">
+          <div class="job-detail-meta">
+            <span class="job-detail-badge" id="detail-badge"></span>
+            <h2 id="detail-title"></h2>
+            <div class="job-detail-company-location">
+              <span id="detail-company"></span>
+              <span class="job-detail-separator">·</span>
+              <span id="detail-location"></span>
+            </div>
+          </div>
+        </div>
+        <div class="job-detail-body">
+          <div class="job-detail-section">
+            <h3>Summary</h3>
+            <div id="detail-summary"></div>
+          </div>
+          <div class="job-detail-section">
+            <h3>Description</h3>
+            <div id="detail-description"></div>
+          </div>
+          <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="jobs-empty" id="jobs-empty" style="display:none;">
+      <p>No active jobs match your filter. Check back soon — new postings are added daily.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function () {
+      // ── Config ──
+      var API_BASE = 'http://localhost:8088'; // Override in production via env or proxy
+      // Detect if we're on the live site and adjust API URL
+      if (window.location.hostname === 'fullsteamahead.ca' || window.location.hostname === 'www.fullsteamahead.ca') {
+        API_BASE = 'https://jobs-api.fullsteamahead.ca';
+      }
+
+      // ── DOM refs ──
+      var grid = document.getElementById('jobs-grid');
+      var detail = document.getElementById('job-detail');
+      var loading = document.getElementById('jobs-loading');
+      var error = document.getElementById('jobs-error');
+      var empty = document.getElementById('jobs-empty');
+      var filters = document.querySelectorAll('.filter-btn');
+
+      var allJobs = [];
+      var currentFilter = 'all';
+
+      // ── Mobile nav ──
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        function openMenu() {
+          btn.classList.add('is-open');
+          menu.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          menu.setAttribute('aria-hidden', 'false');
+        }
+        function closeMenu() {
+          btn.classList.remove('is-open');
+          menu.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+        }
+        btn.addEventListener('click', function () {
+          btn.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+        menu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('click', function (e) {
+          var nav = document.querySelector('nav');
+          if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+            closeMenu();
+          }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+            closeMenu();
+            btn.focus();
+          }
+        });
+      }
+
+      // ── Fetch jobs ──
+      function fetchJobs() {
+        loading.style.display = 'block';
+        error.style.display = 'none';
+        grid.style.display = 'none';
+        detail.style.display = 'none';
+        empty.style.display = 'none';
+
+        fetch(API_BASE + '/jobs')
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (jobs) {
+            allJobs = jobs;
+            loading.style.display = 'none';
+            renderList();
+          })
+          .catch(function (err) {
+            console.error('Failed to load jobs:', err);
+            loading.style.display = 'none';
+            error.style.display = 'block';
+          });
+      }
+
+      // ── Render list ──
+      function renderList() {
+        var filtered = currentFilter === 'all'
+          ? allJobs
+          : allJobs.filter(function (j) { return j.class_level === currentFilter; });
+
+        if (filtered.length === 0) {
+          grid.style.display = 'none';
+          empty.style.display = 'block';
+          return;
+        }
+
+        grid.style.display = 'grid';
+        empty.style.display = 'none';
+        grid.innerHTML = filtered.map(function (job) {
+          var logoHtml = job.employer_logo_url
+            ? '<img src="' + escapeHtml(job.employer_logo_url) + '" alt="" class="job-card-logo">'
+            : '<div class="job-card-logo-placeholder">🏭</div>';
+          return (
+            '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + '" class="job-card">' +
+              '<div class="job-card-top">' +
+                logoHtml +
+                '<span class="job-card-badge">' + escapeHtml(job.class_level || 'Ticketed PE') + '</span>' +
+              '</div>' +
+              '<h3 class="job-card-title">' + escapeHtml(job.title) + '</h3>' +
+              '<div class="job-card-company">' + escapeHtml(job.company || '') + '</div>' +
+              '<div class="job-card-location">' + escapeHtml(job.location || '') + '</div>' +
+            '</a>'
+          );
+        }).join('');
+      }
+
+      // ── Render detail ──
+      function renderDetail(jobId) {
+        loading.style.display = 'block';
+        error.style.display = 'none';
+        grid.style.display = 'none';
+        detail.style.display = 'none';
+        empty.style.display = 'none';
+        document.getElementById('jobs-filters').style.display = 'none';
+
+        fetch(API_BASE + '/jobs/' + encodeURIComponent(jobId))
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (job) {
+            loading.style.display = 'none';
+            detail.style.display = 'block';
+
+            document.getElementById('detail-title').textContent = job.title || '';
+            document.getElementById('detail-company').textContent = job.company || '';
+            document.getElementById('detail-location').textContent = job.location || '';
+            document.getElementById('detail-badge').textContent = job.class_level || 'Ticketed PE';
+            document.getElementById('detail-summary').innerHTML = formatText(job.ai_summary || '');
+            document.getElementById('detail-description').innerHTML = formatText(job.description || '');
+
+            var logo = document.getElementById('detail-logo');
+            if (job.employer_logo_url) {
+              logo.src = job.employer_logo_url;
+              logo.style.display = 'block';
+            } else {
+              logo.style.display = 'none';
+            }
+
+            var applyBtn = document.getElementById('detail-apply');
+            if (job.apply_url) {
+              applyBtn.href = job.apply_url;
+              applyBtn.style.display = 'inline-block';
+            } else {
+              applyBtn.style.display = 'none';
+            }
+          })
+          .catch(function (err) {
+            console.error('Failed to load job detail:', err);
+            loading.style.display = 'none';
+            error.style.display = 'block';
+          });
+      }
+
+      // ── Helpers ──
+      function escapeHtml(text) {
+        var div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function formatText(text) {
+        // Convert newlines to <p> tags
+        return text.split(/\n\n+/).map(function (para) {
+          return '<p>' + escapeHtml(para).replace(/\n/g, '<br>') + '</p>';
+        }).join('');
+      }
+
+      // ── Filter buttons ──
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filters.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentFilter = btn.dataset.filter;
+          renderList();
+        });
+      });
+
+      // ── Route ──
+      var params = new URLSearchParams(window.location.search);
+      var jobId = params.get('id');
+      if (jobId) {
+        renderDetail(jobId);
+      } else {
+        fetchJobs();
+      }
+    }());
+  </script>
+</body>
+</html>
