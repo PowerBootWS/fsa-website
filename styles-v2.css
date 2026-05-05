@@ -468,7 +468,7 @@ nav.scrolled {
   border-bottom: none;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), 0 100%);
   margin-bottom: -48px;
-  padding-bottom: calc(6rem + 48px);
+  padding-bottom: calc(3rem + 48px);
 }
 
 .pillars {
@@ -1936,7 +1936,7 @@ footer {
   .dark-section {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), 0 100%);
     margin-bottom: -24px;
-    padding-bottom: calc(4rem + 24px);
+    padding-bottom: calc(2rem + 24px);
   }
   .cta-band {
     clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
