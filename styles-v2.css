@@ -78,7 +78,7 @@ nav.scrolled {
 .logo {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.03em;
   color: var(--white);
   display: flex;
@@ -281,15 +281,13 @@ nav.scrolled {
 
 .hero h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(3.8rem, 7.5vw, 7rem);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   color: var(--white);
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.4rem;
   max-width: 80%;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.6);
 }
 
 .hero h1 em {
@@ -447,10 +445,10 @@ nav.scrolled {
 .section-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 600;
+  
   color: var(--white);
-  line-height: 1;
+  line-height: 1.1;
   margin-bottom: 0.8rem;
 }
 
@@ -787,7 +785,7 @@ td.them-col .x { color: #888; }
 .plan-price {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   line-height: 1;
   text-shadow: 0 0 40px rgba(232,114,12,0.2);
@@ -808,7 +806,7 @@ td.them-col .x { color: #888; }
 .plan-price {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 3.4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   line-height: 1;
 }
@@ -1004,7 +1002,7 @@ td.them-col .x { color: #888; }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  text-transform: uppercase;
+  
   letter-spacing: 0.03em;
   color: var(--white);
   margin-bottom: 0.6rem;
@@ -1048,7 +1046,7 @@ td.them-col .x { color: #888; }
 .cta-band h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
   line-height: 1;
@@ -1094,7 +1092,7 @@ footer {
 .footer-brand {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
 }
 .footer-brand span { color: var(--orange); }
@@ -1167,7 +1165,7 @@ footer {
 .container h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
   margin-bottom: 0.5rem;
@@ -1262,7 +1260,7 @@ footer {
   display: block;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 3.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   line-height: 1;
 }
@@ -1438,7 +1436,7 @@ footer {
 .detail-value {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--orange-glow);
   margin-bottom: 0.6rem;
   line-height: 1.1;
@@ -1595,7 +1593,7 @@ footer {
 .confirm-hero h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   margin-bottom: 0.75rem;
 }
@@ -1716,7 +1714,7 @@ footer {
   justify-content: center;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--orange-glow);
   margin-top: 0.1rem;
 }
@@ -1821,7 +1819,7 @@ footer {
 .screen-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -2180,8 +2178,8 @@ footer {
 .diagnostic-band-heading {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 600;
+  
   color: var(--white);
   margin-bottom: 0.6rem;
 }
@@ -2225,7 +2223,7 @@ footer {
 .jobs-hero h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
   line-height: 1;
@@ -2452,7 +2450,7 @@ footer {
 .job-detail-meta h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--white);
   line-height: 1.1;
@@ -2529,7 +2527,7 @@ footer {
 .how-header h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--white);
@@ -2690,7 +2688,7 @@ footer {
 .how-header h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--white);
@@ -2866,7 +2864,7 @@ footer {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -2919,7 +2917,7 @@ footer {
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.35rem;
   line-height: 1.2;
@@ -2970,7 +2968,7 @@ footer {
   color: var(--amber-hot);
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .how-step-title {
@@ -2978,7 +2976,7 @@ footer {
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -3030,8 +3028,8 @@ footer {
 .homepage-cta-band h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 600;
+  
   color: var(--white);
   line-height: 1;
   margin-bottom: 1rem;
@@ -3123,7 +3121,7 @@ footer {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -3176,7 +3174,7 @@ footer {
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.35rem;
   line-height: 1.2;
@@ -3227,7 +3225,7 @@ footer {
   color: var(--amber-hot);
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .how-step-title {
@@ -3235,7 +3233,7 @@ footer {
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  
   letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -3287,8 +3285,8 @@ footer {
 .homepage-cta-band h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 600;
+  
   color: var(--white);
   line-height: 1;
   margin-bottom: 1rem;
