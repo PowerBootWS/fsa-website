@@ -30,6 +30,7 @@ import os
 import re
 import sys
 from datetime import datetime
+from dotenv import load_dotenv
 from pathlib import Path
 
 import requests
@@ -43,15 +44,15 @@ MANIFEST_PATH = SCRIPT_DIR / "articles_manifest.json"
 ARTICLES_DIR = PROJECT_ROOT / "articles"
 
 # ─── OpenRouter config ────────────────────────────────────────────────────────
-
+load_dotenv(dotenv_path=Path("/home/debian/projects/fsa/.env"))
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-# Writing model: Claude Sonnet via OpenRouter (not using claude.ai quota)
-WRITING_MODEL = "anthropic/claude-sonnet-4-6"
+# Writing model: default to Claude Sonnet via OpenRouter. Override with --model or OPENROUTER_MODEL env var.
+WRITING_MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-4-6")
 
-# Research model: use a fast/cheap model just for web search synthesis
-RESEARCH_MODEL = "anthropic/claude-sonnet-4-6"
+# Research model: use the same model for simplicity. Can be overridden.
+RESEARCH_MODEL = WRITING_MODEL
 
 # ─── Unicode sanitization ────────────────────────────────────────────────────
 
@@ -227,7 +228,7 @@ Return ONLY the meta description text -- no quotes, no label, no explanation."""
 
 # ─── API call ─────────────────────────────────────────────────────────────────
 
-def call_openrouter(prompt: str, model: str, max_tokens: int = 4096) -> str:
+def call_openrouter(prompt: str, model: str, max_tokens: int = 4096, reasoning: bool = False) -> str:
     if not OPENROUTER_API_KEY:
         raise RuntimeError(
             "OPENROUTER_API_KEY environment variable is not set.\n"
@@ -249,11 +250,23 @@ def call_openrouter(prompt: str, model: str, max_tokens: int = 4096) -> str:
         ],
     }
 
+    if reasoning:
+        payload["reasoning"] = {"effort": "high"}
+
     response = requests.post(OPENROUTER_BASE_URL, headers=headers, json=payload, timeout=180)
     response.raise_for_status()
 
     data = response.json()
-    return data["choices"][0]["message"]["content"].strip()
+    message = data["choices"][0]["message"]
+    content = message.get("content")
+    if content is None:
+        # Some reasoning models may return reasoning text when content is empty
+        reasoning_text = message.get("reasoning", "")
+        if reasoning_text:
+            content = reasoning_text
+        else:
+            raise RuntimeError("API returned empty content and no reasoning text.")
+    return content.strip()
 
 
 def clean_html_response(raw: str) -> str:
@@ -442,7 +455,7 @@ def fill_template(template: str, article: dict, body_html: str, meta_description
 
 # ─── Main generation ──────────────────────────────────────────────────────────
 
-def generate_article(article: dict, dry_run: bool = False) -> None:
+def generate_article(article: dict, dry_run: bool = False, model: str = WRITING_MODEL, reasoning: bool = False) -> None:
     article_id = article["id"]
     slug = article["slug"]
     output_dir = ARTICLES_DIR / slug
@@ -452,6 +465,8 @@ def generate_article(article: dict, dry_run: bool = False) -> None:
     print(f"Article: {article_id} -- {article['title']}")
     print(f"Slug:    {slug}")
     print(f"Output:  {output_path}")
+    print(f"Model:   {model}")
+    print(f"Reasoning: {reasoning}")
     print(f"{'='*60}")
 
     # Step 1: Research brief
@@ -472,8 +487,8 @@ def generate_article(article: dict, dry_run: bool = False) -> None:
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
 
     # Step 1: Get research brief
-    print(f"\nStep 1/3: Researching facts via {RESEARCH_MODEL}...")
-    research_brief = call_openrouter(research_prompt, model=RESEARCH_MODEL, max_tokens=800)
+    print(f"\nStep 1/3: Researching facts via {model}...")
+    research_brief = call_openrouter(research_prompt, model=model, max_tokens=800, reasoning=reasoning)
     print(f"Research brief: {len(research_brief)} chars")
     print("---")
     print(research_brief[:500] + ("..." if len(research_brief) > 500 else ""))
@@ -481,15 +496,15 @@ def generate_article(article: dict, dry_run: bool = False) -> None:
 
     # Step 2: Generate article body
     article_prompt = build_article_prompt(article, research_brief)
-    print(f"\nStep 2/3: Generating article body via {WRITING_MODEL}...")
-    body_raw = call_openrouter(article_prompt, model=WRITING_MODEL, max_tokens=6000)
+    print(f"\nStep 2/3: Generating article body via {model}...")
+    body_raw = call_openrouter(article_prompt, model=model, max_tokens=6000, reasoning=reasoning)
     body_html = clean_html_response(body_raw)
     print(f"Body received: {len(body_html)} characters")
 
     # Step 3: Generate meta description
     meta_prompt = build_meta_description_prompt(article)
     print("\nStep 3/3: Generating meta description...")
-    meta_raw = call_openrouter(meta_prompt, model=WRITING_MODEL, max_tokens=200)
+    meta_raw = call_openrouter(meta_prompt, model=model, max_tokens=200, reasoning=reasoning)
     meta_description = meta_raw.strip().strip('"')
     if len(meta_description) > 160:
         meta_description = meta_description[:157] + "..."
@@ -534,25 +549,30 @@ def main():
     parser = argparse.ArgumentParser(description="FSA Article Generator")
     parser.add_argument("article_id", nargs="?", help="Article ID (e.g. P1, A3, B5)")
     parser.add_argument("--all", action="store_true", help="Generate all articles in strategy order")
-    parser.add_argument("--pillars", action="store_true", help="Generate pillar articles only (P1, P2, P3)")
-    parser.add_argument("--cluster", choices=["A", "B", "C"], help="Generate all articles in a cluster")
+    parser.add_argument("--pillars", action="store_true", help="Generate pillar articles only")
+    parser.add_argument("--cluster", choices=["A", "B", "C", "D"], help="Generate all articles in a cluster")
+    parser.add_argument("--model", default=None, help="Override writing/research model (default: OPENROUTER_MODEL env var or anthropic/claude-sonnet-4-6)")
+    parser.add_argument("--reasoning", action="store_true", help="Enable reasoning mode (model-dependent, e.g. moonshotai/kimi-k2.6)")
     parser.add_argument("--dry-run", action="store_true", help="Print prompts without calling the API")
     args = parser.parse_args()
 
     manifest = load_manifest()
     articles = manifest["articles"]
 
+    model = args.model or WRITING_MODEL
+
     strategy_order = [
-        "P1", "P2", "P3",
-        "A1", "A2", "A3", "A4", "A5", "A6",
-        "B1", "B2", "B3", "B4", "B5", "B6",
-        "C1", "C2", "C3", "C4", "C5",
+        "P1", "P2", "P3", "P4",
+        "A1", "A2", "A3", "A4", "A5", "A6", "A7",
+        "B1", "B2", "B3", "B4", "B5", "B6", "B7",
+        "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9",
+        "D1", "D2", "D3", "D4", "D5",
     ]
 
     if args.all:
         targets = [get_article(manifest, aid) for aid in strategy_order]
     elif args.pillars:
-        targets = [get_article(manifest, aid) for aid in ["P1", "P2", "P3"]]
+        targets = [get_article(manifest, aid) for aid in ["P1", "P2", "P3", "P4"]]
     elif args.cluster:
         targets = [a for a in articles if a["id"].startswith(args.cluster)]
     elif args.article_id:
@@ -563,7 +583,7 @@ def main():
 
     print(f"Generating {len(targets)} article(s)...")
     for article in targets:
-        generate_article(article, dry_run=args.dry_run)
+        generate_article(article, dry_run=args.dry_run, model=model, reasoning=args.reasoning)
 
     print(f"\nDone. {len(targets)} article(s) processed.")
     if not args.dry_run:

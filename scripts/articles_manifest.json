@@ -608,6 +608,378 @@
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "3rd vs. 2nd Class"
       }
+    },
+    {
+      "id": "P4",
+      "title": "The Complete Guide to Power Engineering Class Progression in Canada",
+      "slug": "power-engineering-class-progression-guide",
+      "keyword": "power engineer requirements",
+      "supporting_keywords": ["power engineering", "power engineer", "absa exams"],
+      "category": "Class Progression",
+      "word_target": 3000,
+      "type": "pillar",
+      "notes": "Comprehensive authority guide covering all five classes in Canadian power engineering: what each class certifies you to run, SOPEEC/ABSA/TSSA/TSBC requirements at each level, time and experience requirements between classes, salary expectations, and the typical progression path from 4th to 1st class. This is the hub for Cluster D articles D1 through D5. Cross-link to existing P1 (2nd class exam guide), P2 (study methods), and P3 (career outcomes). End with strong CTA.",
+      "pillar_slug": null,
+      "published_date": "2026-05-30",
+      "intro": "The complete guide to power engineering class progression in Canada — what each class certifies, provincial requirements, experience hours, exam structure, and salary at every level from 4th to 1st class.",
+      "meta_description": "Complete guide to power engineering class progression in Canada — 4th, 3rd, 2nd, and 1st class requirements, exams, salary, and how to advance your certificate.",
+      "internal_links": [
+        {"slug": "what-is-4th-class-power-engineering", "anchor_text": "what 4th class power engineering involves"},
+        {"slug": "4th-to-3rd-class-power-engineering-upgrade", "anchor_text": "upgrading from 4th to 3rd class"},
+        {"slug": "3rd-class-power-engineering-guide", "anchor_text": "3rd class power engineering requirements"},
+        {"slug": "second-class-power-engineering-overview", "anchor_text": "2nd class power engineering and what it unlocks"},
+        {"slug": "first-class-power-engineering-guide", "anchor_text": "1st class power engineering requirements"},
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "what a 2nd class certificate does for your career"}
+      ],
+      "related_cards": [
+        {"slug": "what-is-4th-class-power-engineering", "title": "What Is 4th Class Power Engineering? Requirements, Salary, and Career Path", "category": "Class Progression", "description": "The starting point for power engineering in Canada — what 4th class certifies you to run and what it pays."},
+        {"slug": "3rd-class-power-engineering-guide", "title": "3rd Class Power Engineering: Requirements, Salary, and Career Scope", "category": "Class Progression", "description": "What changes when you upgrade to 3rd class: scope, salary, and exam requirements."},
+        {"slug": "second-class-power-engineering-overview", "title": "Second Class Power Engineering: The Career Upgrade and What It Takes", "category": "Class Progression", "description": "Why 2nd class is the certification that unlocks senior roles and significant pay increases."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "Class Progression Guide"
+      }
+    },
+    {
+      "id": "D1",
+      "title": "What Is 4th Class Power Engineering? Requirements, Salary, and Career Path",
+      "slug": "what-is-4th-class-power-engineering",
+      "keyword": "4th class power engineering",
+      "supporting_keywords": ["power engineer requirements", "power engineering", "4th class power engineering salary"],
+      "category": "Class Progression",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Entry-point article for 4th class beginners. Cover: what 4th class certifies you to operate, provincial requirements (ABSA, TSSA, TSBC), typical first jobs, salary ranges by province, and the pathway to 3rd class. This is the top of the funnel — many readers will be early-career or considering power engineering as a career. Include a clear forward path to D2 (4th to 3rd upgrade) and D3 (3rd class guide). Soft CTA referencing that Full Steam Ahead will offer 3rd class prep.",
+      "pillar_slug": "power-engineering-class-progression-guide",
+      "published_date": "2026-05-30",
+      "intro": "4th class power engineering is where most Canadian operators start. Here's what it certifies you to run, what it pays, and how to begin your progression toward higher classes.",
+      "meta_description": "What is 4th class power engineering? Requirements, salary by province, typical first jobs, and the career path to 3rd class in Canada.",
+      "internal_links": [
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "4th-to-3rd-class-power-engineering-upgrade", "anchor_text": "upgrading from 4th to 3rd class"},
+        {"slug": "power-engineering-salary-by-class", "anchor_text": "salary ranges across all power engineering classes"},
+        {"slug": "process-operator-to-power-engineer", "anchor_text": "transitioning from process operator to power engineer"}
+      ],
+      "related_cards": [
+        {"slug": "4th-to-3rd-class-power-engineering-upgrade", "title": "Upgrading from 4th to 3rd Class Power Engineering: Exams and Experience", "category": "Class Progression", "description": "What it takes to move from 4th to 3rd class: exam requirements, experience hours, and common pitfalls."},
+        {"slug": "power-engineering-salary-by-class", "title": "Power Engineering Salary by Class in Canada: 4th to 1st", "category": "Career & Industry", "description": "Salary ranges for every power engineering class across Canadian provinces and sectors."},
+        {"slug": "power-engineering-class-progression-guide", "title": "The Complete Guide to Power Engineering Class Progression in Canada", "category": "Class Progression", "description": "The full picture of progressing through power engineering classes from 4th to 1st."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "4th Class Guide"
+      }
+    },
+    {
+      "id": "D2",
+      "title": "Upgrading from 4th to 3rd Class Power Engineering: Exams and Experience",
+      "slug": "4th-to-3rd-class-power-engineering-upgrade",
+      "keyword": "class 4 steam",
+      "supporting_keywords": ["3rd class power engineering", "power engineer requirements", "absa exams"],
+      "category": "Class Progression",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Bridge article capturing the 4th to 3rd class transition. Cover: SOPEEC exam requirements for 3rd class, required experience hours by province, common pitfalls during the upgrade process, and how long the transition typically takes. Preview 3rd class content and link to D3. Position as the practical next step for operators holding their 4th class who want to advance.",
+      "pillar_slug": "power-engineering-class-progression-guide",
+      "published_date": "2026-05-30",
+      "intro": "Moving from 4th to 3rd class is a significant step up in responsibility and pay. Here's what the upgrade requires and how to prepare for it.",
+      "meta_description": "Upgrading from 4th to 3rd class power engineering in Canada — SOPEEC exam requirements, experience hours, and how to prepare for the transition.",
+      "internal_links": [
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "what-is-4th-class-power-engineering", "anchor_text": "4th class power engineering requirements"},
+        {"slug": "3rd-class-power-engineering-guide", "anchor_text": "3rd class power engineering requirements"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"}
+      ],
+      "related_cards": [
+        {"slug": "3rd-class-power-engineering-guide", "title": "3rd Class Power Engineering: Requirements, Salary, and Career Scope", "category": "Class Progression", "description": "What changes when you upgrade to 3rd class: scope, salary, and exam requirements."},
+        {"slug": "what-is-4th-class-power-engineering", "title": "What Is 4th Class Power Engineering? Requirements, Salary, and Career Path", "category": "Class Progression", "description": "The starting point for power engineering in Canada — what 4th class certifies you to run."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A proven study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "4th to 3rd Upgrade"
+      }
+    },
+    {
+      "id": "D3",
+      "title": "3rd Class Power Engineering: Requirements, Salary, and Career Scope",
+      "slug": "3rd-class-power-engineering-guide",
+      "keyword": "3rd class power engineering",
+      "supporting_keywords": ["power engineer requirements", "power engineering", "3rd class power engineering salary"],
+      "category": "Class Progression",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Authoritative guide on 3rd class power engineering. Cover: what plants and equipment a 3rd class ticket authorizes you to operate, provincial requirements, SOPEEC exam structure, typical salary ranges, and career scope. This positions FSA's upcoming 3rd Class product — mention that prep for 3rd class papers follows the same adaptive principles as 2nd class. Strong forward link to D5 (2nd class overview) where readers learn about the next major career jump.",
+      "pillar_slug": "power-engineering-class-progression-guide",
+      "published_date": "2026-05-30",
+      "intro": "3rd class power engineering opens up larger plants and higher pay. Here's what the certification covers, what the exams require, and where it can take your career.",
+      "meta_description": "3rd class power engineering in Canada — requirements, SOPEEC exam structure, salary ranges, and career scope for operators holding or pursuing their 3rd class ticket.",
+      "internal_links": [
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "4th-to-3rd-class-power-engineering-upgrade", "anchor_text": "upgrading from 4th to 3rd class"},
+        {"slug": "second-class-power-engineering-overview", "anchor_text": "2nd class power engineering requirements"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"}
+      ],
+      "related_cards": [
+        {"slug": "4th-to-3rd-class-power-engineering-upgrade", "title": "Upgrading from 4th to 3rd Class Power Engineering: Exams and Experience", "category": "Class Progression", "description": "What it takes to move from 4th to 3rd class: exam requirements, experience hours, and common pitfalls."},
+        {"slug": "second-class-power-engineering-overview", "title": "Second Class Power Engineering: The Career Upgrade and What It Takes", "category": "Class Progression", "description": "Why 2nd class is the certification that unlocks senior roles and significant pay increases."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "3rd Class Guide"
+      }
+    },
+    {
+      "id": "D4",
+      "title": "First Class Power Engineering: What It Unlocks and How to Get There",
+      "slug": "first-class-power-engineering-guide",
+      "keyword": "first class power engineering",
+      "supporting_keywords": ["power engineer requirements", "power engineering", "1st class power engineering"],
+      "category": "Class Progression",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Guide on the apex certification in Canadian power engineering. Cover: what 1st class authorizes (largest plants, chief engineer roles across all jurisdictions), SOPEEC exam requirements, experience prerequisites, typical salary ranges, and how rare the certification is. Honest about difficulty — this is not an easy certification to achieve. Link to C1 (chief engineer roles) for readers interested in the career outcome. Position as aspirational content.",
+      "pillar_slug": "power-engineering-class-progression-guide",
+      "published_date": "2026-05-30",
+      "intro": "First class power engineering is the highest certification in Canada. Here's what it authorizes, what it takes to earn, and the career doors it opens.",
+      "meta_description": "First class power engineering in Canada — requirements, SOPEEC exams, experience prerequisites, salary, and what the highest certification unlocks for your career.",
+      "internal_links": [
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "chief engineer roles and requirements"},
+        {"slug": "power-engineering-salary-by-class", "anchor_text": "salary ranges across all power engineering classes"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."},
+        {"slug": "power-engineering-salary-by-class", "title": "Power Engineering Salary by Class in Canada: 4th to 1st", "category": "Career & Industry", "description": "Salary ranges for every power engineering class across Canadian provinces and sectors."},
+        {"slug": "power-engineering-class-progression-guide", "title": "The Complete Guide to Power Engineering Class Progression in Canada", "category": "Class Progression", "description": "The full picture of progressing through power engineering classes from 4th to 1st."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "1st Class Guide"
+      }
+    },
+    {
+      "id": "D5",
+      "title": "Second Class Power Engineering: The Career Upgrade and What It Takes",
+      "slug": "second-class-power-engineering-overview",
+      "keyword": "second class power engineering",
+      "supporting_keywords": ["2nd class power engineering", "power engineer requirements", "absa exams"],
+      "category": "Class Progression",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Guide on 2nd class from the class progression perspective. This complements P1 (exam guide) by focusing on the career significance of 2nd class rather than exam strategy. Cover: what 2nd class authorizes that 3rd class does not, SOPEEC exam requirements, experience prerequisites, salary jump, and the industries that specifically require it. Strong conversion path — link directly to P1 (exam guide) and P2 (study methods) for readers who decide to pursue their 2nd class. Also link to FSA product CTA.",
+      "pillar_slug": "power-engineering-class-progression-guide",
+      "published_date": "2026-05-30",
+      "intro": "Second class power engineering is where careers accelerate. Here's what the certification unlocks, what the exams require, and why working operators say it's worth the effort.",
+      "meta_description": "Second class power engineering in Canada — requirements, SOPEEC exams, salary increase, and why this certification is the career accelerator for plant operators.",
+      "internal_links": [
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"},
+        {"slug": "2nd-class-power-engineering-salary-canada", "anchor_text": "2nd class power engineering salary ranges"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."},
+        {"slug": "2nd-class-power-engineering-salary-canada", "title": "2nd Class Power Engineering Salary: What to Expect in Canada", "category": "Career & Industry", "description": "Salary ranges by province and sector, and the real value of holding a 2nd class certificate."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Class Progression",
+        "pillar_slug": "power-engineering-class-progression-guide",
+        "article_short_title": "2nd Class Overview"
+      }
+    },
+    {
+      "id": "C6",
+      "title": "Power Engineering Salary by Class in Canada: 4th to 1st",
+      "slug": "power-engineering-salary-by-class",
+      "keyword": "power engineer salary",
+      "supporting_keywords": ["power engineering salary", "power engineers salary", "salary for power engineer"],
+      "category": "Career & Industry",
+      "word_target": 1800,
+      "type": "cluster",
+      "notes": "The highest-volume keyword in the list. One authoritative salary guide covering all classes (4th through 1st) across Canadian provinces and sectors. Include concrete salary ranges by province (Alberta, BC, Ontario, Saskatchewan, Manitoba), by sector (oil & gas, utilities, mining, hospitals, pulp & paper), and by class. Acknowledge that numbers vary and will change — give ranges and context, not false precision. This article serves as a hub linking down to class-specific salary articles (C2, C7) and up to the progression guide (P4). It validates the investment in upgrading at every level.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-05-30",
+      "intro": "How much do power engineers make in Canada? It depends heavily on your class, province, and industry. Here's a complete breakdown from 4th class through 1st class.",
+      "meta_description": "Power engineering salary by class in Canada — complete ranges for 4th, 3rd, 2nd, and 1st class by province and sector, and how upgrading affects your pay.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "2nd-class-power-engineering-salary-canada", "anchor_text": "2nd class power engineering salary ranges"},
+        {"slug": "4th-class-power-engineering-salary", "anchor_text": "4th class power engineering salary and outlook"},
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-power-engineering-salary-canada", "title": "2nd Class Power Engineering Salary: What to Expect in Canada", "category": "Career & Industry", "description": "Salary ranges by province and sector, and how much the certificate adds to base pay."},
+        {"slug": "4th-class-power-engineering-salary", "title": "4th Class Power Engineering Salary and Career Outlook", "category": "Career & Industry", "description": "Entry-level salary ranges for 4th class power engineers across Canadian provinces."},
+        {"slug": "power-engineering-class-progression-guide", "title": "The Complete Guide to Power Engineering Class Progression in Canada", "category": "Class Progression", "description": "The full picture of progressing through power engineering classes from 4th to 1st."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Salary by Class"
+      }
+    },
+    {
+      "id": "C7",
+      "title": "4th Class Power Engineering Salary and Career Outlook",
+      "slug": "4th-class-power-engineering-salary",
+      "keyword": "fourth class power engineering",
+      "supporting_keywords": ["4th class power engineering", "power engineer salary", "power engineering salary"],
+      "category": "Career & Industry",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Specific 4th class salary data by province and sector. Entry-level focused — target readers who are either in school for their 4th class or have just received it. Include typical starting salaries, how quickly pay increases with experience, and what sectors pay best for 4th class operators. Link to D1 (what is 4th class) and C6 (salary by class). This article captures entry-level career searchers who are thinking about the financial return on their certification.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-05-30",
+      "intro": "Starting out as a 4th class power engineer? Here's what you can expect to earn, which provinces and sectors pay best, and how your salary grows as you gain experience.",
+      "meta_description": "4th class power engineering salary in Canada — starting pay by province and sector, how quickly it increases, and the financial outlook for entry-level operators.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "power-engineering-salary-by-class", "anchor_text": "salary ranges across all power engineering classes"},
+        {"slug": "what-is-4th-class-power-engineering", "anchor_text": "what 4th class power engineering involves"}
+      ],
+      "related_cards": [
+        {"slug": "power-engineering-salary-by-class", "title": "Power Engineering Salary by Class in Canada: 4th to 1st", "category": "Career & Industry", "description": "Salary ranges for every power engineering class across Canadian provinces and sectors."},
+        {"slug": "what-is-4th-class-power-engineering", "title": "What Is 4th Class Power Engineering? Requirements, Salary, and Career Path", "category": "Class Progression", "description": "The starting point for power engineering in Canada — what 4th class certifies you to run."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "4th Class Salary"
+      }
+    },
+    {
+      "id": "C8",
+      "title": "From Process Operator to Power Engineer: Career Path Guide",
+      "slug": "process-operator-to-power-engineer",
+      "keyword": "process operator",
+      "supporting_keywords": ["power engineering", "power engineer", "power engineer job"],
+      "category": "Career & Industry",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Many process operators search for pathways into power engineering. Cover: what experience transfers, educational requirements and bridging courses, provincial requirements for moving from process operations to power engineering, typical timeline, and salary expectations at each step. This is a strong funnel article — process operators are a natural audience for FSA content. Link to D1 (4th class) as the typical entry point, and to the progression guide (P4) for the full career path.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-05-30",
+      "intro": "Process operators already work in industrial plants — making the jump to power engineering is one of the most direct career upgrades available. Here's the path.",
+      "meta_description": "From process operator to power engineer — how to make the career transition, what experience transfers, bridging courses, and salary expectations in Canada.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "what-is-4th-class-power-engineering", "anchor_text": "starting with 4th class power engineering"},
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"},
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "how to study for power engineering exams"}
+      ],
+      "related_cards": [
+        {"slug": "what-is-4th-class-power-engineering", "title": "What Is 4th Class Power Engineering? Requirements, Salary, and Career Path", "category": "Class Progression", "description": "The starting point for power engineering in Canada — what 4th class certifies you to run."},
+        {"slug": "power-engineering-class-progression-guide", "title": "The Complete Guide to Power Engineering Class Progression in Canada", "category": "Class Progression", "description": "The full picture of progressing through power engineering classes from 4th to 1st."},
+        {"slug": "how-to-study-for-power-engineering-exams", "title": "How to Study for Power Engineering Exams: A Practical System", "category": "Study Methods", "description": "A complete study system built around how working operators actually learn and retain technical material."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Process to PE"
+      }
+    },
+    {
+      "id": "C9",
+      "title": "Stationary Engineer vs. Power Engineer: What's the Difference?",
+      "slug": "stationary-engineer-vs-power-engineer",
+      "keyword": "stationary engineer",
+      "supporting_keywords": ["power engineer", "power engineering", "power engineer requirements"],
+      "category": "Career & Industry",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Common source of confusion — especially in Ontario and BC where 'stationary engineer' is sometimes used interchangeably with 'power engineer.' Clarify the regulatory distinction: in some provinces stationary engineer is the historical or colloquial term for the same certification; in others there are subtle differences in scope. Be direct and practical — operators want a clear answer, not a regulatory history lesson. Low competition, highly relevant to Canadian audience.",
+      "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+      "published_date": "2026-05-30",
+      "intro": "Is a stationary engineer the same as a power engineer? In Canada, the answer depends on your province. Here's what the terms actually mean.",
+      "meta_description": "Stationary engineer vs. power engineer in Canada — what's the difference by province, how the certifications overlap, and what you need to know.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-certificate-careers", "anchor_text": "our complete guide to 2nd class career outcomes"},
+        {"slug": "2nd-class-chief-engineer-roles", "anchor_text": "chief engineer vs. shift engineer roles"},
+        {"slug": "power-engineering-class-progression-guide", "anchor_text": "our complete class progression guide"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-chief-engineer-roles", "title": "Chief Engineer vs. Shift Engineer: What a 2nd Class Certificate Unlocks", "category": "Career & Industry", "description": "Role-level breakdown and how provincial regulations shape what you're licensed to run."},
+        {"slug": "power-engineering-class-progression-guide", "title": "The Complete Guide to Power Engineering Class Progression in Canada", "category": "Class Progression", "description": "The full picture of progressing through power engineering classes from 4th to 1st."},
+        {"slug": "2nd-class-power-engineering-certificate-careers", "title": "What You Can Do With a 2nd Class Power Engineering Certificate", "category": "Career & Industry", "description": "The complete picture of career outcomes, roles, industries, and salary after getting your 2nd class."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Career & Industry",
+        "pillar_slug": "2nd-class-power-engineering-certificate-careers",
+        "article_short_title": "Stationary vs. PE"
+      }
+    },
+    {
+      "id": "A7",
+      "title": "ABSA Exam Requirements for Alberta Power Engineers",
+      "slug": "absa-exam-alberta-requirements",
+      "keyword": "absa exam",
+      "supporting_keywords": ["absa exams", "power engineer requirements", "power engineer exam"],
+      "category": "Exam Strategy",
+      "word_target": 1400,
+      "type": "cluster",
+      "notes": "Alberta-specific exam guide for ABSA (Alberta Boilers Safety Association). Cover: how to register for ABSA exams, eligibility requirements, ID and documentation needed, exam scheduling process, allowed materials and calculators, how ABSA aligns with SOPEEC, and any Alberta-specific quirks. This complements P1 (general SOPEEC exam guide) with province-specific detail. Strong relevance to the Alberta-heavy user base. Link to P1 for broader exam strategy and A6 for exam day logistics.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-05-30",
+      "intro": "Alberta power engineers write their exams through ABSA. Here's what you need to know about registration, eligibility, scheduling, and the rules that are specific to writing in Alberta.",
+      "meta_description": "ABSA exam requirements for Alberta power engineers — registration, eligibility, scheduling, allowed materials, and how ABSA aligns with SOPEEC.",
+      "internal_links": [
+        {"slug": "2nd-class-power-engineering-exam-guide", "anchor_text": "our complete 2nd class exam guide"},
+        {"slug": "2nd-class-exam-day-what-to-expect", "anchor_text": "what to expect on exam day"},
+        {"slug": "power-engineering-exam-time-management", "anchor_text": "time management during the exam"}
+      ],
+      "related_cards": [
+        {"slug": "2nd-class-exam-day-what-to-expect", "title": "What to Expect on Exam Day: 2nd Class Power Engineering", "category": "Exam Strategy", "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."},
+        {"slug": "power-engineering-exam-time-management", "title": "How to Manage Your Time During the 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Per-question pacing and flagging strategy for SOPEEC exam papers."},
+        {"slug": "2nd-class-power-engineering-exam-guide", "title": "The Complete Guide to Passing Your 2nd Class Power Engineering Exam", "category": "Exam Strategy", "description": "Everything from paper structure and scoring to study strategy and exam-day execution."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Exam Strategy",
+        "pillar_slug": "2nd-class-power-engineering-exam-guide",
+        "article_short_title": "ABSA Exams"
+      }
+    },
+    {
+      "id": "B7",
+      "title": "Pan Global Textbooks vs. AI-Adaptive Learning: A Better Way to Study for Power Engineering Exams",
+      "slug": "pan-global-vs-ai-adaptive-learning",
+      "keyword": "pan global",
+      "supporting_keywords": ["power engineering course", "power engineering online course", "power engineering test"],
+      "category": "Study Methods",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Honest framing: Pan Global textbooks are the industry standard reference that most operators are told to read repeatedly. This article explains why passive re-reading fails for technical exam prep — it creates an illusion of familiarity without building true retrieval ability. Then introduce AI-adaptive learning as the complement/superior alternative: when a student doesn't understand something, the AI tutor explains differently rather than repeating the same text; it identifies and targets weak areas; it adapts to shift schedules. Position this as respectful of Pan Global (it's the standard text) but honest about the limitations of solo textbook study. Strong conversion article. Tie directly to FSA product. Link to B1 (active recall), B3 (AI tutoring), and B5 (past papers).",
+      "pillar_slug": "how-to-study-for-power-engineering-exams",
+      "published_date": "2026-05-30",
+      "intro": "Most operators are told to read Pan Global textbooks repeatedly until the material sticks. Here's why that approach often falls short — and what actually works for technical exam prep.",
+      "meta_description": "Pan Global textbooks vs. AI-adaptive learning for power engineering exam prep — why passive re-reading fails and how adaptive tutoring builds real understanding.",
+      "internal_links": [
+        {"slug": "how-to-study-for-power-engineering-exams", "anchor_text": "our complete study system for power engineering exams"},
+        {"slug": "active-recall-power-engineering", "anchor_text": "active recall vs. passive review"},
+        {"slug": "ai-tutoring-power-engineering-study", "anchor_text": "how AI tutoring helps you understand concepts"},
+        {"slug": "past-papers-2nd-class-power-engineering", "anchor_text": "past paper practice as the highest-ROI study activity"}
+      ],
+      "related_cards": [
+        {"slug": "active-recall-power-engineering", "title": "Active Recall vs. Passive Review: What Actually Works for Power Engineering", "category": "Study Methods", "description": "Why re-reading fails — and the practice techniques that actually build retention."},
+        {"slug": "ai-tutoring-power-engineering-study", "title": "How to Use AI Tutoring to Study for Your Power Engineering Exam", "category": "Study Methods", "description": "What AI tutoring actually offers for power engineering study and how to use it effectively."},
+        {"slug": "past-papers-2nd-class-power-engineering", "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class", "category": "Study Methods", "description": "Why past papers beat notes, and how to turn wrong answers into genuine learning."}
+      ],
+      "breadcrumb": {
+        "pillar_name": "Study Methods",
+        "pillar_slug": "how-to-study-for-power-engineering-exams",
+        "article_short_title": "Pan Global vs. AI"
+      }
     }
   ]
 }

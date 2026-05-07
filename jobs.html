@@ -102,6 +102,7 @@
       <button class="filter-btn" data-filter="4th Class">4th Class</button>
       <button class="filter-btn" data-filter="5th Class">5th Class</button>
       <button class="filter-btn" data-filter="Chief Engineer">Chief</button>
+      <button class="filter-btn" data-filter="Other">Other</button>
     </div>
 
     <!-- Loading state -->
@@ -271,7 +272,7 @@
             '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + '" class="job-card">' +
               '<div class="job-card-top">' +
                 logoHtml +
-                '<span class="job-card-badge">' + escapeHtml(job.class_level || 'Ticketed PE') + '</span>' +
+                '<span class="job-card-badge">' + escapeHtml(job.class_level || 'Other') + '</span>' +
               '</div>' +
               '<h3 class="job-card-title">' + escapeHtml(job.title) + '</h3>' +
               '<div class="job-card-company">' + escapeHtml(job.company || '') + '</div>' +
@@ -302,7 +303,7 @@
             document.getElementById('detail-title').textContent = job.title || '';
             document.getElementById('detail-company').textContent = job.company || '';
             document.getElementById('detail-location').textContent = job.location || '';
-            document.getElementById('detail-badge').textContent = job.class_level || 'Ticketed PE';
+            document.getElementById('detail-badge').textContent = job.class_level || 'Other';
             document.getElementById('detail-summary').innerHTML = formatText(job.ai_summary || '');
             document.getElementById('detail-description').innerHTML = formatText(job.description || '');
 
