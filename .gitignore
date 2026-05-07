@@ -6,3 +6,5 @@ scripts/google_token.json
 .claude/
 .kilo/
 project-overview-sample.md
+__pycache__/
+*.pyc
