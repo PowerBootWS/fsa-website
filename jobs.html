@@ -207,6 +207,23 @@
       var currentSearch = '';
       var currentProvince = '';
 
+      // ── Filter state URL helpers ──
+      function filterParams() {
+        var p = new URLSearchParams();
+        if (currentFilter && currentFilter !== 'all') p.set('filter', currentFilter);
+        if (currentProvince) p.set('province', currentProvince);
+        if (currentSearch) p.set('q', currentSearch);
+        return p.toString() ? '&' + p.toString() : '';
+      }
+
+      function buildBackUrl() {
+        var p = new URLSearchParams();
+        if (currentFilter && currentFilter !== 'all') p.set('filter', currentFilter);
+        if (currentProvince) p.set('province', currentProvince);
+        if (currentSearch) p.set('q', currentSearch);
+        return '/jobs.html' + (p.toString() ? '?' + p.toString() : '');
+      }
+
       // ── Mobile nav ──
       var btn = document.getElementById('hamburger');
       var menu = document.getElementById('mobile-menu');
@@ -259,6 +276,10 @@
           .then(function (jobs) {
             allJobs = jobs;
             populateProvinces();
+            if (currentProvince) {
+              var sel = document.getElementById('jobs-province');
+              if (sel) sel.value = currentProvince;
+            }
             loading.style.display = 'none';
             renderList();
           })
@@ -299,7 +320,7 @@
             ? '<img src="' + escapeHtml(job.employer_logo_url) + '" alt="" class="job-card-logo">'
             : '<div class="job-card-logo-placeholder">🏭</div>';
           return (
-            '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + '" class="job-card">' +
+            '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + filterParams() + '" class="job-card">' +
               '<div class="job-card-top">' +
                 logoHtml +
                 '<span class="job-card-badge">' + escapeHtml(job.class_level || 'Other') + '</span>' +
@@ -321,6 +342,7 @@
         empty.style.display = 'none';
         document.getElementById('jobs-filters').style.display = 'none';
         document.querySelector('.jobs-search-bar').style.display = 'none';
+        document.querySelector('.job-detail-back').href = buildBackUrl();
 
         fetch(API_BASE + '/jobs/' + encodeURIComponent(jobId))
           .then(function (res) {
@@ -461,6 +483,24 @@
       // ── Route ──
       var params = new URLSearchParams(window.location.search);
       var jobId = params.get('id');
+
+      // Restore filter state from URL params (set when navigating to a detail page)
+      var urlFilter = params.get('filter');
+      var urlProvince = params.get('province');
+      var urlSearch = params.get('q');
+      if (urlFilter) {
+        currentFilter = urlFilter;
+        filters.forEach(function (b) {
+          b.classList.toggle('active', b.dataset.filter === urlFilter);
+        });
+      }
+      if (urlProvince) currentProvince = urlProvince;
+      if (urlSearch) {
+        currentSearch = urlSearch;
+        var searchInput2 = document.getElementById('jobs-search');
+        if (searchInput2) searchInput2.value = urlSearch;
+      }
+
       if (jobId) {
         renderDetail(jobId);
       } else {
