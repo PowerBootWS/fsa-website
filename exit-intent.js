@@ -41,9 +41,9 @@
       '-webkit-backdrop-filter:blur(6px);',
       'display:flex;align-items:center;justify-content:center;',
       'padding:1.5rem;',
-      'opacity:0;transition:opacity 0.25s ease;',
+      'opacity:0;pointer-events:none;transition:opacity 0.25s ease;',
     '}',
-    '.fsa-exit-overlay.is-open{opacity:1;}',
+    '.fsa-exit-overlay.is-open{opacity:1;pointer-events:auto;}',
     '.fsa-exit-modal{',
       'position:relative;',
       'width:100%;max-width:500px;',
@@ -355,7 +355,8 @@
   }
 
   // --- Trigger logic ---
-  var triggered = false;
+  var triggered   = false;
+  var mouseEntered = false;
 
   function maybeShow() {
     if (triggered || isDismissed()) return;
@@ -363,9 +364,14 @@
     openPopup();
   }
 
-  // Desktop: mouse leaves toward top of viewport
+  // Desktop: fire only after the mouse has entered the viewport at least once,
+  // then leaves toward the top (address bar / browser chrome).
+  document.addEventListener('mouseenter', function () {
+    mouseEntered = true;
+  });
+
   document.addEventListener('mouseleave', function (e) {
-    if (e.clientY < 10) maybeShow();
+    if (mouseEntered && e.clientY < 10) maybeShow();
   });
 
   // Mobile: 30s delay
