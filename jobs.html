@@ -93,6 +93,16 @@
   </div>
 
   <div class="jobs-wrap">
+    <!-- Search bar -->
+    <div class="jobs-search-bar">
+      <input type="search" id="jobs-search" class="jobs-search-input"
+             placeholder="Search by title, company, or location…"
+             aria-label="Search jobs" autocomplete="off">
+      <select id="jobs-province" class="jobs-province-select" aria-label="Filter by province">
+        <option value="">All Provinces</option>
+      </select>
+    </div>
+
     <!-- Filters -->
     <div class="jobs-filters" id="jobs-filters">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -151,7 +161,7 @@
 
     <!-- Empty state -->
     <div class="jobs-empty" id="jobs-empty" style="display:none;">
-      <p>No active jobs match your filter. Check back soon — new postings are added daily.</p>
+      <p id="jobs-empty-msg">No active jobs match your current filters. Try adjusting your search or province selection.</p>
     </div>
   </div>
 
@@ -188,6 +198,8 @@
 
       var allJobs = [];
       var currentFilter = 'all';
+      var currentSearch = '';
+      var currentProvince = '';
 
       // ── Mobile nav ──
       var btn = document.getElementById('hamburger');
@@ -240,6 +252,7 @@
           })
           .then(function (jobs) {
             allJobs = jobs;
+            populateProvinces();
             loading.style.display = 'none';
             renderList();
           })
@@ -252,13 +265,24 @@
 
       // ── Render list ──
       function renderList() {
-        var filtered = currentFilter === 'all'
-          ? allJobs
-          : allJobs.filter(function (j) { return j.class_level === currentFilter; });
+        var q = currentSearch.trim().toLowerCase();
+        var filtered = allJobs.filter(function (j) {
+          if (currentFilter !== 'all' && j.class_level !== currentFilter) return false;
+          if (currentProvince && extractProvince(j.location || '') !== currentProvince) return false;
+          if (q) {
+            var hay = ((j.title || '') + ' ' + (j.company || '') + ' ' + (j.location || '')).toLowerCase();
+            if (hay.indexOf(q) === -1) return false;
+          }
+          return true;
+        });
 
         if (filtered.length === 0) {
           grid.style.display = 'none';
           empty.style.display = 'block';
+          var hasFilters = currentFilter !== 'all' || currentProvince || q;
+          document.getElementById('jobs-empty-msg').textContent = hasFilters
+            ? 'No jobs match your current filters. Try adjusting your search or province selection.'
+            : 'No active jobs right now. Check back soon — new postings are added daily.';
           return;
         }
 
@@ -290,6 +314,7 @@
         detail.style.display = 'none';
         empty.style.display = 'none';
         document.getElementById('jobs-filters').style.display = 'none';
+        document.querySelector('.jobs-search-bar').style.display = 'none';
 
         fetch(API_BASE + '/jobs/' + encodeURIComponent(jobId))
           .then(function (res) {
@@ -330,6 +355,57 @@
           });
       }
 
+      // ── Province helpers ──
+      var PROVINCE_MAP = {
+        'alberta': 'AB', 'ab': 'AB',
+        'british columbia': 'BC', 'bc': 'BC',
+        'saskatchewan': 'SK', 'sk': 'SK',
+        'manitoba': 'MB', 'mb': 'MB',
+        'ontario': 'ON', 'on': 'ON',
+        'quebec': 'QC', 'québec': 'QC', 'qc': 'QC',
+        'new brunswick': 'NB', 'nb': 'NB',
+        'nova scotia': 'NS', 'ns': 'NS',
+        'prince edward island': 'PE', 'pei': 'PE', 'pe': 'PE',
+        'newfoundland and labrador': 'NL', 'newfoundland': 'NL', 'nl': 'NL',
+        'yukon': 'YT', 'yt': 'YT',
+        'northwest territories': 'NT', 'nt': 'NT',
+        'nunavut': 'NU', 'nu': 'NU'
+      };
+
+      var PROVINCE_NAMES = {
+        'AB': 'Alberta', 'BC': 'British Columbia', 'SK': 'Saskatchewan',
+        'MB': 'Manitoba', 'ON': 'Ontario', 'QC': 'Quebec',
+        'NB': 'New Brunswick', 'NS': 'Nova Scotia', 'PE': 'Prince Edward Island',
+        'NL': 'Newfoundland & Labrador', 'YT': 'Yukon', 'NT': 'Northwest Territories',
+        'NU': 'Nunavut'
+      };
+
+      function extractProvince(location) {
+        if (!location) return null;
+        var lower = location.toLowerCase();
+        var keys = Object.keys(PROVINCE_MAP).sort(function (a, b) { return b.length - a.length; });
+        for (var i = 0; i < keys.length; i++) {
+          if (lower.indexOf(keys[i]) !== -1) return PROVINCE_MAP[keys[i]];
+        }
+        return null;
+      }
+
+      function populateProvinces() {
+        var seen = {};
+        allJobs.forEach(function (j) {
+          var p = extractProvince(j.location || '');
+          if (p) seen[p] = true;
+        });
+        var codes = Object.keys(seen).sort();
+        var sel = document.getElementById('jobs-province');
+        codes.forEach(function (code) {
+          var opt = document.createElement('option');
+          opt.value = code;
+          opt.textContent = (PROVINCE_NAMES[code] || code) + ' (' + code + ')';
+          sel.appendChild(opt);
+        });
+      }
+
       // ── Helpers ──
       function escapeHtml(text) {
         var div = document.createElement('div');
@@ -353,6 +429,28 @@
           renderList();
         });
       });
+
+      // ── Search input ──
+      var searchInput = document.getElementById('jobs-search');
+      var searchTimer;
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(function () {
+            currentSearch = searchInput.value;
+            renderList();
+          }, 300);
+        });
+      }
+
+      // ── Province select ──
+      var provinceSelect = document.getElementById('jobs-province');
+      if (provinceSelect) {
+        provinceSelect.addEventListener('change', function () {
+          currentProvince = provinceSelect.value;
+          renderList();
+        });
+      }
 
       // ── Route ──
       var params = new URLSearchParams(window.location.search);
