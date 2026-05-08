@@ -294,10 +294,10 @@
       startDate: toISO(now),
       endDate: toISO(end),
       usageLimit: 1,
-      productIds: ['prod_UPxkq0bv5W786k'],
-      priceIds: ['price_1TR7p3PIu0moGqy4Z3HM3hbh'],
+      productIds: ['69f07bf3698c1a89feeb3c42'],
+      priceIds: ['69f07bf3698c1a1b4feb3c47'],
       applyToFuturePayments: true,
-      applyToFuturePaymentsConfig: [{ type: 'fixed', duration: 5, durationType: 'months' }],
+      applyToFuturePaymentsConfig: { type: 'fixed', duration: 5, durationType: 'months' },
       limitPerCustomer: true
     };
 
