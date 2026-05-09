@@ -2233,8 +2233,147 @@ footer {
 .jobs-hero-sub {
   font-size: 1rem;
   color: var(--gray-mid);
-  max-width: 560px;
+  max-width: 620px;
   line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.jobs-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.jobs-hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.jobs-hero-stat-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.jobs-hero-stat-label {
+  font-size: 0.6rem;
+  color: var(--gray-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.jobs-hero-stat-divider {
+  width: 1px;
+  height: 2rem;
+  background: var(--plate-edge);
+  flex-shrink: 0;
+}
+
+/* ── Jobs promo banner ── */
+.jobs-promo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-left: 3px solid var(--orange);
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.jobs-promo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.jobs-promo-eyebrow {
+  font-size: 0.6rem;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.jobs-promo-headline {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.jobs-promo-sub {
+  font-size: 0.75rem;
+  color: var(--gray-mid);
+}
+
+.jobs-promo-cta {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--orange);
+  border-radius: 4px;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.jobs-promo-cta:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+/* ── Homepage jobs callout strip ── */
+.jobs-callout-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 3rem;
+  background: var(--plate);
+  border-top: 1px solid var(--plate-edge);
+  border-bottom: 1px solid var(--plate-edge);
+}
+
+.jobs-callout-label {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  background: rgba(232, 114, 12, 0.12);
+  border: 1px solid rgba(232, 114, 12, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.jobs-callout-text {
+  flex: 1;
+  font-size: 0.92rem;
+  color: var(--gray-light);
+}
+
+.jobs-callout-link {
+  flex-shrink: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.jobs-callout-link:hover {
+  text-decoration: underline;
 }
 
 .jobs-wrap {
@@ -2626,6 +2765,12 @@ footer {
   .jobs-search-input-wrap,
   .jobs-search-input,
   .jobs-province-select { width: 100%; min-width: 0; }
+  .jobs-hero-stat-divider { display: none; }
+  .jobs-promo-banner { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+  .jobs-promo-cta { width: 100%; text-align: center; }
+  .jobs-callout-strip { flex-wrap: wrap; padding: 0.75rem 1.5rem; gap: 0.6rem; }
+  .jobs-callout-text { flex-basis: 100%; order: 2; }
+  .jobs-callout-link { order: 3; }
 }
 
 /* ── HOW IT WORKS PAGE HEADER ── */

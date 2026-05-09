@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power Engineering Jobs — Full Steam Ahead</title>
-  <meta name="description" content="Browse active Power Engineering job opportunities across Canada. Filter by class level and location.">
+  <title>Power Engineering Jobs in Canada | Full Steam Ahead</title>
+  <meta name="description" content="Browse active Power Engineering job listings across Canada — every class, every province. Updated every 12 hours. The only board built exclusively for Power Engineers.">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,8 +37,8 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Full Steam Ahead">
-  <meta property="og:title" content="Power Engineering Jobs — Full Steam Ahead">
-  <meta property="og:description" content="Browse active Power Engineering job opportunities across Canada.">
+  <meta property="og:title" content="Power Engineering Jobs in Canada | Full Steam Ahead">
+  <meta property="og:description" content="Browse active Power Engineering job listings across Canada — every class, every province. Updated every 12 hours. The only board built exclusively for Power Engineers.">
   <meta property="og:url" content="https://fullsteamahead.ca/jobs.html">
   <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -88,11 +88,37 @@
     <div class="jobs-hero-inner">
       <div class="section-label">Career Board</div>
       <h1>Power Engineering Jobs</h1>
-      <p class="jobs-hero-sub">Active opportunities for ticketed Power Engineers across Canada. Updated daily.</p>
+      <p class="jobs-hero-sub">The only job board in Canada built exclusively for Power Engineers — every class, every province. Listings are pulled from active postings across the country every 12 hours, and each role includes an AI-generated summary so you can assess the opportunity before digging into the full posting.</p>
+      <div class="jobs-hero-stats">
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">Every 12h</span>
+          <span class="jobs-hero-stat-label">Updated</span>
+        </div>
+        <div class="jobs-hero-stat-divider"></div>
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">All Classes</span>
+          <span class="jobs-hero-stat-label">5th &rarr; 1st</span>
+        </div>
+        <div class="jobs-hero-stat-divider"></div>
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">Canada-Wide</span>
+          <span class="jobs-hero-stat-label">Coverage</span>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="jobs-wrap">
+    <!-- Promo banner -->
+    <div class="jobs-promo-banner" id="jobs-promo-banner">
+      <div class="jobs-promo-text">
+        <span class="jobs-promo-eyebrow">Advance your career</span>
+        <strong class="jobs-promo-headline">Unlock higher-paying roles with a 2nd Class ticket</strong>
+        <span class="jobs-promo-sub">Full Steam Ahead offers structured exam prep to get you there.</span>
+      </div>
+      <a href="/enroll.html" class="jobs-promo-cta">Learn More &rarr;</a>
+    </div>
+
     <!-- Search bar -->
     <div class="jobs-search-bar">
       <div class="jobs-search-input-wrap">
@@ -200,6 +226,7 @@
       var loading = document.getElementById('jobs-loading');
       var error = document.getElementById('jobs-error');
       var empty = document.getElementById('jobs-empty');
+      var promoBanner = document.getElementById('jobs-promo-banner');
       var filters = document.querySelectorAll('.filter-btn');
 
       var allJobs = [];
@@ -267,6 +294,7 @@
         grid.style.display = 'none';
         detail.style.display = 'none';
         empty.style.display = 'none';
+        if (promoBanner) promoBanner.style.display = 'flex';
 
         fetch(API_BASE + '/jobs')
           .then(function (res) {
@@ -342,6 +370,7 @@
         empty.style.display = 'none';
         document.getElementById('jobs-filters').style.display = 'none';
         document.querySelector('.jobs-search-bar').style.display = 'none';
+        if (promoBanner) promoBanner.style.display = 'none';
         document.querySelector('.job-detail-back').href = buildBackUrl();
 
         fetch(API_BASE + '/jobs/' + encodeURIComponent(jobId))
