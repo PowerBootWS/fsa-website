@@ -269,6 +269,21 @@
             data-form-id="wBvH8ZbxY1x5mstArRwe"
             title="Full Steam Ahead Enrollment Contact Info"
           ></iframe>
+          <script>
+            (function () {
+              function getCookie(name) {
+                var match = document.cookie.match(new RegExp('(?:^|;)\\s*' + name + '=([^;]*)'));
+                return match ? decodeURIComponent(match[1]) : null;
+              }
+              var amId = new URLSearchParams(window.location.search).get('am_id') || getCookie('am_id');
+              if (amId) {
+                var iframe = document.getElementById('inline-wBvH8ZbxY1x5mstArRwe');
+                if (iframe) {
+                  iframe.src = iframe.src + (iframe.src.indexOf('?') === -1 ? '?' : '&') + 'am_id=' + encodeURIComponent(amId);
+                }
+              }
+            })();
+          </script>
           <script src="https://link.msgsndr.com/js/form_embed.js"></script>
         </div>
       </div>
