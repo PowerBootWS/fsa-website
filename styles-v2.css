@@ -245,7 +245,13 @@ nav.scrolled {
   opacity: 0.65;
 }
 
-.hero-content { position: relative; z-index: 1; }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .hero-badge {
   display: inline-flex;
