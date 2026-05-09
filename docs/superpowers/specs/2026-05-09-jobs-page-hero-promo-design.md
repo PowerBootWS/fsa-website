@@ -1,28 +1,56 @@
-# Jobs Page — Hero Expansion & Promo Banner
+# Jobs Page — Hero Expansion, Promo Banner & Homepage Jobs Callout
 
 **Date:** 2026-05-09  
 **Status:** Approved  
 
 ## Overview
 
-Two additions to `jobs.html`:
+Four additions across two files:
 
-1. **Hero expansion** — Replace the single-line subtitle with a paragraph and a three-stat row, adding SEO-meaningful copy and positioning context.
-2. **Promo banner** — A compact horizontal banner placed between the hero and the search bar, promoting the 2nd Class exam prep program to job board visitors.
+1. **Title & meta description** — Replace the thin `<title>` and `<meta name="description">` on `jobs.html` with SEO-optimised versions targeting Power Engineering job search intent.
+2. **Hero expansion** — Replace the single-line subtitle with a paragraph and a three-stat row, adding SEO-meaningful copy and positioning context.
+3. **Promo banner** — A compact horizontal banner placed between the hero and the search bar, promoting the 2nd Class exam prep program to job board visitors.
+4. **Homepage jobs callout** — A narrow, visually distinct strip on `index.html` placed immediately after the trust bar, directing visitors who arrive looking for the job board.
 
 ## Goals
 
-- Increase word count in the hero section to improve SEO signal on a page that currently reads as thin content.
+- Improve SEO on `jobs.html` via a strong title tag, meta description, and increased body word count.
 - Clearly communicate FSA's unique position: the only job board in Canada built exclusively for Power Engineers.
 - Surface the exam prep program to a high-intent audience (engineers actively looking at job listings) without disrupting the job browsing experience.
+- Capture visitors who land on the homepage looking for the job board and redirect them immediately — keeping the jobs board as a growth lever for the broader brand.
 
 ---
 
-## 1. Hero Section
+## 1. Title Tag & Meta Description (`jobs.html`)
 
 ### Current state
 
+```html
+<title>Power Engineering Jobs — Full Steam Ahead</title>
+<meta name="description" content="Browse active Power Engineering job opportunities across Canada. Filter by class level and location.">
 ```
+
+### New state
+
+**Title tag (57 characters):**
+```
+Power Engineering Jobs in Canada | Full Steam Ahead
+```
+
+**Meta description (≤155 characters):**
+```
+Browse active Power Engineering job listings across Canada — every class, every province. Updated every 12 hours. The only board built exclusively for Power Engineers.
+```
+
+The title leads with the primary keyword phrase, adds geographic scope, and ends with the brand. The meta description reinforces uniqueness, freshness (12-hour updates), and breadth — all meaningful differentiators for a searcher scanning results.
+
+---
+
+## 2. Hero Section
+
+### Current state
+
+```html
 <div class="section-label">Career Board</div>
 <h1>Power Engineering Jobs</h1>
 <p class="jobs-hero-sub">Active opportunities for ticketed Power Engineers across Canada. Updated daily.</p>
@@ -76,7 +104,7 @@ Replace the single `<p class="jobs-hero-sub">` with:
 
 ---
 
-## 2. Promo Banner
+## 3. Promo Banner
 
 ### Placement
 
@@ -129,11 +157,62 @@ The `renderDetail()` function already hides `.jobs-search-bar` and `#jobs-filter
 
 ---
 
+---
+
+## 4. Homepage Jobs Callout (`index.html`)
+
+### Placement
+
+A narrow strip inserted in `index.html` immediately after the `.trust-bar` div and before the `#who-for` section. This position catches visitors as they begin to scroll — just below the fold on most screens — without interrupting the primary exam prep conversion flow.
+
+### Purpose
+
+Visitors who arrive on the homepage already knowing about the FSA job board (via word of mouth, social, or brand recall) should get an immediate, low-friction redirect. The callout is not a feature pitch — it's a wayfinding strip. One sentence, one link.
+
+### Copy
+
+- **Label:** `Job Board`
+- **Text:** `Looking for Power Engineering jobs in Canada?`
+- **CTA:** `Browse the Job Board →` — links to `/jobs.html`
+
+### Visual style
+
+A full-width strip that sits between the trust bar and the Who It's For section. It should feel like a clearly different element from both — not a section, not a card — more like a pinned notice:
+
+- Background: `var(--plate)` — slightly lighter than the page body, creates a visible band
+- Border-top and border-bottom: `1px solid var(--plate-edge)`
+- Single row: label chip on the left, sentence text in the centre-left, CTA link on the right
+- No heavy padding — this should be compact (~50–60px tall), not a full section
+- CTA link: orange text, no button chrome, arrow suffix — `Browse the Job Board →`
+- Responsive: stack label + text above CTA on small screens
+
+### Markup pattern
+
+```html
+<!-- Jobs callout strip -->
+<div class="jobs-callout-strip">
+  <span class="jobs-callout-label">Job Board</span>
+  <span class="jobs-callout-text">Looking for Power Engineering jobs in Canada?</span>
+  <a href="/jobs.html" class="jobs-callout-link">Browse the Job Board →</a>
+</div>
+```
+
+### CSS additions (in `styles-v2.css`)
+
+- `.jobs-callout-strip` — flex, align-center, gap, padding (0.85rem 3rem), background `var(--plate)`, border-top/bottom `1px solid var(--plate-edge)`
+- `.jobs-callout-label` — small orange pill: background `rgba(232,114,12,0.12)`, border `1px solid rgba(232,114,12,0.3)`, color orange, font-size ~0.65rem, uppercase, letter-spaced, padding, border-radius, white-space nowrap, flex-shrink 0
+- `.jobs-callout-text` — flex 1, color `var(--gray-light)`, font-size ~0.9rem
+- `.jobs-callout-link` — color `var(--orange)`, font-weight 600, font-size ~0.9rem, white-space nowrap, flex-shrink 0, no underline by default, underline on hover
+- Responsive (≤600px): wrap to two rows, label + text on row 1, link on row 2
+
+---
+
 ## Files Changed
 
 | File | Change |
 |------|--------|
-| `jobs.html` | Add hero paragraph, stat row, and promo banner markup |
-| `styles-v2.css` | Add new CSS classes for stats row and promo banner |
+| `jobs.html` | Update `<title>`, `<meta name="description">`, add hero paragraph, stat row, and promo banner markup |
+| `index.html` | Add `.jobs-callout-strip` immediately after `.trust-bar` |
+| `styles-v2.css` | Add CSS for stats row, promo banner, and jobs callout strip |
 
 No JavaScript changes beyond the two-line visibility toggle in `renderDetail()` and the corresponding restore in `fetchJobs()`.
