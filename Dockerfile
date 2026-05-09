@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Template is rendered at container start via envsubst (built into nginx:alpine entrypoint)
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY index.html /usr/share/nginx/html/index.html
 COPY how-it-works.html /usr/share/nginx/html/how-it-works.html
 COPY coming-soon.html /usr/share/nginx/html/coming-soon.html

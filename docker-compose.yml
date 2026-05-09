@@ -5,6 +5,9 @@ services:
     ports:
       - "8087:80"
     restart: unless-stopped
+    env_file: /home/debian/projects/fsa/.env
+    environment:
+      - GHL_BEARER=Bearer ${GHL_PIT_TOKEN}
     networks:
       - cloudflare
 

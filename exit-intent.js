@@ -2,7 +2,6 @@
   'use strict';
 
   var STORAGE_KEY = 'fsa_exit_intent_dismissed';
-  var GHL_BEARER  = 'Bearer pit-1101cce2-706a-41aa-9934-8da9f19e9dae';
   var GHL_ALT_ID  = 'SrttR5wZPQD7bIeOAplf';
   var ENROLL_BASE = 'https://enrollment.fullsteamahead.ca';
 
@@ -275,6 +274,11 @@
   }
 
   // --- Coupon creation ---
+  function resetBtn() {
+    ctaBtn.disabled = false;
+    ctaBtn.innerHTML = 'Claim My $50 Discount &rarr;';
+  }
+
   ctaBtn.addEventListener('click', function () {
     ctaBtn.disabled = true;
     errorEl.style.display = 'none';
@@ -302,11 +306,8 @@
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://services.leadconnectorhq.com/payments/coupon', true);
+    xhr.open('POST', '/api/coupon', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.setRequestHeader('Version', '2023-02-21');
-    xhr.setRequestHeader('Authorization', GHL_BEARER);
 
     xhr.onload = function () {
       if (xhr.status >= 200 && xhr.status < 300) {
@@ -314,15 +315,13 @@
         markDismissed();
       } else {
         showError('Something went wrong — please try again.');
-        ctaBtn.disabled = false;
-        ctaBtn.innerHTML = 'Claim My $50 Discount &rarr;';
+        resetBtn();
       }
     };
 
     xhr.onerror = function () {
       showError('Network error — please check your connection and try again.');
-      ctaBtn.disabled = false;
-      ctaBtn.innerHTML = 'Claim My $50 Discount &rarr;';
+      resetBtn();
     };
 
     xhr.send(JSON.stringify(payload));
@@ -337,20 +336,23 @@
     actionArea.innerHTML = [
       '<div class="fsa-exit-code-wrap">',
         '<div class="fsa-exit-code-label">Your Discount Code</div>',
-        '<div class="fsa-exit-code-box" id="fsa-exit-codeval">' + code + '</div>',
+        '<div class="fsa-exit-code-box" id="fsa-exit-codeval"></div>',
       '</div>',
       '<div class="fsa-exit-timer-wrap">',
         '<span class="fsa-exit-timer-label">Code expires in</span>',
         '<span class="fsa-exit-timer-val" id="fsa-exit-timer">15:00</span>',
       '</div>',
-      '<a href="' + ENROLL_BASE + '?dc=' + encodeURIComponent(code) + '" ',
-        'rel="nofollow noopener" class="fsa-exit-enroll-btn" id="fsa-exit-enroll">',
-        'Lock In My Discount &rarr;',
+      '<a rel="nofollow noopener" class="fsa-exit-enroll-btn" id="fsa-exit-enroll">',
+        'Lock In My Discount →',
       '</a>',
     ].join('');
 
+    document.getElementById('fsa-exit-codeval').textContent = code;
+
+    var enrollBtn = document.getElementById('fsa-exit-enroll');
+    enrollBtn.href = ENROLL_BASE + '?dc=' + encodeURIComponent(code);
+
     var timerValEl = document.getElementById('fsa-exit-timer');
-    var enrollBtn  = document.getElementById('fsa-exit-enroll');
     startTimer(15 * 60, timerValEl, enrollBtn);
   }
 
@@ -374,9 +376,11 @@
     if (mouseEntered && e.clientY < 10) maybeShow();
   });
 
-  // Mobile: 30s delay
+  // Mobile: 30s delay, only if user has scrolled enough to show engagement
   if (window.innerWidth < 768) {
-    setTimeout(maybeShow, 30000);
+    setTimeout(function () {
+      if (window.scrollY > 200) maybeShow();
+    }, 30000);
   }
 
 }());
