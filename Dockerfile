@@ -10,6 +10,7 @@ COPY terms-of-use.html /usr/share/nginx/html/terms-of-use.html
 COPY affiliate.html /usr/share/nginx/html/affiliate.html
 COPY affiliate-confirmation.html /usr/share/nginx/html/affiliate-confirmation.html
 COPY enrollment-confirmation.html /usr/share/nginx/html/enrollment-confirmation.html
+COPY enroll.html /usr/share/nginx/html/enroll.html
 COPY jobs.html /usr/share/nginx/html/jobs.html
 COPY exit-intent.js /usr/share/nginx/html/exit-intent.js
 COPY styles.css /usr/share/nginx/html/styles.css
