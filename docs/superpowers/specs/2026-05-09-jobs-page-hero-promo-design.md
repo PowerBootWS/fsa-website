@@ -207,6 +207,48 @@ A full-width strip that sits between the trust bar and the Who It's For section.
 
 ---
 
+---
+
+## 5. OG Image for `jobs.html`
+
+### Status: Manual asset — to be created separately
+
+The existing `og-image.jpg` is a photo-composite designed for the exam prep homepage. `jobs.html` currently inherits it. A dedicated OG image should be created to match the style and drop in when ready — only a one-line `<meta>` change is needed once the file exists.
+
+### Target file
+
+`/assets/og-image-jobs.jpg` — 1200×630px, JPEG
+
+### Design brief (matches existing OG image style)
+
+**Layout:** Two-zone horizontal split, same as the homepage OG.
+
+- **Left half:** Industrial/workplace photo — a plant control room, a boiler room, or a hard-hatted engineer reviewing equipment. Dark, moody, professional. The existing image uses warm-lit blueprints and exam papers; this should swap that for a plant operations scene.
+- **Right half:** Dark navy blueprint-grid background (`#0D1117` to `#141A24`). Text stack:
+  - Line 1 (white, condensed bold, large): `POWER ENGINEERING`
+  - Line 2 (orange `#E8720C`, condensed bold, large): `JOBS`
+  - Line 3 (white, condensed, medium): `CANADA`
+- **Bottom-right icon strip** (same as homepage — 3–4 orange outline icons on dark pill background):
+  - Suggested icons: hard hat, clipboard/posting, map pin (Canada), certificate/ticket
+- **Bottom-left:** FSA logo (same position as homepage OG)
+
+**Typography:** Barlow Condensed, uppercase, bold — matching the homepage OG weight and style.
+
+**Tone:** Professional, industrial, authoritative — "this is where Power Engineers go for jobs."
+
+### Wire-in step (once asset is ready)
+
+In `jobs.html`, update the two OG image meta tags:
+
+```html
+<meta property="og:image" content="https://fullsteamahead.ca/assets/og-image-jobs.jpg">
+<meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image-jobs.jpg">
+```
+
+This change is not part of the current implementation — it is blocked on the asset being created. The rest of the implementation proceeds without it.
+
+---
+
 ## Files Changed
 
 | File | Change |
@@ -214,5 +256,6 @@ A full-width strip that sits between the trust bar and the Who It's For section.
 | `jobs.html` | Update `<title>`, `<meta name="description">`, add hero paragraph, stat row, and promo banner markup |
 | `index.html` | Add `.jobs-callout-strip` immediately after `.trust-bar` |
 | `styles-v2.css` | Add CSS for stats row, promo banner, and jobs callout strip |
+| `assets/og-image-jobs.jpg` | New OG image — manual asset, created separately |
 
 No JavaScript changes beyond the two-line visibility toggle in `renderDetail()` and the corresponding restore in `fetchJobs()`.
