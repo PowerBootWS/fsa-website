@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found – Full Steam Ahead</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-v2.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFF5FB8R8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZFF5FB8R8');
+  </script>
+
+  <style>
+    .error-page {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      background: var(--carbon);
+    }
+
+    .error-inner {
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .error-code {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(7rem, 22vw, 11rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--plate-edge);
+      letter-spacing: -0.02em;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .error-code::after {
+      content: '';
+      display: block;
+      height: 4px;
+      background: var(--orange);
+      width: 64px;
+      margin: 0.75rem auto 0;
+      border-radius: 2px;
+    }
+
+    .error-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .error-desc {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .error-links {
+      border-top: 1px solid var(--plate-edge);
+      padding-top: 2rem;
+    }
+
+    .error-links p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .error-link-grid {
+      display: flex;
+      gap: 0.75rem 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .error-link-grid a {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      color: var(--steel-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .error-link-grid a:hover {
+      color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/enroll.html"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul>
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca/communities/groups/full-steam-ahead/home" rel="nofollow noopener">Community</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+      <li><a href="/enroll.html" class="mobile-cta">Start Today →</a></li>
+    </ul>
+  </div>
+
+  <main class="error-page">
+    <div class="error-inner">
+      <div class="error-code">404</div>
+      <h1 class="error-heading">This page blew a gasket.</h1>
+      <p class="error-desc">
+        The page you're looking for doesn't exist or may have moved.<br>
+        Let's get you back on track.
+      </p>
+      <div class="error-actions">
+        <a href="/" class="btn-primary">Back to Home →</a>
+        <a href="/enroll.html" class="btn-secondary">Start Your Prep</a>
+      </div>
+      <div class="error-links">
+        <p>Or jump to</p>
+        <div class="error-link-grid">
+          <a href="/how-it-works.html">How It Works</a>
+          <a href="/articles/">Study Guides</a>
+          <a href="/jobs.html">Power Eng. Jobs</a>
+          <a href="/affiliate.html">Affiliates</a>
+          <a href="mailto:support@fullsteamahead.ca">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      function openMenu() {
+        btn.classList.add('is-open');
+        menu.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+      }
+      function closeMenu() {
+        btn.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+      btn.addEventListener('click', function () {
+        btn.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+    })();
+  </script>
+
+</body>
+</html>
