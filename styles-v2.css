@@ -2787,6 +2787,38 @@ footer {
   margin-bottom: 0;
 }
 
+.job-detail-section ul,
+.job-summary-panel ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.job-detail-section li,
+.job-summary-panel li {
+  font-size: 0.92rem;
+  color: var(--gray-light);
+  line-height: 1.7;
+  margin-bottom: 0.3rem;
+}
+
+.job-detail-section strong,
+.job-summary-panel strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.job-detail-section h2,
+.job-detail-section h3,
+.job-summary-panel h2,
+.job-summary-panel h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  margin: 1rem 0 0.4rem;
+}
+
 @media (max-width: 900px) {
   .jobs-grid { grid-template-columns: repeat(2, 1fr); }
   .jobs-hero { padding: 8.5rem 2rem 2rem; }
