@@ -178,10 +178,7 @@
           </div>
         </div>
         <div class="job-detail-body">
-          <div class="job-detail-section">
-            <h3>Summary</h3>
-            <div id="detail-summary"></div>
-          </div>
+          <div id="detail-summary-section"></div>
           <div class="job-detail-section">
             <h3>Description</h3>
             <div id="detail-description"></div>
@@ -386,7 +383,22 @@
             document.getElementById('detail-company').textContent = job.company || '';
             document.getElementById('detail-location').textContent = job.location || '';
             document.getElementById('detail-badge').textContent = job.class_level || 'Other';
-            document.getElementById('detail-summary').innerHTML = formatText(job.ai_summary || '');
+            var summarySection = document.getElementById('detail-summary-section');
+            if (job.ai_summary && job.description) {
+              summarySection.innerHTML =
+                '<div class="job-summary-panel">' +
+                  '<div class="job-summary-label">AI Summary</div>' +
+                  formatText(job.ai_summary) +
+                '</div>';
+            } else if (job.ai_summary) {
+              summarySection.innerHTML =
+                '<div class="job-detail-section">' +
+                  '<h3>Summary</h3>' +
+                  '<div>' + formatText(job.ai_summary) + '</div>' +
+                '</div>';
+            } else {
+              summarySection.innerHTML = '';
+            }
             document.getElementById('detail-description').innerHTML = formatText(job.description || '');
 
             var logo = document.getElementById('detail-logo');

@@ -2758,6 +2758,35 @@ footer {
   margin-top: 0.5rem;
 }
 
+.job-summary-panel {
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-left: 3px solid var(--orange);
+  border-radius: 4px;
+  padding: 1.2rem 1.4rem;
+}
+
+.job-summary-panel .job-summary-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.job-summary-panel p {
+  font-size: 0.92rem;
+  color: var(--gray-light);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+.job-summary-panel p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 900px) {
   .jobs-grid { grid-template-columns: repeat(2, 1fr); }
   .jobs-hero { padding: 8.5rem 2rem 2rem; }
