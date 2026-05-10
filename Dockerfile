@@ -11,6 +11,7 @@ COPY affiliate.html /usr/share/nginx/html/affiliate.html
 COPY affiliate-confirmation.html /usr/share/nginx/html/affiliate-confirmation.html
 COPY enrollment-confirmation.html /usr/share/nginx/html/enrollment-confirmation.html
 COPY enroll.html /usr/share/nginx/html/enroll.html
+COPY enroll-payment.html /usr/share/nginx/html/enroll-payment.html
 COPY jobs.html /usr/share/nginx/html/jobs.html
 COPY 404.html /usr/share/nginx/html/404.html
 COPY exit-intent.js /usr/share/nginx/html/exit-intent.js
