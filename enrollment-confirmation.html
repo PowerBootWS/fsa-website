@@ -19,44 +19,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
 <!-- End Google Tag Manager -->
 
-  <!-- Affiliate manager loader + lead tracking (purchase confirmation)
-       GHL redirect URL must be:
-       https://fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled&email={{contact.email}}
-
-       WHY we call trackLead directly from onload instead of using the queue:
-       am.js only consumes window._affiliateManager queue inside
-       trackLeadWithRedirect(), which is gated behind `if (am_id in URL)`.
-       On this page there is no am_id in the URL, so the queue is never
-       read. We must call trackLead() ourselves once am.js has initialised.
-
-       trackLead() checks for am_id + am_fingerprint cookies (set when the
-       visitor first arrived via the affiliate link) and silently no-ops if
-       they are absent — so this is safe to fire on every page load. -->
+  <!-- Affiliate tracking -->
   <script type="text/javascript">
     (function() {
-      var email = new URLSearchParams(window.location.search).get('email') || '';
       var t = document.createElement("script");
-      t.type = "text/javascript";
-      t.async = true;
-      t.src = 'https://link.msgsndr.com/js/am.js';
-      t.onload = t.onreadystatechange = function() {
-        var rs = this.readyState;
-        if (!rs || rs === "complete" || rs === "loaded") {
-          try {
-            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca');
-            // init() is async (validate() calls fetch) — give it a tick to
-            // set cookies before we attempt trackLead
-            setTimeout(function() {
-              if (email) {
-                affiliateManager.trackLead({ email: email });
-              }
-            }, 500);
-          } catch(e) {}
-        }
+      t.type = "text/javascript", t.async = !0, t.src = 'https://link.msgsndr.com/js/am.js', t.onload = t.onreadystatechange = function() {
+          var t = this.readyState;
+          if (!t || "complete" == t || "loaded" == t) try {
+            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca')
+          } catch (t) {}
       };
       var e = document.getElementsByTagName("script")[0];
-      e.parentNode.insertBefore(t, e);
+      e.parentNode.insertBefore(t, e)
     })();
+  </script>
+
+  <script type="text/javascript">
+    var email = new URLSearchParams(window.location.search).get('email') || '';
+    if (window.affiliateManager) {
+      window.affiliateManager.trackLead({ email: email });
+    } else {
+      _affiliateManager = window._affiliateManager || []; window._affiliateManager = _affiliateManager;
+      _affiliateManager.push(["event", "signup"]);
+      _affiliateManager.push(["email", email]);
+    }
   </script>
 </head>
 <body>
