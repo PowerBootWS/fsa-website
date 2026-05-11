@@ -263,6 +263,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               if (amId)     fwd.set('am_id', amId);
               var qs = fwd.toString();
               document.getElementById('order-form-iframe').src = base + (qs ? '?' + qs : '');
+
+              // When the order form completes, it redirects inside the iframe.
+              // Intercept that navigation and redirect the parent window instead.
+              window.addEventListener('message', function (e) {
+                var d = e.data;
+                if (!d) return;
+                // GHL/LeadConnector fires various message shapes — catch any that
+                // carry a URL pointing at our confirmation page.
+                var str = typeof d === 'string' ? d : JSON.stringify(d);
+                if (str.indexOf('enrollment-confirmation') !== -1 || str.indexOf('enrolled') !== -1) {
+                  // Try to extract the URL if one is embedded in the message
+                  var match = str.match(/https?:\/\/[^\s"'\\]+enrollment-confirmation[^\s"'\\]*/);
+                  if (match) {
+                    window.top.location.href = match[0];
+                  } else {
+                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
+                  }
+                }
+              });
+
+              // Fallback: poll the iframe's location (works if same-origin after redirect)
+              var iframe = document.getElementById('order-form-iframe');
+              var poll = setInterval(function () {
+                try {
+                  var iUrl = iframe.contentWindow.location.href;
+                  if (iUrl && iUrl.indexOf('enrollment-confirmation') !== -1) {
+                    clearInterval(poll);
+                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
+                  }
+                } catch (e) {
+                  // cross-origin — can't read, ignore
+                }
+              }, 500);
             })();
           </script>
         </div>
