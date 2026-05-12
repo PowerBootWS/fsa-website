@@ -262,24 +262,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           ></iframe>
           <script>
             (function () {
-              var params = new URLSearchParams(window.location.search);
-              var base = 'https://enrollment.fullsteamahead.ca/enrollment-form';
-              var fwd = new URLSearchParams();
-              var email    = params.get('email');
-              var fullName = params.get('full_name');
-              var dc       = params.get('dc');
-              var amId = params.get('am_id') || (document.cookie.match(/(?:^|;\s*)am_id=([^;]*)/) || [])[1] || '';
-              if (email)    fwd.set('email', email);
-              if (fullName) fwd.set('full_name', fullName);
-              if (dc)       fwd.set('dc', dc);
-              if (amId) {
-                fwd.set('am_id', amId);
-                fwd.set('utm_source', 'affiliate');
-                fwd.set('utm_medium', 'referral');
-                fwd.set('utm_campaign', amId);
-              }
-              var qs = fwd.toString();
-              document.getElementById('enrollment-form-iframe').src = base + (qs ? '?' + qs : '');
+              var base = 'https://api.leadconnectorhq.com/widget/form/wBvH8ZbxY1x5mstArRwe';
+              var amId = (document.cookie.match(/(?:^|;\s*)am_id=([^;]*)/) || [])[1] || '';
+              document.getElementById('enrollment-form-iframe').src = base + (amId ? '?am_id=' + encodeURIComponent(amId) : '');
 
               window.addEventListener('message', function (e) {
                 var d = e.data;
