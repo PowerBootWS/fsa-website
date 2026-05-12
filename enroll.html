@@ -251,47 +251,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="enroll-fine">$149/month &middot; Cancel anytime &middot; No contracts &middot; All six papers included</p>
       </div>
 
-      <!-- Right: GHL form embed -->
+      <!-- Right: GHL survey embed -->
       <div class="enroll-form-wrap">
         <div class="enroll-form-iframe-wrap">
-          <iframe
-            id="enrollment-form-iframe"
-            src="about:blank"
-            style="width:100%;height:800px;border:none;border-radius:15px"
-            title="Full Steam Ahead Enrollment"
-          ></iframe>
+          <iframe src="about:blank" style="border:none;width:100%;height:800px;" scrolling="no" id="Mil9ZT0ZwG3W1ac3AG8g" title="survey"></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
           <script>
             (function () {
-              var base = 'https://api.leadconnectorhq.com/widget/form/wBvH8ZbxY1x5mstArRwe';
+              var base = 'https://api.leadconnectorhq.com/widget/survey/Mil9ZT0ZwG3W1ac3AG8g';
+              var params = new URLSearchParams(window.location.search);
+              var dc   = params.get('dc') || '';
               var amId = (document.cookie.match(/(?:^|;\s*)am_id=([^;]*)/) || [])[1] || '';
-              document.getElementById('enrollment-form-iframe').src = base + (amId ? '?am_id=' + encodeURIComponent(amId) : '');
-
-              window.addEventListener('message', function (e) {
-                var d = e.data;
-                if (!d) return;
-                var str = typeof d === 'string' ? d : JSON.stringify(d);
-                if (str.indexOf('enrollment-confirmation') !== -1 || str.indexOf('enrolled') !== -1) {
-                  var match = str.match(/https?:\/\/[^\s"'\\]+enrollment-confirmation[^\s"'\\]*/);
-                  if (match) {
-                    window.top.location.href = match[0];
-                  } else {
-                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
-                  }
-                }
-              });
-
-              var iframe = document.getElementById('enrollment-form-iframe');
-              var poll = setInterval(function () {
-                try {
-                  var iUrl = iframe.contentWindow.location.href;
-                  if (iUrl && iUrl.indexOf('enrollment-confirmation') !== -1) {
-                    clearInterval(poll);
-                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
-                  }
-                } catch (e) {
-                  // cross-origin — can't read, ignore
-                }
-              }, 500);
+              var qs = [];
+              if (amId) qs.push('am_id=' + encodeURIComponent(amId));
+              if (dc)   qs.push('dc=' + encodeURIComponent(dc));
+              document.getElementById('Mil9ZT0ZwG3W1ac3AG8g').src = base + (qs.length ? '?' + qs.join('&') : '');
             })();
           </script>
         </div>
