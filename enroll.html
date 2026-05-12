@@ -268,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               var email    = params.get('email');
               var fullName = params.get('full_name');
               var dc       = params.get('dc');
-              var amId     = params.get('am_id');
+              var amId = params.get('am_id') || (document.cookie.match(/(?:^|;\s*)am_id=([^;]*)/) || [])[1] || '';
               if (email)    fwd.set('email', email);
               if (fullName) fwd.set('full_name', fullName);
               if (dc)       fwd.set('dc', dc);
