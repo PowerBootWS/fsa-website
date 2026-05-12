@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -57,7 +58,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- NAV -->
   <nav>
     <a href="/" class="logo">
-      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img">
+      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img" fetchpriority="high" height="38">
     </a>
     <ul class="nav-links">
       <li><a href="/how-it-works.html" class="nav-active">How It Works</a></li>
@@ -488,7 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }());
   </script>
 
-  <script src="/exit-intent.js"></script>
+  <script src="/exit-intent.js" defer></script>
 
   <!-- Video modal -->
   <div class="video-modal-overlay" id="video-modal" role="dialog" aria-modal="true" aria-label="Program overview video">
