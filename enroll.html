@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .enroll-form-iframe-wrap {
-      min-height: 676px;
+      min-height: 1000px;
     }
 
     @media (max-width: 860px) {
@@ -253,43 +253,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Right: GHL form embed -->
       <div class="enroll-form-wrap">
-        <div class="enroll-form-label">Step 1 of 2</div>
-        <div class="enroll-form-heading">Your Contact Info</div>
-        <p class="enroll-form-sub">Takes about 60 seconds. You'll choose your payment method on the next screen.</p>
+        <div class="enroll-form-label">Enrollment</div>
+        <div class="enroll-form-heading">Contact & Payment</div>
+        <p class="enroll-form-sub">Takes about 60 seconds. Enter your details and payment info to get instant access.</p>
         <div class="enroll-form-iframe-wrap">
           <iframe
-            src="https://api.leadconnectorhq.com/widget/form/wBvH8ZbxY1x5mstArRwe"
+            id="enrollment-form-iframe"
+            src="about:blank"
             style="width:100%;height:100%;border:none;border-radius:10px"
-            id="inline-wBvH8ZbxY1x5mstArRwe"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Full Steam Ahead Enrollment Contact Info"
-            data-height="676"
-            data-layout-iframe-id="inline-wBvH8ZbxY1x5mstArRwe"
-            data-form-id="wBvH8ZbxY1x5mstArRwe"
-            title="Full Steam Ahead Enrollment Contact Info"
+            title="Full Steam Ahead Enrollment"
           ></iframe>
           <script>
             (function () {
-              function getCookie(name) {
-                var match = document.cookie.match(new RegExp('(?:^|;)\\s*' + name + '=([^;]*)'));
-                return match ? decodeURIComponent(match[1]) : null;
-              }
-              var amId = new URLSearchParams(window.location.search).get('am_id') || getCookie('am_id');
-              if (amId) {
-                var iframe = document.getElementById('inline-wBvH8ZbxY1x5mstArRwe');
-                if (iframe) {
-                  iframe.src = iframe.src + (iframe.src.indexOf('?') === -1 ? '?' : '&') + 'am_id=' + encodeURIComponent(amId);
+              var params = new URLSearchParams(window.location.search);
+              var base = 'https://enrollment.fullsteamahead.ca/enrollment-form';
+              var fwd = new URLSearchParams();
+              var email    = params.get('email');
+              var fullName = params.get('full_name');
+              var dc       = params.get('dc');
+              var amId     = params.get('am_id');
+              if (email)    fwd.set('email', email);
+              if (fullName) fwd.set('full_name', fullName);
+              if (dc)       fwd.set('dc', dc);
+              if (amId)     fwd.set('am_id', amId);
+              var qs = fwd.toString();
+              document.getElementById('enrollment-form-iframe').src = base + (qs ? '?' + qs : '');
+
+              window.addEventListener('message', function (e) {
+                var d = e.data;
+                if (!d) return;
+                var str = typeof d === 'string' ? d : JSON.stringify(d);
+                if (str.indexOf('enrollment-confirmation') !== -1 || str.indexOf('enrolled') !== -1) {
+                  var match = str.match(/https?:\/\/[^\s"'\\]+enrollment-confirmation[^\s"'\\]*/);
+                  if (match) {
+                    window.top.location.href = match[0];
+                  } else {
+                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
+                  }
                 }
-              }
+              });
+
+              var iframe = document.getElementById('enrollment-form-iframe');
+              var poll = setInterval(function () {
+                try {
+                  var iUrl = iframe.contentWindow.location.href;
+                  if (iUrl && iUrl.indexOf('enrollment-confirmation') !== -1) {
+                    clearInterval(poll);
+                    window.top.location.href = '/enrollment-confirmation.html?ref=enrolled';
+                  }
+                } catch (e) {
+                  // cross-origin — can't read, ignore
+                }
+              }, 500);
             })();
           </script>
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
         </div>
       </div>
 
