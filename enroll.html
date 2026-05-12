@@ -272,7 +272,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               if (email)    fwd.set('email', email);
               if (fullName) fwd.set('full_name', fullName);
               if (dc)       fwd.set('dc', dc);
-              if (amId)     fwd.set('am_id', amId);
+              if (amId) {
+                fwd.set('am_id', amId);
+                fwd.set('utm_source', 'affiliate');
+                fwd.set('utm_medium', 'referral');
+                fwd.set('utm_campaign', amId);
+              }
               var qs = fwd.toString();
               document.getElementById('enrollment-form-iframe').src = base + (qs ? '?' + qs : '');
 
