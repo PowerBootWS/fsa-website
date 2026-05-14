@@ -326,7 +326,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       function renderList() {
         var q = currentSearch.trim().toLowerCase();
         var filtered = allJobs.filter(function (j) {
-          if (currentFilter !== 'all' && j.class_level !== currentFilter) return false;
+          if (currentFilter !== 'all') {
+            var levels = Array.isArray(j.class_level) ? j.class_level : [j.class_level];
+            if (levels.indexOf(currentFilter) === -1) return false;
+          }
           if (currentProvince && extractProvince(j.location || '') !== currentProvince) return false;
           if (q) {
             var hay = ((j.title || '') + ' ' + (j.company || '') + ' ' + (j.location || '')).toLowerCase();
@@ -355,7 +358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + filterParams() + '" class="job-card">' +
               '<div class="job-card-top">' +
                 logoHtml +
-                '<span class="job-card-badge">' + escapeHtml(job.class_level || 'Other') + '</span>' +
+                '<span class="job-card-badge">' + escapeHtml((Array.isArray(job.class_level) ? job.class_level.join(' / ') : job.class_level) || 'Other') + '</span>' +
               '</div>' +
               '<h3 class="job-card-title">' + escapeHtml(job.title) + '</h3>' +
               '<div class="job-card-company">' + escapeHtml(job.company || '') + '</div>' +
@@ -389,7 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.getElementById('detail-title').textContent = job.title || '';
             document.getElementById('detail-company').textContent = job.company || '';
             document.getElementById('detail-location').textContent = job.location || '';
-            document.getElementById('detail-badge').textContent = job.class_level || 'Other';
+            document.getElementById('detail-badge').textContent = (Array.isArray(job.class_level) ? job.class_level.join(' / ') : job.class_level) || 'Other';
             var summarySection = document.getElementById('detail-summary-section');
             if (job.ai_summary && job.description) {
               summarySection.innerHTML =
