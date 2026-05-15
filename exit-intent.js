@@ -2,7 +2,6 @@
   'use strict';
 
   var STORAGE_KEY = 'fsa_exit_intent_dismissed';
-  var GHL_ALT_ID  = 'SrttR5wZPQD7bIeOAplf';
   var ENROLL_BASE = 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600';
 
   // --- Suppression check ---

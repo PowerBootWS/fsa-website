@@ -20,16 +20,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
 <!-- End Google Tag Manager -->
 
-  <script type="text/javascript">
-    var email = new URLSearchParams(window.location.search).get('email') || '';
-    if (window.affiliateManager) {
-      window.affiliateManager.trackLead({ email: email });
-    } else {
-      _affiliateManager = window._affiliateManager || []; window._affiliateManager = _affiliateManager;
-      _affiliateManager.push(["event", "signup"]);
-      _affiliateManager.push(["email", email]);
-    }
-  </script>
 </head>
 <body>
 
@@ -40,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script>
     // Access guard: page must be reached with ?ref=enrolled
-    // Set your redirect URL in enrollment.fullsteamahead.ca to:
+    // Configure the success URL in Stripe dashboard to:
     // https://fullsteamahead.ca/enrollment-confirmation.html?ref=enrolled
     (function () {
       var params = new URLSearchParams(window.location.search);
