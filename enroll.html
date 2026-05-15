@@ -21,21 +21,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
 <!-- End Google Tag Manager -->
 
-  <!-- Affiliate tracking -->
-  <script type="text/javascript">
-    (function() {
-      var t = document.createElement("script");
-      t.type = "text/javascript", t.async = !0, t.src = 'https://link.msgsndr.com/js/am.js', t.onload = t.onreadystatechange = function() {
-          var t = this.readyState;
-          if (!t || "complete" == t || "loaded" == t) try {
-            affiliateManager.init('SrttR5wZPQD7bIeOAplf', 'https://backend.leadconnectorhq.com', '.fullsteamahead.ca')
-          } catch (t) {}
-      };
-      var e = document.getElementsByTagName("script")[0];
-      e.parentNode.insertBefore(t, e)
-    })();
-  </script>
-
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Full Steam Ahead">
   <meta property="og:title" content="Start Your Subscription – Full Steam Ahead – 2nd Class Power Engineering Exam Prep">
@@ -157,10 +142,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.5;
     }
 
-    .enroll-form-iframe-wrap {
-      min-height: 800px;
-    }
-
     @media (max-width: 860px) {
       .enroll-grid {
         grid-template-columns: 1fr;
@@ -251,23 +232,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="enroll-fine">$149/month &middot; Cancel anytime &middot; No contracts &middot; All six papers included</p>
       </div>
 
-      <!-- Right: GHL survey embed -->
-      <div class="enroll-form-wrap">
-        <div class="enroll-form-iframe-wrap">
-          <iframe src="about:blank" style="border:none;width:100%;height:800px;" scrolling="no" id="Mil9ZT0ZwG3W1ac3AG8g" title="survey"></iframe>
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-          <script>
-            (function () {
-              var base = 'https://api.leadconnectorhq.com/widget/survey/Mil9ZT0ZwG3W1ac3AG8g';
-              var params = new URLSearchParams(window.location.search);
-              var dc   = params.get('dc') || '';
-              var amId = (document.cookie.match(/(?:^|;\s*)am_id=([^;]*)/) || [])[1] || '';
-              var qs = [];
-              if (amId) qs.push('am_id=' + encodeURIComponent(amId));
-              if (dc)   qs.push('dc=' + encodeURIComponent(dc));
-              document.getElementById('Mil9ZT0ZwG3W1ac3AG8g').src = base + (qs.length ? '?' + qs.join('&') : '');
-            })();
-          </script>
+      <!-- Right: Stripe checkout -->
+      <div class="enroll-form-wrap" style="display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;">
+          <p style="font-size:1.1rem;margin-bottom:1.5rem;opacity:0.85;">Ready to get started? Secure checkout via Stripe.</p>
+          <a href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" rel="nofollow noopener" style="display:inline-block;background:#E8720C;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;letter-spacing:0.03em;">Start Your Subscription →</a>
+          <p style="margin-top:1rem;font-size:0.85rem;opacity:0.6;">Cancel anytime. Billed monthly.</p>
         </div>
       </div>
 

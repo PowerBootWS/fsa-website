@@ -3,7 +3,7 @@
 
   var STORAGE_KEY = 'fsa_exit_intent_dismissed';
   var GHL_ALT_ID  = 'SrttR5wZPQD7bIeOAplf';
-  var ENROLL_BASE = 'https://enrollment.fullsteamahead.ca';
+  var ENROLL_BASE = 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600';
 
   // --- Suppression check ---
   function isDismissed() {
@@ -288,43 +288,19 @@
     var now  = new Date();
     var end  = new Date(now.getTime() + 15 * 60 * 1000);
 
-    var payload = {
-      altId: GHL_ALT_ID,
-      altType: 'location',
-      name: 'Exit Intent - ' + code,
-      code: code,
-      discountType: 'amount',
-      discountValue: 50,
-      startDate: toISO(now),
-      endDate: toISO(end),
-      usageLimit: 1,
-      productIds: ['69f07bf3698c1a89feeb3c42'],
-      priceIds: ['69f07bf3698c1a1b4feb3c47'],
-      applyToFuturePayments: true,
-      applyToFuturePaymentsConfig: { type: 'fixed', duration: 5, durationType: 'months' },
-      limitPerCustomer: true
-    };
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/coupon', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onload = function () {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        showCodeState(code);
+    fetch('https://fsa-stripe-coupon.powerboot.workers.dev/stripe-coupon', { method: 'POST' })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Worker error: ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        showCodeState(data.code);
         markDismissed();
-      } else {
+      })
+      .catch(function() {
         showError('Something went wrong — please try again.');
         resetBtn();
-      }
-    };
-
-    xhr.onerror = function () {
-      showError('Network error — please check your connection and try again.');
-      resetBtn();
-    };
-
-    xhr.send(JSON.stringify(payload));
+      });
   });
 
   function showError(msg) {
@@ -350,7 +326,7 @@
     document.getElementById('fsa-exit-codeval').textContent = code;
 
     var enrollBtn = document.getElementById('fsa-exit-enroll');
-    enrollBtn.href = ENROLL_BASE + '?dc=' + encodeURIComponent(code);
+    enrollBtn.href = ENROLL_BASE + '?prefilled_promo_code=' + encodeURIComponent(code);
 
     var timerValEl = document.getElementById('fsa-exit-timer');
     startTimer(15 * 60, timerValEl, enrollBtn);

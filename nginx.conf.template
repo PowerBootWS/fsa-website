@@ -6,23 +6,6 @@ server {
     index index.html;
     charset utf-8;
 
-    location = /api/coupon {
-        proxy_pass https://services.leadconnectorhq.com/payments/coupon;
-        proxy_ssl_server_name on;
-
-        proxy_set_header Host services.leadconnectorhq.com;
-        proxy_set_header Authorization "${GHL_BEARER}";
-        proxy_set_header Version "2023-02-21";
-        proxy_set_header Content-Type "application/json";
-        proxy_set_header Accept "application/json";
-
-        # Strip client auth headers so the browser cannot override them
-        proxy_hide_header Authorization;
-
-        proxy_http_version 1.1;
-        proxy_read_timeout 15s;
-    }
-
     location = / {
         try_files /index.html =404;
     }
