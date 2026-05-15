@@ -54,7 +54,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .aff-dashboard-bar strong {
       color: var(--white);
     }
-    .aff-dashboard-btn {
+    .aff-dashboard-btn,
+    .container a.aff-dashboard-btn {
       display: inline-block;
       background: var(--orange);
       color: var(--white);
@@ -70,8 +71,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: background 0.2s, transform 0.2s;
       flex-shrink: 0;
     }
-    .aff-dashboard-btn:hover {
+    .aff-dashboard-btn:hover,
+    .container a.aff-dashboard-btn:hover {
       background: var(--orange-glow);
+      color: var(--white);
       transform: translateY(-1px);
       text-decoration: none;
     }
