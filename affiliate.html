@@ -32,6 +32,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="fb:app_id" content="1729520728215341">
   <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
   <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="885" async defer></script>
+
+  <style>
+    .aff-dashboard-bar {
+      background: rgba(232, 114, 12, 0.1);
+      border: 1px solid rgba(232, 114, 12, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .aff-dashboard-bar p {
+      margin: 0;
+      color: var(--gray-light);
+      font-size: 0.95rem;
+    }
+    .aff-dashboard-bar strong {
+      color: var(--white);
+    }
+    .aff-dashboard-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .aff-dashboard-btn:hover {
+      background: var(--orange-glow);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .aff-footnote {
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 0.8rem;
+      font-style: italic;
+      margin-top: 0.75rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -75,6 +126,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Full Steam Ahead Affiliate Program</h1>
     <p class="updated">Earn while you help working operators succeed</p>
 
+    <!-- Dashboard access bar -->
+    <div class="aff-dashboard-bar">
+      <p><strong>Already an affiliate?</strong> Log in to view your referrals, clicks, and earnings.</p>
+      <a href="/affiliate-dashboard.html" class="aff-dashboard-btn">Go to Affiliate Dashboard →</a>
+    </div>
+
+    <!-- Hero: commission rate -->
     <div class="affiliate-hero">
       <div class="affiliate-rate">
         <span class="rate-value">20%</span>
@@ -83,32 +141,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="affiliate-tagline">Earn 20% of every monthly payment for every student who enrolls using your affiliate link — for as long as they stay enrolled. No caps. No expiry.</p>
     </div>
 
-    <div class="affiliate-benefits">
-      <h2>Why Become an Affiliate?</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">💰</div>
-          <div class="benefit-title">Recurring Revenue</div>
-          <p>You earn every single month a referred student stays subscribed. One referral can pay you for months or years.</p>
+    <!-- Program details -->
+    <div class="affiliate-details">
+      <h2>Program Details</h2>
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-label">Commission Rate</div>
+          <div class="detail-value">20%</div>
+          <div class="detail-note">Recurring — paid every month your referral stays enrolled.</div>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🎯</div>
-          <div class="benefit-title">High-Converting Product</div>
-          <p>Our 2nd Class Power Engineering program is specifically designed for working operators — a passionate, dedicated audience.</p>
+        <div class="detail-item">
+          <div class="detail-label">Cookie Window</div>
+          <div class="detail-value">90 Days</div>
+          <div class="detail-note">If someone clicks your link and subscribes within 90 days, the commission is yours.</div>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🤝</div>
-          <div class="benefit-title">Help Your Network</div>
-          <p>Recommend a program you believe in and help fellow operators advance their careers while earning income.</p>
+        <div class="detail-item">
+          <div class="detail-label">Attribution Model</div>
+          <div class="detail-value">Last Click</div>
+          <div class="detail-note">The most recent affiliate link clicked before checkout receives credit for the referral.</div>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📊</div>
-          <div class="benefit-title">Automatic Tracking</div>
-          <p>Anyone who clicks your link and subscribes within 365 days is credited to you automatically. Monitor referrals, clicks, and earnings through your Client Portal dashboard.</p>
+        <div class="detail-item">
+          <div class="detail-label">Payout Schedule</div>
+          <div class="detail-value">15th of Month</div>
+          <div class="detail-note">Previous month's earnings are deposited automatically. No invoicing required.</div>
+        </div>
+      </div>
+      <p class="aff-footnote">* Minimum $50 balance required for payout. Earnings below $50 carry forward to the following month.</p>
+
+      <div class="payout-callout">
+        <div class="payout-callout-inner">
+          <div class="payout-icon">💳</div>
+          <div>
+            <div class="payout-title">Payouts via Interac e-Transfer</div>
+            <p class="payout-text">Commission payments are sent automatically by Interac e-Transfer to the email address on your affiliate account. Keep your email up to date in the <a href="/affiliate-dashboard.html">affiliate dashboard</a>.</p>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- How it works -->
+    <div class="affiliate-benefits">
+      <h2>How It Works</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🔗</div>
+          <div class="benefit-title">Share Your Link</div>
+          <p>Sign up through the <a href="/affiliate-dashboard.html" style="color:var(--orange-glow);">affiliate dashboard</a> to get your unique referral link. Share it anywhere — social media, forums, direct messages.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <div class="benefit-title">Last-Click Tracking</div>
+          <p>When someone clicks your link, a 90-day cookie is set. If they subscribe within that window, you're credited — even if they don't sign up on the same visit.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">Earn Every Month</div>
+          <p>You earn 20% every single month a referred student stays subscribed. One referral can pay you for months or years.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <div class="benefit-title">Help Your Network</div>
+          <p>Recommend a program built for working operators preparing for their 2nd Class exam — a product your network will genuinely value.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings example -->
     <div class="affiliate-example">
       <h2>Example Earnings</h2>
       <div class="example-table">
@@ -136,83 +234,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="example-note">* Based on $149/month subscription. Earnings continue for as long as referred students remain enrolled.</p>
     </div>
 
-    <div class="affiliate-details">
-      <h2>Program Details</h2>
-      <div class="details-grid">
-        <div class="detail-item">
-          <div class="detail-label">Cookie Duration</div>
-          <div class="detail-value">365 Days</div>
-          <div class="detail-note">If someone clicks your link and subscribes within a year, the commission is yours.</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Commission Duration</div>
-          <div class="detail-value">Forever</div>
-          <div class="detail-note">Commissions continue every month your referral stays subscribed — no cut-off after X months.</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Payout Schedule</div>
-          <div class="detail-value">15th of Each Month</div>
-          <div class="detail-note">Earnings from the previous month are automatically deposited on the 15th. No invoicing required.</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Minimum Payout</div>
-          <div class="detail-value">None</div>
-          <div class="detail-note">Every dollar you earn is paid out — no minimum balance required before you can receive funds.</div>
-        </div>
-      </div>
-
-      <div class="payout-callout">
-        <div class="payout-callout-inner">
-          <div class="payout-icon">💳</div>
-          <div>
-            <div class="payout-title">Payouts via Interac e-Transfer</div>
-            <p class="payout-text">Commission payments are sent automatically by Interac e-Transfer to the email address you use to log in to your affiliate portal. Make sure your email is up to date in your account settings.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- FAQ -->
     <div class="affiliate-faq">
       <h2>Common Questions</h2>
       <div class="faq-grid">
         <div class="faq-card orange-border">
-          <div class="faq-q">Do referrals expire after a few months?</div>
+          <div class="faq-q">Do referral commissions expire?</div>
           <div class="faq-a">No. As long as your referred subscriber stays enrolled, you keep earning 20% every month. There is no time limit on recurring commissions.</div>
         </div>
         <div class="faq-card">
-          <div class="faq-q">What happens if a subscriber cancels or gets a refund?</div>
-          <div class="faq-a">Commissions are paid on the last successful payment made by the subscriber. If they cancel or receive a refund on a future payment, no commission is earned on that specific transaction.</div>
-        </div>
-        <div class="faq-card">
-          <div class="faq-q">How does referral tracking work?</div>
-          <div class="faq-a">Your subscriber must sign up through your unique affiliate link. Once they click it, a 365-day cookie is set. Tracking and reporting are handled automatically through the Client Portal — no manual tracking needed.</div>
-        </div>
-        <div class="faq-card">
-          <div class="faq-q">When exactly are payouts processed?</div>
-          <div class="faq-a">On the 15th day after the end of each month. For example, commissions earned in April are paid automatically on May 15th via Interac e-Transfer to your account email.</div>
-        </div>
-        <div class="faq-card">
-          <div class="faq-q">Is there a minimum balance before I get paid?</div>
-          <div class="faq-a">No minimum threshold. Whatever you earn in a given month is paid out in full on the 15th of the following month.</div>
+          <div class="faq-q">What is last-click attribution?</div>
+          <div class="faq-a">If a potential subscriber clicks multiple affiliate links before signing up, the commission goes to the affiliate whose link was clicked last. This is the standard model used across most affiliate platforms.</div>
         </div>
         <div class="faq-card">
           <div class="faq-q">What if someone doesn't subscribe right away?</div>
-          <div class="faq-a">If they clicked your link and subscribe anytime within 365 days, the commission is credited to you. You don't need them to sign up on the same visit.</div>
+          <div class="faq-a">If they click your link and subscribe anytime within 90 days, the commission is credited to you. You don't need them to sign up on the same visit.</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q">When are payouts processed?</div>
+          <div class="faq-a">On the 15th of each month for the previous month's earnings. Commissions earned in April are paid on May 15th via Interac e-Transfer. A minimum $50 balance is required for a payout — amounts below that carry forward.</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q">What happens if a subscriber cancels?</div>
+          <div class="faq-a">Commissions are paid on successful subscription payments. If a subscriber cancels or receives a refund on a future payment, no commission is earned on that specific transaction.</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q">How do I track my referrals?</div>
+          <div class="faq-a">Log in to your <a href="/affiliate-dashboard.html">affiliate dashboard</a> to see clicks, referrals, and earnings in real time. Everything is tracked automatically — no manual reporting needed.</div>
         </div>
       </div>
     </div>
 
-    <p class="affiliate-disclaimer">Commissions are tracked exclusively through your unique affiliate link. Subscriptions that originate without it cannot be credited to your account, regardless of circumstance. Share your link — it's the only way we can accurately attribute referrals to you.</p>
+    <p class="affiliate-disclaimer">Commissions are tracked exclusively through your unique affiliate link. Subscriptions that originate without it cannot be credited to your account. Share your link — it's the only way we can accurately attribute referrals to you.</p>
 
-    <div class="affiliate-form-section">
-      <h2>Join Our Affiliate Program</h2>
-      <p>Ready to start earning? Sign up or log in below to access your affiliate dashboard.</p>
-      <div class="form-embed">
-        <div id="refgrow"
-            data-project-id="885">
-        </div>
-        <script src="https://scripts.refgrowcdn.com/page.js" async defer></script>
-      </div>
+    <!-- CTA to dashboard -->
+    <div style="text-align:center;margin:3rem 0 1rem;">
+      <a href="/affiliate-dashboard.html" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;">Access Your Affiliate Dashboard →</a>
     </div>
 
   </div>
@@ -229,6 +286,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
   </footer>
+
   <script>
     (function () {
       var btn = document.getElementById('hamburger');

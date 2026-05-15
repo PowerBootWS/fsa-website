@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Dashboard – Full Steam Ahead</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/styles-v2.css">
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
+<!-- End Google Tag Manager -->
+
+  <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="885" async defer></script>
+  <style>
+    .dashboard-wrap {
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9SH5FTP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <nav>
+    <a href="/" class="logo">
+      <img src="/assets/FSA Logo Main - Light.webp" alt="Full Steam Ahead" class="logo-img" fetchpriority="high" height="38">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/enroll.html"><button class="nav-cta">Start Today →</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/articles/">Guides</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="/affiliate.html">Affiliates</a></li>
+    </ul>
+  </div>
+
+  <div class="dashboard-wrap">
+    <div id="refgrow" data-project-id="885"></div>
+    <script src="https://scripts.refgrowcdn.com/page.js" async defer></script>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Full <span>Steam</span> Ahead</div>
+      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
+      <a href="mailto:support@fullsteamahead.ca">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      function openMenu() { btn.classList.add('is-open'); menu.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false'); }
+      function closeMenu() { btn.classList.remove('is-open'); menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true'); }
+      btn.addEventListener('click', function () { btn.classList.contains('is-open') ? closeMenu() : openMenu(); });
+      menu.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMenu); });
+      document.addEventListener('click', function (e) {
+        var nav = document.querySelector('nav');
+        if (menu.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) { closeMenu(); btn.focus(); } });
+    }());
+
+    window.addEventListener('scroll', function () {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+  </script>
+</body>
+</html>

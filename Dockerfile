@@ -8,6 +8,7 @@ COPY coming-soon.html /usr/share/nginx/html/coming-soon.html
 COPY privacy-policy.html /usr/share/nginx/html/privacy-policy.html
 COPY terms-of-use.html /usr/share/nginx/html/terms-of-use.html
 COPY affiliate.html /usr/share/nginx/html/affiliate.html
+COPY affiliate-dashboard.html /usr/share/nginx/html/affiliate-dashboard.html
 COPY affiliate-confirmation.html /usr/share/nginx/html/affiliate-confirmation.html
 COPY enrollment-confirmation.html /usr/share/nginx/html/enrollment-confirmation.html
 COPY enroll.html /usr/share/nginx/html/enroll.html
