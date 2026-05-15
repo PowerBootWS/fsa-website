@@ -237,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="enroll-form-wrap" style="display:flex;align-items:center;justify-content:center;">
         <div style="text-align:center;">
           <p style="font-size:1.1rem;margin-bottom:1.5rem;opacity:0.85;">Ready to get started? Secure checkout via Stripe.</p>
-          <a href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" rel="nofollow noopener" style="display:inline-block;background:#E8720C;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;letter-spacing:0.03em;">Start Your Subscription →</a>
+          <a href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:inline-block;background:#E8720C;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;letter-spacing:0.03em;">Start Your Subscription →</a>
           <p style="margin-top:1rem;font-size:0.85rem;opacity:0.6;">Cancel anytime. Billed monthly.</p>
         </div>
       </div>
@@ -310,6 +310,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         nav.classList.toggle('scrolled', window.scrollY > 80);
       }, { passive: true });
     }());
+  </script>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (window.Refgrow) { Refgrow.processStripePaymentLinks(); }
+    });
   </script>
 
 </body>
