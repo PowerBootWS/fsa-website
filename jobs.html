@@ -77,21 +77,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- JOB BOARD CONTENT -->
   <div class="jobs-hero">
     <div class="jobs-hero-inner">
-      <div class="section-label">Career Board</div>
-      <h1>Power Engineering Jobs</h1>
-      <p class="jobs-hero-sub">The only job board in Canada built exclusively for Power Engineers — every class, every province. Listings are pulled from active postings across the country every 12 hours, and each role includes an AI-generated summary so you can assess the opportunity before digging into the full posting.</p>
+      <div class="section-label reveal">Career Board</div>
+      <h1 class="reveal" data-delay="60">Power Engineering Jobs</h1>
+      <p class="jobs-hero-sub reveal" data-delay="120">The only job board in Canada built exclusively for Power Engineers — every class, every province. Listings are pulled from active postings across the country every 12 hours, and each role includes an AI-generated summary so you can assess the opportunity before digging into the full posting.</p>
       <div class="jobs-hero-stats">
-        <div class="jobs-hero-stat">
+        <div class="jobs-hero-stat reveal" data-delay="180">
           <span class="jobs-hero-stat-value">Every 12h</span>
           <span class="jobs-hero-stat-label">Updated</span>
         </div>
         <div class="jobs-hero-stat-divider"></div>
-        <div class="jobs-hero-stat">
+        <div class="jobs-hero-stat reveal" data-delay="260">
           <span class="jobs-hero-stat-value">All Classes</span>
           <span class="jobs-hero-stat-label">5th &rarr; 1st</span>
         </div>
         <div class="jobs-hero-stat-divider"></div>
-        <div class="jobs-hero-stat">
+        <div class="jobs-hero-stat reveal" data-delay="340">
           <span class="jobs-hero-stat-value">Canada-Wide</span>
           <span class="jobs-hero-stat-label">Coverage</span>
         </div>
@@ -101,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="jobs-wrap">
     <!-- Promo banner -->
-    <div class="jobs-promo-banner" id="jobs-promo-banner">
+    <div class="jobs-promo-banner reveal" id="jobs-promo-banner">
       <div class="jobs-promo-text">
         <span class="jobs-promo-eyebrow">Advance your career</span>
         <strong class="jobs-promo-headline">Unlock higher-paying roles with a 2nd Class ticket</strong>
@@ -111,7 +111,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- Search bar -->
-    <div class="jobs-search-bar">
+    <div class="jobs-search-bar reveal">
       <div class="jobs-search-input-wrap">
         <svg class="jobs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="9" r="6"/>
@@ -127,7 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- Filters -->
-    <div class="jobs-filters" id="jobs-filters">
+    <div class="jobs-filters reveal" id="jobs-filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="1st Class">1st Class</button>
       <button class="filter-btn" data-filter="2nd Class">2nd Class</button>
@@ -184,6 +184,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p id="jobs-empty-msg">No active jobs match your current filters. Try adjusting your search or province selection.</p>
     </div>
   </div>
+
+  <!-- Scroll reveal -->
+  <script>
+    (function () {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var delay = parseInt(entry.target.dataset.delay || 0);
+            (function (el) { setTimeout(function () { el.classList.add('is-visible'); }, delay); }(entry.target));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal, .reveal-left').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
 
   <!-- FOOTER -->
   <footer>
