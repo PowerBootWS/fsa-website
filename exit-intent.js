@@ -2,7 +2,7 @@
   'use strict';
 
   var STORAGE_KEY = 'fsa_exit_intent_dismissed';
-  var ENROLL_BASE = 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600';
+  var WORKER_URL  = 'https://fsa-lead-capture.powerboot.workers.dev/capture';
 
   // --- Suppression check ---
   function isDismissed() {
@@ -13,21 +13,6 @@
   }
 
   if (isDismissed()) return;
-
-  // --- Code generator: FSA + 5 chars, no ambiguous O/0/I/1 ---
-  function genCode() {
-    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    var code = 'FSA';
-    for (var i = 0; i < 5; i++) {
-      code += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return code;
-  }
-
-  // --- ISO timestamp helpers ---
-  function toISO(d) {
-    return d.toISOString();
-  }
 
   // --- Inject styles ---
   var style = document.createElement('style');
@@ -77,22 +62,41 @@
     '.fsa-exit-sub{',
       'font-family:"Barlow",sans-serif;',
       'font-size:0.95rem;color:var(--gray-light,#C8D0DA);',
-      'margin:0 0 1.4rem;line-height:1.5;',
+      'margin:0 0 1.3rem;line-height:1.5;',
     '}',
-    '.fsa-exit-offer-box{',
-      'display:flex;align-items:center;gap:1rem;',
-      'background:rgba(232,114,12,0.07);',
-      'border-left:4px solid var(--orange,#E8720C);',
-      'padding:1rem 1.2rem;margin-bottom:1.6rem;',
-    '}',
-    '.fsa-exit-offer-amount{',
+    '.fsa-exit-field{margin-bottom:0.85rem;}',
+    '.fsa-exit-field label{',
+      'display:block;',
       'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:2.6rem;font-weight:800;color:var(--orange,#E8720C);',
-      'line-height:1;white-space:nowrap;',
+      'font-size:0.78rem;font-weight:700;letter-spacing:0.1em;',
+      'text-transform:uppercase;color:var(--gray-mid,#7a8899);',
+      'margin-bottom:0.35rem;',
     '}',
-    '.fsa-exit-offer-desc{',
+    '.fsa-exit-field input{',
+      'display:block;width:100%;box-sizing:border-box;',
+      'background:var(--plate,#1C2333);',
+      'border:1px solid var(--plate-edge,#252F42);',
+      'border-radius:4px;',
+      'padding:0.65rem 0.9rem;',
+      'font-family:"Barlow",sans-serif;font-size:0.97rem;',
+      'color:#fff;',
+      'outline:none;transition:border-color 0.18s;',
+    '}',
+    '.fsa-exit-field input::placeholder{color:var(--gray-mid,#7a8899);}',
+    '.fsa-exit-field input:focus{border-color:var(--orange,#E8720C);}',
+    '.fsa-exit-optin{',
+      'display:flex;align-items:flex-start;gap:0.6rem;',
+      'margin-bottom:1.2rem;',
+    '}',
+    '.fsa-exit-optin input[type="checkbox"]{',
+      'flex-shrink:0;margin-top:0.18rem;',
+      'width:1rem;height:1rem;',
+      'accent-color:var(--orange,#E8720C);',
+      'cursor:pointer;',
+    '}',
+    '.fsa-exit-optin span{',
       'font-family:"Barlow",sans-serif;',
-      'font-size:0.88rem;color:var(--gray-light,#C8D0DA);',
+      'font-size:0.8rem;color:var(--gray-mid,#7a8899);',
       'line-height:1.45;',
     '}',
     '.fsa-exit-cta-btn{',
@@ -119,57 +123,20 @@
       'vertical-align:middle;margin-right:0.5em;',
     '}',
     '@keyframes fsa-spin{to{transform:rotate(360deg);}}',
-    '.fsa-exit-code-wrap{margin:1.4rem 0 0.6rem;}',
-    '.fsa-exit-code-label{',
-      'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:0.78rem;font-weight:700;letter-spacing:0.12em;',
-      'text-transform:uppercase;color:var(--gray-mid,#7a8899);',
-      'margin-bottom:0.45rem;',
-    '}',
-    '.fsa-exit-code-box{',
-      'display:flex;align-items:center;justify-content:center;',
-      'background:var(--plate,#1C2333);',
-      'border:1px solid var(--plate-edge,#252F42);',
-      'border-left:4px solid var(--orange,#E8720C);',
-      'padding:0.9rem 1.2rem;',
-      'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:2rem;font-weight:800;letter-spacing:0.18em;',
-      'color:#fff;text-transform:uppercase;',
-      'user-select:all;',
-    '}',
-    '.fsa-exit-timer-wrap{',
-      'text-align:center;margin:0.9rem 0 1.2rem;',
-    '}',
-    '.fsa-exit-timer-label{',
-      'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:0.8rem;font-weight:600;letter-spacing:0.1em;',
-      'text-transform:uppercase;color:var(--gray-mid,#7a8899);',
-      'display:block;margin-bottom:0.2rem;',
-    '}',
-    '.fsa-exit-timer-val{',
-      'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:2.2rem;font-weight:800;',
-      'color:var(--amber,#F5A623);letter-spacing:0.06em;',
-    '}',
-    '.fsa-exit-timer-val.expired{color:var(--gray-mid,#7a8899);}',
-    '.fsa-exit-enroll-btn{',
-      'display:block;width:100%;',
-      'background:var(--orange,#E8720C);color:#fff;border:none;',
-      'font-family:"Barlow Condensed",sans-serif;',
-      'font-size:1.1rem;font-weight:700;letter-spacing:0.08em;',
-      'text-transform:uppercase;padding:1rem 2rem;',
-      'border-radius:4px;cursor:pointer;',
-      'text-decoration:none;text-align:center;',
-      'transition:background 0.2s,transform 0.18s,box-shadow 0.2s;',
-    '}',
-    '.fsa-exit-enroll-btn:hover{',
-      'background:var(--orange-glow,#FF8C2A);',
-      'transform:translateY(-2px);',
-      'box-shadow:0 10px 28px rgba(232,114,12,0.35);',
-    '}',
     '.fsa-exit-error{',
       'font-family:"Barlow",sans-serif;font-size:0.85rem;',
       'color:#e57373;margin-top:0.7rem;text-align:center;',
+    '}',
+    '.fsa-exit-success{',
+      'text-align:center;padding:1.2rem 0 0.5rem;',
+    '}',
+    '.fsa-exit-success-icon{',
+      'font-size:2.6rem;color:var(--orange,#E8720C);',
+      'line-height:1;margin-bottom:0.7rem;',
+    '}',
+    '.fsa-exit-success p{',
+      'font-family:"Barlow",sans-serif;font-size:1rem;',
+      'color:var(--gray-light,#C8D0DA);line-height:1.55;margin:0;',
     '}',
     '.fsa-exit-footnote{',
       'font-family:"Barlow",sans-serif;',
@@ -179,8 +146,6 @@
     '@media(max-width:520px){',
       '.fsa-exit-modal{padding:1.8rem 1.3rem 1.5rem;}',
       '.fsa-exit-modal h2{font-size:1.55rem;}',
-      '.fsa-exit-offer-amount{font-size:2rem;}',
-      '.fsa-exit-code-box{font-size:1.6rem;}',
     '}',
   ].join('');
   document.head.appendChild(style);
@@ -190,31 +155,34 @@
   overlay.className = 'fsa-exit-overlay';
   overlay.setAttribute('role', 'dialog');
   overlay.setAttribute('aria-modal', 'true');
-  overlay.setAttribute('aria-label', 'Special enrollment offer');
+  overlay.setAttribute('aria-label', 'Free exam tips worksheet');
 
   overlay.innerHTML = [
     '<div class="fsa-exit-modal">',
-      '<button class="fsa-exit-close" id="fsa-exit-close" aria-label="Close offer">Close</button>',
-      '<div class="fsa-exit-badge">Limited Time Offer</div>',
-      '<h2>Don\'t Leave Without Your Discount</h2>',
+      '<button class="fsa-exit-close" id="fsa-exit-close" aria-label="Close">Close</button>',
+      '<div class="fsa-exit-badge">Free Resource</div>',
+      '<h2>Ace Your Next Power Engineering Exam</h2>',
       '<p class="fsa-exit-sub">',
-        'You\'re one step from your 2nd Class ticket. Grab <strong>$50 off your first six months</strong> — ',
-        'only available right now.',
+        'Get our free worksheet: <strong>8 high-value tips</strong> that help engineers pass their SOPEEC exams ',
+        '— straight from those who\'ve done it.',
       '</p>',
-      '<div class="fsa-exit-offer-box">',
-        '<div class="fsa-exit-offer-amount">$50<sup style="font-size:1.1rem;vertical-align:super">OFF</sup></div>',
-        '<div class="fsa-exit-offer-desc">',
-          '<strong style="color:#fff;font-family:\'Barlow Condensed\',sans-serif;font-size:1rem;letter-spacing:0.04em">',
-            '$50 off your first six months',
-          '</strong><br>',
-          '2nd Class Complete — all six papers, AI tutoring, adaptive practice exams.',
-        '</div>',
-      '</div>',
       '<div id="fsa-exit-action-area">',
-        '<button class="fsa-exit-cta-btn" id="fsa-exit-cta">Claim My $50 Discount &rarr;</button>',
+        '<div class="fsa-exit-field">',
+          '<label for="fsa-exit-name">First Name</label>',
+          '<input type="text" id="fsa-exit-name" placeholder="Your first name" autocomplete="given-name">',
+        '</div>',
+        '<div class="fsa-exit-field">',
+          '<label for="fsa-exit-email">Email</label>',
+          '<input type="email" id="fsa-exit-email" placeholder="your@email.com" autocomplete="email">',
+        '</div>',
+        '<div class="fsa-exit-optin">',
+          '<input type="checkbox" id="fsa-exit-optin" aria-required="true">',
+          '<span>I agree to receive messages from Full Steam Ahead. I can unsubscribe any time.</span>',
+        '</div>',
+        '<button class="fsa-exit-cta-btn" id="fsa-exit-cta">Send Me the 8 Tips &rarr;</button>',
         '<div class="fsa-exit-error" id="fsa-exit-error" style="display:none"></div>',
       '</div>',
-      '<p class="fsa-exit-footnote">* Discount cannot be combined with any other offer.</p>',
+      '<p class="fsa-exit-footnote">No spam. Unsubscribe any time.</p>',
     '</div>',
   ].join('');
 
@@ -226,8 +194,6 @@
   var errorEl    = document.getElementById('fsa-exit-error');
 
   // --- Open / close ---
-  var timerInterval = null;
-
   function openPopup() {
     overlay.classList.add('is-open');
     closeBtn.focus();
@@ -236,7 +202,6 @@
   function closePopup() {
     overlay.classList.remove('is-open');
     markDismissed();
-    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
   }
 
   closeBtn.addEventListener('click', closePopup);
@@ -249,90 +214,61 @@
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) closePopup();
   });
 
-  // --- Countdown timer ---
-  function startTimer(seconds, timerValEl, enrollBtn) {
-    var remaining = seconds;
-
-    function tick() {
-      if (remaining <= 0) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        timerValEl.textContent = 'Expired';
-        timerValEl.classList.add('expired');
-        if (enrollBtn) enrollBtn.style.opacity = '0.4';
-        return;
-      }
-      remaining--;
-      var m = Math.floor(remaining / 60);
-      var s = remaining % 60;
-      timerValEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    }
-
-    tick();
-    timerInterval = setInterval(tick, 1000);
-  }
-
-  // --- Coupon creation ---
-  function resetBtn() {
-    ctaBtn.disabled = false;
-    ctaBtn.innerHTML = 'Claim My $50 Discount &rarr;';
-  }
-
-  ctaBtn.addEventListener('click', function () {
-    ctaBtn.disabled = true;
-    errorEl.style.display = 'none';
-    ctaBtn.innerHTML = '<span class="fsa-exit-spinner"></span>Generating your code…';
-
-    var code = genCode();
-    var now  = new Date();
-    var end  = new Date(now.getTime() + 15 * 60 * 1000);
-
-    fetch('https://fsa-stripe-coupon.powerboot.workers.dev/stripe-coupon', { method: 'POST' })
-      .then(function(res) {
-        if (!res.ok) throw new Error('Worker error: ' + res.status);
-        return res.json();
-      })
-      .then(function(data) {
-        showCodeState(data.code);
-        markDismissed();
-      })
-      .catch(function() {
-        showError('Something went wrong — please try again.');
-        resetBtn();
-      });
-  });
-
+  // --- Form submission ---
   function showError(msg) {
     errorEl.textContent = msg;
     errorEl.style.display = 'block';
   }
 
-  function showCodeState(code) {
+  function showSuccess() {
     actionArea.innerHTML = [
-      '<div class="fsa-exit-code-wrap">',
-        '<div class="fsa-exit-code-label">Your Discount Code</div>',
-        '<div class="fsa-exit-code-box" id="fsa-exit-codeval"></div>',
+      '<div class="fsa-exit-success">',
+        '<div class="fsa-exit-success-icon">✓</div>',
+        '<p>You\'re in! Check your inbox — your 8 tips worksheet is on its way.</p>',
       '</div>',
-      '<div class="fsa-exit-timer-wrap">',
-        '<span class="fsa-exit-timer-label">Code expires in</span>',
-        '<span class="fsa-exit-timer-val" id="fsa-exit-timer">15:00</span>',
-      '</div>',
-      '<a rel="nofollow noopener" class="fsa-exit-enroll-btn" id="fsa-exit-enroll">',
-        'Lock In My Discount →',
-      '</a>',
     ].join('');
-
-    document.getElementById('fsa-exit-codeval').textContent = code;
-
-    var enrollBtn = document.getElementById('fsa-exit-enroll');
-    enrollBtn.href = ENROLL_BASE + '?prefilled_promo_code=' + encodeURIComponent(code);
-
-    var timerValEl = document.getElementById('fsa-exit-timer');
-    startTimer(15 * 60, timerValEl, enrollBtn);
+    markDismissed();
   }
 
+  ctaBtn.addEventListener('click', function () {
+    var nameEl   = document.getElementById('fsa-exit-name');
+    var emailEl  = document.getElementById('fsa-exit-email');
+    var optinEl  = document.getElementById('fsa-exit-optin');
+
+    errorEl.style.display = 'none';
+
+    var firstName = nameEl.value.trim();
+    var email     = emailEl.value.trim();
+
+    if (!firstName) { showError('Please enter your first name.'); nameEl.focus(); return; }
+    if (!email)     { showError('Please enter your email address.'); emailEl.focus(); return; }
+    if (!optinEl.checked) { showError('Please check the consent box to continue.'); optinEl.focus(); return; }
+
+    ctaBtn.disabled = true;
+    ctaBtn.innerHTML = '<span class="fsa-exit-spinner"></span>Sending…';
+
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName: firstName, email: email }),
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Worker error: ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data.success) throw new Error(data.error || 'Unknown error');
+        showSuccess();
+      })
+      .catch(function () {
+        showError('Something went wrong — please try again.');
+        ctaBtn.disabled = false;
+        ctaBtn.innerHTML = 'Send Me the 8 Tips &rarr;';
+      });
+  });
+
   // --- Trigger logic ---
-  var triggered   = false;
+  var triggered    = false;
   var mouseEntered = false;
 
   function maybeShow() {
