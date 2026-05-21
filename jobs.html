@@ -166,6 +166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="job-detail-separator">·</span>
               <span id="detail-location"></span>
             </div>
+            <div class="job-detail-date" id="detail-date"></div>
           </div>
         </div>
         <div class="job-detail-body">
@@ -175,6 +176,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="detail-description"></div>
           </div>
           <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
+          <div class="job-report-wrap">
+            <button class="job-report-btn" id="job-report-btn" type="button">Report this job posting</button>
+            <div class="job-report-panel" id="job-report-panel" aria-hidden="true">
+              <p class="job-report-heading">What's the issue?</p>
+              <label class="job-report-option">
+                <input type="radio" name="report-reason" value="not_power_engineering">
+                Not a power engineer-related job
+              </label>
+              <label class="job-report-option">
+                <input type="radio" name="report-reason" value="wrong_class">
+                Listed under the wrong class
+              </label>
+              <div class="job-report-actions">
+                <button class="job-report-submit" id="job-report-submit" type="button">Submit Report</button>
+                <button class="job-report-cancel" id="job-report-cancel" type="button">Cancel</button>
+              </div>
+              <p class="job-report-feedback" id="job-report-feedback"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -354,6 +374,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           var logoHtml = job.employer_logo_url
             ? '<img src="' + escapeHtml(job.employer_logo_url) + '" alt="" class="job-card-logo">'
             : '<div class="job-card-logo-placeholder">🏭</div>';
+          var dateHtml = job.first_seen
+            ? '<div class="job-card-date">Added ' + escapeHtml(formatDate(job.first_seen)) + '</div>'
+            : '';
           return (
             '<a href="/jobs.html?id=' + encodeURIComponent(job.job_id) + filterParams() + '" class="job-card">' +
               '<div class="job-card-top">' +
@@ -363,6 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               '<h3 class="job-card-title">' + escapeHtml(job.title) + '</h3>' +
               '<div class="job-card-company">' + escapeHtml(job.company || '') + '</div>' +
               '<div class="job-card-location">' + escapeHtml(job.location || '') + '</div>' +
+              dateHtml +
             '</a>'
           );
         }).join('');
@@ -393,6 +417,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.getElementById('detail-company').textContent = job.company || '';
             document.getElementById('detail-location').textContent = job.location || '';
             document.getElementById('detail-badge').textContent = (Array.isArray(job.class_level) ? job.class_level.join(' / ') : job.class_level) || 'Other';
+
+            var dateEl = document.getElementById('detail-date');
+            if (job.first_seen) {
+              dateEl.textContent = 'Added ' + formatDate(job.first_seen);
+              dateEl.style.display = 'block';
+            } else {
+              dateEl.style.display = 'none';
+            }
+
+            // Wire up report panel for this job
+            initReportPanel(jobId);
+
             var summarySection = document.getElementById('detail-summary-section');
             if (job.ai_summary && job.description) {
               summarySection.innerHTML =
@@ -497,6 +533,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return text.split(/\n\n+/).map(function (para) {
           return '<p>' + escapeHtml(para).replace(/\n/g, '<br>') + '</p>';
         }).join('');
+      }
+
+      function formatDate(isoString) {
+        if (!isoString) return '';
+        var d = new Date(isoString);
+        if (isNaN(d)) return '';
+        return d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' });
+      }
+
+      function initReportPanel(currentJobId) {
+        var btn = document.getElementById('job-report-btn');
+        var panel = document.getElementById('job-report-panel');
+        var submitBtn = document.getElementById('job-report-submit');
+        var cancelBtn = document.getElementById('job-report-cancel');
+        var feedback = document.getElementById('job-report-feedback');
+
+        // Reset state
+        panel.setAttribute('aria-hidden', 'true');
+        panel.classList.remove('is-open');
+        feedback.textContent = '';
+        feedback.className = 'job-report-feedback';
+        document.querySelectorAll('input[name="report-reason"]').forEach(function (r) { r.checked = false; });
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Report';
+
+        btn.onclick = function () {
+          var open = panel.classList.toggle('is-open');
+          panel.setAttribute('aria-hidden', String(!open));
+        };
+        cancelBtn.onclick = function () {
+          panel.classList.remove('is-open');
+          panel.setAttribute('aria-hidden', 'true');
+        };
+        submitBtn.onclick = function () {
+          var selected = document.querySelector('input[name="report-reason"]:checked');
+          if (!selected) {
+            feedback.textContent = 'Please select a reason.';
+            feedback.className = 'job-report-feedback is-error';
+            return;
+          }
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending…';
+          feedback.textContent = '';
+          fetch(API_BASE + '/jobs/' + encodeURIComponent(currentJobId) + '/report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reason: selected.value })
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.json();
+            })
+            .then(function () {
+              feedback.textContent = 'Thanks — your report has been received.';
+              feedback.className = 'job-report-feedback is-success';
+              submitBtn.style.display = 'none';
+              cancelBtn.textContent = 'Close';
+            })
+            .catch(function () {
+              feedback.textContent = 'Something went wrong. Please try again.';
+              feedback.className = 'job-report-feedback is-error';
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Submit Report';
+            });
+        };
       }
 
       // ── Filter buttons ──

@@ -2867,6 +2867,115 @@ footer {
   margin: 1rem 0 0.4rem;
 }
 
+/* ── Job card: date added ── */
+.job-card-date {
+  font-size: 0.72rem;
+  color: var(--gray-dark);
+  margin-top: 0.5rem;
+}
+
+/* ── Job detail: date added ── */
+.job-detail-date {
+  font-size: 0.78rem;
+  color: var(--gray-dark);
+  margin-top: 0.35rem;
+}
+
+/* ── Report button & panel ── */
+.job-report-wrap {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--plate-edge);
+  padding-top: 1rem;
+}
+
+.job-report-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--gray-dark);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast);
+}
+.job-report-btn:hover { color: var(--gray-mid); }
+
+.job-report-panel {
+  display: none;
+  margin-top: 0.9rem;
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+}
+.job-report-panel.is-open { display: block; }
+
+.job-report-heading {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-light);
+  margin-bottom: 0.65rem;
+}
+
+.job-report-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--gray-light);
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+.job-report-option input[type="radio"] {
+  accent-color: var(--orange);
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.job-report-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+}
+
+.job-report-submit {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background var(--duration-fast);
+}
+.job-report-submit:hover:not(:disabled) { background: var(--orange-glow); }
+.job-report-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.job-report-cancel {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  background: none;
+  color: var(--gray-mid);
+  border: 1px solid var(--plate-edge);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+}
+.job-report-cancel:hover { color: var(--gray-light); border-color: var(--gray-dark); }
+
+.job-report-feedback {
+  font-size: 0.78rem;
+  margin-top: 0.6rem;
+  min-height: 1em;
+}
+.job-report-feedback.is-error  { color: #e05a5a; }
+.job-report-feedback.is-success { color: var(--green-light); }
+
 @media (max-width: 900px) {
   .jobs-grid { grid-template-columns: repeat(2, 1fr); }
   .jobs-hero { padding: 8.5rem 2rem 2rem; }
