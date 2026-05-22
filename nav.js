@@ -36,6 +36,8 @@
         if (e.key === 'Escape')    { close(); trigger.focus(); }
       });
 
+      menu.addEventListener('click', function (e) { e.stopPropagation(); });
+
       dropdown.addEventListener('mouseenter', function () { open(); });
       dropdown.addEventListener('mouseleave', function () { close(); });
     });
@@ -43,8 +45,11 @@
     document.addEventListener('click', function () {
       document.querySelectorAll('.nav-dropdown-menu.is-open').forEach(function (menu) {
         menu.classList.remove('is-open');
-        var trigger = menu.previousElementSibling;
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        var parentDropdown = menu.closest('.nav-dropdown');
+        if (parentDropdown) {
+          var trigger = parentDropdown.querySelector('.nav-dropdown-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
       });
     });
   }
