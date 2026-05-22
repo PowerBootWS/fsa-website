@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Full Steam Ahead" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "Full Steam Ahead" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "How It Works" [ref=e7] [cursor=pointer]:
+          - /url: /how-it-works.html
+      - listitem [ref=e8]:
+        - link "Guides" [ref=e9] [cursor=pointer]:
+          - /url: /articles/
+      - listitem [ref=e10]:
+        - link "Jobs" [ref=e11] [cursor=pointer]:
+          - /url: /jobs.html
+      - listitem [ref=e12]:
+        - link "Account" [ref=e13] [cursor=pointer]:
+          - /url: https://my.fullsteamahead.ca
+      - listitem [ref=e14]:
+        - link "Affiliates" [ref=e15] [cursor=pointer]:
+          - /url: /affiliate.html
+    - link "Start Today →" [ref=e17] [cursor=pointer]:
+      - /url: /enroll.html
+      - button "Start Today →" [ref=e18]
+  - contentinfo [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]: Full Steam Ahead
+      - generic [ref=e26]: 2nd Class Power Engineering Exam Prep — Canada
+    - generic [ref=e27]:
+      - link "Privacy Policy" [ref=e28] [cursor=pointer]:
+        - /url: /privacy-policy.html
+      - link "Terms of Use" [ref=e29] [cursor=pointer]:
+        - /url: /terms-of-use.html
+      - link "Contact" [ref=e30] [cursor=pointer]:
+        - /url: mailto:support@fullsteamahead.ca
+    - generic [ref=e31]: © 2025 Full Steam Ahead. All rights reserved.

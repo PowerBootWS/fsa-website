@@ -48,7 +48,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="/how-it-works.html">How It Works</a></li>
       <li><a href="/articles/">Guides</a></li>
       <li><a href="/jobs.html">Jobs</a></li>
-      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li class="nav-dropdown">
+      <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+        Account <span class="nav-dropdown-arrow" aria-hidden="true">&#9662;</span>
+      </button>
+      <ul class="nav-dropdown-menu" role="menu">
+        <li role="none"><a href="https://my.fullsteamahead.ca" role="menuitem" rel="nofollow noopener">Learning Platform</a></li>
+        <li role="none"><a href="https://billing.stripe.com/p/login/3cI14peeQ395ckie6N1B600" role="menuitem" rel="noopener noreferrer" target="_blank">Manage Subscription</a></li>
+      </ul>
+    </li>
       <li><a href="/affiliate.html">Affiliates</a></li>
     </ul>
     <div class="nav-right">
@@ -66,7 +74,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="/how-it-works.html">How It Works</a></li>
       <li><a href="/articles/">Guides</a></li>
       <li><a href="/jobs.html">Jobs</a></li>
-      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Account</a></li>
+      <li><a href="https://my.fullsteamahead.ca" rel="nofollow noopener">Learning Platform</a></li>
+      <li><a href="https://billing.stripe.com/p/login/3cI14peeQ395ckie6N1B600" rel="noopener noreferrer" target="_blank">Manage Subscription</a></li>
       <li><a href="/affiliate.html">Affiliates</a></li>
     </ul>
   </div>
@@ -199,5 +208,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 80);
     }, { passive: true });
   </script>
+<script src="/nav.js" defer></script>
 </body>
 </html>

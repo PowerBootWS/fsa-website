@@ -1,0 +1,94 @@
+<h2>Jobs Page — Two Design Directions</h2>
+<p class="subtitle">Hero expansion + 2nd Class promo block. Pick the direction that feels right, or mix and match elements.</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#141A24;border-radius:6px;padding:1.2rem;font-family:sans-serif;color:#fff;">
+
+        <!-- Hero -->
+        <div style="border-bottom:1px solid #252F42;padding-bottom:1rem;margin-bottom:1rem;">
+          <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#E8720C;margin-bottom:0.3rem;">Career Board</div>
+          <div style="font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:0.5rem;">Power Engineering Jobs</div>
+          <div style="font-size:0.7rem;color:#a8b4c0;line-height:1.5;max-width:420px;">
+            The only job board in Canada built exclusively for Power Engineers. Listings span every class — 5th through 1st — updated every 12 hours from active postings across the country. Every role includes an AI-generated summary so you get the key details at a glance before reading the full posting.
+          </div>
+          <!-- Stats row -->
+          <div style="display:flex;gap:1.2rem;margin-top:0.8rem;">
+            <div style="text-align:center;">
+              <div style="font-size:1rem;font-weight:700;color:#E8720C;">Every 12h</div>
+              <div style="font-size:0.55rem;color:#a8b4c0;text-transform:uppercase;letter-spacing:0.08em;">Updated</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:1rem;font-weight:700;color:#E8720C;">All Classes</div>
+              <div style="font-size:0.55rem;color:#a8b4c0;text-transform:uppercase;letter-spacing:0.08em;">5th → 1st</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:1rem;font-weight:700;color:#E8720C;">Canada-Wide</div>
+              <div style="font-size:0.55rem;color:#a8b4c0;text-transform:uppercase;letter-spacing:0.08em;">Coverage</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo block — inline banner style -->
+        <div style="background:#1C2333;border:1px solid #252F42;border-left:3px solid #E8720C;border-radius:6px;padding:0.7rem 0.9rem;display:flex;align-items:center;justify-content:space-between;gap:0.8rem;">
+          <div>
+            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:#E8720C;margin-bottom:0.2rem;">Advance your career</div>
+            <div style="font-size:0.75rem;font-weight:600;margin-bottom:0.2rem;">Preparing for your 2nd Class ticket?</div>
+            <div style="font-size:0.6rem;color:#a8b4c0;">Canada's only dedicated 2nd Class exam prep program.</div>
+          </div>
+          <div style="background:#E8720C;color:#fff;font-size:0.6rem;font-weight:600;padding:0.4rem 0.7rem;border-radius:4px;white-space:nowrap;flex-shrink:0;">Learn More →</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Inline Banner</h3>
+      <p>Hero gets a concise paragraph + 3 stat chips. Promo is a compact horizontal banner with an orange left-accent border — clearly separated but part of the page flow, right above the search bar.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#141A24;border-radius:6px;padding:1.2rem;font-family:sans-serif;color:#fff;">
+
+        <!-- Hero — expanded with feature list -->
+        <div style="border-bottom:1px solid #252F42;padding-bottom:1rem;margin-bottom:1rem;">
+          <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#E8720C;margin-bottom:0.3rem;">Career Board</div>
+          <div style="font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:0.4rem;">Power Engineering Jobs</div>
+          <div style="font-size:0.7rem;color:#a8b4c0;line-height:1.5;margin-bottom:0.6rem;">Canada's only job board built exclusively for Power Engineers — every class, every province.</div>
+          <!-- Feature pills -->
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <span style="background:#1C2333;border:1px solid #252F42;font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:20px;color:#C8D0DA;">⚡ Updated every 12 hours</span>
+            <span style="background:#1C2333;border:1px solid #252F42;font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:20px;color:#C8D0DA;">📋 AI-generated role summaries</span>
+            <span style="background:#1C2333;border:1px solid #252F42;font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:20px;color:#C8D0DA;">🇨🇦 Coast to coast coverage</span>
+            <span style="background:#1C2333;border:1px solid #252F42;font-size:0.55rem;padding:0.25rem 0.6rem;border-radius:20px;color:#C8D0DA;">🎫 5th Class through Chief Engineer</span>
+          </div>
+        </div>
+
+        <!-- Promo block — card style, visually distinct -->
+        <div style="background:#0D1117;border:1px solid #252F42;border-radius:8px;padding:0.8rem 1rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 80% 20%,rgba(232,114,12,0.15),transparent 70%);"></div>
+          <div style="font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;color:#E8720C;margin-bottom:0.3rem;">Sponsored by Full Steam Ahead</div>
+          <div style="font-size:0.8rem;font-weight:700;margin-bottom:0.25rem;">Ready to move up to 2nd Class?</div>
+          <div style="font-size:0.62rem;color:#a8b4c0;line-height:1.4;margin-bottom:0.6rem;">Full Steam Ahead is Canada's only dedicated 2nd Class Power Engineering exam prep. Structured curriculum, practice exams, and a community of engineers working toward the same goal.</div>
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="background:#E8720C;color:#fff;font-size:0.6rem;font-weight:600;padding:0.4rem 0.8rem;border-radius:4px;">Start Today →</div>
+            <div style="font-size:0.55rem;color:#a8b4c0;">No pressure — just a free look</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Distinct Ad Card</h3>
+      <p>Hero uses feature pills instead of stats. Promo is a dark card on a darker background with a subtle glow — feels clearly like a separate block (ad-card style) but brand-consistent. Labeled "Sponsored by Full Steam Ahead" for honesty.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:1.5rem;">Click a card to select, or let me know in the terminal what you like/dislike from either.</p>

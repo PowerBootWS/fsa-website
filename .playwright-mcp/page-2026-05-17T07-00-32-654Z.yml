@@ -1,0 +1,333 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - link "Full Steam Ahead" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "Full Steam Ahead" [ref=e5]
+    - generic [ref=e6]:
+      - link "Start Today →" [ref=e7] [cursor=pointer]:
+        - /url: /enroll.html
+        - button "Start Today →" [ref=e8]
+      - button "Open navigation menu" [ref=e9] [cursor=pointer]
+  - list [ref=e14]:
+    - listitem [ref=e15]:
+      - link [ref=e16] [cursor=pointer]:
+        - /url: /how-it-works.html
+        - text: How It Works
+    - listitem [ref=e17]:
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /articles/
+        - text: Guides
+    - listitem [ref=e19]:
+      - link [ref=e20] [cursor=pointer]:
+        - /url: /jobs.html
+        - text: Jobs
+    - listitem [ref=e21]:
+      - link [ref=e22] [cursor=pointer]:
+        - /url: https://my.fullsteamahead.ca
+        - text: Account
+    - listitem [ref=e23]:
+      - link [ref=e24] [cursor=pointer]:
+        - /url: /affiliate.html
+        - text: Affiliates
+  - main [ref=e25]:
+    - generic [ref=e28]:
+      - generic [ref=e29]: Power Engineering Online Learning for Working Professionals
+      - heading "The Smart Way to Pass Your Power Engineering Exams." [level=1] [ref=e30]:
+        - text: The Smart Way to Pass Your
+        - emphasis [ref=e31]: Power Engineering
+        - text: Exams.
+      - paragraph [ref=e32]:
+        - text: Guided learning, interactive AI support, and access to
+        - strong [ref=e33]: all six 2nd class papers under one subscription
+        - text: — designed for working operators who need a flexible, effective way to earn their ticket.
+      - generic [ref=e34]:
+        - link "Start Your Subscription →" [ref=e35] [cursor=pointer]:
+          - /url: /enroll.html
+          - button "Start Your Subscription →" [ref=e36]
+        - link "See How It Works" [ref=e37] [cursor=pointer]:
+          - /url: /how-it-works.html
+          - button "See How It Works" [ref=e38]
+      - paragraph [ref=e39]:
+        - strong [ref=e40]: 83% pass rate
+        - text: in pilot — built by operators with
+        - strong [ref=e41]: 71 years
+        - text: combined field experience
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: ✅
+        - text: 83% Pass Rate in Pilot
+      - generic [ref=e46]:
+        - generic [ref=e47]: 📝
+        - text: 2,700+ Practice Questions
+      - generic [ref=e48]:
+        - generic [ref=e49]: 🔧
+        - text: 71 Years Combined Ops Experience
+      - generic [ref=e50]:
+        - generic [ref=e51]: 📋
+        - text: SOPEEC Exam Aligned
+      - generic [ref=e52]:
+        - generic [ref=e53]: 🇨🇦
+        - text: Built for Canadian Operators
+      - generic [ref=e54]:
+        - generic [ref=e55]: ✅
+        - text: 83% Pass Rate in Pilot
+      - generic [ref=e56]:
+        - generic [ref=e57]: 📝
+        - text: 2,700+ Practice Questions
+      - generic [ref=e58]:
+        - generic [ref=e59]: 🔧
+        - text: 71 Years Combined Ops Experience
+      - generic [ref=e60]:
+        - generic [ref=e61]: 📋
+        - text: SOPEEC Exam Aligned
+      - generic [ref=e62]:
+        - generic [ref=e63]: 🇨🇦
+        - text: Built for Canadian Operators
+    - generic [ref=e65]:
+      - generic [ref=e66]: Job Board
+      - generic [ref=e67]: Looking for Power Engineering jobs in Canada?
+      - link "Browse the Job Board →" [ref=e68] [cursor=pointer]:
+        - /url: /jobs.html
+    - generic [ref=e69]:
+      - generic [ref=e70]: Who It's For
+      - heading "Built for Operators, Not Classroom Students" [level=2] [ref=e71]
+      - paragraph [ref=e72]: If you already hold your 3rd Class and you're grinding through shifts while trying to study, this was built specifically for you.
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: 📝
+          - generic [ref=e76]: You're Preparing for Your 2nd Class Papers
+          - paragraph [ref=e77]: You need prep that adapts to your weak spots — not another slide deck that treats every topic the same.
+        - generic [ref=e78]:
+          - generic [ref=e79]: ⬆️
+          - generic [ref=e80]: Upgrading from 3rd Class
+          - paragraph [ref=e81]: You've put in the field hours. Now earn the next ticket on a working operator's schedule, without locking yourself into a classroom.
+        - generic [ref=e82]:
+          - generic [ref=e83]: 💼
+          - generic [ref=e84]: Advancing Your Career
+          - paragraph [ref=e85]: Higher pay, supervisor roles, a better future for your family. The 2nd Class certificate opens doors that your 3rd Class can't.
+    - generic [ref=e86]:
+      - generic [ref=e87]: What You'll Get
+      - heading "What Actually Gets Results" [level=2] [ref=e88]
+      - paragraph [ref=e89]: Every feature is built around exam performance — not content delivery.
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]: 🎯
+          - generic [ref=e93]:
+            - generic [ref=e94]: Aligned With Real SOPEEC Objectives
+            - paragraph [ref=e95]: Content is structured around how papers are actually marked — not the order someone wrote a textbook. Covers every objective across all six papers.
+        - generic [ref=e96]:
+          - generic [ref=e97]: 🤖
+          - generic [ref=e98]:
+            - generic [ref=e99]: AI Tutoring — Answers When You're Stuck
+            - paragraph [ref=e100]: Working 12s means study time doesn't follow office hours. The AI tutor explains why you got something wrong, right in context, and creates new questions when you need more practice.
+        - generic [ref=e101]:
+          - generic [ref=e102]: 📅
+          - generic [ref=e103]:
+            - generic [ref=e104]: Your Schedule. Your Rotation.
+            - paragraph [ref=e105]: No fixed start dates, no classrooms, no deadlines. Study when your rotation allows. Cancel and resume anytime — your progress is always saved.
+        - generic [ref=e106]:
+          - generic [ref=e107]: 🧠
+          - generic [ref=e108]:
+            - generic [ref=e109]: Practice Exams That Target Your Weak Spots
+            - paragraph [ref=e110]: Adaptive practice that focuses on what you need to work on most. 2,716 difficulty-graded questions — level 2 through level 5 — across all six SOPEEC papers.
+    - generic [ref=e112]:
+      - generic [ref=e113]: How You'll Study
+      - heading "Three Steps to Your Ticket" [level=2] [ref=e114]
+      - paragraph [ref=e115]: From enrollment to exam-ready — a clear path built for working operators.
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - generic [ref=e118]: "1"
+          - generic [ref=e119]: Enroll & Choose Your Paper
+          - paragraph [ref=e120]: One subscription unlocks all six 2nd Class exam papers. Start with your strongest subject or tackle the paper you're dreading most.
+        - generic [ref=e121]:
+          - generic [ref=e122]: "2"
+          - generic [ref=e123]: Study with Guided Support
+          - paragraph [ref=e124]: Work through step-by-step calculation coaching, watch guided video explanations, and ask the AI tutor questions any time you're stuck. No forums, no waiting for office hours.
+        - generic [ref=e125]:
+          - generic [ref=e126]: "3"
+          - generic [ref=e127]: Track Progress & Test Readiness
+          - paragraph [ref=e128]: Adaptive practice exams show exactly where you stand against exam objectives. You'll know when you're ready to write — not when a syllabus says you're done.
+      - 'link "See the full breakdown: How It Works →" [ref=e130] [cursor=pointer]':
+        - /url: /how-it-works.html
+    - generic [ref=e132]:
+      - generic [ref=e133]: From the Field
+      - heading "What Operators Are Saying" [level=2] [ref=e134]
+      - paragraph [ref=e135]: Real feedback from working operators going through the 2nd Class program.
+      - generic [ref=e136]:
+        - generic [ref=e137]:
+          - text: “
+          - paragraph [ref=e138]: Been in the plant 20+ years but exams aren't the same as running equipment. This helped me ease back into it. The AI tutor was actually solid for walking through problems step by step when I got stuck.
+          - generic [ref=e140]: Graham C.
+        - generic [ref=e141]:
+          - text: “
+          - paragraph [ref=e142]: Moving up from 3rd Class, this helped a lot. The practice exams adjusting to what I was weak on made a difference. Felt like I was actually improving instead of just repeating stuff I already knew.
+          - generic [ref=e144]: Rohit P.
+        - generic [ref=e145]:
+          - text: “
+          - paragraph [ref=e146]: Working 12s, I didn't have time to waste. I liked how it focused on what I struggled with instead of everything. The AI tutor saved me a bunch of time when I was stuck late at night.
+          - generic [ref=e148]: Sarah R.
+        - generic [ref=e149]:
+          - text: “
+          - paragraph [ref=e150]: Failed once before and didn't want to go through that again. This breaks things down better and the chapter tests showed me where I was weak. Passed this time and felt way more confident.
+          - generic [ref=e152]: Justin F.
+        - generic [ref=e153]:
+          - text: “
+          - paragraph [ref=e154]: Not much of a classroom guy. The step by step approach and AI walking through problems helped it click. Before I'd just get lost halfway through calculations.
+          - generic [ref=e156]: Andrew
+        - generic [ref=e157]:
+          - text: “
+          - paragraph [ref=e158]: Didn't think I'd use the AI part much but it actually helped. It explains things without overcomplicating it. Better than digging through forums trying to find the same question.
+          - generic [ref=e160]: Candace
+        - generic [ref=e161]:
+          - text: “
+          - paragraph [ref=e162]: Couldn't justify spending thousands on courses. This made it doable. Plus it actually adapts to you, so you're not wasting time going over stuff you already understand.
+          - generic [ref=e164]: Ben
+        - generic [ref=e165]:
+          - text: “
+          - paragraph [ref=e166]: Haven't studied in a long time so I was pretty unsure starting out. The way it builds up and reviews what you struggle with helped a lot. Didn't feel overwhelming after a bit.
+          - generic [ref=e168]: Russ B.
+        - generic [ref=e169]:
+          - text: “
+          - paragraph [ref=e170]: I liked how the practice exams adjust based on performance. It keeps bringing you back to weak areas until you get it right. That helped clean up mistakes before the real exam.
+          - generic [ref=e172]: Corynn
+        - generic [ref=e173]:
+          - text: “
+          - paragraph [ref=e174]: It's not a shortcut but it works. You put the time in and it keeps you focused on what matters. The AI tutor and practice tests helped more than I expected.
+          - generic [ref=e176]: Pankaj P.
+    - generic [ref=e178]:
+      - generic [ref=e179]: Pricing
+      - heading "One Subscription. All Six Papers." [level=2] [ref=e180]
+      - paragraph [ref=e181]: No per-paper charges, no hidden fees, no pressure.
+      - generic [ref=e183]:
+        - generic [ref=e184]: Available Now
+        - generic [ref=e185]: 2nd Class
+        - generic [ref=e186]:
+          - superscript [ref=e187]: $
+          - text: "149"
+        - generic [ref=e188]: per month — cancel anytime
+        - paragraph [ref=e189]: Full access to all six 2nd Class papers. Study at your pace over 6–12 months with AI-powered support the whole way.
+        - list [ref=e190]:
+          - listitem [ref=e191]:
+            - generic [ref=e192]: ✓
+            - text: All 6 papers — A1, A2, A3, B1, B2, B3
+          - listitem [ref=e193]:
+            - generic [ref=e194]: ✓
+            - text: Step-by-step calculation coaching
+          - listitem [ref=e195]:
+            - generic [ref=e196]: ✓
+            - text: Interactive AI tutoring, anytime
+          - listitem [ref=e197]:
+            - generic [ref=e198]: ✓
+            - text: Adaptive practice exams
+          - listitem [ref=e199]:
+            - generic [ref=e200]: ✓
+            - text: Cancel and resume anytime
+        - link "Start Your Subscription →" [ref=e201] [cursor=pointer]:
+          - /url: /enroll.html
+          - button "Start Your Subscription →" [ref=e202]
+        - paragraph [ref=e203]: 3rd Class coming soon
+      - generic [ref=e204]: Get it done in six months and you've spent $894 total — less than what a single paper costs elsewhere.
+    - generic [ref=e206]:
+      - generic [ref=e207]: Common Questions
+      - heading "Questions From the Field" [level=2] [ref=e208]
+      - paragraph [ref=e209]: Quick answers to what working operators ask before enrolling.
+      - generic [ref=e210]:
+        - generic [ref=e211]:
+          - generic [ref=e212]: Haven't opened a textbook in years?
+          - paragraph [ref=e213]: That's exactly who it's built for. Step-by-step coaching and AI tutoring assume no recent classroom experience — just your field knowledge as a starting point.
+        - generic [ref=e214]:
+          - generic [ref=e215]: Do I need to complete all six papers for my 2nd Class?
+          - paragraph [ref=e216]: Yes — all six SOPEEC papers are required for your 2nd Class certificate. This course includes all six under one subscription so you're never paying per paper.
+        - generic [ref=e217]:
+          - generic [ref=e218]: What's included in the subscription?
+          - paragraph [ref=e219]: "All six 2nd Class papers: step-by-step calculation coaching, guided video explanations, interactive AI tutoring, adaptive practice exams, and progress tracking. Study on any device."
+        - generic [ref=e220]:
+          - generic [ref=e221]: Can I cancel and come back later?
+          - paragraph [ref=e222]: Yes. There are no contracts or minimum terms. Cancel anytime and your study progress is always saved — resubscribe when your schedule allows.
+        - generic [ref=e223]:
+          - generic [ref=e224]: How long does it take to get through a paper?
+          - paragraph [ref=e225]: Most working operators spend 4–8 weeks per paper depending on shift schedule and how much prior review they need. The full course typically runs 6–12 months.
+        - generic [ref=e226]:
+          - generic [ref=e227]: Is this aligned to ABSA and SOPEEC?
+          - paragraph [ref=e228]: Yes. Content is structured around 2nd Class exam objectives as set out by SOPEEC for interprovincial certification. Practice exams reflect how questions are actually marked.
+    - generic [ref=e230]:
+      - generic [ref=e231]:
+        - generic [ref=e232]: Free Tool
+        - heading "Not sure where to start?" [level=2] [ref=e233]
+        - paragraph [ref=e234]: Take the Paper Planner Diagnostic — a free quiz that scores your readiness across all six 2nd Class papers and gives you a recommended attack order. No credit card. No obligation.
+      - generic [ref=e235]:
+        - link "Find Your Paper Order →" [ref=e236] [cursor=pointer]:
+          - /url: https://fsachat.fullsteamahead.ca/?mode=diagnostic
+          - button "Find Your Paper Order →" [ref=e237]
+        - paragraph [ref=e238]: Free · 15–30 minutes · Results saved to your account
+    - generic [ref=e240]:
+      - generic [ref=e241]: Study Resources
+      - heading "Guides & Resources" [level=2] [ref=e242]
+      - paragraph [ref=e243]: Practical exam strategy, study methods, and career insight for working operators preparing for their 2nd Class papers.
+      - generic [ref=e244]:
+        - 'link "Career & Industry 2nd Class Power Engineering Salary: What to Expect in Canada 2nd class power engineering salary in Canada ranges from $90K to $130K+ depending on province and sector. See real numbers by region and… Read →" [ref=e245] [cursor=pointer]':
+          - /url: /articles/2nd-class-power-engineering-salary-canada/
+          - generic [ref=e246]: Career & Industry
+          - 'heading "2nd Class Power Engineering Salary: What to Expect in Canada" [level=3] [ref=e247]'
+          - paragraph [ref=e248]: 2nd class power engineering salary in Canada ranges from $90K to $130K+ depending on province and sector. See real numbers by region and…
+          - generic [ref=e249]: Read →
+        - 'link "Study Methods Past Paper Practice: The Highest-ROI Study Method for 2nd Class Practice with 2nd class power engineering practice exams using real past papers to build pattern recognition, expose weak areas, and… Read →" [ref=e250] [cursor=pointer]':
+          - /url: /articles/past-papers-2nd-class-power-engineering/
+          - generic [ref=e251]: Study Methods
+          - 'heading "Past Paper Practice: The Highest-ROI Study Method for 2nd Class" [level=3] [ref=e252]'
+          - paragraph [ref=e253]: Practice with 2nd class power engineering practice exams using real past papers to build pattern recognition, expose weak areas, and…
+          - generic [ref=e254]: Read →
+        - 'link "Exam Strategy What to Expect on Exam Day: 2nd Class Power Engineering Here is what to expect on your 2nd class power engineering exam day: ID rules, allowed materials, paper format, and common mistakes to… Read →" [ref=e255] [cursor=pointer]':
+          - /url: /articles/2nd-class-exam-day-what-to-expect/
+          - generic [ref=e256]: Exam Strategy
+          - 'heading "What to Expect on Exam Day: 2nd Class Power Engineering" [level=3] [ref=e257]'
+          - paragraph [ref=e258]: "Here is what to expect on your 2nd class power engineering exam day: ID rules, allowed materials, paper format, and common mistakes to…"
+          - generic [ref=e259]: Read →
+        - 'link "Exam Strategy The Complete Guide to Passing Your 2nd Class Power Engineering Exam Learn what to expect on the 2nd class power engineering exam: paper breakdown, scoring, pass rates, common failure points, and how to build… Read →" [ref=e260] [cursor=pointer]':
+          - /url: /articles/2nd-class-power-engineering-exam-guide/
+          - generic [ref=e261]: Exam Strategy
+          - heading "The Complete Guide to Passing Your 2nd Class Power Engineering Exam" [level=3] [ref=e262]
+          - paragraph [ref=e263]: "Learn what to expect on the 2nd class power engineering exam: paper breakdown, scoring, pass rates, common failure points, and how to build…"
+          - generic [ref=e264]: Read →
+      - link "View All Guides →" [ref=e266] [cursor=pointer]:
+        - /url: /articles/
+    - generic [ref=e267]:
+      - heading "Ready to Write? Let's Go." [level=2] [ref=e268]
+      - paragraph [ref=e269]: Join working operators across Canada preparing for their 2nd Class papers. All six papers, one subscription, no contracts — and you can cancel anytime.
+      - link "Get Started Now" [ref=e270] [cursor=pointer]:
+        - /url: /enroll.html
+        - button "Get Started Now" [ref=e271]
+      - paragraph [ref=e272]: $149/month. Cancel anytime. All six papers included. No per-paper charges.
+  - contentinfo [ref=e273]:
+    - generic [ref=e274]:
+      - generic [ref=e275]: Full Steam Ahead
+      - generic [ref=e276]: 2nd Class Power Engineering Exam Prep — Canada
+    - generic [ref=e277]:
+      - link "Privacy Policy" [ref=e278] [cursor=pointer]:
+        - /url: /privacy-policy.html
+      - link "Terms of Use" [ref=e279] [cursor=pointer]:
+        - /url: /terms-of-use.html
+      - link "Contact" [ref=e280] [cursor=pointer]:
+        - /url: mailto:support@fullsteamahead.ca
+    - generic [ref=e281]: © 2025 Full Steam Ahead. All rights reserved.
+  - dialog "Special enrollment offer":
+    - generic:
+      - button "Close offer": ✕ Close
+      - generic: Limited Time Offer
+      - heading "Don't Leave Without Your Discount" [level=2]
+      - paragraph:
+        - text: You're one step from your 2nd Class ticket. Grab
+        - strong: $50 off your first six months
+        - text: — only available right now.
+      - generic:
+        - generic:
+          - text: $50
+          - superscript: "OFF"
+        - generic:
+          - strong: $50 off your first six months
+          - text: 2nd Class Complete — all six papers, AI tutoring, adaptive practice exams.
+      - generic:
+        - button "Claim My $50 Discount →"
+      - paragraph: "* Discount cannot be combined with any other offer."

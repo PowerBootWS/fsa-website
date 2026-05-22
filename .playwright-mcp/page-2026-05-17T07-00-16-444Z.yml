@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Full Steam Ahead" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "Full Steam Ahead" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "How It Works" [ref=e7] [cursor=pointer]:
+          - /url: /how-it-works.html
+      - listitem [ref=e8]:
+        - link "Guides" [ref=e9] [cursor=pointer]:
+          - /url: /articles/
+      - listitem [ref=e10]:
+        - link "Jobs" [ref=e11] [cursor=pointer]:
+          - /url: /jobs.html
+      - listitem [ref=e12]:
+        - link "Account" [ref=e13] [cursor=pointer]:
+          - /url: https://my.fullsteamahead.ca
+      - listitem [ref=e14]:
+        - link "Affiliates" [ref=e15] [cursor=pointer]:
+          - /url: /affiliate.html
+    - link "Start Today →" [ref=e17] [cursor=pointer]:
+      - /url: /enroll.html
+      - button "Start Today →" [ref=e18]
+  - generic [ref=e19]:
+    - heading "Privacy Policy" [level=1] [ref=e20]
+    - paragraph [ref=e21]: "Last Updated: February 17, 2025"
+    - paragraph [ref=e22]: Full Steam Ahead ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.
+    - heading "1. Information We Collect" [level=2] [ref=e23]
+    - paragraph [ref=e24]:
+      - strong [ref=e25]: "Personal Information:"
+      - text: "When you create an account or subscribe to our services, we collect:"
+    - list [ref=e26]:
+      - listitem [ref=e27]: Name and email address
+      - listitem [ref=e28]: Payment information (processed securely through our payment processor)
+      - listitem [ref=e29]: Account credentials
+      - listitem [ref=e30]: Study progress and performance data
+    - paragraph [ref=e31]:
+      - strong [ref=e32]: "Usage Information:"
+      - text: "We automatically collect information about how you interact with our platform, including:"
+    - list [ref=e33]:
+      - listitem [ref=e34]: Course activity and completion data
+      - listitem [ref=e35]: Quiz and practice exam results
+      - listitem [ref=e36]: Time spent on various platform features
+      - listitem [ref=e37]: Device and browser information
+      - listitem [ref=e38]: IP address and general location data
+    - heading "2. How We Use Your Information" [level=2] [ref=e39]
+    - paragraph [ref=e40]: "We use the information we collect to:"
+    - list [ref=e41]:
+      - listitem [ref=e42]: Provide, maintain, and improve our educational platform and services
+      - listitem [ref=e43]: Process your subscription payments and manage your account
+      - listitem [ref=e44]: Track your study progress and adapt content to your learning needs
+      - listitem [ref=e45]: Send you important updates about your account, courses, and platform changes
+      - listitem [ref=e46]: Respond to your questions, comments, and support requests
+      - listitem [ref=e47]: Analyze usage patterns to improve course content and platform functionality
+      - listitem [ref=e48]: Detect and prevent fraud or unauthorized access
+    - heading "3. Information Sharing and Disclosure" [level=2] [ref=e49]
+    - paragraph [ref=e50]: "We do not sell your personal information. We may share your information with:"
+    - list [ref=e51]:
+      - listitem [ref=e52]:
+        - strong [ref=e53]: "Service Providers:"
+        - text: Third-party vendors who assist with payment processing, hosting, analytics, customer support, and other business operations
+      - listitem [ref=e54]:
+        - strong [ref=e55]: "Legal Requirements:"
+        - text: When required by law, regulation, legal process, or governmental request
+      - listitem [ref=e56]:
+        - strong [ref=e57]: "Business Transfers:"
+        - text: In connection with a merger, acquisition, or sale of assets
+      - listitem [ref=e58]:
+        - strong [ref=e59]: "With Your Consent:"
+        - text: When you explicitly authorize us to share specific information
+    - heading "4. Data Security" [level=2] [ref=e60]
+    - paragraph [ref=e61]: We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+    - heading "5. Data Retention" [level=2] [ref=e62]
+    - paragraph [ref=e63]: We retain your personal information for as long as your account is active or as needed to provide you services. If you cancel your subscription, we will retain your data for a reasonable period to allow you to reactivate your account and resume your progress. You may request deletion of your account and associated data by contacting us.
+    - heading "6. Your Rights and Choices" [level=2] [ref=e64]
+    - paragraph [ref=e65]: "You have the right to:"
+    - list [ref=e66]:
+      - listitem [ref=e67]: Access, update, or correct your personal information through your account settings
+      - listitem [ref=e68]: Request deletion of your account and personal data
+      - listitem [ref=e69]: Opt out of marketing communications (you will still receive essential service-related emails)
+      - listitem [ref=e70]: Request a copy of your personal information
+    - heading "7. Cookies and Tracking Technologies" [level=2] [ref=e71]
+    - paragraph [ref=e72]: We use cookies and similar tracking technologies to enhance your experience, analyze usage patterns, and remember your preferences. You can control cookie settings through your browser, though disabling cookies may limit certain platform features.
+    - heading "8. Third-Party Links" [level=2] [ref=e73]
+    - paragraph [ref=e74]: Our platform may contain links to third-party websites or services. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.
+    - heading "9. Children's Privacy" [level=2] [ref=e75]
+    - paragraph [ref=e76]: Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
+    - heading "10. International Data Transfers" [level=2] [ref=e77]
+    - paragraph [ref=e78]: Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place for such transfers in compliance with applicable data protection laws.
+    - heading "11. Changes to This Privacy Policy" [level=2] [ref=e79]
+    - paragraph [ref=e80]: We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on our website with a new "Last Updated" date. Your continued use of our services after such changes constitutes acceptance of the updated policy.
+    - heading "12. Contact Us" [level=2] [ref=e81]
+    - paragraph [ref=e82]: "If you have questions or concerns about this Privacy Policy or our privacy practices, please contact us at:"
+    - paragraph [ref=e83]:
+      - strong [ref=e84]: Full Steam Ahead
+      - text: "Email:"
+      - link "privacy@fullsteamahead.ca" [ref=e85] [cursor=pointer]:
+        - /url: mailto:privacy@fullsteamahead.ca
+  - contentinfo [ref=e86]:
+    - generic [ref=e87]:
+      - generic [ref=e88]: Full Steam Ahead
+      - generic [ref=e89]: 2nd Class Power Engineering Exam Prep — Canada
+    - generic [ref=e90]:
+      - link "Privacy Policy" [ref=e91] [cursor=pointer]:
+        - /url: /privacy-policy.html
+      - link "Terms of Use" [ref=e92] [cursor=pointer]:
+        - /url: /terms-of-use.html
+      - link "Contact" [ref=e93] [cursor=pointer]:
+        - /url: mailto:support@fullsteamahead.ca
+    - generic [ref=e94]: © 2025 Full Steam Ahead. All rights reserved.

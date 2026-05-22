@@ -1,0 +1,296 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Full Steam Ahead" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "Full Steam Ahead" [ref=e4]
+    - generic [ref=e5]:
+      - link "Start Today →" [ref=e6] [cursor=pointer]:
+        - /url: /enroll.html
+        - button "Start Today →" [ref=e7]
+      - button "Open navigation menu" [ref=e8] [cursor=pointer]
+  - list [ref=e13]:
+    - listitem [ref=e14]:
+      - link [ref=e15] [cursor=pointer]:
+        - /url: /how-it-works.html
+        - text: How It Works
+    - listitem [ref=e16]:
+      - link [ref=e17] [cursor=pointer]:
+        - /url: /articles/
+        - text: Guides
+    - listitem [ref=e18]:
+      - link [ref=e19] [cursor=pointer]:
+        - /url: /jobs.html
+        - text: Jobs
+    - listitem [ref=e20]:
+      - link [ref=e21] [cursor=pointer]:
+        - /url: https://my.fullsteamahead.ca
+        - text: Account
+    - listitem [ref=e22]:
+      - link [ref=e23] [cursor=pointer]:
+        - /url: /affiliate.html
+        - text: Affiliates
+  - generic [ref=e25]:
+    - generic [ref=e26]: How It Works
+    - heading "Active Learning, Not Passive Watching" [level=1] [ref=e27]
+    - paragraph [ref=e28]: Most power engineering courses are built for content delivery. Ours is built for exam performance. Every feature is designed around how working operators actually learn — not how a classroom syllabus is structured.
+  - generic [ref=e30]:
+    - generic [ref=e31]: Why This Works Better
+    - heading "Built for Exam Results" [level=2] [ref=e32]
+    - paragraph [ref=e33]: Traditional programs were built for classrooms. This one was built for working operators preparing for SOPEEC exams.
+    - button "Watch program overview video" [ref=e35] [cursor=pointer]: Watch the 45-Second Overview
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]: 🎯
+        - generic [ref=e40]: Step-by-Step Calculation Coaching
+        - paragraph [ref=e41]:
+          - text: Instead of watching a full worked solution, you're guided
+          - strong [ref=e42]: one step at a time
+          - text: — understanding why a formula applies before using it, and separating the decision from the arithmetic. This is how calculations are actually marked on your exam.
+        - generic [ref=e43]:
+          - generic [ref=e44]: Compare
+          - generic [ref=e45]: "❌ Traditional: Watch video, copy answer, move on"
+          - generic [ref=e46]: "✓ Full Steam Ahead: Work through each step with guided feedback"
+      - generic [ref=e47]:
+        - generic [ref=e48]: 🤖
+        - generic [ref=e49]: AI Support That Adapts to You
+        - paragraph [ref=e50]:
+          - text: Stuck on a concept at 11pm after a 12-hour shift? Our
+          - strong [ref=e51]: interactive AI tutor
+          - text: answers your questions in context, explains why you got something wrong, and adapts practice to target your weak spots — not just a random mix of questions.
+        - generic [ref=e52]:
+          - generic [ref=e53]: Compare
+          - generic [ref=e54]: "❌ Traditional: Fixed question bank, static answers"
+          - generic [ref=e55]: "✓ Full Steam Ahead: Ask \"why?\" at the exact moment you're confused"
+      - generic [ref=e56]:
+        - generic [ref=e57]: 🧠
+        - generic [ref=e58]: Built for Retention, Not Exposure
+        - paragraph [ref=e59]:
+          - text: Watching a slide deck gives you exposure. Our model breaks content into
+          - strong [ref=e60]: small logical steps
+          - text: ", walks you through how to think through problems, and reinforces learning immediately. The goal isn't to finish the course — it's to pass the exam."
+        - generic [ref=e61]:
+          - generic [ref=e62]: The common frustration
+          - generic [ref=e63]: "\"I watched all the videos but still don't know how to solve the problem on my own.\""
+      - generic [ref=e64]:
+        - generic [ref=e65]: 📅
+        - generic [ref=e66]: Study at a Realistic Pace
+        - paragraph [ref=e67]:
+          - text: Working 12-hour shifts while raising a family isn't the same as being a full-time student. One subscription, all six papers, study over
+          - strong [ref=e68]: 6–12 months
+          - text: without penalties, repurchases, or fixed timelines. Pause and resume as life allows.
+        - generic [ref=e69]:
+          - generic [ref=e70]: Compare
+          - generic [ref=e71]: "❌ Traditional: ~$1,600/paper, locked timeline, repurchase if plans change"
+          - generic [ref=e72]: "✓ Full Steam Ahead: One price, all papers, your timeline"
+  - generic [ref=e74]:
+    - generic [ref=e75]: What's Included
+    - heading "All Six 2nd Class Exam Papers" [level=2] [ref=e76]
+    - paragraph [ref=e77]: One subscription covers the complete certification — structured around the SOPEEC interprovincial syllabus with no picking and choosing, no surprise add-ons.
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]: Paper 2A1
+        - generic [ref=e81]: Applied Mechanics, ASME Code & Administration
+        - paragraph [ref=e82]: ASME Code calculations for pressure vessels and boilers, applied mechanics including stress/strain and fluid flow, plus industrial administration and management fundamentals.
+        - generic [ref=e83]: Calculation Heavy
+      - generic [ref=e84]:
+        - generic [ref=e85]: Paper 2A2
+        - generic [ref=e86]: Thermodynamics, Metallurgy & Materials Testing
+        - paragraph [ref=e87]: Applied thermodynamics including steam cycles and gas laws, metallurgy fundamentals, heat treatment, welding, corrosion, and non-destructive testing methods.
+        - generic [ref=e88]: Theory + Application
+      - generic [ref=e89]:
+        - generic [ref=e90]: Paper 2A3
+        - generic [ref=e91]: Boilers, Pumps & Water Treatment
+        - paragraph [ref=e92]: Boiler design, construction, operation and inspection procedures, pump applications and maintenance, feedwater treatment, and internal boiler water chemistry control.
+        - generic [ref=e93]: Theory + Application
+      - generic [ref=e94]:
+        - generic [ref=e95]: Paper 2B1
+        - generic [ref=e96]: Heat Engines, Lubrication, Piping & Mechanical Drawing
+        - paragraph [ref=e97]: Steam turbines, internal combustion engines, gas turbines, lubrication systems, piping design and support, plus mechanical drawing interpretation.
+        - generic [ref=e98]: Theory + Application
+      - generic [ref=e99]:
+        - generic [ref=e100]: Paper 2B2
+        - generic [ref=e101]: Power Plant Systems, Instrumentation, Fuels & Environment
+        - paragraph [ref=e102]: Feedwater and steam systems, control instrumentation, combustion and fuels, environmental protection equipment, and emissions monitoring.
+        - generic [ref=e103]: Theory + Application
+      - generic [ref=e104]:
+        - generic [ref=e105]: Paper 2B3
+        - generic [ref=e106]: Electrotechnology, Compression & Refrigeration
+        - paragraph [ref=e107]: AC/DC theory, generators, motors, transformers, electrical protection systems, air and gas compression principles, and industrial refrigeration systems.
+        - generic [ref=e108]: Theory + Application
+    - generic [ref=e109]:
+      - generic [ref=e110]: 💡
+      - generic [ref=e111]: All six papers are included under a single monthly subscription, structured around SOPEEC interprovincial exam objectives. You can study them in any order, focus on your weaker areas, and take as long as you need — the platform adapts to your progress, not the other way around.
+  - generic [ref=e113]:
+    - generic [ref=e114]: Side by Side
+    - heading "How We Stack Up" [level=2] [ref=e115]
+    - paragraph [ref=e116]: Traditional programs were built for classrooms. This one was built for working operators.
+    - table [ref=e117]:
+      - rowgroup [ref=e118]:
+        - row "Feature Traditional Courses Full Steam Ahead" [ref=e119]:
+          - columnheader "Feature" [ref=e120]
+          - columnheader "Traditional Courses" [ref=e121]
+          - columnheader "Full Steam Ahead" [ref=e122]
+      - rowgroup [ref=e123]:
+        - row "Cost per paper ~$1,600 per paper ($9,600+ total) $149/month — all 6 papers included Save Thousands" [ref=e124]:
+          - cell "Cost per paper" [ref=e125]
+          - cell "~$1,600 per paper ($9,600+ total)" [ref=e126]
+          - cell "$149/month — all 6 papers included Save Thousands" [ref=e127]:
+            - text: $149/month — all 6 papers included
+            - generic [ref=e128]: Save Thousands
+        - row "Study timeline Fixed schedule, limited access windows ✓6–12 months at your own pace" [ref=e129]:
+          - cell "Study timeline" [ref=e130]
+          - cell "Fixed schedule, limited access windows" [ref=e131]
+          - cell "✓6–12 months at your own pace" [ref=e132]
+        - row "If plans change Repurchase required ✓Cancel and resume anytime" [ref=e133]:
+          - cell "If plans change" [ref=e134]
+          - cell "Repurchase required" [ref=e135]
+          - cell "✓Cancel and resume anytime" [ref=e136]
+        - row "Learning format Pre-recorded lectures, static slides ✓Guided video + step-by-step interactive problems" [ref=e137]:
+          - cell "Learning format" [ref=e138]
+          - cell "Pre-recorded lectures, static slides" [ref=e139]
+          - cell "✓Guided video + step-by-step interactive problems" [ref=e140]
+        - row "Calculation support Full solutions shown at once ✓Step-by-step coaching with explanation at each stage" [ref=e141]:
+          - cell "Calculation support" [ref=e142]
+          - cell "Full solutions shown at once" [ref=e143]
+          - cell "✓Step-by-step coaching with explanation at each stage" [ref=e144]
+        - row "When you're stuck ✗ Rewatch the video or search forums ✓Ask the AI tutor in context, get an immediate explanation" [ref=e145]:
+          - cell "When you're stuck" [ref=e146]
+          - cell "✗ Rewatch the video or search forums" [ref=e147]
+          - cell "✓Ask the AI tutor in context, get an immediate explanation" [ref=e148]
+        - row "Practice exams Fixed question bank, same every time ✓Adaptive — focuses on what you need to work on most" [ref=e149]:
+          - cell "Practice exams" [ref=e150]
+          - cell "Fixed question bank, same every time" [ref=e151]
+          - cell "✓Adaptive — focuses on what you need to work on most" [ref=e152]
+        - row "Mobile / flexible access Varies; often desktop only ✓Study on any device, on your schedule" [ref=e153]:
+          - cell "Mobile / flexible access" [ref=e154]
+          - cell "Varies; often desktop only" [ref=e155]
+          - cell "✓Study on any device, on your schedule" [ref=e156]
+  - generic [ref=e158]:
+    - generic [ref=e159]: Simple Pricing
+    - heading "One Price. All Papers." [level=2] [ref=e160]
+    - paragraph [ref=e161]: No per-paper charges, no hidden fees, no pressure.
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]: 3rd Class
+        - generic [ref=e165]: Coming Soon
+        - paragraph [ref=e167]: The same active learning approach, built for 3rd Class certification. All papers included.
+        - list [ref=e168]:
+          - listitem [ref=e169]:
+            - generic [ref=e170]: ✓
+            - text: All 3rd Class papers included
+          - listitem [ref=e171]:
+            - generic [ref=e172]: ✓
+            - text: Step-by-step calculation coaching
+          - listitem [ref=e173]:
+            - generic [ref=e174]: ✓
+            - text: Guided video explanations
+          - listitem [ref=e175]:
+            - generic [ref=e176]: ✓
+            - text: Interactive AI tutoring
+          - listitem [ref=e177]:
+            - generic [ref=e178]: ✓
+            - text: Adaptive practice exams
+          - listitem [ref=e179]:
+            - generic [ref=e180]: ✓
+            - text: Cancel anytime
+        - button "Coming Soon" [disabled] [ref=e181]
+      - generic [ref=e182]:
+        - generic [ref=e183]: Available Now
+        - generic [ref=e184]: 2nd Class
+        - generic [ref=e185]:
+          - superscript [ref=e186]: $
+          - text: "149"
+        - generic [ref=e187]: per month — cancel anytime
+        - paragraph [ref=e188]: Full access to all six 2nd Class papers. Study at your pace over 6–12 months with AI-powered support the whole way.
+        - list [ref=e189]:
+          - listitem [ref=e190]:
+            - generic [ref=e191]: ✓
+            - text: All 6 papers — A1, A2, A3, B1, B2, B3
+          - listitem [ref=e192]:
+            - generic [ref=e193]: ✓
+            - text: Step-by-step calculation coaching
+          - listitem [ref=e194]:
+            - generic [ref=e195]: ✓
+            - text: Guided video explanations
+          - listitem [ref=e196]:
+            - generic [ref=e197]: ✓
+            - text: Interactive AI tutoring, anytime
+          - listitem [ref=e198]:
+            - generic [ref=e199]: ✓
+            - text: Adaptive practice exams
+          - listitem [ref=e200]:
+            - generic [ref=e201]: ✓
+            - text: Study on any device
+          - listitem [ref=e202]:
+            - generic [ref=e203]: ✓
+            - text: No fixed timeline or deadlines
+          - listitem [ref=e204]:
+            - generic [ref=e205]: ✓
+            - text: Cancel and resume anytime
+        - link "Start Your Subscription →" [ref=e206] [cursor=pointer]:
+          - /url: /enroll.html
+          - button "Start Your Subscription →" [ref=e207]
+    - generic [ref=e208]: Get it done in six months and you've spent $894 total — less than what a single paper costs elsewhere.
+  - generic [ref=e209]:
+    - heading "Stop Watching. Start Passing." [level=2] [ref=e210]:
+      - text: Stop Watching. Start
+      - emphasis [ref=e211]: Passing.
+    - paragraph [ref=e212]: You've put in the field hours. Now it's time to earn the ticket. Full Steam Ahead is built to get you there — on your schedule, without breaking the bank.
+    - link "Start Your Subscription Today" [ref=e213] [cursor=pointer]:
+      - /url: /enroll.html
+      - button "Start Your Subscription Today" [ref=e214]
+    - paragraph [ref=e215]: Cancel anytime. No contracts. Study on any device.
+  - generic [ref=e217]:
+    - generic [ref=e218]: Common Questions
+    - heading "FAQ" [level=2] [ref=e219]
+    - generic [ref=e220]:
+      - generic [ref=e221]:
+        - generic [ref=e222]: Do I need to study papers in order?
+        - paragraph [ref=e223]: No. You have access to all six papers from day one and can study them in any sequence. Many learners start with their strongest subject to build momentum, then move to the heavier calculation papers.
+      - generic [ref=e224]:
+        - generic [ref=e225]: What if I need more than 12 months?
+        - paragraph [ref=e226]: Just keep your subscription active. There are no penalties for taking longer. The 6–12 month window is a guideline based on typical working operators, not a hard deadline.
+      - generic [ref=e227]:
+        - generic [ref=e228]: How does the AI tutoring work?
+        - paragraph [ref=e229]: When you're working through a problem or concept and get stuck, you can ask a question right in context. The AI explains why — not just what — and adapts follow-up questions to address the specific gap in your understanding.
+      - generic [ref=e230]:
+        - generic [ref=e231]: Can I pause my subscription?
+        - paragraph [ref=e232]: Yes. Life on shift doesn't always allow for steady study time. You can cancel anytime and resubscribe when you're ready — your progress is saved.
+      - generic [ref=e233]:
+        - generic [ref=e234]: Is this aligned to SOPEEC exams?
+        - paragraph [ref=e235]: Yes. Content is structured around 2nd Class exam objectives as set out by SOPEEC for interprovincial certification. The focus is on how problems are actually marked and what examiners are looking for in your solutions.
+      - generic [ref=e236]:
+        - generic [ref=e237]: I've been out of school for years. Will this work for me?
+        - paragraph [ref=e238]: That's exactly who this is built for. The step-by-step approach and AI tutoring are specifically powerful for operators returning to technical study — no assumption of recent classroom experience.
+  - contentinfo [ref=e239]:
+    - generic [ref=e240]:
+      - generic [ref=e241]: Full Steam Ahead
+      - generic [ref=e242]: 2nd Class Power Engineering Exam Prep — Canada
+    - generic [ref=e243]:
+      - link "Privacy Policy" [ref=e244] [cursor=pointer]:
+        - /url: /privacy-policy.html
+      - link "Terms of Use" [ref=e245] [cursor=pointer]:
+        - /url: /terms-of-use.html
+      - link "Contact" [ref=e246] [cursor=pointer]:
+        - /url: mailto:support@fullsteamahead.ca
+    - generic [ref=e247]: © 2025 Full Steam Ahead. All rights reserved.
+  - text: ✕
+  - dialog "Special enrollment offer":
+    - generic:
+      - button "Close offer": ✕ Close
+      - generic: Limited Time Offer
+      - heading "Don't Leave Without Your Discount" [level=2]
+      - paragraph:
+        - text: You're one step from your 2nd Class ticket. Grab
+        - strong: $50 off your first six months
+        - text: — only available right now.
+      - generic:
+        - generic:
+          - text: $50
+          - superscript: "OFF"
+        - generic:
+          - strong: $50 off your first six months
+          - text: 2nd Class Complete — all six papers, AI tutoring, adaptive practice exams.
+      - generic:
+        - button "Claim My $50 Discount →"
+      - paragraph: "* Discount cannot be combined with any other offer."

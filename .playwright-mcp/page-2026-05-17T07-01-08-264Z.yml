@@ -1,0 +1,157 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Full Steam Ahead" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "Full Steam Ahead" [ref=e4]
+    - generic [ref=e5]:
+      - link "Start Today →" [ref=e6] [cursor=pointer]:
+        - /url: /enroll.html
+        - button "Start Today →" [ref=e7]
+      - button "Open navigation menu" [ref=e8] [cursor=pointer]
+  - list [ref=e13]:
+    - listitem [ref=e14]:
+      - link [ref=e15] [cursor=pointer]:
+        - /url: /how-it-works.html
+        - text: How It Works
+    - listitem [ref=e16]:
+      - link [ref=e17] [cursor=pointer]:
+        - /url: /articles/
+        - text: Guides
+    - listitem [ref=e18]:
+      - link [ref=e19] [cursor=pointer]:
+        - /url: /jobs.html
+        - text: Jobs
+    - listitem [ref=e20]:
+      - link [ref=e21] [cursor=pointer]:
+        - /url: https://my.fullsteamahead.ca
+        - text: Account
+    - listitem [ref=e22]:
+      - link [ref=e23] [cursor=pointer]:
+        - /url: /affiliate.html
+        - text: Affiliates
+  - generic [ref=e24]:
+    - heading "Full Steam Ahead Affiliate Program" [level=1] [ref=e25]
+    - paragraph [ref=e26]: Earn while you help working operators succeed
+    - generic [ref=e27]:
+      - paragraph [ref=e28]:
+        - strong [ref=e29]: Already an affiliate?
+        - text: Log in to view your referrals, clicks, and earnings.
+      - link "Go to Affiliate Dashboard →" [ref=e30] [cursor=pointer]:
+        - /url: /affiliate-dashboard.html
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]: 20%
+        - generic [ref=e34]: Recurring Commission
+      - paragraph [ref=e35]: Earn 20% of every monthly payment for every student who enrolls using your affiliate link — for as long as they stay enrolled. No caps. No expiry.
+    - generic [ref=e36]:
+      - heading "Program Details" [level=2] [ref=e37]
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]: Commission Rate
+          - generic [ref=e41]: 20%
+          - generic [ref=e42]: Recurring — paid every month your referral stays enrolled.
+        - generic [ref=e43]:
+          - generic [ref=e44]: Cookie Window
+          - generic [ref=e45]: 90 Days
+          - generic [ref=e46]: If someone clicks your link and subscribes within 90 days, the commission is yours.
+        - generic [ref=e47]:
+          - generic [ref=e48]: Attribution Model
+          - generic [ref=e49]: Last Click
+          - generic [ref=e50]: The most recent affiliate link clicked before checkout receives credit for the referral.
+        - generic [ref=e51]:
+          - generic [ref=e52]: Payout Schedule
+          - generic [ref=e53]: 15th of Month
+          - generic [ref=e54]: Previous month's earnings are deposited automatically. No invoicing required.
+      - paragraph [ref=e55]: "* Minimum $50 balance required for payout. Earnings below $50 carry forward to the following month."
+      - generic [ref=e57]:
+        - generic [ref=e58]: 💳
+        - generic [ref=e59]:
+          - generic [ref=e60]: Payouts via Interac e-Transfer
+          - paragraph [ref=e61]:
+            - text: Commission payments are sent automatically by Interac e-Transfer to the email address on your affiliate account. Keep your email up to date in the
+            - link "affiliate dashboard" [ref=e62] [cursor=pointer]:
+              - /url: /affiliate-dashboard.html
+            - text: .
+    - generic [ref=e63]:
+      - heading "How It Works" [level=2] [ref=e64]
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]: 🔗
+          - generic [ref=e68]: Share Your Link
+          - paragraph [ref=e69]:
+            - text: Sign up through the
+            - link "affiliate dashboard" [ref=e70] [cursor=pointer]:
+              - /url: /affiliate-dashboard.html
+            - text: to get your unique referral link. Share it anywhere — social media, forums, direct messages.
+        - generic [ref=e71]:
+          - generic [ref=e72]: 📊
+          - generic [ref=e73]: Last-Click Tracking
+          - paragraph [ref=e74]: When someone clicks your link, a 90-day cookie is set. If they subscribe within that window, you're credited — even if they don't sign up on the same visit.
+        - generic [ref=e75]:
+          - generic [ref=e76]: 💰
+          - generic [ref=e77]: Earn Every Month
+          - paragraph [ref=e78]: You earn 20% every single month a referred student stays subscribed. One referral can pay you for months or years.
+        - generic [ref=e79]:
+          - generic [ref=e80]: 🤝
+          - generic [ref=e81]: Help Your Network
+          - paragraph [ref=e82]: Recommend a program built for working operators preparing for their 2nd Class exam — a product your network will genuinely value.
+    - generic [ref=e83]:
+      - heading "Example Earnings" [level=2] [ref=e84]
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e87]: Referred Students
+          - generic [ref=e88]: Monthly Revenue
+          - generic [ref=e89]: Annual Earnings
+        - generic [ref=e90]:
+          - generic [ref=e91]: 5 students
+          - generic [ref=e92]: $149/mo
+          - generic [ref=e93]: $1,788/yr
+        - generic [ref=e94]:
+          - generic [ref=e95]: 10 students
+          - generic [ref=e96]: $298/mo
+          - generic [ref=e97]: $3,576/yr
+        - generic [ref=e98]:
+          - generic [ref=e99]: 25 students
+          - generic [ref=e100]: $745/mo
+          - generic [ref=e101]: $8,940/yr
+      - paragraph [ref=e102]: "* Based on $149/month subscription. Earnings continue for as long as referred students remain enrolled."
+    - generic [ref=e103]:
+      - heading "Common Questions" [level=2] [ref=e104]
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]: Do referral commissions expire?
+          - generic [ref=e108]: No. As long as your referred subscriber stays enrolled, you keep earning 20% every month. There is no time limit on recurring commissions.
+        - generic [ref=e109]:
+          - generic [ref=e110]: What is last-click attribution?
+          - generic [ref=e111]: If a potential subscriber clicks multiple affiliate links before signing up, the commission goes to the affiliate whose link was clicked last. This is the standard model used across most affiliate platforms.
+        - generic [ref=e112]:
+          - generic [ref=e113]: What if someone doesn't subscribe right away?
+          - generic [ref=e114]: If they click your link and subscribe anytime within 90 days, the commission is credited to you. You don't need them to sign up on the same visit.
+        - generic [ref=e115]:
+          - generic [ref=e116]: When are payouts processed?
+          - generic [ref=e117]: On the 15th of each month for the previous month's earnings. Commissions earned in April are paid on May 15th via Interac e-Transfer. A minimum $50 balance is required for a payout — amounts below that carry forward.
+        - generic [ref=e118]:
+          - generic [ref=e119]: What happens if a subscriber cancels?
+          - generic [ref=e120]: Commissions are paid on successful subscription payments. If a subscriber cancels or receives a refund on a future payment, no commission is earned on that specific transaction.
+        - generic [ref=e121]:
+          - generic [ref=e122]: How do I track my referrals?
+          - generic [ref=e123]:
+            - text: Log in to your
+            - link "affiliate dashboard" [ref=e124] [cursor=pointer]:
+              - /url: /affiliate-dashboard.html
+            - text: to see clicks, referrals, and earnings in real time. Everything is tracked automatically — no manual reporting needed.
+    - paragraph [ref=e125]: Commissions are tracked exclusively through your unique affiliate link. Subscriptions that originate without it cannot be credited to your account. Share your link — it's the only way we can accurately attribute referrals to you.
+    - link "Access Your Affiliate Dashboard →" [ref=e127] [cursor=pointer]:
+      - /url: /affiliate-dashboard.html
+  - contentinfo [ref=e128]:
+    - generic [ref=e129]:
+      - generic [ref=e130]: Full Steam Ahead
+      - generic [ref=e131]: 2nd Class Power Engineering Exam Prep — Canada
+    - generic [ref=e132]:
+      - link "Privacy Policy" [ref=e133] [cursor=pointer]:
+        - /url: /privacy-policy.html
+      - link "Terms of Use" [ref=e134] [cursor=pointer]:
+        - /url: /terms-of-use.html
+      - link "Contact" [ref=e135] [cursor=pointer]:
+        - /url: mailto:support@fullsteamahead.ca
+    - generic [ref=e136]: © 2025 Full Steam Ahead. All rights reserved.
