@@ -2661,6 +2661,29 @@ footer {
   box-shadow: 0 4px 14px rgba(232, 114, 12, 0.25);
 }
 
+/* ── Filter button job count ── */
+.filter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.filter-btn-count {
+  display: block;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--gray-dark);
+  line-height: 1;
+}
+
+.filter-btn.active .filter-btn-count {
+  color: rgba(255,255,255,0.75);
+}
+
 .jobs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

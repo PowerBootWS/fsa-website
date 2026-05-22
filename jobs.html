@@ -137,14 +137,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Filters -->
     <div class="jobs-filters reveal" id="jobs-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="1st Class">1st Class</button>
-      <button class="filter-btn" data-filter="2nd Class">2nd Class</button>
-      <button class="filter-btn" data-filter="3rd Class">3rd Class</button>
-      <button class="filter-btn" data-filter="4th Class">4th Class</button>
-      <button class="filter-btn" data-filter="5th Class">5th Class</button>
-      <button class="filter-btn" data-filter="Chief Engineer">Chief</button>
-      <button class="filter-btn" data-filter="Other">Other</button>
+      <button class="filter-btn active" data-filter="all"><span class="filter-btn-label">All</span><span class="filter-btn-count" id="fcount-all"></span></button>
+      <button class="filter-btn" data-filter="1st Class"><span class="filter-btn-label">1st Class</span><span class="filter-btn-count" id="fcount-1st"></span></button>
+      <button class="filter-btn" data-filter="2nd Class"><span class="filter-btn-label">2nd Class</span><span class="filter-btn-count" id="fcount-2nd"></span></button>
+      <button class="filter-btn" data-filter="3rd Class"><span class="filter-btn-label">3rd Class</span><span class="filter-btn-count" id="fcount-3rd"></span></button>
+      <button class="filter-btn" data-filter="4th Class"><span class="filter-btn-label">4th Class</span><span class="filter-btn-count" id="fcount-4th"></span></button>
+      <button class="filter-btn" data-filter="5th Class"><span class="filter-btn-label">5th Class</span><span class="filter-btn-count" id="fcount-5th"></span></button>
+      <button class="filter-btn" data-filter="Chief Engineer"><span class="filter-btn-label">Chief</span><span class="filter-btn-count" id="fcount-chief"></span></button>
+      <button class="filter-btn" data-filter="Other"><span class="filter-btn-label">Other</span><span class="filter-btn-count" id="fcount-other"></span></button>
     </div>
 
     <!-- Loading state -->
@@ -337,6 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           .then(function (jobs) {
             allJobs = jobs;
             populateProvinces();
+            updateFilterCounts();
             if (currentProvince) {
               var sel = document.getElementById('jobs-province');
               if (sel) sel.value = currentProvince;
@@ -349,6 +350,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             loading.style.display = 'none';
             error.style.display = 'block';
           });
+      }
+
+      // ── Update filter counts ──
+      function updateFilterCounts() {
+        var classCounts = { 'all': allJobs.length };
+        var namedClasses = ['1st Class', '2nd Class', '3rd Class', '4th Class', '5th Class', 'Chief Engineer'];
+        namedClasses.forEach(function (cls) { classCounts[cls] = 0; });
+        classCounts['Other'] = 0;
+        allJobs.forEach(function (j) {
+          var levels = Array.isArray(j.class_level) ? j.class_level : [j.class_level];
+          var matched = false;
+          namedClasses.forEach(function (cls) {
+            if (levels.indexOf(cls) !== -1) { classCounts[cls]++; matched = true; }
+          });
+          if (!matched) classCounts['Other']++;
+        });
+        var map = {
+          'fcount-all': classCounts['all'],
+          'fcount-1st': classCounts['1st Class'],
+          'fcount-2nd': classCounts['2nd Class'],
+          'fcount-3rd': classCounts['3rd Class'],
+          'fcount-4th': classCounts['4th Class'],
+          'fcount-5th': classCounts['5th Class'],
+          'fcount-chief': classCounts['Chief Engineer'],
+          'fcount-other': classCounts['Other']
+        };
+        Object.keys(map).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = map[id] > 0 ? map[id] : '';
+        });
       }
 
       // ── Render list ──
