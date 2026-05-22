@@ -225,6 +225,8 @@ nav.scrolled {
 .nav-dropdown-menu a:focus {
   color: var(--white);
   background: var(--plate);
+}
+.nav-dropdown-menu a:focus:not(:focus-visible) {
   outline: none;
 }
 
