@@ -145,6 +145,7 @@ nav.scrolled {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 2rem;
   list-style: none;
   font-size: 0.9rem;
