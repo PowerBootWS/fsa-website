@@ -143,7 +143,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="filter-btn" data-filter="3rd Class"><span class="filter-btn-label">3rd Class</span><span class="filter-btn-count" id="fcount-3rd"></span></button>
       <button class="filter-btn" data-filter="4th Class"><span class="filter-btn-label">4th Class</span><span class="filter-btn-count" id="fcount-4th"></span></button>
       <button class="filter-btn" data-filter="5th Class"><span class="filter-btn-label">5th Class</span><span class="filter-btn-count" id="fcount-5th"></span></button>
-      <button class="filter-btn" data-filter="Chief Engineer"><span class="filter-btn-label">Chief</span><span class="filter-btn-count" id="fcount-chief"></span></button>
       <button class="filter-btn" data-filter="Other"><span class="filter-btn-label">Other</span><span class="filter-btn-count" id="fcount-other"></span></button>
     </div>
 
@@ -355,7 +354,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // ── Update filter counts ──
       function updateFilterCounts() {
         var classCounts = { 'all': allJobs.length };
-        var namedClasses = ['1st Class', '2nd Class', '3rd Class', '4th Class', '5th Class', 'Chief Engineer'];
+        var namedClasses = ['1st Class', '2nd Class', '3rd Class', '4th Class', '5th Class'];
         namedClasses.forEach(function (cls) { classCounts[cls] = 0; });
         classCounts['Other'] = 0;
         allJobs.forEach(function (j) {
@@ -373,7 +372,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           'fcount-3rd': classCounts['3rd Class'],
           'fcount-4th': classCounts['4th Class'],
           'fcount-5th': classCounts['5th Class'],
-          'fcount-chief': classCounts['Chief Engineer'],
           'fcount-other': classCounts['Other']
         };
         Object.keys(map).forEach(function (id) {
