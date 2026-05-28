@@ -156,6 +156,91 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         padding: 3.5rem 1.25rem 3rem;
       }
     }
+
+    /* Checkout form card */
+    .checkout-form-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .checkout-form-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.35rem;
+    }
+    .checkout-form-sub {
+      font-size: 0.88rem;
+      color: var(--gray-mid);
+      margin: 0 0 1.5rem;
+    }
+    .checkout-field {
+      margin-bottom: 1rem;
+    }
+    .checkout-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-mid);
+      margin-bottom: 0.4rem;
+    }
+    .checkout-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.85rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .checkout-input:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+    .checkout-input::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+    .checkout-error {
+      font-size: 0.85rem;
+      color: #f87171;
+      margin: 0 0 0.75rem;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .checkout-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .checkout-fine {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin: 1rem 0 0;
+      text-align: center;
+      opacity: 0.7;
+    }
   </style>
   <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="885" async defer></script>
 </head>
@@ -240,17 +325,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="enroll-fine">$149/month &middot; Cancel anytime &middot; No contracts &middot; All six papers included</p>
       </div>
 
-      <!-- Right: Stripe checkout -->
-      <div class="enroll-form-wrap reveal" data-delay="60" style="display:flex;align-items:center;justify-content:center;">
-        <div style="text-align:center;">
-          <p style="font-size:1.1rem;margin-bottom:1.5rem;opacity:0.85;">Ready to get started? Secure checkout via Stripe.</p>
-          <a href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:inline-block;background:#E8720C;color:#fff;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;letter-spacing:0.03em;">Start Your Subscription →</a>
-          <p style="margin-top:1rem;font-size:0.85rem;opacity:0.6;">Cancel anytime. Billed monthly.</p>
+      <!-- Right: Lead capture form -->
+      <div class="enroll-form-wrap reveal" data-delay="60">
+        <div class="checkout-form-card">
+          <p class="checkout-form-heading">Create your account to continue</p>
+          <p class="checkout-form-sub">Takes 30 seconds. Secure checkout via Stripe.</p>
+          <form id="checkout-form" novalidate>
+            <div class="checkout-field">
+              <label class="checkout-label" for="cf-first">First Name</label>
+              <input class="checkout-input" type="text" id="cf-first" name="firstName" autocomplete="given-name" required placeholder="e.g. Jordan">
+            </div>
+            <div class="checkout-field">
+              <label class="checkout-label" for="cf-last">Last Name</label>
+              <input class="checkout-input" type="text" id="cf-last" name="lastName" autocomplete="family-name" required placeholder="e.g. MacLeod">
+            </div>
+            <div class="checkout-field">
+              <label class="checkout-label" for="cf-email">Email Address</label>
+              <input class="checkout-input" type="email" id="cf-email" name="email" autocomplete="email" required placeholder="you@example.com">
+            </div>
+            <p class="checkout-error" id="checkout-error" style="display:none;"></p>
+            <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
+          </form>
+          <p class="checkout-fine">$149/month &middot; Cancel anytime &middot; No contracts</p>
+          <!-- Hidden Stripe link — Refgrow JS intercepts clicks on .refgrow-stripe-payment-link to append client_reference_id for affiliate tracking -->
+          <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
       </div>
 
     </div>
   </section>
+
+  <script>
+    (function () {
+      var form = document.getElementById('checkout-form');
+      var btn = document.getElementById('checkout-btn');
+      var errorEl = document.getElementById('checkout-error');
+      var stripeLink = document.getElementById('stripe-proceed');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var firstName = document.getElementById('cf-first').value.trim();
+        var lastName = document.getElementById('cf-last').value.trim();
+        var email = document.getElementById('cf-email').value.trim().toLowerCase();
+
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+
+        if (!firstName || !lastName || !email) {
+          errorEl.textContent = 'Please fill in all fields.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Creating your account…';
+
+        fetch('https://fsa-lead-capture.powerboot.workers.dev/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email })
+        })
+        .then(function (res) {
+          if (!res.ok) { throw new Error('server'); }
+          return res.json();
+        })
+        .then(function (data) {
+          if (!data.success) { throw new Error('server'); }
+          var url = new URL(stripeLink.href);
+          url.searchParams.set('prefilled_email', email);
+          stripeLink.href = url.toString();
+          stripeLink.click();
+        })
+        .catch(function () {
+          errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
+          errorEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Create Account & Continue →';
+        });
+      });
+    }());
+  </script>
 
   <!-- Scroll reveal -->
   <script>
