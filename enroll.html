@@ -372,6 +372,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           errorEl.style.display = 'block';
           return;
         }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = 'block';
+          return;
+        }
 
         btn.disabled = true;
         btn.textContent = 'Creating your account…';
