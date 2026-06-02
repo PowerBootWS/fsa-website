@@ -2,11 +2,11 @@
 """
 Google Analytics 4 — Traffic reports.
 
-Requires a separate auth token (different scope from GSC). On first run, a browser
-window opens for OAuth consent and saves google_token_ga4.json.
+On first run, opens a browser OAuth consent flow and saves google_token_ga4.json.
+VS Code SSH port forwarding handles localhost:8888 transparently.
 
-The GA4 property ID can be passed via --property-id, set in the environment as
-GA4_PROPERTY_ID, or looked up in GA4 Admin → Property Settings.
+The GA4 property ID can be passed via --property-id or set as GA4_PROPERTY_ID
+in the environment. Find it in GA4 Admin → Property Settings.
 
 Usage:
   python3 scripts/query_ga4.py --top-pages [--days 30] [--limit 20]
@@ -185,13 +185,17 @@ def main():
         print_pages_table(response)
 
     elif args.summary:
-        response = run_report(
-            client, property_id,
-            dimensions=["date"],
-            metrics=["sessions", "screenPageViews", "activeUsers", "engagementRate"],
-            date_range=args.days,
-            limit=1,
-        )
+        from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Metric
+        response = client.run_report(RunReportRequest(
+            property=f"properties/{property_id}",
+            date_ranges=[DateRange(start_date=f"{args.days}daysAgo", end_date="yesterday")],
+            metrics=[
+                Metric(name="sessions"),
+                Metric(name="screenPageViews"),
+                Metric(name="activeUsers"),
+                Metric(name="engagementRate"),
+            ],
+        ))
         print_summary(response)
 
     print()
