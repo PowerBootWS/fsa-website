@@ -5,7 +5,7 @@ services:
     ports:
       - "8087:80"
     restart: unless-stopped
-    env_file: /home/debian/projects/fsa/.env
+    env_file: /home/debian/.env
     networks:
       - cloudflare
 
