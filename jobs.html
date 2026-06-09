@@ -21,6 +21,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
 <!-- End Google Tag Manager -->
 
+  <!-- GA4 direct — event tracking only; GTM owns pageviews (send_page_view: false prevents double-count) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZFF5FB8R8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5ZFF5FB8R8', { send_page_view: false });
+  </script>
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Full Steam Ahead">
   <meta property="og:title" content="Power Engineering Jobs in Canada | Full Steam Ahead">
@@ -116,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <strong class="jobs-promo-headline">Unlock higher-paying roles with a 2nd Class ticket</strong>
         <span class="jobs-promo-sub">Full Steam Ahead offers structured exam prep to get you there.</span>
       </div>
-      <a href="/enroll.html" class="jobs-promo-cta">Learn More &rarr;</a>
+      <a href="/enroll.html" class="jobs-promo-cta" onclick="gtag('event', 'jobs_banner_click', { event_category: 'CTA', event_label: 'Jobs Page Promo Banner' })">Learn More &rarr;</a>
     </div>
 
     <!-- Search bar -->
