@@ -65,10 +65,14 @@ def get_property_id(arg_value):
     return pid.lstrip("properties/")
 
 
+MARKETING_HOSTNAME = "fullsteamahead.ca"
+
+
 def run_report(client, property_id, dimensions, metrics, date_range, limit=20, dimension_filter=None):
     try:
         from google.analytics.data_v1beta.types import (
-            RunReportRequest, DateRange, Dimension, Metric, OrderBy, FilterExpression, Filter
+            RunReportRequest, DateRange, Dimension, Metric, OrderBy,
+            FilterExpression, Filter, FilterExpressionList
         )
     except ImportError:
         print("ERROR: pip3 install google-analytics-data")
@@ -76,17 +80,21 @@ def run_report(client, property_id, dimensions, metrics, date_range, limit=20, d
 
     order_bys = [OrderBy(metric=OrderBy.MetricOrderBy(metric_name=metrics[0]), desc=True)]
 
-    request_kwargs = dict(
-        property=f"properties/{property_id}",
-        date_ranges=[DateRange(start_date=f"{date_range}daysAgo", end_date="yesterday")],
-        dimensions=[Dimension(name=d) for d in dimensions],
-        metrics=[Metric(name=m) for m in metrics],
-        order_bys=order_bys,
-        limit=limit,
+    # Always restrict to the marketing site — excludes my.fullsteamahead.ca (GHL LMS),
+    # enrollment.fullsteamahead.ca, and any other subdomains that have the GTM tag.
+    hostname_fe = FilterExpression(
+        filter=Filter(
+            field_name="hostName",
+            string_filter=Filter.StringFilter(
+                match_type=Filter.StringFilter.MatchType.EXACT,
+                value=MARKETING_HOSTNAME,
+            )
+        )
     )
+
     if dimension_filter:
         dim_name, contains_value = dimension_filter
-        request_kwargs["dimension_filter"] = FilterExpression(
+        page_fe = FilterExpression(
             filter=Filter(
                 field_name=dim_name,
                 string_filter=Filter.StringFilter(
@@ -95,6 +103,21 @@ def run_report(client, property_id, dimensions, metrics, date_range, limit=20, d
                 )
             )
         )
+        combined_filter = FilterExpression(
+            and_group=FilterExpressionList(expressions=[hostname_fe, page_fe])
+        )
+    else:
+        combined_filter = hostname_fe
+
+    request_kwargs = dict(
+        property=f"properties/{property_id}",
+        date_ranges=[DateRange(start_date=f"{date_range}daysAgo", end_date="yesterday")],
+        dimensions=[Dimension(name=d) for d in dimensions],
+        metrics=[Metric(name=m) for m in metrics],
+        order_bys=order_bys,
+        limit=limit,
+        dimension_filter=combined_filter,
+    )
 
     return client.run_report(RunReportRequest(**request_kwargs))
 
@@ -123,6 +146,32 @@ def print_pages_table(response):
     print(f"  {'TOTAL':<46}  {total_sessions:>9,}  {total_views:>7,}")
 
 
+def print_sources_table(response):
+    rows = response.rows
+    if not rows:
+        print("No data found.")
+        return
+
+    print(f"\n{'─' * 75}")
+    print(f"  {'#':>3}  {'Source / Medium':<38}  {'Sessions':>9}  {'Views':>7}  {'Eng.Dur':>8}")
+    print(f"{'─' * 75}")
+
+    for i, row in enumerate(rows, 1):
+        source = row.dimension_values[0].value
+        medium = row.dimension_values[1].value
+        label = f"{source} / {medium}"
+        sessions = int(row.metric_values[0].value)
+        views = int(row.metric_values[1].value)
+        eng_secs = float(row.metric_values[2].value)
+        eng_min = f"{int(eng_secs // 60)}m{int(eng_secs % 60):02d}s"
+        print(f"  {i:>3}  {label:<38}  {sessions:>9,}  {views:>7,}  {eng_min:>8}")
+
+    print(f"{'─' * 75}")
+    total_sessions = sum(int(r.metric_values[0].value) for r in rows)
+    total_views = sum(int(r.metric_values[1].value) for r in rows)
+    print(f"  {'TOTAL':<42}  {total_sessions:>9,}  {total_views:>7,}")
+
+
 def print_summary(response):
     rows = response.rows
     if not rows:
@@ -145,6 +194,7 @@ def main():
     group.add_argument("--top-pages", action="store_true", help="Top pages by sessions")
     group.add_argument("--page", metavar="PATH", help="Stats for a specific page path")
     group.add_argument("--summary", action="store_true", help="Site-wide summary metrics")
+    group.add_argument("--sources", metavar="PATH", help="Traffic source breakdown for a page path")
     parser.add_argument("--days", type=int, default=28, help="Lookback window in days (default: 28)")
     parser.add_argument("--limit", type=int, default=20, help="Number of rows (default: 20)")
     parser.add_argument("--property-id", metavar="ID", help="GA4 property ID (or set GA4_PROPERTY_ID env var)")
@@ -184,8 +234,31 @@ def main():
         )
         print_pages_table(response)
 
+    elif args.sources:
+        print(f"Page filter: {args.sources}")
+        response = run_report(
+            client, property_id,
+            dimensions=["sessionSource", "sessionMedium"],
+            metrics=["sessions", "screenPageViews", "averageSessionDuration"],
+            date_range=args.days,
+            limit=args.limit,
+            dimension_filter=("pagePath", args.sources),
+        )
+        print_sources_table(response)
+
     elif args.summary:
-        from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Metric
+        from google.analytics.data_v1beta.types import (
+            RunReportRequest, DateRange, Metric, FilterExpression, Filter
+        )
+        hostname_fe = FilterExpression(
+            filter=Filter(
+                field_name="hostName",
+                string_filter=Filter.StringFilter(
+                    match_type=Filter.StringFilter.MatchType.EXACT,
+                    value=MARKETING_HOSTNAME,
+                )
+            )
+        )
         response = client.run_report(RunReportRequest(
             property=f"properties/{property_id}",
             date_ranges=[DateRange(start_date=f"{args.days}daysAgo", end_date="yesterday")],
@@ -195,6 +268,7 @@ def main():
                 Metric(name="activeUsers"),
                 Metric(name="engagementRate"),
             ],
+            dimension_filter=hostname_fe,
         ))
         print_summary(response)
 
