@@ -238,6 +238,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }());
   </script>
 
+  <!-- Job Alerts Sign-up Modal -->
+  <div class="jobs-alert-modal-overlay" id="jobs-alert-modal" role="dialog" aria-modal="true" aria-labelledby="jobs-alert-modal-title" aria-hidden="true">
+    <div class="jobs-alert-modal-inner">
+      <button class="jobs-alert-modal-close" id="jobs-alert-modal-close" type="button">&#10005; Close</button>
+      <h2 class="jobs-alert-modal-title" id="jobs-alert-modal-title">Set up job alerts</h2>
+      <p class="jobs-alert-modal-sub">Get a curated list of power engineering jobs matched to your class and province &mdash; delivered daily or weekly.</p>
+      <form class="jobs-alert-form" id="jobs-alert-form" novalidate>
+        <div class="jobs-alert-form-row">
+          <label class="jobs-alert-label">First name
+            <input class="jobs-alert-input" type="text" name="firstName" autocomplete="given-name" required>
+          </label>
+          <label class="jobs-alert-label">Last name
+            <input class="jobs-alert-input" type="text" name="lastName" autocomplete="family-name" required>
+          </label>
+        </div>
+        <label class="jobs-alert-label">Email
+          <input class="jobs-alert-input" type="email" name="email" autocomplete="email" required>
+        </label>
+        <fieldset class="jobs-alert-fieldset">
+          <legend>Which class(es)?</legend>
+          <div class="jobs-alert-checkbox-group">
+            <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="5th Class"> 5th Class</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="4th Class"> 4th Class</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="3rd Class"> 3rd Class</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="2nd Class"> 2nd Class</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="1st Class"> 1st Class</label>
+          </div>
+        </fieldset>
+        <fieldset class="jobs-alert-fieldset">
+          <legend>Province &mdash; leave all unchecked for all provinces</legend>
+          <div class="jobs-alert-provinces-scroll">
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Alberta"> Alberta</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="British Columbia"> British Columbia</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Saskatchewan"> Saskatchewan</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Manitoba"> Manitoba</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Ontario"> Ontario</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Quebec"> Quebec</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="New Brunswick"> New Brunswick</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Nova Scotia"> Nova Scotia</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Prince Edward Island"> Prince Edward Island</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Newfoundland and Labrador"> Newfoundland and Labrador</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Yukon"> Yukon</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Northwest Territories"> Northwest Territories</label>
+            <label class="jobs-alert-check-label"><input type="checkbox" name="provinces" value="Nunavut"> Nunavut</label>
+          </div>
+        </fieldset>
+        <fieldset class="jobs-alert-fieldset">
+          <legend>Frequency</legend>
+          <div class="jobs-alert-frequency-row">
+            <label class="jobs-alert-check-label"><input type="radio" name="frequency" value="daily" checked> Daily</label>
+            <label class="jobs-alert-check-label"><input type="radio" name="frequency" value="weekly"> Weekly</label>
+          </div>
+        </fieldset>
+        <button class="jobs-alert-submit" type="submit" id="jobs-alert-submit">Subscribe to job alerts</button>
+        <p class="jobs-alert-consent">By subscribing, you agree to receive job alert emails and occasional course and industry updates from Full Steam Ahead. You can unsubscribe at any time. <a href="/privacy-policy.html">Privacy Policy</a></p>
+        <p class="jobs-alert-feedback" id="jobs-alert-feedback"></p>
+      </form>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div>
@@ -274,6 +334,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var currentFilter = 'all';
       var currentSearch = '';
       var currentProvince = '';
+      var alertSubscribed = !!localStorage.getItem('fsa-jobs-alerts-subscribed');
+      var alertModal = document.getElementById('jobs-alert-modal');
 
       // ── Filter state URL helpers ──
       function filterParams() {
@@ -389,6 +451,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
 
+      // ── Alert card builder ──
+      function buildAlertCard() {
+        if (alertSubscribed) {
+          return '<div class="job-alert-card is-subscribed">' +
+            '<span class="job-alert-subscribed-mark">&#10003; You\'re subscribed</span>' +
+            '<p class="job-alert-subscribed-body">Job alerts are active. Check your inbox.</p>' +
+            '</div>';
+        }
+        return '<div class="job-alert-card">' +
+          '<div class="job-alert-card-icon">&#9993;</div>' +
+          '<h3 class="job-alert-card-title">Get these jobs in your inbox</h3>' +
+          '<p class="job-alert-card-body">We\'ll send you a curated list of power engineering jobs matched to your class and province &mdash; daily or weekly.</p>' +
+          '<button class="job-alert-card-btn" type="button">Set up job alerts &rarr;</button>' +
+          '</div>';
+      }
+
       // ── Render list ──
       function renderList() {
         var q = currentSearch.trim().toLowerCase();
@@ -417,10 +495,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         grid.style.display = 'grid';
         empty.style.display = 'none';
-        grid.innerHTML = filtered.map(function (job) {
+        var items = filtered.map(function (job) {
           var logoHtml = job.employer_logo_url
             ? '<img src="' + escapeHtml(job.employer_logo_url) + '" alt="" class="job-card-logo">'
-            : '<div class="job-card-logo-placeholder">🏭</div>';
+            : '<div class="job-card-logo-placeholder">&#127981;</div>';
           var dateHtml = job.first_seen
             ? '<div class="job-card-date">Added ' + escapeHtml(formatDate(job.first_seen)) + '</div>'
             : '';
@@ -436,7 +514,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               dateHtml +
             '</a>'
           );
-        }).join('');
+        });
+        var alertCard = buildAlertCard();
+        if (items.length > 4) items.splice(4, 0, alertCard);
+        if (items.length > 14) items.splice(14, 0, alertCard);
+        grid.innerHTML = items.join('');
       }
 
       // ── Render detail ──
@@ -645,6 +727,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               submitBtn.textContent = 'Submit Report';
             });
         };
+      }
+
+      // ── Job alert modal ──
+      grid.addEventListener('click', function (e) {
+        if (e.target.classList.contains('job-alert-card-btn')) {
+          openAlertModal();
+        }
+      });
+
+      document.getElementById('jobs-alert-modal-close').addEventListener('click', closeAlertModal);
+
+      alertModal.addEventListener('click', function (e) {
+        if (e.target === alertModal) closeAlertModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && alertModal.classList.contains('is-open')) closeAlertModal();
+      });
+
+      function openAlertModal() {
+        if (currentFilter && currentFilter !== 'all') {
+          alertModal.querySelectorAll('input[name="classes"]').forEach(function (cb) {
+            cb.checked = cb.value === currentFilter;
+          });
+        }
+        alertModal.classList.add('is-open');
+        alertModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var first = alertModal.querySelector('input[name="firstName"]');
+        if (first) first.focus();
+      }
+
+      function closeAlertModal() {
+        alertModal.classList.remove('is-open');
+        alertModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('jobs-alert-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var form = e.target;
+        var feedback = document.getElementById('jobs-alert-feedback');
+        var submitBtn = document.getElementById('jobs-alert-submit');
+
+        var firstName = form.querySelector('[name="firstName"]').value.trim();
+        var lastName = form.querySelector('[name="lastName"]').value.trim();
+        var email = form.querySelector('[name="email"]').value.trim();
+        var classes = Array.from(form.querySelectorAll('input[name="classes"]:checked')).map(function (cb) { return cb.value; });
+        var provinces = Array.from(form.querySelectorAll('input[name="provinces"]:checked')).map(function (cb) { return cb.value; });
+        var freqEl = form.querySelector('input[name="frequency"]:checked');
+        var frequency = freqEl ? freqEl.value : 'daily';
+
+        if (!firstName || !lastName) { setFeedback(feedback, 'Please enter your first and last name.', 'error'); return; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setFeedback(feedback, 'Please enter a valid email address.', 'error'); return; }
+        if (classes.length === 0) { setFeedback(feedback, 'Please select at least one class.', 'error'); return; }
+        if (provinces.length === 0) provinces = ['all'];
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing…';
+        feedback.textContent = '';
+        feedback.className = 'jobs-alert-feedback';
+
+        fetch(API_BASE + '/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, classes: classes, provinces: provinces, frequency: frequency })
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Subscribe to job alerts';
+            if (data.success) {
+              localStorage.setItem('fsa-jobs-alerts-subscribed', '1');
+              alertSubscribed = true;
+              if (typeof gtag === 'function') {
+                gtag('event', 'jobs_alert_subscribe', { event_category: 'Lead', event_label: frequency });
+              }
+              closeAlertModal();
+              renderList();
+            } else {
+              setFeedback(feedback, data.error || 'Something went wrong. Please try again.', 'error');
+            }
+          })
+          .catch(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Subscribe to job alerts';
+            setFeedback(feedback, 'Unable to subscribe right now. Please try again.', 'error');
+          });
+      });
+
+      function setFeedback(el, msg, type) {
+        el.textContent = msg;
+        el.className = 'jobs-alert-feedback is-' + type;
       }
 
       // ── Filter buttons ──

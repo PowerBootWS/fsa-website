@@ -3604,3 +3604,290 @@ footer {
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
 }
+
+/* ── JOB ALERT SIGN-UP CARD ── */
+.job-alert-card {
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-bottom: 3px solid var(--orange);
+  border-radius: 0;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.job-alert-card-icon {
+  font-size: 1.4rem;
+  color: var(--orange);
+}
+
+.job-alert-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.job-alert-card-body {
+  font-size: 0.82rem;
+  color: var(--gray-light);
+  flex: 1;
+  line-height: 1.5;
+}
+
+.job-alert-card-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+
+.job-alert-card-btn:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.job-alert-card.is-subscribed {
+  border-bottom-color: var(--green-light);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 130px;
+  gap: 0.4rem;
+}
+
+.job-alert-subscribed-mark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.job-alert-subscribed-body {
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+}
+
+/* ── JOB ALERT MODAL ── */
+.jobs-alert-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(5,9,15,0.93);
+  backdrop-filter: blur(6px);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  overflow-y: auto;
+}
+
+.jobs-alert-modal-overlay.is-open {
+  display: flex;
+}
+
+.jobs-alert-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-top: 3px solid var(--orange);
+  padding: 2rem;
+  box-shadow: 0 0 80px rgba(0,0,0,0.8);
+  margin: auto;
+}
+
+.jobs-alert-modal-close {
+  position: absolute;
+  top: -2.2rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--gray-light);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+  transition: color var(--duration-fast);
+}
+
+.jobs-alert-modal-close:hover { color: var(--white); }
+
+.jobs-alert-modal-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.jobs-alert-modal-sub {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+
+.jobs-alert-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.jobs-alert-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.jobs-alert-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jobs-alert-input {
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 2px;
+  transition: border-color var(--duration-fast);
+  width: 100%;
+}
+
+.jobs-alert-input:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+
+.jobs-alert-fieldset {
+  border: none;
+  padding: 0;
+}
+
+.jobs-alert-fieldset legend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.jobs-alert-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+}
+
+.jobs-alert-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  cursor: pointer;
+}
+
+.jobs-alert-check-label input[type="checkbox"],
+.jobs-alert-check-label input[type="radio"] {
+  accent-color: var(--orange);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.jobs-alert-provinces-scroll {
+  max-height: 130px;
+  overflow-y: auto;
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--plate-edge) transparent;
+}
+
+.jobs-alert-frequency-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.jobs-alert-submit {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background var(--duration-fast);
+  width: 100%;
+}
+
+.jobs-alert-submit:hover:not(:disabled) { background: var(--orange-glow); }
+.jobs-alert-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.jobs-alert-consent {
+  font-size: 0.72rem;
+  color: var(--gray-mid);
+  line-height: 1.55;
+}
+
+.jobs-alert-consent a {
+  color: var(--gray-mid);
+  text-decoration: underline;
+}
+
+.jobs-alert-feedback {
+  font-size: 0.82rem;
+  min-height: 1.1rem;
+}
+
+.jobs-alert-feedback.is-error  { color: #e05a5a; }
+.jobs-alert-feedback.is-success { color: var(--green-light); }
+
+@media (max-width: 600px) {
+  .jobs-alert-form-row { grid-template-columns: 1fr; }
+  .jobs-alert-frequency-row { flex-direction: column; gap: 0.5rem; }
+}
