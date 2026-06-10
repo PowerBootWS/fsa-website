@@ -2793,12 +2793,19 @@ footer {
 
 /* Job detail */
 .job-detail-back {
-  display: inline-block;
+  display: block;
+  position: sticky;
+  top: 64px;
+  z-index: 99;
+  background: rgba(5,9,15,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--plate-edge);
+  padding: 0.6rem 0;
+  margin-bottom: 1.5rem;
   color: var(--orange);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
   transition: color var(--duration-fast);
 }
 
