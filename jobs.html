@@ -880,6 +880,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       } else {
         fetchJobs();
       }
+
+      // Deep-link: ?alerts=1 opens the job-alert sign-up modal directly
+      // (used by the daily Facebook digest CTA so users land on the form).
+      if (params.get('alerts')) {
+        openAlertModal();
+      }
     }());
   </script>
 
