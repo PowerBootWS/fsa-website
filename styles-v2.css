@@ -3314,6 +3314,32 @@ footer {
   font-weight: 500;
 }
 
+/* Inline contextual internal links — inherit surrounding text color/size,
+   underlined for affordance, orange accent on hover only */
+.persona-card-title a,
+.persona-card-desc a,
+.outcome-card-title a,
+.outcome-card-desc a,
+.plan-tagline a,
+.faq-a a {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s;
+}
+
+.persona-card-title a:hover,
+.persona-card-desc a:hover,
+.outcome-card-title a:hover,
+.outcome-card-desc a:hover,
+.plan-tagline a:hover,
+.faq-a a:hover {
+  color: var(--orange);
+}
+
 /* ── OUTCOMES ── */
 .outcomes-grid {
   display: grid;
