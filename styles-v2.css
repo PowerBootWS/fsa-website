@@ -758,15 +758,11 @@ nav.scrolled {
   border-radius: 2px;
 }
 
-.tag-calc {
-  background: rgba(232,114,12,0.15);
-  color: var(--amber);
-  border: 1px solid rgba(232,114,12,0.25);
-}
+.tag-calc,
 .tag-theory {
-  background: rgba(58,110,165,0.15);
-  color: var(--steel-light);
-  border: 1px solid rgba(58,110,165,0.25);
+  background: var(--amber);
+  color: var(--bg-deep);
+  border: 1px solid var(--amber);
 }
 .tag-regs {
   background: rgba(61,122,95,0.15);
