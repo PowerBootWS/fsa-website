@@ -1,0 +1,6 @@
+# Large library PDFs are served via a host bind-mount (see docker-compose.yml),
+# not baked into the image — keeps the build context small and rebuilds fast.
+assets/library/
+
+.git
+*.log

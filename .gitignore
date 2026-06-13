@@ -3,8 +3,15 @@
 .env
 scripts/google_client_secret.json
 scripts/google_token.json
+scripts/google_token_ga4.json
+scripts/google_token_ga4_admin.json
 .claude/
+lobby-3d/
 .kilo/
 project-overview-sample.md
 __pycache__/
 *.pyc
+
+# Library PDFs are large (CC-BY-NC-SA PanGlobal textbooks, ~474MB incl. a 111MB
+# file > GitHub's 100MB limit). Served from a host volume mount, not git/image.
+assets/library/*.pdf

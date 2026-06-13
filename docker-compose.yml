@@ -6,6 +6,9 @@ services:
       - "8087:80"
     restart: unless-stopped
     env_file: /home/debian/.env
+    volumes:
+      # Large CC-BY-NC-SA library PDFs served from host, not baked into the image.
+      - ./assets/library:/usr/share/nginx/html/assets/library:ro
     networks:
       - cloudflare
 
