@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Start Your Subscription – Full Steam Ahead – 2nd Class Power Engineering Exam Prep</title>
-  <meta name="description" content="Enroll in Full Steam Ahead and get instant access to all six 2nd Class power engineering papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3. $149/month, cancel anytime, study on any device.">
+  <title>Start Your Subscription – Full Steam Ahead – Power Engineering Exam Prep</title>
+  <meta name="description" content="Enroll in Full Steam Ahead and get instant access to your power engineering exam prep — 2nd Class (six papers, $149/mo) or 3rd Class (four papers, $99/mo). Cancel anytime, study on any device.">
   <link rel="canonical" href="https://fullsteamahead.ca/enroll.html">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Full Steam Ahead">
-  <meta property="og:title" content="Start Your Subscription – Full Steam Ahead – 2nd Class Power Engineering Exam Prep">
-  <meta property="og:description" content="Get instant access to all six 2nd Class power engineering papers. $149/month, cancel anytime, study on any device.">
+  <meta property="og:title" content="Start Your Subscription – Full Steam Ahead – Power Engineering Exam Prep">
+  <meta property="og:description" content="Get instant access to power engineering exam prep — 2nd Class (six papers, $149/mo) or 3rd Class (four papers, $99/mo). Cancel anytime, study on any device.">
   <meta property="og:url" content="https://fullsteamahead.ca/enroll.html">
   <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -300,12 +300,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           You've Put In the Hours.<br>
           Now Get <em>Your Ticket.</em>
         </h1>
-        <p class="enroll-lead reveal" data-delay="120">
+        <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
           Fill in your details and you'll have full access to all six 2nd Class papers within minutes — no textbooks, no classroom schedule, no waiting.
         </p>
 
         <ul class="enroll-checklist reveal" data-delay="180">
-          <li><span class="chk">✓</span> All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</li>
+          <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
           <li><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
           <li><span class="chk">✓</span> Interactive AI tutoring available anytime — even on night shift</li>
           <li><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
@@ -315,10 +315,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="papers-note reveal" data-delay="240" style="margin-top:0">
           <span class="note-icon">💡</span>
-          <span>At $149/month with six months of focused study, you'll spend less than what a single paper costs at a traditional provider — and you'll walk into the exam room more prepared.</span>
+          <span id="enroll-note">At $149/month with six months of focused study, you'll spend less than what a single paper costs at a traditional provider — and you'll walk into the exam room more prepared.</span>
         </div>
 
-        <p class="enroll-fine">$149/month &middot; Cancel anytime &middot; No contracts &middot; All six papers included</p>
+        <p class="enroll-fine" id="enroll-fine">$149/month &middot; Cancel anytime &middot; No contracts &middot; All six papers included</p>
       </div>
 
       <!-- Right: Lead capture form -->
@@ -326,6 +326,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="checkout-form-card">
           <p class="checkout-form-heading">Create your account to continue</p>
           <p class="checkout-form-sub">Takes 30 seconds. Secure checkout via Stripe.</p>
+
+          <div class="program-picker" role="radiogroup" aria-label="Choose your program">
+            <button type="button" class="program-option is-selected" data-program="second" role="radio" aria-checked="true">
+              <span class="program-name">2nd Class</span>
+              <span class="program-meta">Six papers · $149/mo</span>
+            </button>
+            <button type="button" class="program-option" data-program="third" role="radio" aria-checked="false">
+              <span class="program-name">3rd Class</span>
+              <span class="program-meta">Four papers · $99/mo</span>
+            </button>
+          </div>
+
           <form id="checkout-form" novalidate>
             <div class="checkout-field">
               <label class="checkout-label" for="cf-first">First Name</label>
@@ -342,14 +354,85 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="checkout-error" id="checkout-error" style="display:none;"></p>
             <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
           </form>
-          <p class="checkout-fine">$149/month &middot; Cancel anytime &middot; No contracts</p>
-          <!-- Hidden Stripe link — Refgrow's processStripePaymentLinks() reads the referral cookie (refgrow_ref_code_885) and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler re-runs it before navigating so attribution can't be lost to a page-load timing race. -->
+          <p class="checkout-fine" id="checkout-fine">$149/month &middot; Cancel anytime &middot; No contracts</p>
+          <!-- Hidden Stripe link — Refgrow's processStripePaymentLinks() reads the referral cookie (refgrow_ref_code_885) and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs Refgrow, then navigates — so program choice and attribution both hold. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/14AeVffiUcJFdomd2J1B601" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
       </div>
 
     </div>
   </section>
+
+  <style>
+    .program-picker { display:flex; gap:10px; margin:0 0 18px; }
+    .program-option {
+      flex:1; display:flex; flex-direction:column; gap:3px; align-items:flex-start;
+      padding:12px 14px; border:2px solid #d8dee6; border-radius:10px; background:#fff;
+      cursor:pointer; text-align:left; font:inherit; transition:border-color .15s, background .15s;
+    }
+    .program-option:hover { border-color:#9fb0c3; }
+    .program-option.is-selected { border-color:#0b6; background:#f1fbf6; }
+    .program-name { font-weight:700; font-size:1rem; color:#11202e; }
+    .program-meta { font-size:.82rem; color:#52606d; }
+  </style>
+
+  <script>
+    // Program picker — drives copy + the Stripe checkout link. 2nd Class is the
+    // default; ?class=third (used by deep links from the homepage / how-it-works)
+    // preselects 3rd Class.
+    (function () {
+      var PROGRAMS = {
+        second: {
+          url: 'https://buy.stripe.com/14AeVffiUcJFdomd2J1B601',
+          lead: "Fill in your details and you'll have full access to all six 2nd Class papers within minutes — no textbooks, no classroom schedule, no waiting.",
+          papers: 'All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
+          note: "At $149/month with six months of focused study, you'll spend less than what a single paper costs at a traditional provider — and you'll walk into the exam room more prepared.",
+          fine: '$149/month · Cancel anytime · No contracts · All six papers included',
+          checkoutFine: '$149/month · Cancel anytime · No contracts'
+        },
+        third: {
+          url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
+          lead: "Fill in your details and you'll have full access to all four 3rd Class papers within minutes — no textbooks, no classroom schedule, no waiting.",
+          papers: 'All four 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
+          note: "At just $99/month, you'll spend less than what a single paper costs at a traditional provider — and you'll walk into the exam room more prepared.",
+          fine: '$99/month · Cancel anytime · No contracts · All four papers included',
+          checkoutFine: '$99/month · Cancel anytime · No contracts'
+        }
+      };
+      var selected = 'second';
+      var options = Array.prototype.slice.call(document.querySelectorAll('.program-option'));
+      var stripeLinkEl = document.getElementById('stripe-proceed');
+
+      function applyProgram(program) {
+        selected = PROGRAMS[program] ? program : 'second';
+        var p = PROGRAMS[selected];
+        options.forEach(function (o) {
+          var on = o.dataset.program === selected;
+          o.classList.toggle('is-selected', on);
+          o.setAttribute('aria-checked', on ? 'true' : 'false');
+        });
+        var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
+        set('enroll-lead', p.lead);
+        set('enroll-papers', p.papers);
+        set('enroll-note', p.note);
+        set('enroll-fine', p.fine);
+        set('checkout-fine', p.checkoutFine);
+        // Reset the Stripe link to the selected program's clean base URL. The submit
+        // handler re-runs Refgrow afterward to re-append affiliate attribution.
+        if (stripeLinkEl) stripeLinkEl.setAttribute('href', p.url);
+      }
+
+      options.forEach(function (o) {
+        o.addEventListener('click', function () { applyProgram(o.dataset.program); });
+      });
+
+      var initial = new URLSearchParams(window.location.search).get('class');
+      applyProgram(initial === 'third' ? 'third' : 'second');
+
+      // Expose the current base URL so the submit handler can reset before Refgrow.
+      window.__fsaSelectedStripeUrl = function () { return PROGRAMS[selected].url; };
+    }());
+  </script>
 
   <script>
     (function () {
@@ -396,6 +479,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           // Refgrow skips links that already carry client_reference_id, and appends
           // it from the referral cookie otherwise — guarding against the case where
           // the initial page-load processing hadn't run before the user submitted.
+          // Reset to the selected program's clean base URL before Refgrow re-appends
+          // affiliate attribution, so program choice and attribution both survive.
+          if (window.__fsaSelectedStripeUrl) { stripeLink.setAttribute('href', window.__fsaSelectedStripeUrl()); }
           if (window.Refgrow && Refgrow.processStripePaymentLinks) { Refgrow.processStripePaymentLinks(); }
           var url = new URL(stripeLink.href);
           url.searchParams.set('prefilled_email', email);
@@ -432,7 +518,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer>
     <div>
       <div class="footer-brand">Full <span>Steam</span> Ahead</div>
-      <div class="footer-tagline">2nd Class Power Engineering Exam Prep — Canada</div>
+      <div class="footer-tagline">Power Engineering Exam Prep — Canada</div>
     </div>
     <div class="footer-links">
       <a href="/privacy-policy.html">Privacy Policy</a>
