@@ -1092,6 +1092,11 @@ td.them-col .x { color: #888; }
   color: var(--gray-mid);
 }
 
+.plan-cycle-save {
+  color: var(--amber-hot);
+  font-weight: 600;
+}
+
 .plan-cycle {
   font-size: 0.8rem;
   color: var(--gray-mid);
