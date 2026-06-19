@@ -1,15 +1,24 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'fsa_exit_intent_dismissed';
-  var WORKER_URL  = 'https://fsa-lead-capture.powerboot.workers.dev/capture';
+  var STORAGE_KEY   = 'fsa_exit_intent_dismissed';
+  var SUBSCRIBED_KEY = 'fsa_exit_intent_subscribed';
+  var COOLDOWN_MS   = 14 * 24 * 60 * 60 * 1000;
+  var WORKER_URL    = 'https://fsa-lead-capture.powerboot.workers.dev/capture';
 
   // --- Suppression check ---
   function isDismissed() {
-    try { return !!localStorage.getItem(STORAGE_KEY); } catch (e) { return false; }
+    try {
+      if (localStorage.getItem(SUBSCRIBED_KEY)) return true;
+      var ts = localStorage.getItem(STORAGE_KEY);
+      return !!(ts && (Date.now() - parseInt(ts, 10)) < COOLDOWN_MS);
+    } catch (e) { return false; }
   }
   function markDismissed() {
-    try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+  }
+  function markSubscribed() {
+    try { localStorage.setItem(SUBSCRIBED_KEY, '1'); } catch (e) {}
   }
 
   if (isDismissed()) return;
@@ -227,7 +236,7 @@
         '<p>You\'re in! Check your inbox — your 8 tips worksheet is on its way.</p>',
       '</div>',
     ].join('');
-    markDismissed();
+    markSubscribed();
   }
 
   ctaBtn.addEventListener('click', function () {

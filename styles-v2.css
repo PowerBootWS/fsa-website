@@ -2441,6 +2441,137 @@ footer {
   .diagnostic-band-right { align-items: flex-start; }
 }
 
+/* ── INLINE LEAD MAGNET BAND ── */
+.magnet-band {
+  background: var(--iron);
+  border-top: 2px solid var(--orange);
+  border-bottom: 1px solid var(--plate-edge);
+  padding: 3rem;
+}
+.magnet-band-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.magnet-band-left {
+  flex: 1 1 300px;
+}
+.magnet-band-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--white);
+  margin: 0.4rem 0 0.6rem;
+  line-height: 1.15;
+}
+.magnet-band-sub {
+  font-size: 0.95rem;
+  color: var(--gray-light);
+  line-height: 1.6;
+  max-width: 420px;
+}
+.magnet-band-right {
+  flex: 0 0 340px;
+}
+.magnet-field {
+  margin-bottom: 0.7rem;
+}
+.magnet-field input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-radius: 4px;
+  padding: 0.65rem 0.9rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.97rem;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.magnet-field input::placeholder { color: var(--gray-mid); }
+.magnet-field input:focus { border-color: var(--orange); }
+.magnet-optin {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+.magnet-optin input[type="checkbox"] {
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+.magnet-optin span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+  line-height: 1.45;
+}
+.magnet-btn {
+  display: block;
+  width: 100%;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+}
+.magnet-btn:hover:not(:disabled) {
+  background: var(--orange-glow, #FF8C2A);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,114,12,0.35);
+}
+.magnet-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.magnet-error {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.85rem;
+  color: #e57373;
+  margin-top: 0.6rem;
+}
+.magnet-footnote {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.72rem;
+  color: var(--gray-mid);
+  margin-top: 0.75rem;
+}
+.magnet-success {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.magnet-success-icon {
+  font-size: 2.2rem;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.magnet-success p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.97rem;
+  color: var(--gray-light);
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .magnet-band { padding: 2rem 1.5rem; }
+  .magnet-band-inner { flex-direction: column; gap: 1.5rem; }
+  .magnet-band-right { width: 100%; flex: none; }
+}
+
 /* ── JOB BOARD ── */
 .jobs-hero {
   background: var(--iron);

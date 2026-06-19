@@ -298,6 +298,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
+  <!-- RESUME CHECKLIST INLINE CTA -->
+  <div class="magnet-band">
+    <div class="magnet-band-inner">
+      <div class="magnet-band-left">
+        <div class="section-label" style="color:var(--orange)">Free Checklist</div>
+        <h2 class="magnet-band-heading">Land Your Next Power Engineering Job</h2>
+        <p class="magnet-band-sub">Get our free checklist: <strong>5 rules</strong> to craft a power engineering resume that gets past the first screen.</p>
+      </div>
+      <div class="magnet-band-right">
+        <div id="resume-tips-area">
+          <div class="magnet-field">
+            <input type="text" id="resume-tips-name" placeholder="First name" autocomplete="given-name">
+          </div>
+          <div class="magnet-field">
+            <input type="email" id="resume-tips-email" placeholder="Email address" autocomplete="email">
+          </div>
+          <div class="magnet-optin">
+            <input type="checkbox" id="resume-tips-optin">
+            <span>I agree to receive messages from Full Steam Ahead. I can unsubscribe any time.</span>
+          </div>
+          <button class="magnet-btn" id="resume-tips-btn">Send Me the Checklist &rarr;</button>
+          <div class="magnet-error" id="resume-tips-error" style="display:none"></div>
+          <p class="magnet-footnote">No spam. Unsubscribe any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div>
@@ -895,5 +923,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   src="https://link.msgsndr.com/js/external-tracking.js"
   data-tracking-id="tk_5f785c45cace41ccb6dd2c072c4c9ed4"
 ></script>
+<script>
+(function () {
+  var area  = document.getElementById('resume-tips-area');
+  var btn   = document.getElementById('resume-tips-btn');
+  var errEl = document.getElementById('resume-tips-error');
+  if (!area || !btn) return;
+
+  function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
+
+  btn.addEventListener('click', function () {
+    var nameEl  = document.getElementById('resume-tips-name');
+    var emailEl = document.getElementById('resume-tips-email');
+    var optinEl = document.getElementById('resume-tips-optin');
+    errEl.style.display = 'none';
+    var firstName = nameEl.value.trim();
+    var email     = emailEl.value.trim();
+    if (!firstName) { showErr('Please enter your first name.'); nameEl.focus(); return; }
+    if (!email)     { showErr('Please enter your email address.'); emailEl.focus(); return; }
+    if (!optinEl.checked) { showErr('Please check the consent box to continue.'); optinEl.focus(); return; }
+    btn.disabled = true;
+    btn.innerHTML = '<span style="display:inline-block;width:1em;height:1em;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:fsa-spin 0.7s linear infinite;vertical-align:middle;margin-right:0.5em"></span>Sending…';
+    fetch('https://fsa-lead-capture.powerboot.workers.dev/resume', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName: firstName, email: email }),
+    })
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (d) {
+        if (!d.success) throw new Error();
+        area.innerHTML = '<div class="magnet-success"><div class="magnet-success-icon">✓</div><p>You're in! Check your inbox — your resume checklist is on its way.</p></div>';
+        try { localStorage.setItem('fsa_exit_jobs_subscribed', '1'); } catch(e) {}
+      })
+      .catch(function () {
+        showErr('Something went wrong — please try again.');
+        btn.disabled = false;
+        btn.innerHTML = 'Send Me the Checklist →';
+      });
+  });
+}());
+</script>
 </body>
 </html>
