@@ -88,13 +88,6 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://fullsteamahead.ca/articles/power-engineering-class-progression-guide/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Cluster A — Exam Strategy -->
   <url>
     <loc>https://fullsteamahead.ca/articles/multiple-choice-power-engineering-strategy/</loc>
@@ -218,6 +211,13 @@
   </url>
 
   <!-- Cluster D — Jobs & Getting Hired -->
+  <url>
+    <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-guide/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://fullsteamahead.ca/articles/power-engineering-classes-canada/</loc>
     <lastmod>2026-05-17</lastmod>
