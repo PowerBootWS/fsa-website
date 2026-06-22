@@ -6,6 +6,13 @@
   var COOLDOWN_MS   = 14 * 24 * 60 * 60 * 1000;
   var WORKER_URL    = 'https://fsa-lead-capture.powerboot.workers.dev/capture';
 
+  function getAffiliateCookie() {
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/);
+      return m ? decodeURIComponent(m[1]) : null;
+    } catch (e) { return null; }
+  }
+
   // --- Suppression check ---
   function isDismissed() {
     try {
@@ -256,10 +263,14 @@
     ctaBtn.disabled = true;
     ctaBtn.innerHTML = '<span class="fsa-exit-spinner"></span>Sending…';
 
+    var payload = { firstName: firstName, email: email };
+    var affiliateCode = getAffiliateCookie();
+    if (affiliateCode) payload.affiliateCode = affiliateCode;
+
     fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName: firstName, email: email }),
+      body: JSON.stringify(payload),
     })
       .then(function (res) {
         if (!res.ok) throw new Error('Worker error: ' + res.status);

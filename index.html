@@ -743,10 +743,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!optinEl.checked) { showErr('Please check the consent box to continue.'); optinEl.focus(); return; }
     btn.disabled = true;
     btn.innerHTML = '<span style="display:inline-block;width:1em;height:1em;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:fsa-spin 0.7s linear infinite;vertical-align:middle;margin-right:0.5em"></span>Sending…';
+    var capturePayload = { firstName: firstName, email: email };
+    try { var _m = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/); if (_m) capturePayload.affiliateCode = decodeURIComponent(_m[1]); } catch(e) {}
     fetch('https://fsa-lead-capture.powerboot.workers.dev/capture', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName: firstName, email: email }),
+      body: JSON.stringify(capturePayload),
     })
       .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
       .then(function (d) {

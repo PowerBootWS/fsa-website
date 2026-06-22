@@ -464,10 +464,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.disabled = true;
         btn.textContent = 'Creating your account…';
 
+        var checkoutPayload = { firstName: firstName, lastName: lastName, email: email };
+        try { var _cm = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/); if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]); } catch(e) {}
         fetch('https://fsa-lead-capture.powerboot.workers.dev/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email })
+          body: JSON.stringify(checkoutPayload)
         })
         .then(function (res) {
           if (!res.ok) { throw new Error('server'); }
