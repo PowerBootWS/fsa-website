@@ -207,6 +207,11 @@ nav.scrolled {
   transition: opacity var(--duration-fast), transform var(--duration-fast), visibility var(--duration-fast);
   z-index: 200;
 }
+.nav-dropdown-menu-left {
+  left: 0;
+  right: auto;
+}
+
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown-menu.is-open {
   opacity: 1;
