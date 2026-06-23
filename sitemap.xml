@@ -23,6 +23,21 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Lead magnet landing pages -->
+  <url>
+    <loc>https://fullsteamahead.ca/lead-magnets/power-engineering-exam-tips/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://fullsteamahead.ca/lead-magnets/power-engineering-resume-checklist/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://fullsteamahead.ca/privacy-policy.html</loc>
     <lastmod>2026-05-05</lastmod>

@@ -25,5 +25,6 @@ COPY assets/ /usr/share/nginx/html/assets/
 COPY sitemap.xml /usr/share/nginx/html/sitemap.xml
 COPY robots.txt /usr/share/nginx/html/robots.txt
 COPY articles/ /usr/share/nginx/html/articles/
+COPY lead-magnets/ /usr/share/nginx/html/lead-magnets/
 
 EXPOSE 80

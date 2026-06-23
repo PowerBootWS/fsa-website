@@ -2,7 +2,6 @@
   'use strict';
 
   var STORAGE_KEY = 'fsa_exit_article_exam_dismissed';
-  var WORKER_URL  = 'https://fsa-lead-capture.powerboot.workers.dev/capture';
 
   // --- Suppression check ---
   function isDismissed() {
@@ -161,37 +160,26 @@
     '<div class="fsa-exit-modal">',
       '<button class="fsa-exit-close" id="fsa-exit-close" aria-label="Close">Close</button>',
       '<div class="fsa-exit-badge">Free Resource</div>',
-      '<h2>Ace Your Next Power Engineering Exam</h2>',
+      '<h2>Before You Go — Grab the Free Exam Tips</h2>',
       '<p class="fsa-exit-sub">',
-        'Get our free worksheet: <strong>8 high-value tips</strong> that help engineers pass their SOPEEC exams ',
-        '— straight from those who\'ve done it.',
+        'We put together a free worksheet covering <strong>8 high-value strategies</strong> for writing SOPEEC exams — ',
+        'not more study methods, but the exam-day habits that turn prepared engineers into passing ones.',
       '</p>',
-      '<div id="fsa-exit-action-area">',
-        '<div class="fsa-exit-field">',
-          '<label for="fsa-exit-name">First Name</label>',
-          '<input type="text" id="fsa-exit-name" placeholder="Your first name" autocomplete="given-name">',
-        '</div>',
-        '<div class="fsa-exit-field">',
-          '<label for="fsa-exit-email">Email</label>',
-          '<input type="email" id="fsa-exit-email" placeholder="your@email.com" autocomplete="email">',
-        '</div>',
-        '<div class="fsa-exit-optin">',
-          '<input type="checkbox" id="fsa-exit-optin" aria-required="true">',
-          '<span>I agree to receive messages from Full Steam Ahead. I can unsubscribe any time.</span>',
-        '</div>',
-        '<button class="fsa-exit-cta-btn" id="fsa-exit-cta">Send Me the 8 Tips &rarr;</button>',
-        '<div class="fsa-exit-error" id="fsa-exit-error" style="display:none"></div>',
-      '</div>',
-      '<p class="fsa-exit-footnote">No spam. Unsubscribe any time.</p>',
+      '<p class="fsa-exit-sub" style="margin-bottom:1.5rem;">',
+        'Time management, elimination technique, how to handle calculation questions when you\'re short on time, ',
+        'and the mindset shift that stops pressure from shutting down your recall mid-exam.',
+      '</p>',
+      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/lead-magnets/power-engineering-exam-tips/" style="display:block;text-align:center;text-decoration:none;">',
+        'Get the Free Worksheet &rarr;',
+      '</a>',
+      '<p class="fsa-exit-footnote">Free. No spam. Unsubscribe any time.</p>',
     '</div>',
   ].join('');
 
   document.body.appendChild(overlay);
 
-  var closeBtn   = document.getElementById('fsa-exit-close');
-  var ctaBtn     = document.getElementById('fsa-exit-cta');
-  var actionArea = document.getElementById('fsa-exit-action-area');
-  var errorEl    = document.getElementById('fsa-exit-error');
+  var closeBtn = document.getElementById('fsa-exit-close');
+  var ctaBtn   = document.getElementById('fsa-exit-cta');
 
   // --- Open / close ---
   function openPopup() {
@@ -214,57 +202,9 @@
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) closePopup();
   });
 
-  // --- Form submission ---
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.style.display = 'block';
-  }
-
-  function showSuccess() {
-    actionArea.innerHTML = [
-      '<div class="fsa-exit-success">',
-        '<div class="fsa-exit-success-icon">✓</div>',
-        '<p>You\'re in! Check your inbox — your 8 tips worksheet is on its way.</p>',
-      '</div>',
-    ].join('');
-    markDismissed();
-  }
-
+  // Dismiss popup when user clicks through to the landing page
   ctaBtn.addEventListener('click', function () {
-    var nameEl   = document.getElementById('fsa-exit-name');
-    var emailEl  = document.getElementById('fsa-exit-email');
-    var optinEl  = document.getElementById('fsa-exit-optin');
-
-    errorEl.style.display = 'none';
-
-    var firstName = nameEl.value.trim();
-    var email     = emailEl.value.trim();
-
-    if (!firstName) { showError('Please enter your first name.'); nameEl.focus(); return; }
-    if (!email)     { showError('Please enter your email address.'); emailEl.focus(); return; }
-    if (!optinEl.checked) { showError('Please check the consent box to continue.'); optinEl.focus(); return; }
-
-    ctaBtn.disabled = true;
-    ctaBtn.innerHTML = '<span class="fsa-exit-spinner"></span>Sending…';
-
-    fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName: firstName, email: email }),
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Worker error: ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        if (!data.success) throw new Error(data.error || 'Unknown error');
-        showSuccess();
-      })
-      .catch(function () {
-        showError('Something went wrong — please try again.');
-        ctaBtn.disabled = false;
-        ctaBtn.innerHTML = 'Send Me the 8 Tips &rarr;';
-      });
+    markDismissed();
   });
 
   // --- Trigger logic ---

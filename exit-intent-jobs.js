@@ -4,14 +4,6 @@
   var STORAGE_KEY   = 'fsa_exit_jobs_dismissed';
   var SUBSCRIBED_KEY = 'fsa_exit_jobs_subscribed';
   var COOLDOWN_MS   = 14 * 24 * 60 * 60 * 1000;
-  var WORKER_URL    = 'https://fsa-lead-capture.powerboot.workers.dev/resume';
-
-  function getAffiliateCookie() {
-    try {
-      var m = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/);
-      return m ? decodeURIComponent(m[1]) : null;
-    } catch (e) { return null; }
-  }
 
   // --- Suppression check ---
   function isDismissed() {
@@ -177,36 +169,26 @@
     '<div class="fsa-exit-modal">',
       '<button class="fsa-exit-close" id="fsa-exit-close" aria-label="Close">Close</button>',
       '<div class="fsa-exit-badge">Free Checklist</div>',
-      '<h2>Land Your Next Power Engineering Job</h2>',
+      '<h2>Before You Go — Grab the Resume Checklist</h2>',
       '<p class="fsa-exit-sub">',
-        'Get our free checklist: <strong>5 rules</strong> to craft a power engineering resume that gets past the first screen.',
+        'Most power engineers write their resume like any other trade resume. Hiring managers at Canadian plants ',
+        'screen for specific signals — this <strong>free 5-rule checklist</strong> covers exactly what those are.',
       '</p>',
-      '<div id="fsa-exit-action-area">',
-        '<div class="fsa-exit-field">',
-          '<label for="fsa-exit-name">First Name</label>',
-          '<input type="text" id="fsa-exit-name" placeholder="Your first name" autocomplete="given-name">',
-        '</div>',
-        '<div class="fsa-exit-field">',
-          '<label for="fsa-exit-email">Email</label>',
-          '<input type="email" id="fsa-exit-email" placeholder="your@email.com" autocomplete="email">',
-        '</div>',
-        '<div class="fsa-exit-optin">',
-          '<input type="checkbox" id="fsa-exit-optin" aria-required="true">',
-          '<span>I agree to receive messages from Full Steam Ahead. I can unsubscribe any time.</span>',
-        '</div>',
-        '<button class="fsa-exit-cta-btn" id="fsa-exit-cta">Send Me the Checklist &rarr;</button>',
-        '<div class="fsa-exit-error" id="fsa-exit-error" style="display:none"></div>',
-      '</div>',
-      '<p class="fsa-exit-footnote">No spam. Unsubscribe any time.</p>',
+      '<p class="fsa-exit-sub" style="margin-bottom:1.5rem;">',
+        'Certificate class positioning, the equipment language that gets past ATS, why listing duties kills applications, ',
+        'and the one formatting mistake that gets resumes tossed before they\'re read.',
+      '</p>',
+      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/lead-magnets/power-engineering-resume-checklist/" style="display:block;text-align:center;text-decoration:none;">',
+        'Get the Free Checklist &rarr;',
+      '</a>',
+      '<p class="fsa-exit-footnote">Free. No spam. Unsubscribe any time.</p>',
     '</div>',
   ].join('');
 
   document.body.appendChild(overlay);
 
-  var closeBtn   = document.getElementById('fsa-exit-close');
-  var ctaBtn     = document.getElementById('fsa-exit-cta');
-  var actionArea = document.getElementById('fsa-exit-action-area');
-  var errorEl    = document.getElementById('fsa-exit-error');
+  var closeBtn = document.getElementById('fsa-exit-close');
+  var ctaBtn   = document.getElementById('fsa-exit-cta');
 
   // --- Open / close ---
   function openPopup() {
@@ -229,61 +211,9 @@
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) closePopup();
   });
 
-  // --- Form submission ---
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.style.display = 'block';
-  }
-
-  function showSuccess() {
-    actionArea.innerHTML = [
-      '<div class="fsa-exit-success">',
-        '<div class="fsa-exit-success-icon">✓</div>',
-        '<p>You\'re in! Check your inbox — your resume checklist is on its way.</p>',
-      '</div>',
-    ].join('');
-    markSubscribed();
-  }
-
+  // Dismiss popup when user clicks through to the landing page
   ctaBtn.addEventListener('click', function () {
-    var nameEl   = document.getElementById('fsa-exit-name');
-    var emailEl  = document.getElementById('fsa-exit-email');
-    var optinEl  = document.getElementById('fsa-exit-optin');
-
-    errorEl.style.display = 'none';
-
-    var firstName = nameEl.value.trim();
-    var email     = emailEl.value.trim();
-
-    if (!firstName) { showError('Please enter your first name.'); nameEl.focus(); return; }
-    if (!email)     { showError('Please enter your email address.'); emailEl.focus(); return; }
-    if (!optinEl.checked) { showError('Please check the consent box to continue.'); optinEl.focus(); return; }
-
-    ctaBtn.disabled = true;
-    ctaBtn.innerHTML = '<span class="fsa-exit-spinner"></span>Sending…';
-
-    var payload = { firstName: firstName, email: email };
-    var affiliateCode = getAffiliateCookie();
-    if (affiliateCode) payload.affiliateCode = affiliateCode;
-
-    fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Worker error: ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        if (!data.success) throw new Error(data.error || 'Unknown error');
-        showSuccess();
-      })
-      .catch(function () {
-        showError('Something went wrong — please try again.');
-        ctaBtn.disabled = false;
-        ctaBtn.innerHTML = 'Send Me the Checklist &rarr;';
-      });
+    markDismissed();
   });
 
   // --- Trigger logic ---
