@@ -169,7 +169,7 @@
         'Time management, elimination technique, how to handle calculation questions when you\'re short on time, ',
         'and the mindset shift that stops pressure from shutting down your recall mid-exam.',
       '</p>',
-      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/lead-magnets/power-engineering-exam-tips/" style="display:block;text-align:center;text-decoration:none;">',
+      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/resources/power-engineering-exam-tips/" style="display:block;text-align:center;text-decoration:none;">',
         'Get the Free Worksheet &rarr;',
       '</a>',
       '<p class="fsa-exit-footnote">Free. No spam. Unsubscribe any time.</p>',

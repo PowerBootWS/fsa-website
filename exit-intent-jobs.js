@@ -178,7 +178,7 @@
         'Certificate class positioning, the equipment language that gets past ATS, why listing duties kills applications, ',
         'and the one formatting mistake that gets resumes tossed before they\'re read.',
       '</p>',
-      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/lead-magnets/power-engineering-resume-checklist/" style="display:block;text-align:center;text-decoration:none;">',
+      '<a class="fsa-exit-cta-btn" id="fsa-exit-cta" href="/resources/power-engineering-resume-checklist/" style="display:block;text-align:center;text-decoration:none;">',
         'Get the Free Checklist &rarr;',
       '</a>',
       '<p class="fsa-exit-footnote">Free. No spam. Unsubscribe any time.</p>',
