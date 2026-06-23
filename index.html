@@ -409,21 +409,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="magnet-band-sub">Get our free worksheet: <strong>8 high-value tips</strong> that help engineers pass their SOPEEC exams &mdash; straight from those who&rsquo;ve done it.</p>
       </div>
       <div class="magnet-band-right">
-        <div id="exam-tips-area">
-          <div class="magnet-field">
-            <input type="text" id="exam-tips-name" placeholder="First name" autocomplete="given-name">
-          </div>
-          <div class="magnet-field">
-            <input type="email" id="exam-tips-email" placeholder="Email address" autocomplete="email">
-          </div>
-          <div class="magnet-optin">
-            <input type="checkbox" id="exam-tips-optin">
-            <span>I agree to receive messages from Full Steam Ahead. I can unsubscribe any time.</span>
-          </div>
-          <button class="magnet-btn" id="exam-tips-btn">Send Me the 8 Tips &rarr;</button>
-          <div class="magnet-error" id="exam-tips-error" style="display:none"></div>
-          <p class="magnet-footnote">No spam. Unsubscribe any time.</p>
-        </div>
+        <a href="/lead-magnets/power-engineering-exam-tips/" class="magnet-btn" style="display:inline-block;text-align:center;text-decoration:none;">Get the Free Worksheet &rarr;</a>
+        <p class="magnet-footnote" style="margin-top:0.8rem;">Free. No spam. Unsubscribe any time.</p>
       </div>
     </div>
   </div>
@@ -722,47 +709,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   src="https://link.msgsndr.com/js/external-tracking.js"
   data-tracking-id="tk_5f785c45cace41ccb6dd2c072c4c9ed4"
 ></script>
-<script>
-(function () {
-  var area  = document.getElementById('exam-tips-area');
-  var btn   = document.getElementById('exam-tips-btn');
-  var errEl = document.getElementById('exam-tips-error');
-  if (!area || !btn) return;
-
-  function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
-
-  btn.addEventListener('click', function () {
-    var nameEl  = document.getElementById('exam-tips-name');
-    var emailEl = document.getElementById('exam-tips-email');
-    var optinEl = document.getElementById('exam-tips-optin');
-    errEl.style.display = 'none';
-    var firstName = nameEl.value.trim();
-    var email     = emailEl.value.trim();
-    if (!firstName) { showErr('Please enter your first name.'); nameEl.focus(); return; }
-    if (!email)     { showErr('Please enter your email address.'); emailEl.focus(); return; }
-    if (!optinEl.checked) { showErr('Please check the consent box to continue.'); optinEl.focus(); return; }
-    btn.disabled = true;
-    btn.innerHTML = '<span style="display:inline-block;width:1em;height:1em;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:fsa-spin 0.7s linear infinite;vertical-align:middle;margin-right:0.5em"></span>Sending…';
-    var capturePayload = { firstName: firstName, email: email };
-    try { var _m = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/); if (_m) capturePayload.affiliateCode = decodeURIComponent(_m[1]); } catch(e) {}
-    fetch('https://fsa-lead-capture.powerboot.workers.dev/capture', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(capturePayload),
-    })
-      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-      .then(function (d) {
-        if (!d.success) throw new Error();
-        area.innerHTML = '<div class="magnet-success"><div class="magnet-success-icon">✓</div><p>You’re in! Check your inbox — your 8 tips worksheet is on its way.</p></div>';
-        try { localStorage.setItem('fsa_exit_intent_subscribed', '1'); } catch(e) {}
-      })
-      .catch(function () {
-        showErr('Something went wrong — please try again.');
-        btn.disabled = false;
-        btn.innerHTML = 'Send Me the 8 Tips →';
-      });
-  });
-}());
-</script>
 </body>
 </html>
