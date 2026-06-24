@@ -40,6 +40,15 @@ SCOPES = [
 # All article URLs to request indexing for
 ALL_URLS = [
     "https://fullsteamahead.ca/",
+    "https://fullsteamahead.ca/enroll",
+    "https://fullsteamahead.ca/how-it-works",
+    "https://fullsteamahead.ca/jobs",
+    "https://fullsteamahead.ca/library",
+    "https://fullsteamahead.ca/affiliate",
+    "https://fullsteamahead.ca/privacy-policy",
+    "https://fullsteamahead.ca/terms-of-use",
+    "https://fullsteamahead.ca/resources/power-engineering-exam-tips/",
+    "https://fullsteamahead.ca/resources/power-engineering-resume-checklist/",
     "https://fullsteamahead.ca/articles/",
     # Pillars
     "https://fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/",
