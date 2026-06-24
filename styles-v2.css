@@ -369,9 +369,28 @@ nav.scrolled {
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  max-width: 1240px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-diagram {
+  flex: 0 0 500px;
+  opacity: 0.88;
+}
+
+.hero-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-badge {
@@ -412,7 +431,6 @@ nav.scrolled {
   letter-spacing: -0.015em;
   color: var(--white);
   margin-bottom: 1.4rem;
-  max-width: 80%;
 }
 
 .hero h1 em {
@@ -444,7 +462,6 @@ nav.scrolled {
   font-weight: 300;
   line-height: 1.75;
   color: var(--gray-light);
-  max-width: 640px;
   margin-bottom: 2.5rem;
 }
 
@@ -1240,18 +1257,19 @@ td.them-col .x { color: #888; }
 
 .faq-card {
   padding: 1.8rem;
-  border-left: 4px solid var(--steel-dim);
+  border: 1px solid var(--plate-edge);
+  border-top: 3px solid var(--plate-edge);
   background: var(--plate);
-  transition: border-left-color var(--duration-base), background var(--duration-base);
+  transition: border-top-color var(--duration-base), background var(--duration-base);
 }
 
 .faq-card:hover {
-  border-left-color: var(--orange);
+  border-top-color: var(--orange);
   background: rgba(28,35,51,0.9);
 }
 
-.faq-card.orange-border { border-left-color: var(--orange); }
-.faq-card.amber-border  { border-left-color: var(--amber-hot); }
+.faq-card.orange-border { border-top-color: var(--orange); }
+.faq-card.amber-border  { border-top-color: var(--amber-hot); }
 
 .faq-q {
   font-family: 'Barlow Condensed', sans-serif;
@@ -1400,7 +1418,8 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-content > * {
+.hero-left > *,
+.hero-diagram {
   animation: fadeUp 0.7s var(--ease-spring) both;
 }
 .hero-badge   { animation-delay: 0.05s; }
@@ -1408,6 +1427,7 @@ footer {
 .hero-desc    { animation-delay: 0.25s; }
 .hero-actions { animation-delay: 0.35s; }
 .hero-stats   { animation-delay: 0.45s; }
+.hero-diagram { animation-delay: 0.5s; }
 
 /* ── LEGAL / CONTENT PAGES ── */
 .container {
@@ -2169,6 +2189,8 @@ footer {
   }
   .mobile-menu { display: block; }
   .hero { padding: 7rem 1.5rem 4rem; }
+  .hero-content { flex-direction: column; gap: 0; }
+  .hero-diagram { display: none; }
   .hero h1 { max-width: 100%; }
   .pillars { grid-template-columns: 1fr; }
   .papers-grid { grid-template-columns: 1fr 1fr; }
@@ -3827,7 +3849,8 @@ footer {
     transform: none !important;
     transition: none !important;
   }
-  .hero-content > * {
+  .hero-left > *,
+  .hero-diagram {
     animation: none;
   }
   * {

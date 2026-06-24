@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-24T00:00:00Z",
+  "title": "Design System: Full Steam Ahead",
+  "extensions": {
+    "colorMeta": {
+      "bg-deep":     { "role": "neutral",   "displayName": "Void",           "canonical": "#05090F", "tonalRamp": ["#05090F","#090d14","#0e1319","#14191f","#1c2333","#252f42","#3a4a62","#5a6e8a"] },
+      "carbon":      { "role": "neutral",   "displayName": "Carbon",         "canonical": "#0D1117", "tonalRamp": ["#05090F","#0d1117","#141a24","#1c2333","#252f42","#3a4a62","#6b7f99","#c8d0da"] },
+      "iron":        { "role": "neutral",   "displayName": "Iron",           "canonical": "#141A24", "tonalRamp": ["#05090F","#0d1117","#141a24","#1c2333","#252f42","#3d5070","#6b7f99","#c8d0da"] },
+      "plate":       { "role": "neutral",   "displayName": "Boiler Plate",   "canonical": "#1C2333", "tonalRamp": ["#0d1117","#141a24","#1c2333","#252f42","#3a4a62","#5a6e8a","#8fa2b8","#c8d0da"] },
+      "plate-edge":  { "role": "neutral",   "displayName": "Plate Seam",     "canonical": "#252F42", "tonalRamp": ["#141a24","#1c2333","#252f42","#2f3d57","#3a4a62","#5a6e8a","#8fa2b8","#d0d8e4"] },
+      "orange":      { "role": "primary",   "displayName": "Industrial Orange", "canonical": "#E8720C", "tonalRamp": ["#3d1a00","#6b2d00","#a84500","#c85800","#e8720c","#ff8c2a","#ffaa58","#ffd4a8"] },
+      "orange-glow": { "role": "primary",   "displayName": "Orange Glow",    "canonical": "#FF8C2A", "tonalRamp": ["#3d1a00","#7a3000","#b84800","#e8720c","#ff8c2a","#ffaa58","#ffc880","#ffe4c0"] },
+      "amber":       { "role": "secondary", "displayName": "Amber Hot",      "canonical": "#F5A623", "tonalRamp": ["#3d2500","#6b4000","#a86300","#c87e00","#f5a623","#ffbf50","#ffd480","#ffedb8"] },
+      "steel-dim":   { "role": "tertiary",  "displayName": "Steel Dim",      "canonical": "#2A4A6E", "tonalRamp": ["#0d1f35","#162a47","#1e3560","#2a4a6e","#3a6ea5","#4d88c2","#7aabda","#b8d4ee"] },
+      "green-light": { "role": "tertiary",  "displayName": "Safety Green",   "canonical": "#52A882", "tonalRamp": ["#0d2a1e","#163d2a","#235e40","#357a57","#52a882","#72c4a0","#9dd8be","#c8eddc"] },
+      "off-white":   { "role": "neutral",   "displayName": "Off White",      "canonical": "#F4F5F7", "tonalRamp": ["#0d1117","#252f42","#3a4a62","#6b7f99","#a8b4c0","#c8d0da","#e0e5eb","#f4f5f7"] },
+      "gray-light":  { "role": "neutral",   "displayName": "Gray Light",     "canonical": "#C8D0DA", "tonalRamp": ["#141a24","#252f42","#3a4a62","#6b7f99","#a8b4c0","#c8d0da","#e0e5eb","#f4f5f7"] },
+      "gray-mid":    { "role": "neutral",   "displayName": "Gray Mid",       "canonical": "#a8b4c0", "tonalRamp": ["#141a24","#252f42","#3a4a62","#6b7f99","#a8b4c0","#c8d0da","#e0e5eb","#f4f5f7"] }
+    },
+    "typographyMeta": {
+      "display":  { "displayName": "Display",  "purpose": "Hero H1 only. Barlow Condensed, often uppercase. Max 4.5rem." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings. Barlow Condensed 700." },
+      "title":    { "displayName": "Title",    "purpose": "Card headings, sub-section labels. Barlow Condensed 700 uppercase." },
+      "body":     { "displayName": "Body",     "purpose": "All prose. IBM Plex Sans. Cap at 65-75ch." },
+      "label":    { "displayName": "Label",    "purpose": "Tags, badges, micro-labels. Barlow Condensed 600 uppercase tracked." }
+    },
+    "shadows": [
+      { "name": "hover-lift",   "value": "0 16px 40px rgba(0,0,0,0.5)",        "purpose": "Cards on hover — depth into the void below." },
+      { "name": "orange-glow",  "value": "0 10px 28px rgba(232,114,12,0.35)",  "purpose": "Primary button hover only. The only colored shadow." },
+      { "name": "nav-ambient",  "value": "0 2px 24px rgba(0,0,0,0.6)",         "purpose": "Nav bar on scroll. Anchors to viewport top." }
+    ],
+    "motion": [
+      { "name": "ease",        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)", "purpose": "Standard ease-out for state transitions." },
+      { "name": "ease-spring", "value": "cubic-bezier(0.16, 1, 0.3, 1)",        "purpose": "Springy settle for entrance animations." },
+      { "name": "ease-in",     "value": "cubic-bezier(0.55, 0, 1, 0.45)",       "purpose": "Exit/dismiss transitions." },
+      { "name": "duration-fast", "value": "0.2s",  "purpose": "Hover states, button feedback." },
+      { "name": "duration-base", "value": "0.25s", "purpose": "Standard transitions." },
+      { "name": "duration-slow", "value": "0.3s",  "purpose": "Nav background shifts, slow fades." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "600px" },
+      { "name": "tablet", "value": "900px" },
+      { "name": "desktop", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA — orange, uppercase Barlow Condensed, 4px radius. The one action per section.",
+      "html": "<button class=\"ds-btn-primary\">ENROLL NOW</button>",
+      "css": ".ds-btn-primary { background: #E8720C; color: #F4F5F7; border: none; padding: 1rem 2.2rem; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-btn-primary:hover { background: #FF8C2A; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,114,12,0.35); } .ds-btn-primary:focus-visible { outline: 2px solid #E8720C; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action — transparent with muted border, no fill. Used alongside primary CTAs.",
+      "html": "<button class=\"ds-btn-ghost\">HOW IT WORKS</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #C8D0DA; border: 1px solid rgba(200,208,218,0.3); padding: 1rem 1.8rem; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s; } .ds-btn-ghost:hover { border-color: #4D88C2; color: #F4F5F7; } .ds-btn-ghost:focus-visible { outline: 2px solid #E8720C; outline-offset: 3px; }"
+    },
+    {
+      "name": "Paper Card",
+      "kind": "card",
+      "refersTo": "paper-card",
+      "description": "Exam paper selection card — square corners, orange bottom border on hover. The signature component.",
+      "html": "<div class=\"ds-paper-card\"><div class=\"ds-paper-num\">2A1</div><div class=\"ds-paper-name\">STEAM GENERATION</div><div class=\"ds-paper-desc\">Boilers, combustion, heat transfer, and steam systems for 2nd Class.</div><span class=\"ds-paper-tag ds-tag-calc\">CALC</span></div>",
+      "css": ".ds-paper-card { background: #1C2333; border: 1px solid #252F42; border-bottom: 3px solid #252F42; border-radius: 0; padding: 1.4rem; position: relative; transition: border-bottom-color 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-paper-card:hover { border-bottom-color: #E8720C; transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); } .ds-paper-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #E8720C; margin-bottom: 0.35rem; } .ds-paper-num::after { content: ''; display: block; width: 24px; height: 2px; background: #E8720C; margin-top: 0.3rem; margin-bottom: 0.4rem; } .ds-paper-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.5rem; line-height: 1.2; } .ds-paper-desc { font-size: 0.8rem; color: #a8b4c0; line-height: 1.5; } .ds-paper-tag { display: inline-block; margin-top: 0.8rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; } .ds-tag-calc { background: #F5A623; color: #05090F; border: 1px solid #F5A623; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed top nav — translucent dark glass, 2px orange bottom border. The orange line is the nav's identity mark.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"/\">Full Steam Ahead</a><ul class=\"ds-nav-links\"><li><a href=\"/how-it-works\">How It Works</a></li><li><a href=\"/enroll\">Exam Prep</a></li></ul><a class=\"ds-nav-cta\" href=\"/enroll\">ENROLL</a></nav>",
+      "css": ".ds-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(5,9,15,0.97); backdrop-filter: blur(16px) saturate(1.4); border-bottom: 2px solid #E8720C; } .ds-nav-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 600; color: #F4F5F7; text-decoration: none; } .ds-nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; } .ds-nav-links a { color: #C8D0DA; text-decoration: none; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; } .ds-nav-links a:hover { color: #FFFFFF; } .ds-nav-cta { background: #E8720C; color: #F4F5F7; text-decoration: none; padding: 0.5rem 1.1rem; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; } .ds-nav-cta:hover { background: #FF8C2A; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Tag / Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Exam type and status badges — tiny uppercase Barlow Condensed, 2px radius, color-coded by category.",
+      "html": "<div style=\"display:flex;gap:8px;\"><span class=\"ds-tag ds-tag-calc\">CALC</span><span class=\"ds-tag ds-tag-theory\">THEORY</span><span class=\"ds-tag ds-tag-regs\">REGS</span></div>",
+      "css": ".ds-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; } .ds-tag-calc, .ds-tag-theory { background: #F5A623; color: #05090F; border: 1px solid #F5A623; } .ds-tag-regs { background: rgba(61,122,95,0.15); color: #52A882; border: 1px solid rgba(61,122,95,0.25); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Boilerplate",
+    "overview": "This system is built like the instrument panel of a live boiler room: everything exactly where it needs to be, nothing decorative, stakes obvious from a glance. The aesthetic is industrial precision — not the styled version of industrial, but the real thing. Dark surfaces that read under plant-floor fluorescents. Orange that means hot, not branding. Type that communicates first and decorates never.\n\nThe system rejects its antitheses by name. No purple gradients, glassmorphism, or TailwindUI templates. No institutional blues and white backgrounds — that's the SOPEEC textbook, exactly what FSA is replacing. No Coursera-cheerfulness. And not the red/black gym-supplement aesthetic.\n\nThe surface is carbon (#0D1117), not a safety-signal grey. The primary accent is heat (#E8720C). Every design choice should pass this test: would a 3rd-class engineer who's been running this shift since 4am trust this screen?",
+    "keyCharacteristics": [
+      "Five-step dark tonal surface stack (bg-deep → carbon → iron → plate → plate-edge)",
+      "One primary accent: orange, used sparingly as heat and signal",
+      "Amber as secondary warmth for data highlights and tags",
+      "Square-cornered cards; slightly-rounded buttons (4px only)",
+      "Barlow Condensed for all display/heading/label type; IBM Plex Sans for prose",
+      "Elevation through tonal layering — shadows reserved for interaction state only",
+      "Uppercase labels with tracked spacing; never on body copy"
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Orange appears on ≤1 element at a time per viewport section. When everything is orange, nothing is.", "section": "colors" },
+      { "name": "The No-Warm-Background Rule", "body": "The body background is carbon: cold, deep, near-black. Never substitute a warm-tinted near-white — that kills the industrial register instantly.", "section": "colors" },
+      { "name": "The Two-Face Rule", "body": "Barlow Condensed for display, headline, title, and label. IBM Plex Sans for body. Never mix.", "section": "typography" },
+      { "name": "The Ceiling Rule", "body": "Hero display type is clamped at 4.5rem max. Letter-spacing on condensed display type must stay ≥ -0.02em.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Every surface is flat at rest. Shadows appear only on hover or focus — never as resting ambient decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use square corners (border-radius: 0) on cards — it's the most identifiable mark of this system.",
+      "Do apply text-transform: uppercase and tracked letter-spacing to all Barlow Condensed labels and button text.",
+      "Do keep orange rare: one orange CTA per section. Use amber for additional accent.",
+      "Do use IBM Plex Sans for all body copy at 1rem / 1.7 line-height with a 65–75ch max column width.",
+      "Do use tonal steps for depth before reaching for shadows.",
+      "Do match WCAG 2.1 AA for all text against its background.",
+      "Do include prefers-reduced-motion alternatives for every entrance animation."
+    ],
+    "donts": [
+      "Don't use purple gradients, glassmorphism cards, or TailwindUI templates — SaaS signals kill operator credibility.",
+      "Don't use white or near-white backgrounds. The system is dark by identity.",
+      "Don't use warm-tinted near-white backgrounds (cream, sand, linen). Warmth is carried by orange and amber accents.",
+      "Don't use stock photos of smiling students or add gamification badges — Coursera/Udemy energy reads as performative.",
+      "Don't go red/black with aggressive CTAs — gritty means precise, not loud.",
+      "Don't use border-left greater than 1px as a colored accent stripe on cards at rest.",
+      "Don't use gradient text (background-clip: text). Use solid orange or amber for emphasis.",
+      "Don't add an eyebrow kicker above every section heading — it's AI grammar.",
+      "Don't exceed 4.5rem on hero display type."
+    ]
+  }
+}
