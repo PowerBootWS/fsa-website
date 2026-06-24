@@ -310,30 +310,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Left: value pitch -->
       <div class="enroll-intro">
-        <div class="section-label reveal">Get Started</div>
         <h1 class="reveal" data-delay="60">
           You've Put In the Hours.<br>
           Now Get <em>Your Ticket.</em>
         </h1>
         <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
-          Fill in your details and you'll have full access to all six 2nd Class papers within minutes — no textbooks, no classroom schedule, no waiting.
+          Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
         </p>
 
         <ul class="enroll-checklist reveal" data-delay="180">
           <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
           <li><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
-          <li><span class="chk">✓</span> Interactive AI tutoring available anytime — even on night shift</li>
+          <li><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
           <li><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
-          <li><span class="chk">✓</span> Progress saved if you need to pause — resume whenever you're ready</li>
+          <li><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
           <li><span class="chk">✓</span> Study on any device, on your schedule</li>
         </ul>
 
         <div class="papers-note reveal" data-delay="240" style="margin-top:0">
           <span class="note-icon">💡</span>
-          <span id="enroll-note">Limited-time special: $149/month instead of the regular $199 — that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
+          <span id="enroll-note">Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
         </div>
 
-        <p class="enroll-fine" id="enroll-fine"><s>$199</s> <strong>$149/month</strong> &middot; Limited-time — save $50/mo &middot; Cancel anytime &middot; All six papers included</p>
+        <p class="enroll-fine" id="enroll-fine"><s>$199</s> <strong>$149/month</strong> &middot; Launch pricing — save $50/mo &middot; Cancel anytime &middot; All six papers included</p>
       </div>
 
       <!-- Right: Lead capture form -->
@@ -369,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="checkout-error" id="checkout-error" style="display:none;"></p>
             <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
           </form>
-          <p class="checkout-fine" id="checkout-fine"><s>$199</s> $149/month &middot; Limited-time — save $50/mo &middot; Cancel anytime</p>
+          <p class="checkout-fine" id="checkout-fine"><s>$199</s> $149/month &middot; Launch pricing — save $50/mo &middot; Cancel anytime</p>
           <!-- Hidden Stripe link — Refgrow's processStripePaymentLinks() reads the referral cookie (refgrow_ref_code_885) and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs Refgrow, then navigates — so program choice and attribution both hold. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
@@ -399,19 +398,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var PROGRAMS = {
         second: {
           url: 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600',
-          lead: "Fill in your details and you'll have full access to all six 2nd Class papers within minutes — no textbooks, no classroom schedule, no waiting.",
+          lead: "Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: 'All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
-          note: "Limited-time special: $149/month instead of the regular $199 — that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $199 · now $149/month · Limited-time — save $50/mo · Cancel anytime · All six papers included',
-          checkoutFine: 'Was $199 · now $149/month · Limited-time — save $50/mo · Cancel anytime'
+          note: "Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
+          fine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime · All six papers included',
+          checkoutFine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime'
         },
         third: {
           url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
-          lead: "Fill in your details and you'll have full access to all four 3rd Class papers within minutes — no textbooks, no classroom schedule, no waiting.",
+          lead: "Fill in your details and you'll have full access to all four 3rd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: 'All four 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
-          note: "Limited-time special: $99/month instead of the regular $149 — that's $50 off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $149 · now $99/month · Limited-time — save $50/mo · Cancel anytime · All four papers included',
-          checkoutFine: 'Was $149 · now $99/month · Limited-time — save $50/mo · Cancel anytime'
+          note: "Launch pricing: $99/month instead of the regular $149; that's $50 off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
+          fine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime · All four papers included',
+          checkoutFine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime'
         }
       };
       var selected = 'second';
@@ -542,7 +541,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/terms-of-use">Terms of Use</a>
       <a href="mailto:support@fullsteamahead.ca">Contact</a>
     </div>
-    <div class="footer-copy">© 2025 Full Steam Ahead. All rights reserved.</div>
+    <div class="footer-copy">© 2026 Full Steam Ahead. All rights reserved.</div>
   </footer>
 
   <script>
