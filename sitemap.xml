@@ -4,21 +4,21 @@
   <!-- Core pages -->
   <url>
     <loc>https://fullsteamahead.ca/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/enroll.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://fullsteamahead.ca/enroll</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/affiliate.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://fullsteamahead.ca/affiliate</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -26,49 +26,49 @@
   <!-- Lead magnet landing pages -->
   <url>
     <loc>https://fullsteamahead.ca/resources/power-engineering-exam-tips/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fullsteamahead.ca/resources/power-engineering-resume-checklist/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/privacy-policy.html</loc>
+    <loc>https://fullsteamahead.ca/privacy-policy</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/terms-of-use.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://fullsteamahead.ca/terms-of-use</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/jobs.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://fullsteamahead.ca/jobs</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/how-it-works.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://fullsteamahead.ca/how-it-works</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://fullsteamahead.ca/library.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://fullsteamahead.ca/library</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -228,7 +228,7 @@
   <!-- Cluster D — Jobs & Getting Hired -->
   <url>
     <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-guide/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

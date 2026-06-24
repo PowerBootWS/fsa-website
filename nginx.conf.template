@@ -6,15 +6,18 @@ server {
     index index.html;
     charset utf-8;
 
+    # Redirect .html URLs to clean URLs (301 so Google migrates indexed pages)
+    rewrite ^/(.+)\.html$ /$1 permanent;
+
     location = / {
         try_files /index.html =404;
     }
 
-    location = /jobs {
-        return 301 /jobs.html;
+    location /articles/ {
+        try_files $uri $uri/index.html =404;
     }
 
-    location /articles/ {
+    location /resources/ {
         try_files $uri $uri/index.html =404;
     }
 
