@@ -669,11 +669,6 @@ nav.scrolled {
 .pillar-card.amber-top::before  { background: var(--amber); }
 .pillar-card.green-top::before  { background: var(--green-light); }
 
-.pillar-icon {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
 .pillar-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.15rem;
@@ -3371,7 +3366,9 @@ footer {
 /* ── HOW IT WORKS PAGE HEADER ── */
 .how-header {
   padding: 120px 2rem 3rem;
-  background: linear-gradient(180deg, var(--iron) 0%, var(--carbon) 100%);
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 32%, rgba(245,166,35,0.11) 0%, rgba(232,114,12,0.05) 48%, transparent 72%),
+    linear-gradient(180deg, var(--iron) 0%, var(--carbon) 100%);
   border-bottom: 1px solid var(--plate-edge);
 }
 
