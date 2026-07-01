@@ -73,7 +73,7 @@ Checklist mirroring the enroll.html style (orange checkmarks, Barlow font).
 - AI tutoring available anytime, including nights and weekends
 - Step-by-step calculation coaching that mirrors how exams are marked
 - Progress saved — pause and resume on any device
-- Motivation check-ins when you nail an exam
+- Study at your own pace — no cohorts, no deadlines, no classroom
 
 **2nd Class:**
 - All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3
