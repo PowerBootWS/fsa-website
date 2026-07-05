@@ -207,6 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="detail-description"></div>
           </div>
           <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
+          <a id="detail-save" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save to My FSA Account</a>
           <div class="job-report-wrap">
             <button class="job-report-btn" id="job-report-btn" type="button">Report this job posting</button>
             <div class="job-report-panel" id="job-report-panel" aria-hidden="true">
@@ -620,6 +621,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             } else {
               applyBtn.style.display = 'none';
             }
+
+            var saveBtn = document.getElementById('detail-save');
+            var saveParams = new URLSearchParams({
+              job_id: job.job_id || '',
+              title: job.title || '',
+              company: job.company || '',
+              url: job.apply_url || job.job_url || window.location.href,
+            });
+            if (job.date_posted) saveParams.set('posted_at', job.date_posted);
+            saveBtn.href = 'https://learn.fullsteamahead.ca/jobs/capture?' + saveParams.toString();
+            saveBtn.style.display = 'inline-block';
           })
           .catch(function (err) {
             console.error('Failed to load job detail:', err);
