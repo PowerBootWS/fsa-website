@@ -200,7 +200,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="job-detail-date" id="detail-date"></div>
           </div>
           <div class="job-detail-save-top">
-            <a id="detail-save-top" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</a>
+            <button type="button" id="detail-save-top" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</button>
             <p class="job-save-note" id="detail-save-note-top" style="display:none;">Free — takes seconds to set up your account.</p>
           </div>
         </div>
@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="job-detail-actions">
             <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
-            <a id="detail-save" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</a>
+            <button type="button" id="detail-save" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</button>
             <p class="job-save-note" id="detail-save-note" style="display:none;">Free — takes seconds to set up your account.</p>
           </div>
           <div class="job-report-wrap">
@@ -629,18 +629,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               applyBtn.style.display = 'none';
             }
 
-            var saveParams = new URLSearchParams({
+            var LEARN_BASE = 'https://learn.fullsteamahead.ca';
+            var classLevelStr = Array.isArray(job.class_level) ? job.class_level.join(' / ') : (job.class_level || '');
+            var savePayload = {
               job_id: job.job_id || '',
               title: job.title || '',
               company: job.company || '',
               url: job.apply_url || job.job_url || window.location.href,
-            });
-            if (job.date_posted) saveParams.set('posted_at', job.date_posted);
-            var saveUrl = 'https://learn.fullsteamahead.ca/jobs/capture?' + saveParams.toString();
+              posted_at: job.date_posted || '',
+              description: job.description || '',
+              ai_summary: job.ai_summary || '',
+              location: job.location || '',
+              class_level: classLevelStr,
+              employer_logo_url: job.employer_logo_url || '',
+            };
+
+            function handleSaveClick() {
+              var btns = ['detail-save', 'detail-save-top'].map(function (id) { return document.getElementById(id); });
+              btns.forEach(function (btn) { btn.disabled = true; btn.textContent = 'Saving…'; });
+
+              fetch(LEARN_BASE + '/api/jobs/capture-stash', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(savePayload)
+              })
+                .then(function (res) {
+                  if (!res.ok) throw new Error('HTTP ' + res.status);
+                  return res.json();
+                })
+                .then(function (data) {
+                  window.location.href = LEARN_BASE + '/jobs/capture?token=' + encodeURIComponent(data.token);
+                })
+                .catch(function () {
+                  btns.forEach(function (btn) { btn.disabled = false; btn.textContent = '💾 Save This Job'; });
+                  ['detail-save-note', 'detail-save-note-top'].forEach(function (id) {
+                    var note = document.getElementById(id);
+                    note.textContent = 'Could not save this job right now. Please try again.';
+                    note.style.color = '#dc2626';
+                  });
+                });
+            }
 
             ['detail-save', 'detail-save-top'].forEach(function (id) {
-              document.getElementById(id).href = saveUrl;
-              document.getElementById(id).style.display = 'inline-block';
+              var btn = document.getElementById(id);
+              btn.style.display = 'inline-block';
+              btn.onclick = handleSaveClick;
             });
             ['detail-save-note', 'detail-save-note-top'].forEach(function (id) {
               document.getElementById(id).style.display = 'block';
