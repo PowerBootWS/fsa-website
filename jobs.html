@@ -199,6 +199,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="job-detail-date" id="detail-date"></div>
           </div>
+          <div class="job-detail-save-top">
+            <a id="detail-save-top" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</a>
+            <p class="job-save-note" id="detail-save-note-top" style="display:none;">Free — takes seconds to set up your account.</p>
+          </div>
         </div>
         <div class="job-detail-body">
           <div id="detail-summary-section"></div>
@@ -206,8 +210,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h3>Description</h3>
             <div id="detail-description"></div>
           </div>
-          <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
-          <a id="detail-save" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save to My FSA Account</a>
+          <div class="job-detail-actions">
+            <a id="detail-apply" href="#" target="_blank" rel="noopener" class="btn-primary job-detail-cta">Apply on Company Website →</a>
+            <a id="detail-save" href="#" class="btn-secondary job-detail-cta" style="display:none;">💾 Save This Job</a>
+            <p class="job-save-note" id="detail-save-note" style="display:none;">Free — takes seconds to set up your account.</p>
+          </div>
           <div class="job-report-wrap">
             <button class="job-report-btn" id="job-report-btn" type="button">Report this job posting</button>
             <div class="job-report-panel" id="job-report-panel" aria-hidden="true">
@@ -622,7 +629,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               applyBtn.style.display = 'none';
             }
 
-            var saveBtn = document.getElementById('detail-save');
             var saveParams = new URLSearchParams({
               job_id: job.job_id || '',
               title: job.title || '',
@@ -630,8 +636,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               url: job.apply_url || job.job_url || window.location.href,
             });
             if (job.date_posted) saveParams.set('posted_at', job.date_posted);
-            saveBtn.href = 'https://learn.fullsteamahead.ca/jobs/capture?' + saveParams.toString();
-            saveBtn.style.display = 'inline-block';
+            var saveUrl = 'https://learn.fullsteamahead.ca/jobs/capture?' + saveParams.toString();
+
+            ['detail-save', 'detail-save-top'].forEach(function (id) {
+              document.getElementById(id).href = saveUrl;
+              document.getElementById(id).style.display = 'inline-block';
+            });
+            ['detail-save-note', 'detail-save-note-top'].forEach(function (id) {
+              document.getElementById(id).style.display = 'block';
+            });
           })
           .catch(function (err) {
             console.error('Failed to load job detail:', err);

@@ -3185,9 +3185,29 @@ footer {
   margin-bottom: 0;
 }
 
+.job-detail-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
 .job-detail-cta {
   align-self: flex-start;
-  margin-top: 0.5rem;
+}
+
+.job-detail-save-top {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.job-save-note {
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+  margin: 0;
 }
 
 .job-summary-panel {
@@ -3372,6 +3392,8 @@ footer {
   .jobs-hero { padding: 8rem 1.5rem 2rem; }
   .jobs-wrap { padding: 1.5rem 1.5rem 3rem; }
   .job-detail-header { flex-direction: column; gap: 0.8rem; }
+  .job-detail-save-top { align-items: flex-start; width: 100%; }
+  .job-detail-save-top .btn-secondary { width: 100%; text-align: center; }
   .jobs-search-bar { flex-direction: column; }
   .jobs-search-input-wrap,
   .jobs-search-input,
