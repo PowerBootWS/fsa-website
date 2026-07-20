@@ -317,14 +317,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (!leads.length) { empty.hidden = false; return; }
         empty.hidden = true;
         leads.forEach(function (lead) {
-          var tr = document.createElement('tr');
           var enrolled = lead.enrollmentStatus !== 'not_enrolled';
           var statusText = enrolled ? lead.enrollmentStatus.replace('enrolled:', 'Enrolled – ') : 'Not Enrolled';
-          tr.innerHTML =
-            '<td>' + (lead.firstName || '—') + '</td>' +
-            '<td>' + lead.email + '</td>' +
-            '<td>' + formatDate(lead.attributedAt) + '</td>' +
-            '<td><span class="status-badge ' + (enrolled ? 'enrolled' : 'not-enrolled') + '">' + statusText + '</span></td>';
+
+          var tr = document.createElement('tr');
+
+          var nameCell = document.createElement('td');
+          nameCell.textContent = lead.firstName || '—';
+          tr.appendChild(nameCell);
+
+          var emailCell = document.createElement('td');
+          emailCell.textContent = lead.email;
+          tr.appendChild(emailCell);
+
+          var dateCell = document.createElement('td');
+          dateCell.textContent = formatDate(lead.attributedAt);
+          tr.appendChild(dateCell);
+
+          var statusCell = document.createElement('td');
+          var badge = document.createElement('span');
+          badge.className = 'status-badge ' + (enrolled ? 'enrolled' : 'not-enrolled');
+          badge.textContent = statusText;
+          statusCell.appendChild(badge);
+          tr.appendChild(statusCell);
+
           tbody.appendChild(tr);
         });
       }
