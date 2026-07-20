@@ -33,7 +33,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
 
-  <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="885" async defer></script>
 
   <style>
     .lp-hero {
@@ -418,7 +417,7 @@
 
         var checkoutPayload = { firstName: firstName, lastName: lastName, email: email };
         try {
-          var _cm = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/);
+          var _cm = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
           if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]);
         } catch(e) {}
 
@@ -434,7 +433,7 @@
         .then(function (data) {
           if (!data.success) { throw new Error('server'); }
           if (window.__fsaSelectedStripeUrl) { stripeLink.setAttribute('href', window.__fsaSelectedStripeUrl()); }
-          if (window.Refgrow && Refgrow.processStripePaymentLinks) { Refgrow.processStripePaymentLinks(); }
+          if (window.FSAAffiliate && FSAAffiliate.processStripePaymentLinks) { FSAAffiliate.processStripePaymentLinks(); }
           var url = new URL(stripeLink.href);
           url.searchParams.set('prefilled_email', email);
           stripeLink.href = url.toString();
@@ -497,7 +496,7 @@
 
   <script>
     window.addEventListener('load', function () {
-      if (window.Refgrow) { Refgrow.processStripePaymentLinks(); }
+      if (window.FSAAffiliate) { FSAAffiliate.processStripePaymentLinks(); }
     });
   </script>
 

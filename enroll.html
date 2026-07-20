@@ -238,7 +238,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 0.7;
     }
   </style>
-  <script src="https://scripts.refgrowcdn.com/latest.js" data-project-id="885" async defer></script>
 </head>
 <body>
 
@@ -369,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
           </form>
           <p class="checkout-fine" id="checkout-fine"><s>$199</s> $149/month &middot; Launch pricing — save $50/mo &middot; Cancel anytime</p>
-          <!-- Hidden Stripe link — Refgrow's processStripePaymentLinks() reads the referral cookie (refgrow_ref_code_885) and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs Refgrow, then navigates — so program choice and attribution both hold. -->
+          <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
       </div>
@@ -432,7 +431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         set('enroll-fine', p.fine);
         set('checkout-fine', p.checkoutFine);
         // Reset the Stripe link to the selected program's clean base URL. The submit
-        // handler re-runs Refgrow afterward to re-append affiliate attribution.
+        // handler re-runs FSAAffiliate afterward to re-append affiliate attribution.
         if (stripeLinkEl) stripeLinkEl.setAttribute('href', p.url);
       }
 
@@ -443,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var initial = new URLSearchParams(window.location.search).get('class');
       applyProgram(initial === 'third' ? 'third' : 'second');
 
-      // Expose the current base URL so the submit handler can reset before Refgrow.
+      // Expose the current base URL so the submit handler can reset before FSAAffiliate.
       window.__fsaSelectedStripeUrl = function () { return PROGRAMS[selected].url; };
     }());
   </script>
@@ -479,7 +478,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.textContent = 'Creating your account…';
 
         var checkoutPayload = { firstName: firstName, lastName: lastName, email: email };
-        try { var _cm = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/); if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]); } catch(e) {}
+        try { var _cm = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/); if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]); } catch(e) {}
         fetch('https://fsa-lead-capture.powerboot.workers.dev/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -492,13 +491,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .then(function (data) {
           if (!data.success) { throw new Error('server'); }
           // Re-apply affiliate attribution right before navigating. Idempotent:
-          // Refgrow skips links that already carry client_reference_id, and appends
-          // it from the referral cookie otherwise — guarding against the case where
-          // the initial page-load processing hadn't run before the user submitted.
-          // Reset to the selected program's clean base URL before Refgrow re-appends
+          // FSAAffiliate always overwrites client_reference_id from the current
+          // fsa_affiliate cookie, so re-running it here is safe even if the
+          // initial page-load processing already set it once.
+          // Reset to the selected program's clean base URL before FSAAffiliate re-appends
           // affiliate attribution, so program choice and attribution both survive.
           if (window.__fsaSelectedStripeUrl) { stripeLink.setAttribute('href', window.__fsaSelectedStripeUrl()); }
-          if (window.Refgrow && Refgrow.processStripePaymentLinks) { Refgrow.processStripePaymentLinks(); }
+          if (window.FSAAffiliate && FSAAffiliate.processStripePaymentLinks) { FSAAffiliate.processStripePaymentLinks(); }
           var url = new URL(stripeLink.href);
           url.searchParams.set('prefilled_email', email);
           stripeLink.href = url.toString();
@@ -599,7 +598,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script>
     window.addEventListener('load', function () {
-      if (window.Refgrow) { Refgrow.processStripePaymentLinks(); }
+      if (window.FSAAffiliate) { FSAAffiliate.processStripePaymentLinks(); }
     });
   </script>
 

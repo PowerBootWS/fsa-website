@@ -60,3 +60,31 @@
     initDropdowns();
   }
 })();
+
+(function () {
+  function initAffiliateTracking() {
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('am_id');
+    if (!code) return;
+    document.cookie = 'fsa_affiliate=' + encodeURIComponent(code) + '; max-age=7776000; path=/';
+    try {
+      fetch('https://fsa-lead-capture.powerboot.workers.dev/track?am_id=' + encodeURIComponent(code), { mode: 'no-cors' });
+    } catch (e) {}
+  }
+  initAffiliateTracking();
+
+  window.FSAAffiliate = {
+    processStripePaymentLinks: function () {
+      var match = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
+      if (!match) return;
+      var code = decodeURIComponent(match[1]);
+      document.querySelectorAll('.refgrow-stripe-payment-link').forEach(function (link) {
+        try {
+          var url = new URL(link.href);
+          url.searchParams.set('client_reference_id', 'ref_' + code);
+          link.href = url.toString();
+        } catch (e) {}
+      });
+    }
+  };
+})();

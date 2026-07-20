@@ -498,7 +498,7 @@
 
     function getAffiliateCookie() {
       try {
-        var m = document.cookie.match(/(?:^|;\s*)refgrow_ref_code_885=([^;]+)/);
+        var m = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
         return m ? decodeURIComponent(m[1]) : null;
       } catch (e) { return null; }
     }
