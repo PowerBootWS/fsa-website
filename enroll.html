@@ -349,6 +349,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="program-name">3rd Class</span>
               <span class="program-meta">Four papers · <s>$149</s> $99/mo</span>
             </button>
+            <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
+              <span class="program-name">4th Class Paper 4A</span>
+              <span class="program-meta">One paper · $99/yr</span>
+            </button>
+            <button type="button" class="program-option" data-program="fourth_b" role="radio" aria-checked="false">
+              <span class="program-name">4th Class Paper 4B</span>
+              <span class="program-meta">One paper · $99/yr</span>
+            </button>
           </div>
 
           <form id="checkout-form" novalidate>
@@ -377,9 +385,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <style>
-    .program-picker { display:flex; gap:10px; margin:0 0 18px; }
+    .program-picker { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
     .program-option {
-      flex:1; display:flex; flex-direction:column; gap:3px; align-items:flex-start;
+      flex:1 1 calc(50% - 5px); display:flex; flex-direction:column; gap:3px; align-items:flex-start;
       padding:12px 14px; border:2px solid #d8dee6; border-radius:10px; background:#fff;
       cursor:pointer; text-align:left; font:inherit; transition:border-color .15s, background .15s;
     }
@@ -410,6 +418,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           note: "Launch pricing: $99/month instead of the regular $149; that's $50 off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
           fine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime · All four papers included',
           checkoutFine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime'
+        },
+        fourth_a: {
+          url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',
+          lead: "Fill in your details and you'll have full access to 4th Class Paper 4A within minutes: no textbooks, no classroom schedule, no waiting.",
+          papers: '4th Class Paper 4A',
+          note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
+          fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4A only',
+          checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
+        },
+        fourth_b: {
+          url: 'https://buy.stripe.com/dRm3cx9YA4d9fwu4wd1B604',
+          lead: "Fill in your details and you'll have full access to 4th Class Paper 4B within minutes: no textbooks, no classroom schedule, no waiting.",
+          papers: '4th Class Paper 4B',
+          note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
+          fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4B only',
+          checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
         }
       };
       var selected = 'second';
@@ -440,7 +464,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
 
       var initial = new URLSearchParams(window.location.search).get('class');
-      applyProgram(initial === 'third' ? 'third' : 'second');
+      applyProgram(PROGRAMS[initial] ? initial : 'second');
 
       // Expose the current base URL so the submit handler can reset before FSAAffiliate.
       window.__fsaSelectedStripeUrl = function () { return PROGRAMS[selected].url; };
