@@ -4234,3 +4234,36 @@ footer {
   .jobs-alert-form-row { grid-template-columns: 1fr; }
   .jobs-alert-frequency-row { flex-direction: column; gap: 0.5rem; }
 }
+
+/* ── FREE PRACTICE EXAM PICKER (free-practice-exam.html) ── */
+.fpe-hidden { display: none; }
+
+.fpe-class-card,
+.fpe-paper-card {
+  cursor: pointer;
+}
+
+.fpe-class-card:focus-visible,
+.fpe-paper-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.pillar-card.fpe-class-card.is-selected {
+  border-color: var(--orange);
+  background: rgba(28,35,51,1);
+}
+
+.pillar-card.fpe-class-card.is-selected .pillar-title::after {
+  content: ' ✓';
+  color: var(--orange);
+}
+
+.chapter-card.fpe-paper-card.is-selected {
+  border-color: var(--orange);
+  background: rgba(232,114,12,0.09);
+}
+
+.chapter-card.fpe-paper-card.is-selected .chapter-unit {
+  color: var(--orange);
+}
