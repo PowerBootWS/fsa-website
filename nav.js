@@ -85,6 +85,26 @@
           link.href = url.toString();
         } catch (e) {}
       });
+    },
+    // free-practice-exam.html forwards its own am_id query param onto the
+    // learn.* CTA it builds, but internal links to /free-practice-exam from
+    // other pages (library.html, homepage) are plain hrefs with no query
+    // string — since learn.fullsteamahead.ca is a different subdomain, the
+    // fsa_affiliate cookie set here doesn't carry over on its own, so the
+    // code has to be appended to the link's href before the click happens.
+    processFreePracticeExamLinks: function () {
+      var match = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
+      if (!match) return;
+      var code = decodeURIComponent(match[1]);
+      document.querySelectorAll('a[href^="/free-practice-exam"]').forEach(function (link) {
+        try {
+          var url = new URL(link.href, window.location.origin);
+          if (!url.searchParams.has('am_id')) {
+            url.searchParams.set('am_id', code);
+            link.href = url.toString();
+          }
+        } catch (e) {}
+      });
     }
   };
 })();
