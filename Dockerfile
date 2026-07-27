@@ -15,6 +15,7 @@ COPY enroll.html /usr/share/nginx/html/enroll.html
 COPY 3rd-class-complete.html /usr/share/nginx/html/3rd-class-complete.html
 COPY 2nd-class-complete.html /usr/share/nginx/html/2nd-class-complete.html
 COPY library.html /usr/share/nginx/html/library.html
+COPY free-practice-exam.html /usr/share/nginx/html/free-practice-exam.html
 COPY jobs.html /usr/share/nginx/html/jobs.html
 COPY 404.html /usr/share/nginx/html/404.html
 COPY exit-intent.js /usr/share/nginx/html/exit-intent.js
