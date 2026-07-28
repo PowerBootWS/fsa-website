@@ -276,7 +276,7 @@
     <p class="lp-sub reveal" data-delay="120">
       Most operators who struggle on the exam aren't lacking knowledge — they're lacking reps under exam conditions. Guided lessons get you ready. Practice exams get you through the door.
     </p>
-    <a href="#enroll-form" class="lp-cta-hero reveal" data-delay="180">Get Started — $149/month →</a>
+    <a href="#enroll-form" class="lp-cta-hero reveal" data-delay="180">Get Started — $<span data-price="secondClass.current">149</span>/month →</a>
   </section>
 
   <hr class="lp-divider">
@@ -331,9 +331,9 @@
         <h2>Ready to Stop Guessing and <em>Start Passing?</em></h2>
         <p>Less than $5 a day. Cancel anytime. Full access to all six 2nd Class papers from the moment you enroll.</p>
         <p style="margin-top:1.25rem;">
-          <s style="color:var(--gray-mid);font-size:0.9rem;">$199/month</s>&nbsp;
-          <strong style="color:var(--text-primary);font-size:1.15rem;">$149/month</strong>
-          <span style="color:var(--gray-mid);font-size:0.85rem;"> &middot; Launch pricing — save $50/mo</span>
+          <s style="color:var(--gray-mid);font-size:0.9rem;">$<span data-price="secondClass.was">199</span>/month</s>&nbsp;
+          <strong style="color:var(--text-primary);font-size:1.15rem;">$<span data-price="secondClass.current">149</span>/month</strong>
+          <span style="color:var(--gray-mid);font-size:0.85rem;"> &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo</span>
         </p>
       </div>
 
@@ -357,7 +357,7 @@
             <p class="checkout-error" id="checkout-error" style="display:none;"></p>
             <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
           </form>
-          <p class="checkout-fine"><s>$199</s> $149/month &middot; Launch pricing — save $50/mo &middot; Cancel anytime</p>
+          <p class="checkout-fine"><s>$<span data-price="secondClass.was">199</span></s> $<span data-price="secondClass.current">149</span>/month &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime</p>
           <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
       </div>
@@ -464,6 +464,7 @@
     }());
   </script>
 
+  <script src="/pricing.js" defer></script>
   <script src="/nav.js" defer></script>
 
   <script>

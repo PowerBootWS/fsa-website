@@ -283,7 +283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tr>
             <td class="feature-col">Cost per paper</td>
             <td class="them-col">~$1,600 per paper ($9,600+ total)</td>
-            <td class="us-col">From $99/month, every paper for your certificate included <span class="pill">Save Thousands</span></td>
+            <td class="us-col">From $<span data-price="thirdClass.current">99</span>/month, every paper for your certificate included <span class="pill">Save Thousands</span></td>
           </tr>
           <tr>
             <td class="feature-col">Study timeline</td>
@@ -338,12 +338,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- 3rd Class -->
         <div class="price-card reveal" data-delay="0">
           <div class="plan-name">3rd Class</div>
-          <div class="plan-launch-badge">Launch Pricing — Save $50/mo</div>
+          <div class="plan-launch-badge">Launch Pricing — Save $<span data-price="thirdClass.savings">50</span>/mo</div>
           <div class="plan-price-wrap">
-            <span class="plan-price-was"><sup>$</sup>149</span>
-            <span class="plan-price"><sup>$</sup>99</span>
+            <span class="plan-price-was"><sup>$</sup><span data-price="thirdClass.was">149</span></span>
+            <span class="plan-price"><sup>$</sup><span data-price="thirdClass.current">99</span></span>
           </div>
-          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $149/mo</span></div>
+          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $<span data-price="thirdClass.was">149</span>/mo</span></div>
           <p class="plan-tagline">You hold your 4th Class (or none yet) and you're working toward your first interprovincial ticket. All four papers included.</p>
           <ul class="plan-features">
             <li><span class="check">✓</span> All 4 papers — 3A1, 3A2, 3B1, 3B2</li>
@@ -359,12 +359,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- 2nd Class -->
         <div class="price-card popular reveal" data-delay="150">
           <div class="plan-name">2nd Class</div>
-          <div class="plan-launch-badge">Launch Pricing — Save $50/mo</div>
+          <div class="plan-launch-badge">Launch Pricing — Save $<span data-price="secondClass.savings">50</span>/mo</div>
           <div class="plan-price-wrap">
-            <span class="plan-price-was"><sup>$</sup>199</span>
-            <span class="plan-price"><sup>$</sup>149</span>
+            <span class="plan-price-was"><sup>$</sup><span data-price="secondClass.was">199</span></span>
+            <span class="plan-price"><sup>$</sup><span data-price="secondClass.current">149</span></span>
           </div>
-          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $199/mo</span></div>
+          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $<span data-price="secondClass.was">199</span>/mo</span></div>
           <p class="plan-tagline">You hold your 3rd Class and you're ready to upgrade. All six papers included — study at your pace over <a href="/articles/how-long-to-prepare-2nd-class-exam/">6–12 months</a>.</p>
           <ul class="plan-features">
             <li><span class="check">✓</span> All 6 papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</li>
@@ -580,6 +580,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }());
   </script>
+<script src="/pricing.js" defer></script>
 <script src="/nav.js" defer></script>
 <script
   src="https://link.msgsndr.com/js/external-tracking.js"

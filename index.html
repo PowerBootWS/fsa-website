@@ -400,12 +400,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pricing-grid" style="margin-top:3rem;">
         <div class="price-card reveal" data-delay="180">
           <div class="plan-name">3rd Class</div>
-          <div class="plan-launch-badge">Launch Pricing — Save $50/mo</div>
+          <div class="plan-launch-badge">Launch Pricing — Save $<span data-price="thirdClass.savings">50</span>/mo</div>
           <div class="plan-price-wrap">
-            <span class="plan-price-was"><sup>$</sup>149</span>
-            <span class="plan-price"><sup>$</sup>99</span>
+            <span class="plan-price-was"><sup>$</sup><span data-price="thirdClass.was">149</span></span>
+            <span class="plan-price"><sup>$</sup><span data-price="thirdClass.current">99</span></span>
           </div>
-          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $149/mo</span></div>
+          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $<span data-price="thirdClass.was">149</span>/mo</span></div>
           <p class="plan-tagline">You hold your 4th Class (or none yet) and you're working toward your first interprovincial ticket. Full access to all four 3rd Class papers with AI-powered support the whole way.</p>
           <ul class="plan-features">
             <li><span class="check">✓</span> All 4 papers — 3A1, 3A2, 3B1, 3B2</li>
@@ -418,12 +418,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="price-card popular reveal" data-delay="240">
           <div class="plan-name">2nd Class</div>
-          <div class="plan-launch-badge">Launch Pricing — Save $50/mo</div>
+          <div class="plan-launch-badge">Launch Pricing — Save $<span data-price="secondClass.savings">50</span>/mo</div>
           <div class="plan-price-wrap">
-            <span class="plan-price-was"><sup>$</sup>199</span>
-            <span class="plan-price"><sup>$</sup>149</span>
+            <span class="plan-price-was"><sup>$</sup><span data-price="secondClass.was">199</span></span>
+            <span class="plan-price"><sup>$</sup><span data-price="secondClass.current">149</span></span>
           </div>
-          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $199/mo</span></div>
+          <div class="plan-cycle">per month · cancel anytime · <span class="plan-cycle-save">regularly $<span data-price="secondClass.was">199</span>/mo</span></div>
           <p class="plan-tagline">You hold your 3rd Class and you're ready to upgrade. Full access to all six 2nd Class papers, studied at your pace over <a href="/articles/how-long-to-prepare-2nd-class-exam/">6–12 months</a>.</p>
           <ul class="plan-features">
             <li><span class="check">✓</span> All 6 papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</li>
@@ -520,7 +520,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>Ready to Write? Let's Go.</h2>
     <p>Join working operators across Canada preparing for their 2nd and 3rd Class papers. Every paper, one subscription, no contracts. Cancel anytime.</p>
     <a href="/enroll"><button class="btn-primary">Get Started Now</button></a>
-    <p class="homepage-cta-fine">From $99/month. Cancel anytime. Every paper included at one flat price.</p>
+    <p class="homepage-cta-fine">From $<span data-price="thirdClass.current">99</span>/month. Cancel anytime. Every paper included at one flat price.</p>
   </div>
 
   </main><!-- /#main-content -->
@@ -683,6 +683,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, { passive: true });
     }());
   </script>
+<script src="/pricing.js" defer></script>
 <script src="/nav.js" defer></script>
 <script>
   window.addEventListener('load', function () {

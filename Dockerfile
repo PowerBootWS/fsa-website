@@ -22,6 +22,7 @@ COPY exit-intent.js /usr/share/nginx/html/exit-intent.js
 COPY exit-intent-jobs.js /usr/share/nginx/html/exit-intent-jobs.js
 COPY exit-intent-exam-articles.js /usr/share/nginx/html/exit-intent-exam-articles.js
 COPY nav.js /usr/share/nginx/html/nav.js
+COPY pricing.js /usr/share/nginx/html/pricing.js
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY styles-v2.css /usr/share/nginx/html/styles-v2.css
 COPY assets/ /usr/share/nginx/html/assets/

@@ -335,19 +335,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="program-picker" role="radiogroup" aria-label="Choose your program">
             <button type="button" class="program-option is-selected" data-program="second" role="radio" aria-checked="true">
               <span class="program-name">2nd Class</span>
-              <span class="program-meta">Six papers · <s>$199</s> $149/mo</span>
+              <span class="program-meta">Six papers · <s>$<span data-price="secondClass.was">199</span></s> $<span data-price="secondClass.current">149</span>/mo</span>
             </button>
             <button type="button" class="program-option" data-program="third" role="radio" aria-checked="false">
               <span class="program-name">3rd Class</span>
-              <span class="program-meta">Four papers · <s>$149</s> $99/mo</span>
+              <span class="program-meta">Four papers · <s>$<span data-price="thirdClass.was">149</span></s> $<span data-price="thirdClass.current">99</span>/mo</span>
             </button>
             <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
               <span class="program-name">4th Class Paper 4A</span>
-              <span class="program-meta">One paper · $99/yr</span>
+              <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span>/yr</span>
             </button>
             <button type="button" class="program-option" data-program="fourth_b" role="radio" aria-checked="false">
               <span class="program-name">4th Class Paper 4B</span>
-              <span class="program-meta">One paper · $99/yr</span>
+              <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span>/yr</span>
             </button>
           </div>
 
@@ -367,7 +367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="checkout-error" id="checkout-error" style="display:none;"></p>
             <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
           </form>
-          <p class="checkout-fine" id="checkout-fine"><s>$199</s> $149/month &middot; Launch pricing — save $50/mo &middot; Cancel anytime</p>
+          <p class="checkout-fine" id="checkout-fine"><s>$<span data-price="secondClass.was">199</span></s> $<span data-price="secondClass.current">149</span>/month &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime</p>
           <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
@@ -391,10 +391,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="papers-note reveal" data-delay="240" style="margin-top:0">
           <span class="note-icon">💡</span>
-          <span id="enroll-note">Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
+          <span id="enroll-note">Launch pricing: $<span data-price="secondClass.current">149</span>/month instead of the regular $<span data-price="secondClass.was">199</span>; that's $<span data-price="secondClass.savings">50</span> off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
         </div>
 
-        <p class="enroll-fine" id="enroll-fine"><s>$199</s> <strong>$149/month</strong> &middot; Launch pricing — save $50/mo &middot; Cancel anytime &middot; All six papers included</p>
+        <p class="enroll-fine" id="enroll-fine"><s>$<span data-price="secondClass.was">199</span></s> <strong>$<span data-price="secondClass.current">149</span>/month</strong> &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime &middot; All six papers included</p>
       </div>
 
     </div>
@@ -413,11 +413,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .program-meta { font-size:.82rem; color:#52606d; }
   </style>
 
+  <script src="/pricing.js"></script>
   <script>
     // Program picker — drives copy + the Stripe checkout link. 2nd Class is the
     // default; ?class=third (used by deep links from the homepage / how-it-works)
     // preselects 3rd Class.
+    //
+    // All prices are read from window.FSA_PRICING (pricing.js, loaded above,
+    // synchronously, so it's ready before this runs) instead of being
+    // hardcoded here — see pricing.js for why.
     (function () {
+      var P2 = FSA_PRICING.secondClass, P3 = FSA_PRICING.thirdClass, P4 = FSA_PRICING.fourthClass;
       var PROGRAMS = {
         second: {
           url: 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600',
@@ -430,9 +436,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             "Progress saved if you need to pause; resume whenever you're ready",
             'Study on any device, on your schedule'
           ],
-          note: "Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime · All six papers included',
-          checkoutFine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime'
+          note: "Launch pricing: $" + P2.current + "/month instead of the regular $" + P2.was + "; that's $" + P2.savings + " off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
+          fine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime · All six papers included',
+          checkoutFine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime'
         },
         third: {
           url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
@@ -445,9 +451,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             "Progress saved if you need to pause; resume whenever you're ready",
             'Study on any device, on your schedule'
           ],
-          note: "Launch pricing: $99/month instead of the regular $149; that's $50 off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime · All four papers included',
-          checkoutFine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime'
+          note: "Launch pricing: $" + P3.current + "/month instead of the regular $" + P3.was + "; that's $" + P3.savings + " off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
+          fine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime · All four papers included',
+          checkoutFine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime'
         },
         fourth_a: {
           url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',
@@ -459,9 +465,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             "Progress saved if you need to pause; resume whenever you're ready",
             'Study on any device, on your schedule'
           ],
-          note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
-          fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4A only',
-          checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
+          note: '$' + P4.current + '/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
+          fine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew · Paper 4A only',
+          checkoutFine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew'
         },
         fourth_b: {
           url: 'https://buy.stripe.com/dRm3cx9YA4d9fwu4wd1B604',
@@ -473,9 +479,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             "Progress saved if you need to pause; resume whenever you're ready",
             'Study on any device, on your schedule'
           ],
-          note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
-          fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4B only',
-          checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
+          note: '$' + P4.current + '/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
+          fine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew · Paper 4B only',
+          checkoutFine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew'
         }
       };
       var selected = 'second';
