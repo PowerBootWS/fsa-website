@@ -239,10 +239,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Hero: commission rate -->
     <div class="affiliate-hero reveal" data-delay="60">
       <div class="affiliate-rate">
-        <span class="rate-value">20%</span>
+        <span class="rate-value"><span data-price="affiliate.commissionRate">20</span>%</span>
         <span class="rate-label">Recurring Commission</span>
       </div>
-      <p class="affiliate-tagline">Earn 20% of every monthly payment for every student who enrolls using your affiliate link, for as long as they stay enrolled. No caps. No expiry.</p>
+      <p class="affiliate-tagline">Earn <span data-price="affiliate.commissionRate">20</span>% of every monthly payment for every student who enrolls using your affiliate link, for as long as they stay enrolled. No caps. No expiry.</p>
     </div>
 
     <!-- Become an affiliate: public self-serve signup -->
@@ -277,7 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="details-grid">
         <div class="detail-item reveal" data-delay="0">
           <div class="detail-label">Commission Rate</div>
-          <div class="detail-value">20%</div>
+          <div class="detail-value"><span data-price="affiliate.commissionRate">20</span>%</div>
           <div class="detail-note">Recurring; paid every month your referral stays enrolled.</div>
         </div>
         <div class="detail-item reveal" data-delay="100">
@@ -326,7 +326,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="benefit-card reveal" data-delay="200">
           <div class="benefit-icon">💰</div>
           <div class="benefit-title">Earn Every Month</div>
-          <p>You earn 20% every single month a referred student stays subscribed. One referral can pay you for months or years.</p>
+          <p>You earn <span data-price="affiliate.commissionRate">20</span>% every single month a referred student stays subscribed. One referral can pay you for months or years.</p>
         </div>
         <div class="benefit-card reveal" data-delay="300">
           <div class="benefit-icon">🤝</div>
@@ -347,18 +347,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="example-row">
           <span>5 students</span>
-          <span>$149/mo</span>
-          <span>$1,788/yr</span>
+          <span><span data-commission="5:monthly">$149</span>/mo</span>
+          <span><span data-commission="5:annual">$1,788</span>/yr</span>
         </div>
         <div class="example-row">
           <span>10 students</span>
-          <span>$298/mo</span>
-          <span>$3,576/yr</span>
+          <span><span data-commission="10:monthly">$298</span>/mo</span>
+          <span><span data-commission="10:annual">$3,576</span>/yr</span>
         </div>
         <div class="example-row highlight">
           <span>25 students</span>
-          <span>$745/mo</span>
-          <span>$8,940/yr</span>
+          <span><span data-commission="25:monthly">$745</span>/mo</span>
+          <span><span data-commission="25:annual">$8,940</span>/yr</span>
         </div>
       </div>
       <p class="example-note reveal" data-delay="120">* Based on $<span data-price="secondClass.current">149</span>/month subscription. Earnings continue for as long as referred students remain enrolled.</p>
@@ -370,7 +370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-grid">
         <div class="faq-card orange-border reveal" data-delay="0">
           <div class="faq-q">Do referral commissions expire?</div>
-          <div class="faq-a">No. As long as your referred subscriber stays enrolled, you keep earning 20% every month. There is no time limit on recurring commissions.</div>
+          <div class="faq-a">No. As long as your referred subscriber stays enrolled, you keep earning <span data-price="affiliate.commissionRate">20</span>% every month. There is no time limit on recurring commissions.</div>
         </div>
         <div class="faq-card reveal" data-delay="100">
           <div class="faq-q">What is last-click attribution?</div>
