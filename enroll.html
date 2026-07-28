@@ -44,19 +44,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .enroll-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-areas:
+        "header form"
+        "details form";
+      column-gap: 4rem;
+      row-gap: 0;
       align-items: center;
     }
 
-    .enroll-intro {
-      padding-top: 1rem;
-    }
+    .enroll-header { grid-area: header; padding-top: 1rem; }
+    .enroll-form-wrap { grid-area: form; }
+    .enroll-details { grid-area: details; }
 
-    .enroll-intro .section-label {
+    .enroll-header .section-label {
       margin-bottom: 1rem;
     }
 
-    .enroll-intro h1 {
+    .enroll-header h1 {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 800;
@@ -65,12 +69,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 1.2rem;
     }
 
-    .enroll-intro h1 em {
+    .enroll-header h1 em {
       color: var(--orange);
       font-style: normal;
     }
 
-    .enroll-intro .enroll-lead {
+    .enroll-details .enroll-lead {
       font-size: 1.05rem;
       color: var(--gray-mid);
       line-height: 1.7;
@@ -145,10 +149,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media (max-width: 860px) {
       .enroll-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "form"
+          "details";
         gap: 2.5rem;
       }
 
-      .enroll-intro {
+      .enroll-header {
         padding-top: 0;
       }
 
@@ -307,34 +315,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="enroll-section">
     <div class="enroll-grid">
 
-      <!-- Left: value pitch -->
-      <div class="enroll-intro">
+      <!-- Header: generic hook, always shown first regardless of program -->
+      <div class="enroll-header">
         <h1 class="reveal" data-delay="60">
           You've Put In the Hours.<br>
           Now Get <em>Your Ticket.</em>
         </h1>
-        <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
-          Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
-        </p>
-
-        <ul class="enroll-checklist reveal" data-delay="180">
-          <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
-          <li><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
-          <li><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
-          <li><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
-          <li><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
-          <li><span class="chk">✓</span> Study on any device, on your schedule</li>
-        </ul>
-
-        <div class="papers-note reveal" data-delay="240" style="margin-top:0">
-          <span class="note-icon">💡</span>
-          <span id="enroll-note">Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
-        </div>
-
-        <p class="enroll-fine" id="enroll-fine"><s>$199</s> <strong>$149/month</strong> &middot; Launch pricing — save $50/mo &middot; Cancel anytime &middot; All six papers included</p>
       </div>
 
-      <!-- Right: Lead capture form -->
+      <!-- Form: signup + program picker. On mobile this comes before the
+           program-specific details below, so the picker is visible before
+           any 2nd/3rd/4th-Class-specific copy — avoids the "wrong page"
+           impression when a non-default program is selected. -->
       <div class="enroll-form-wrap reveal" data-delay="60">
         <div class="checkout-form-card">
           <p class="checkout-form-heading">Create your account to continue</p>
@@ -379,6 +371,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
+      </div>
+
+      <!-- Details: program-specific pitch, kept below the picker on mobile so it
+           always matches whichever program is currently selected. -->
+      <div class="enroll-details">
+        <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
+          Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
+        </p>
+
+        <ul class="enroll-checklist reveal" data-delay="180">
+          <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
+          <li><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
+          <li><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
+          <li><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
+          <li><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
+          <li><span class="chk">✓</span> Study on any device, on your schedule</li>
+        </ul>
+
+        <div class="papers-note reveal" data-delay="240" style="margin-top:0">
+          <span class="note-icon">💡</span>
+          <span id="enroll-note">Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
+        </div>
+
+        <p class="enroll-fine" id="enroll-fine"><s>$199</s> <strong>$149/month</strong> &middot; Launch pricing — save $50/mo &middot; Cancel anytime &middot; All six papers included</p>
       </div>
 
     </div>

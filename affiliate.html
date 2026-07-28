@@ -84,6 +84,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-style: italic;
       margin-top: 0.75rem;
     }
+
+    .signup-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 460px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      scroll-margin-top: 6rem;
+    }
+    .signup-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem;
+    }
+    .signup-sub {
+      font-size: 0.92rem;
+      color: var(--gray-mid);
+      margin: 0 0 1.5rem;
+      line-height: 1.5;
+    }
+    .signup-form { text-align: left; }
+    .signup-field { margin-bottom: 1rem; }
+    .signup-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-mid);
+      margin-bottom: 0.4rem;
+    }
+    .signup-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.85rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .signup-input:focus { outline: none; border-color: var(--orange); }
+    .signup-input::placeholder { color: rgba(255,255,255,0.25); }
+    /* Honeypot — visually and programmatically hidden, but not display:none
+       (some bots skip that). Off-screen, unreachable by tab, unlabeled to AT. */
+    .signup-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .signup-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
+    .signup-success { font-size: 0.9rem; color: var(--green-light); margin: 0 0 0.75rem; }
+    .signup-btn {
+      display: block;
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .signup-btn:hover { background: var(--orange-glow); }
+    .signup-btn:disabled { opacity: 0.6; cursor: not-allowed; }
   </style>
 </head>
 <body>
@@ -167,6 +245,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="affiliate-tagline">Earn 20% of every monthly payment for every student who enrolls using your affiliate link, for as long as they stay enrolled. No caps. No expiry.</p>
     </div>
 
+    <!-- Become an affiliate: public self-serve signup -->
+    <div class="signup-card reveal" data-delay="120" id="become-an-affiliate">
+      <h2 class="signup-heading">Become an Affiliate</h2>
+      <p class="signup-sub">No approval wait. Sign up and we'll email your referral link and dashboard access right away.</p>
+      <form id="affiliate-signup-form" class="signup-form" novalidate>
+        <div class="signup-field">
+          <label class="signup-label" for="signup-name">Name</label>
+          <input class="signup-input" type="text" id="signup-name" name="name" autocomplete="name" required placeholder="e.g. Jordan MacLeod">
+        </div>
+        <div class="signup-field">
+          <label class="signup-label" for="signup-email">Email Address</label>
+          <input class="signup-input" type="email" id="signup-email" name="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <!-- Honeypot: hidden from real visitors, tabindex/autocomplete off so it's
+             invisible to screen readers and password managers too. A filled value
+             marks the submission as a bot to the backend. -->
+        <div class="signup-field signup-honeypot" aria-hidden="true">
+          <label for="signup-company">Company</label>
+          <input type="text" id="signup-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="signup-error" id="signup-error" style="display:none;"></p>
+        <p class="signup-success" id="signup-success" style="display:none;"></p>
+        <button type="submit" class="signup-btn" id="signup-btn">Sign Up as an Affiliate →</button>
+      </form>
+    </div>
+
     <!-- Program details -->
     <div class="affiliate-details">
       <h2 class="reveal">Program Details</h2>
@@ -212,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="benefit-card reveal" data-delay="0">
           <div class="benefit-icon">🔗</div>
           <div class="benefit-title">Share Your Link</div>
-          <p>Sign up through the <a href="/affiliate-dashboard" style="color:var(--orange-glow);">affiliate dashboard</a> to get your unique referral link. Share it anywhere: social media, forums, direct messages.</p>
+          <p><a href="#become-an-affiliate" style="color:var(--orange-glow);">Sign up above</a> to get your unique referral link by email, right away. Share it anywhere: social media, forums, direct messages.</p>
         </div>
         <div class="benefit-card reveal" data-delay="100">
           <div class="benefit-icon">📊</div>
@@ -293,12 +397,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="affiliate-disclaimer reveal">Commissions are tracked exclusively through your unique affiliate link. Subscriptions that originate without it cannot be credited to your account. Share your link; it's the only way we can accurately attribute referrals to you.</p>
 
-    <!-- CTA to dashboard -->
-    <div style="text-align:center;margin:3rem 0 1rem;" class="reveal" data-delay="60">
-      <a href="/affiliate-dashboard" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;">Access Your Affiliate Dashboard →</a>
+    <!-- CTA: apply or log in -->
+    <div style="text-align:center;margin:3rem 0 1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal" data-delay="60">
+      <a href="#become-an-affiliate" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;">Sign Up as an Affiliate →</a>
+      <a href="/affiliate-dashboard" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;background:transparent;border:1px solid var(--border);color:var(--gray-light);">Already In? Log In →</a>
     </div>
 
   </div>
+
+  <!-- Affiliate signup form -->
+  <script>
+    (function () {
+      var form = document.getElementById('affiliate-signup-form');
+      var btn = document.getElementById('signup-btn');
+      var errorEl = document.getElementById('signup-error');
+      var successEl = document.getElementById('signup-success');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('signup-name').value.trim();
+        var email = document.getElementById('signup-email').value.trim().toLowerCase();
+        var company = document.getElementById('signup-company').value; // honeypot
+
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+        successEl.style.display = 'none';
+
+        if (!name || !email) {
+          errorEl.textContent = 'Please fill in your name and email.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Signing you up…';
+
+        fetch('https://affiliate-api.fullsteamahead.ca/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, company: company }),
+        })
+        .then(function (res) {
+          if (!res.ok) { throw new Error('server'); }
+          return res.json();
+        })
+        .then(function () {
+          window.location.href = '/affiliate-confirmation';
+        })
+        .catch(function () {
+          errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
+          errorEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Sign Up as an Affiliate →';
+        });
+      });
+    }());
+  </script>
 
   <!-- Scroll reveal -->
   <script>
