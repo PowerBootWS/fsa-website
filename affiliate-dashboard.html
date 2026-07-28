@@ -81,6 +81,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--gray-mid);
     }
     .affiliate-login-apply a { color: var(--orange-glow); }
+    .affiliate-login form { text-align: left; }
+    .signup-field { margin-bottom: 1rem; }
+    .signup-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-mid);
+      margin-bottom: 0.4rem;
+    }
+    .signup-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.85rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .signup-input:focus { outline: none; border-color: var(--orange); }
+    /* Honeypot — visually and programmatically hidden, but not display:none
+       (some bots skip that). Off-screen, unreachable by tab, unlabeled to AT. */
+    .signup-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .signup-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
+    .affiliate-login button:disabled { opacity: 0.6; cursor: not-allowed; }
     .referral-link-panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -211,7 +246,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="submit">Send Login Link</button>
       </form>
       <p id="affiliate-login-message" class="affiliate-login-message"></p>
-      <p class="affiliate-login-apply">Not an affiliate yet? <a href="/affiliate#become-an-affiliate">Sign up here</a> — it takes 30 seconds.</p>
+      <p class="affiliate-login-apply">Not an affiliate yet? <a href="#" id="show-signup-link">Sign up here</a> — it takes 30 seconds.</p>
+    </div>
+
+    <div id="affiliate-signup" class="affiliate-login" hidden>
+      <h1>Become an Affiliate</h1>
+      <p>No approval wait. Sign up and we'll email your referral link and dashboard access right away.</p>
+      <form id="affiliate-signup-form">
+        <div class="signup-field">
+          <label class="signup-label" for="signup-first-name">First Name</label>
+          <input class="signup-input" type="text" id="signup-first-name" name="firstName" autocomplete="given-name" required placeholder="Jordan">
+        </div>
+        <div class="signup-field">
+          <label class="signup-label" for="signup-last-name">Last Name</label>
+          <input class="signup-input" type="text" id="signup-last-name" name="lastName" autocomplete="family-name" required placeholder="MacLeod">
+        </div>
+        <div class="signup-field">
+          <label class="signup-label" for="signup-email">Email Address</label>
+          <input class="signup-input" type="email" id="signup-email" name="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <!-- Honeypot: hidden from real visitors, tabindex/autocomplete off so it's
+             invisible to screen readers and password managers too. A filled value
+             marks the submission as a bot to the backend. -->
+        <div class="signup-field signup-honeypot" aria-hidden="true">
+          <label for="signup-company">Company</label>
+          <input type="text" id="signup-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="signup-error" id="signup-error" style="display:none;"></p>
+        <button type="submit" id="signup-btn">Create My Affiliate Account →</button>
+      </form>
+      <p class="affiliate-login-apply">Already have an account? <a href="#" id="show-login-link">Log in here</a></p>
     </div>
 
     <div id="affiliate-dashboard" hidden>
@@ -270,24 +334,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var SESSION_KEY = 'fsa_affiliate_session';
 
       var loginView = document.getElementById('affiliate-login');
+      var signupView = document.getElementById('affiliate-signup');
       var dashboardView = document.getElementById('affiliate-dashboard');
       var loadingView = document.getElementById('affiliate-loading');
       var loginForm = document.getElementById('affiliate-login-form');
       var loginMessage = document.getElementById('affiliate-login-message');
       var logoutBtn = document.getElementById('affiliate-logout');
+      var signupForm = document.getElementById('affiliate-signup-form');
+      var signupBtn = document.getElementById('signup-btn');
+      var signupError = document.getElementById('signup-error');
+      var showSignupLink = document.getElementById('show-signup-link');
+      var showLoginLink = document.getElementById('show-login-link');
 
       function showLogin(message) {
         loadingView.hidden = true;
         dashboardView.hidden = true;
+        signupView.hidden = true;
         loginView.hidden = false;
         if (message) loginMessage.textContent = message;
+      }
+
+      function showSignup() {
+        loadingView.hidden = true;
+        dashboardView.hidden = true;
+        loginView.hidden = true;
+        signupView.hidden = false;
       }
 
       function showDashboard() {
         loadingView.hidden = true;
         loginView.hidden = true;
+        signupView.hidden = true;
         dashboardView.hidden = false;
       }
+
+      showSignupLink.addEventListener('click', function (e) { e.preventDefault(); showSignup(); });
+      showLoginLink.addEventListener('click', function (e) { e.preventDefault(); showLogin(); });
+
+      signupForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var firstName = document.getElementById('signup-first-name').value.trim();
+        var lastName = document.getElementById('signup-last-name').value.trim();
+        var email = document.getElementById('signup-email').value.trim().toLowerCase();
+        var company = document.getElementById('signup-company').value; // honeypot
+
+        signupError.style.display = 'none';
+        signupError.textContent = '';
+
+        if (!firstName || !lastName || !email) {
+          signupError.textContent = 'Please fill in your first name, last name, and email.';
+          signupError.style.display = 'block';
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          signupError.textContent = 'Please enter a valid email address.';
+          signupError.style.display = 'block';
+          return;
+        }
+
+        signupBtn.disabled = true;
+        signupBtn.textContent = 'Creating your account…';
+
+        fetch(API + '/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: firstName + ' ' + lastName, email: email, company: company }),
+        })
+        .then(function (res) {
+          if (!res.ok) { throw new Error('server'); }
+          return res.json();
+        })
+        .then(function () {
+          window.location.href = '/affiliate-confirmation';
+        })
+        .catch(function () {
+          signupError.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
+          signupError.style.display = 'block';
+          signupBtn.disabled = false;
+          signupBtn.textContent = 'Create My Affiliate Account →';
+        });
+      });
 
       function getSession() { return localStorage.getItem(SESSION_KEY); }
       function setSession(token) { localStorage.setItem(SESSION_KEY, token); }
