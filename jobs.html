@@ -394,12 +394,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       // ── Update filter counts ──
+      // Scoped to the current province filter (if any) so switching province
+      // updates every button's count, but clicking a class button does not
+      // touch these counts — they always reflect all classes for that province.
       function updateFilterCounts() {
-        var classCounts = { 'all': allJobs.length };
+        var jobsInScope = currentProvince
+          ? allJobs.filter(function (j) { return extractProvince(j.location || '') === currentProvince; })
+          : allJobs;
+        var classCounts = { 'all': jobsInScope.length };
         var namedClasses = ['1st Class', '2nd Class', '3rd Class', '4th Class', '5th Class'];
         namedClasses.forEach(function (cls) { classCounts[cls] = 0; });
         classCounts['Other'] = 0;
-        allJobs.forEach(function (j) {
+        jobsInScope.forEach(function (j) {
           var levels = Array.isArray(j.class_level) ? j.class_level : [j.class_level];
           var matched = false;
           namedClasses.forEach(function (cls) {
@@ -871,6 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (provinceSelect) {
         provinceSelect.addEventListener('change', function () {
           currentProvince = provinceSelect.value;
+          updateFilterCounts();
           renderList();
         });
       }
