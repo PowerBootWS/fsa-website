@@ -380,13 +380,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
         </p>
 
-        <ul class="enroll-checklist reveal" data-delay="180">
+        <ul class="enroll-checklist reveal" data-delay="180" id="enroll-checklist">
           <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
-          <li><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
-          <li><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
-          <li><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
-          <li><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
-          <li><span class="chk">✓</span> Study on any device, on your schedule</li>
+          <li class="checklist-dynamic"><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
+          <li class="checklist-dynamic"><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
+          <li class="checklist-dynamic"><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
+          <li class="checklist-dynamic"><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
+          <li class="checklist-dynamic"><span class="chk">✓</span> Study on any device, on your schedule</li>
         </ul>
 
         <div class="papers-note reveal" data-delay="240" style="margin-top:0">
@@ -423,6 +423,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           url: 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600',
           lead: "Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: 'All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
+          checklist: [
+            'Step-by-step calculation coaching that mirrors how exams are marked',
+            'Interactive AI tutoring available anytime, even on night shift',
+            'Adaptive practice exams that focus on your weak spots',
+            "Progress saved if you need to pause; resume whenever you're ready",
+            'Study on any device, on your schedule'
+          ],
           note: "Launch pricing: $149/month instead of the regular $199; that's $50 off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
           fine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime · All six papers included',
           checkoutFine: 'Was $199 · now $149/month · Launch pricing — save $50/mo · Cancel anytime'
@@ -431,6 +438,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
           lead: "Fill in your details and you'll have full access to all four 3rd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: 'All four 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
+          checklist: [
+            'Step-by-step calculation coaching that mirrors how exams are marked',
+            'Interactive AI tutoring available anytime, even on night shift',
+            'Adaptive practice exams that focus on your weak spots',
+            "Progress saved if you need to pause; resume whenever you're ready",
+            'Study on any device, on your schedule'
+          ],
           note: "Launch pricing: $99/month instead of the regular $149; that's $50 off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
           fine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime · All four papers included',
           checkoutFine: 'Was $149 · now $99/month · Launch pricing — save $50/mo · Cancel anytime'
@@ -439,6 +453,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',
           lead: "Fill in your details and you'll have full access to 4th Class Paper 4A within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: '4th Class Paper 4A',
+          checklist: [
+            'Adaptive practice exams that focus on your weak spots — retake as many times as you need',
+            "Chapter quizzes included — great for keeping pace with a school program's own chapter tests",
+            "Progress saved if you need to pause; resume whenever you're ready",
+            'Study on any device, on your schedule'
+          ],
           note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
           fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4A only',
           checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
@@ -447,6 +467,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           url: 'https://buy.stripe.com/dRm3cx9YA4d9fwu4wd1B604',
           lead: "Fill in your details and you'll have full access to 4th Class Paper 4B within minutes: no textbooks, no classroom schedule, no waiting.",
           papers: '4th Class Paper 4B',
+          checklist: [
+            'Adaptive practice exams that focus on your weak spots — retake as many times as you need',
+            "Chapter quizzes included — great for keeping pace with a school program's own chapter tests",
+            "Progress saved if you need to pause; resume whenever you're ready",
+            'Study on any device, on your schedule'
+          ],
           note: '$99/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
           fine: '$99/year · One-time annual charge · Does not auto-renew · Paper 4B only',
           checkoutFine: '$99/year · One-time annual charge · Does not auto-renew'
@@ -455,6 +481,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var selected = 'second';
       var options = Array.prototype.slice.call(document.querySelectorAll('.program-option'));
       var stripeLinkEl = document.getElementById('stripe-proceed');
+
+      // What's actually included differs by program — 2nd/3rd Class have full
+      // lesson content (AI tutoring, calculation coaching); 4th Class is
+      // exam-prep only (adaptive practice + chapter quizzes, no tutoring), so
+      // the checklist itself is per-program, not just the papers line.
+      function renderChecklist(items) {
+        var ul = document.getElementById('enroll-checklist');
+        if (!ul) return;
+        Array.prototype.slice.call(ul.querySelectorAll('.checklist-dynamic')).forEach(function (li) { li.remove(); });
+        items.forEach(function (text) {
+          var li = document.createElement('li');
+          li.className = 'checklist-dynamic';
+          var chk = document.createElement('span');
+          chk.className = 'chk';
+          chk.textContent = '✓';
+          li.appendChild(chk);
+          li.appendChild(document.createTextNode(' ' + text));
+          ul.appendChild(li);
+        });
+      }
 
       function applyProgram(program) {
         selected = PROGRAMS[program] ? program : 'second';
@@ -467,6 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
         set('enroll-lead', p.lead);
         set('enroll-papers', p.papers);
+        renderChecklist(p.checklist);
         set('enroll-note', p.note);
         set('enroll-fine', p.fine);
         set('checkout-fine', p.checkoutFine);
