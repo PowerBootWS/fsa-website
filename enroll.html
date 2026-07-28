@@ -377,11 +377,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            always matches whichever program is currently selected. -->
       <div class="enroll-details">
         <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
-          Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
+          Fill in your details and you'll have full access to all <span data-price="secondClass.papers">6</span> 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
         </p>
 
         <ul class="enroll-checklist reveal" data-delay="180" id="enroll-checklist">
-          <li><span class="chk">✓</span> <span id="enroll-papers">All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
+          <li><span class="chk">✓</span> <span id="enroll-papers">All <span data-price="secondClass.papers">6</span> 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
@@ -394,7 +394,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span id="enroll-note">Launch pricing: $<span data-price="secondClass.current">149</span>/month instead of the regular $<span data-price="secondClass.was">199</span>; that's $<span data-price="secondClass.savings">50</span> off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
         </div>
 
-        <p class="enroll-fine" id="enroll-fine"><s>$<span data-price="secondClass.was">199</span></s> <strong>$<span data-price="secondClass.current">149</span>/month</strong> &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime &middot; All six papers included</p>
+        <p class="enroll-fine" id="enroll-fine"><s>$<span data-price="secondClass.was">199</span></s> <strong>$<span data-price="secondClass.current">149</span>/month</strong> &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime &middot; All <span data-price="secondClass.papers">6</span> papers included</p>
       </div>
 
     </div>
@@ -427,8 +427,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var PROGRAMS = {
         second: {
           url: 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600',
-          lead: "Fill in your details and you'll have full access to all six 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: 'All six 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
+          lead: "Fill in your details and you'll have full access to all " + P2.papers + " 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
+          papers: 'All ' + P2.papers + ' 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
           checklist: [
             'Step-by-step calculation coaching that mirrors how exams are marked',
             'Interactive AI tutoring available anytime, even on night shift',
@@ -437,13 +437,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             'Study on any device, on your schedule'
           ],
           note: "Launch pricing: $" + P2.current + "/month instead of the regular $" + P2.was + "; that's $" + P2.savings + " off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime · All six papers included',
+          fine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime · All ' + P2.papers + ' papers included',
           checkoutFine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime'
         },
         third: {
           url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
-          lead: "Fill in your details and you'll have full access to all four 3rd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: 'All four 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
+          lead: "Fill in your details and you'll have full access to all " + P3.papers + " 3rd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
+          papers: 'All ' + P3.papers + ' 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
           checklist: [
             'Step-by-step calculation coaching that mirrors how exams are marked',
             'Interactive AI tutoring available anytime, even on night shift',
@@ -452,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             'Study on any device, on your schedule'
           ],
           note: "Launch pricing: $" + P3.current + "/month instead of the regular $" + P3.was + "; that's $" + P3.savings + " off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime · All four papers included',
+          fine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime · All ' + P3.papers + ' papers included',
           checkoutFine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime'
         },
         fourth_a: {
