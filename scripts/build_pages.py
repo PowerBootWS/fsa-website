@@ -47,7 +47,7 @@ ROOT_HTML_PAGES = [
     "privacy-policy.html", "terms-of-use.html", "affiliate.html",
     "affiliate-dashboard.html", "affiliate-confirmation.html",
     "enrollment-confirmation.html", "enroll.html",
-    "3rd-class-complete.html", "2nd-class-complete.html",
+    "3rd-class-complete.html", "2nd-class-complete.html", "4th-class-complete.html",
     "library.html", "free-practice-exam.html", "jobs.html", "404.html",
 ]
 ROOT_PASSTHROUGH_FILES = [
