@@ -8,6 +8,7 @@ scripts/google_token_ga4_admin.json
 .claude/
 lobby-3d/
 .kilo/
+.playwright-mcp/
 project-overview-sample.md
 __pycache__/
 *.pyc
