@@ -9,7 +9,7 @@ see wiki/projects/fsa-website.md for the incident that prompted this).
 
 Source pages mark where the shared blocks go with HTML comments:
 
-    <!-- INCLUDE:nav [active="how-it-works"|"exam-prep"|"enroll"] [enroll_href="..."] -->
+    <!-- INCLUDE:nav [active="how-it-works"|"resources"|"enroll"] [enroll_href="..."] -->
     <!-- INCLUDE:footer -->
 
 `active` controls which nav item gets the nav-active styling on that page;
@@ -59,11 +59,14 @@ ROOT_PASSTHROUGH_DIRS = ["assets", "resources"]
 
 ACTIVE_TOKENS = {
     "how-it-works": {"{{ACTIVE_HOW_IT_WORKS}}": ' class="nav-active"'},
-    "exam-prep":    {"{{ACTIVE_EXAM_PREP}}": " nav-active"},
+    "resources":    {"{{ACTIVE_RESOURCES}}": " nav-active"},
+    # Legacy alias: the nav item was called "Exam Prep" until 2026-08-11. Any
+    # page still carrying active="exam-prep" keeps highlighting the right item.
+    "exam-prep":    {"{{ACTIVE_RESOURCES}}": " nav-active"},
     "enroll":       {"{{ACTIVE_ENROLL}}": ' class="nav-active"'},
 }
 ALL_ACTIVE_PLACEHOLDERS = [
-    "{{ACTIVE_HOW_IT_WORKS}}", "{{ACTIVE_EXAM_PREP}}", "{{ACTIVE_ENROLL}}",
+    "{{ACTIVE_HOW_IT_WORKS}}", "{{ACTIVE_RESOURCES}}", "{{ACTIVE_ENROLL}}",
 ]
 DEFAULT_ENROLL_HREF = "https://fullsteamahead.ca/enroll.html"
 
