@@ -1,5 +1,31 @@
 # FSA SEO Content & Authority Plan
-_Last updated: 2026-06-21_
+_Last updated: 2026-08-11 (competitive revision; original plan 2026-06-21)_
+
+## 2026-08-11 revision — PE Practice owns Track 2 already
+
+powerengineeringpractice.com was profiled on 2026-08-11 (full write-up: `wiki/entities/pe-practice.md`). They publish **55 programmatic resource pages** covering salary (national + AB/BC/ON/SK), jobs (same geos), training (NAIT/SAIT/BCIT/VIU), exam bodies (ABSA/TSBC/TSask/TSSA), all 13 provinces/territories, and 5th→1st class + RPO. Confirmed indexed, with CTR-optimised titles like "Power Engineer Salary Ontario | $57/hr Median, By Class & Industry".
+
+That is Track 2 of this plan, built and shipped by someone else while Track 2 sat unstarted.
+
+**Current GSC baseline (2026-07-11 → 2026-08-07, 28 days):** 291 impressions, 77 clicks, 51 queries — **75 of 77 clicks are brand**. Salary cluster: 35 impressions, 0 clicks, avg position 32. Non-brand organic is effectively zero, so there is no traffic to defend — only ground to take.
+
+**What this changes:**
+
+1. **Do not fight them head-on for generic geo/salary/training terms first.** They have page-level topical coverage and a head start. FSA's ranking pages sit at positions 24–33 on those queries.
+2. **Track 1 (per-paper SOPEEC depth) is now the priority, not the co-priority.** It is the one cluster they have *not* built — they sell parts but publish nothing deep about what's inside 2A1, 2B1, 2A3 and so on. It is also the highest purchase-intent content in the niche and the closest to what FSA actually sells.
+3. **Add a comparison/alternative cluster** (see below) — highest-intent traffic available and it converts their brand awareness into FSA trials.
+4. **Geo/salary pages stay on the roadmap but move behind Track 1**, and when built must be materially better than a template page: real Canadian postings from the FSA job board, named employers, and the certification path — not a salary table.
+5. **4th/5th class + RPO is the feeder gap.** They own the whole entry-level audience and upsell it into their paid parts. FSA has no content and no product there. Decide deliberately whether to publish feeder content that funnels into a 3rd-class enrolment, or concede the segment.
+
+**New cluster — comparison/alternative pages (build alongside Track 1):**
+
+| Slug | Target intent |
+|------|---------------|
+| `/articles/power-engineering-practice-exam-comparison/` | "power engineering practice exams", "best practice exams SOPEEC" — honest side-by-side incl. question banks |
+| `/articles/practice-questions-vs-full-course/` | "are practice questions enough to pass 2nd class" — the actual buying question |
+| `/articles/cost-of-2nd-class-power-engineering-exam-prep/` | Total cost of certification, where per-part bi-weekly billing adds up vs flat monthly |
+
+Rules for these pages: factual, verifiable, no disparagement, no scraped competitor content. Name what the alternatives genuinely do well. Anything less reads as a hit piece and won't rank or convert.
 
 ## Situation
 
