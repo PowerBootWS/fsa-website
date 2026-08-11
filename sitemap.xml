@@ -255,8 +255,36 @@
 
   <!-- Cluster D — Jobs & Getting Hired -->
   <url>
+    <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-alberta/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-bc/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-saskatchewan/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fullsteamahead.ca/articles/power-engineer-salary-canada/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://fullsteamahead.ca/articles/power-engineering-jobs-guide/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
