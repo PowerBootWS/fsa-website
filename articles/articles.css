@@ -45,6 +45,53 @@
   line-height: 1.7;
 }
 
+/* Hero "what's in here" list — added 2026-08-11 when the hub was rebroadened
+   from exam prep only to exams + study + jobs + pay. */
+.articles-header-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.5rem;
+  max-width: 820px;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.articles-header-list li {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--gray-light);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.articles-header-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.articles-header-list a {
+  color: var(--gray-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232,114,12,0.5);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.articles-header-list a:hover {
+  color: var(--amber-hot, #f0a04b);
+  border-bottom-color: currentColor;
+}
+
+/* offset anchor jumps so a section title is not hidden under the sticky nav */
+.articles-section-title[id] {
+  scroll-margin-top: 100px;
+}
+
 /* ── Main content area ── */
 .articles-main {
   max-width: 1200px;
