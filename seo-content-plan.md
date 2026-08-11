@@ -15,7 +15,7 @@ That is Track 2 of this plan, built and shipped by someone else while Track 2 sa
 2. **Track 1 (per-paper SOPEEC depth) is now the priority, not the co-priority.** It is the one cluster they have *not* built — they sell parts but publish nothing deep about what's inside 2A1, 2B1, 2A3 and so on. It is also the highest purchase-intent content in the niche and the closest to what FSA actually sells.
 3. **Add a comparison/alternative cluster** (see below) — highest-intent traffic available and it converts their brand awareness into FSA trials.
 4. **Geo/salary pages stay on the roadmap but move behind Track 1**, and when built must be materially better than a template page: real Canadian postings from the FSA job board, named employers, and the certification path — not a salary table.
-5. **4th/5th class + RPO is the feeder gap.** They own the whole entry-level audience and upsell it into their paid parts. FSA has no content and no product there. Decide deliberately whether to publish feeder content that funnels into a 3rd-class enrolment, or concede the segment.
+5. **4th Class is a price weapon FSA isn't using.** FSA already sells 4th Class at **$99/year per paper**; PE Practice's entry tier is $40/2 weeks per part (≈$1,040/year for the same coverage). That is a ~10× difference and there is almost no FSA content aimed at 4th-class candidates to carry it. 5th Class and RPO remain a genuine product gap — decide deliberately whether to publish feeder content there or concede the segment.
 
 **New cluster — comparison/alternative pages (build alongside Track 1):**
 
