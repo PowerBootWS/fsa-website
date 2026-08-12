@@ -6,6 +6,13 @@ server {
     index index.html;
     charset utf-8;
 
+    # Emit relative Location headers. Nginx sits behind the Cloudflare Tunnel and
+    # only ever sees plain HTTP, so absolute redirects were built as
+    # "http://fullsteamahead.ca/..." — Cloudflare then had to 301 again to HTTPS.
+    # That made every legacy .html URL a 2-hop chain with an insecure middle hop.
+    # Relative Location lets the client keep the original https scheme: 1 hop.
+    absolute_redirect off;
+
     # Redirect .html URLs to clean URLs (301 so Google migrates indexed pages)
     rewrite ^/(.+)\.html$ /$1 permanent;
 
@@ -25,8 +32,13 @@ server {
         try_files $uri $uri/ $uri.html =404;
     }
 
-    error_page 404 /404.html;
-    location = /404.html {
+    # Soft-404 trap: the server-level rewrite above runs on *internal* redirects too,
+    # so "error_page 404 /404.html" was being rewritten into an external 301 to /404,
+    # which then answered 200. Every missing URL returned HTTP 200 to Googlebot.
+    # Point error_page at the clean URL so the rewrite never matches it.
+    error_page 404 /404;
+    location = /404 {
         internal;
+        try_files /404.html =404;
     }
 }
