@@ -92,6 +92,14 @@
     // string — since learn.fullsteamahead.ca is a different subdomain, the
     // fsa_affiliate cookie set here doesn't carry over on its own, so the
     // code has to be appended to the link's href before the click happens.
+    //
+    // Called automatically on every page that loads nav.js (see below). It
+    // used to be opt-in, invoked by hand from index.html and library.html
+    // only, which meant the three article pages that also link to
+    // /free-practice-exam silently dropped the affiliate code — an affiliate
+    // visitor who landed on an article and clicked through to the practice
+    // exam was never attributed, with nothing anywhere to show it. Any new
+    // page linking to the practice exam would have inherited the same bug.
     processFreePracticeExamLinks: function () {
       var match = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
       if (!match) return;
@@ -107,4 +115,21 @@
       });
     }
   };
+
+  // Run on every page rather than requiring each one to opt in. The function
+  // is a no-op without an fsa_affiliate cookie and skips any link that
+  // already carries an am_id, so running it everywhere is safe and
+  // idempotent — including on the pages that still call it explicitly, and
+  // on free-practice-exam.html, which sets its own am_id first.
+  //
+  // processStripePaymentLinks is deliberately NOT auto-run: it rewrites
+  // checkout URLs and stays opt-in per page.
+  function applyExamLinkAttribution() {
+    window.FSAAffiliate.processFreePracticeExamLinks();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyExamLinkAttribution);
+  } else {
+    applyExamLinkAttribution();
+  }
 })();
