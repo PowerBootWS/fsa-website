@@ -50,7 +50,7 @@ def inspect_url(service, url):
         body={"inspectionUrl": url, "siteUrl": SITE_URL}
     ).execute()
 
-    r = result.get("urlInspectionResult", {})
+    r = result.get("inspectionResult", {})
     index = r.get("indexStatusResult", {})
     mobile = r.get("mobileUsabilityResult", {})
 
@@ -58,7 +58,7 @@ def inspect_url(service, url):
     coverage = index.get("coverageState", "")
     last_crawl = index.get("lastCrawlTime", "never")
     canonical_google = index.get("googleCanonical", "")
-    canonical_user = index.get("userDeclaredCanonical", "")
+    canonical_user = index.get("userCanonical", "")
     robots = index.get("robotsTxtState", "")
     indexing_state = index.get("indexingState", "")
     mobile_verdict = mobile.get("verdict", "")
