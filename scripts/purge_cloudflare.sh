@@ -47,13 +47,20 @@ DEFAULT_PATHS=(
 )
 
 # ---------------------------------------------------------------- credentials
-ENV_FILE="$(dirname "$0")/../../.env"
-if [ -f "$ENV_FILE" ] && [ -z "${CF_ZONE_ID:-}" ]; then
+# CF_ZONE_ID and CF_API_MGMT_TOKEN are shared vars and live in
+# /home/debian/.env.shared. The central /home/debian/.env is being retired in
+# env-split Step 8 and is kept here only as a fallback until it goes; sourcing
+# it first would have made this script fail silently on the day it is removed.
+for ENV_FILE in \
+  "$(dirname "$0")/../../.env.shared" \
+  "$HOME/.env.shared" \
+  "$(dirname "$0")/../../.env" \
+  "$HOME/.env"
+do
+  [ -n "${CF_ZONE_ID:-}" ] && [ -n "${CF_API_MGMT_TOKEN:-}" ] && break
+  [ -f "$ENV_FILE" ] || continue
   set -a; source "$ENV_FILE"; set +a
-fi
-if [ -z "${CF_ZONE_ID:-}" ] && [ -f "$HOME/.env" ]; then
-  set -a; source "$HOME/.env"; set +a
-fi
+done
 
 if [ -z "${CF_ZONE_ID:-}" ] || [ -z "${CF_API_MGMT_TOKEN:-}" ]; then
   echo "ERROR: CF_ZONE_ID and CF_API_MGMT_TOKEN must be set in .env or environment" >&2
