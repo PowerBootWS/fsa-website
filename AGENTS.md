@@ -5,17 +5,27 @@
 All FSA projects (including this website) use a single shared `.env` file located at:
 
 ```
-/home/debian/projects/fsa/.env
+/home/debian/.env
 ```
 
-This is two levels above the fsa-website project root (`../../.env` from any file inside `fsa-website/`).
+That is two levels above this project's `scripts/` directory, so `../../.env` from
+`scripts/` resolves to it correctly. Mode is `600` as of 2026-08-23.
+
+**Corrected 2026-08-23:** this file previously named `/home/debian/projects/fsa/.env`
+and instructed agents not to change it. **That path has not existed for months.**
+`scripts/generate_article.py` hard-coded it and was silently running with no
+credentials at all until it was fixed. If you find any other reference to
+`/home/debian/projects/`, it is stale — the tree was flattened to `/home/debian/`.
 
 **Scripts that read it:**
-- `scripts/purge_cloudflare.sh` — loads `CF_ZONE_ID` and `CF_API_TOKEN` from this `.env`
+- `scripts/purge_cloudflare.sh` — loads `CF_ZONE_ID` and `CF_API_MGMT_TOKEN`. It resolves
+  `../../.env` first and falls back to `$HOME/.env`, so it was unaffected by the bad path.
+- `scripts/generate_article.py` — loads `OPENROUTER_API_KEY` and `OPENROUTER_MODEL`.
 
-**Important:** Do not change the relative path in purge scripts to point to a different location such as `$HOME/.env` or a local copy. The canonical centralized location is `/home/debian/projects/fsa/.env`.
+The variable is `CF_API_MGMT_TOKEN`, not `CF_API_TOKEN`.
 
-Note: The `.env` may contain unquoted string values with spaces (e.g. `SHAREPOINT_FOLDER_PATH=/Home/Full Steam Ahead/...`). When sourcing this file with `set -a`, `bash` may error on those lines. The script still works if `CF_ZONE_ID` and `CF_API_TOKEN` appear before those lines. For robustness, consider using `export VAR=value` syntax in the `.env` or quoting values.
+Note: the `.env` may contain unquoted string values with spaces. When sourcing it with
+`set -a`, `bash` may error on those lines. Prefer `python-dotenv` or quote the values.
 
 ## Agent skills
 

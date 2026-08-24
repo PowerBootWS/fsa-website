@@ -44,7 +44,7 @@ MANIFEST_PATH = SCRIPT_DIR / "articles_manifest.json"
 ARTICLES_DIR = PROJECT_ROOT / "articles"
 
 # ─── OpenRouter config ────────────────────────────────────────────────────────
-load_dotenv(dotenv_path=Path("/home/debian/projects/fsa/.env"))
+load_dotenv(dotenv_path=Path("/home/debian/.env"))
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
