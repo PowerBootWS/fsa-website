@@ -44,7 +44,13 @@ MANIFEST_PATH = SCRIPT_DIR / "articles_manifest.json"
 ARTICLES_DIR = PROJECT_ROOT / "articles"
 
 # ─── OpenRouter config ────────────────────────────────────────────────────────
-load_dotenv(dotenv_path=Path("/home/debian/.env"))
+# Split config (env-split Step 8). Both vars this script reads
+# (OPENROUTER_API_KEY, OPENROUTER_MODEL) are shared; fsa-website has no project
+# .env today, so the second path is a no-op until one is added.
+for _env in (Path("/home/debian/.env.shared"),
+             Path("/home/debian/fsa-website/.env")):
+    if _env.exists():
+        load_dotenv(dotenv_path=_env, override=True)
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
