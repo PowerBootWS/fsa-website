@@ -48,17 +48,17 @@ DEFAULT_PATHS=(
 
 # ---------------------------------------------------------------- credentials
 # CF_ZONE_ID and CF_API_MGMT_TOKEN are shared vars and live in
-# /home/debian/.env.shared. The central /home/debian/.env is being retired in
-# env-split Step 8 and is kept here only as a fallback until it goes; sourcing
-# it first would have made this script fail silently on the day it is removed.
+# /home/debian/.env.shared. The central /home/debian/.env was the fallback until
+# env-split Step 10 retired it (mode 000 on 2026-08-25, deletion pending); it is
+# off this list now. -r rather than -f because a mode-000 file still passes -f,
+# and sourcing one aborts the script instead of falling through to the next
+# candidate — that exact shape killed the daily brief on 2026-08-25.
 for ENV_FILE in \
   "$(dirname "$0")/../../.env.shared" \
-  "$HOME/.env.shared" \
-  "$(dirname "$0")/../../.env" \
-  "$HOME/.env"
+  "$HOME/.env.shared"
 do
   [ -n "${CF_ZONE_ID:-}" ] && [ -n "${CF_API_MGMT_TOKEN:-}" ] && break
-  [ -f "$ENV_FILE" ] || continue
+  [ -r "$ENV_FILE" ] || continue
   set -a; source "$ENV_FILE"; set +a
 done
 
