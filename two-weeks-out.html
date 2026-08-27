@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Weeks Out: Your Power Engineering Exam Countdown | Full Steam Ahead</title>
+  <meta name="description" content="Fourteen days to your SOPEEC exam. A day-by-day plan built around pacing, question traps and exam-day execution instead of last-minute cramming. 2nd, 3rd and 4th Class.">
+  <link rel="canonical" href="https://fullsteamahead.ca/two-weeks-out">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/styles-v2.css">
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
+<!-- End Google Tag Manager -->
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Full Steam Ahead">
+  <meta property="og:title" content="Two Weeks Out: Your Power Engineering Exam Countdown">
+  <meta property="og:description" content="You are not going to learn the syllabus in two weeks. You can still change how you write the exam. Fourteen days, about an hour a day, no cramming.">
+  <meta property="og:url" content="https://fullsteamahead.ca/two-weeks-out">
+  <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="fb:app_id" content="1729520728215341">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+
+  <style>
+    /* ── TWO WEEKS OUT ── page-scoped components ── */
+
+    .two-wrap { max-width: 880px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Level switcher */
+    .lvl-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; margin: 2.5rem auto 0; max-width: 880px;
+      padding: 0 1.5rem;
+    }
+    .lvl-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--plate); color: var(--gray-light);
+      border: 1px solid var(--plate-edge); border-radius: 4px;
+      padding: 0.6rem 1.4rem; cursor: pointer;
+      transition: all var(--duration-fast) var(--ease);
+    }
+    .lvl-btn:hover { color: var(--off-white); border-color: var(--steel-dim); }
+    .lvl-btn[aria-pressed="true"] {
+      background: var(--orange); color: var(--white); border-color: var(--orange);
+    }
+
+    /* Exam shape strip */
+    .shape-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--plate-edge);
+      border: 1px solid var(--plate-edge); border-radius: 4px;
+      overflow: hidden; margin-top: 2.5rem;
+    }
+    .shape-item { background: var(--plate); padding: 1.3rem 0.8rem; text-align: center; }
+    .shape-value {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.9rem; line-height: 1; color: var(--amber-hot);
+    }
+    .shape-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-mid); margin-top: 0.45rem;
+    }
+    @media (max-width: 620px) {
+      .shape-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Generic callout */
+    .two-note {
+      border-left: 3px solid var(--steel-dim);
+      background: rgba(58,110,165,0.07);
+      padding: 1rem 1.2rem; margin-top: 1.5rem;
+      color: var(--gray-light); font-size: var(--text-sm); line-height: 1.65;
+    }
+    .two-note.warn { border-left-color: var(--orange); background: rgba(232,114,12,0.07); }
+
+    /* Pacing table */
+    .pace-table { width: 100%; border-collapse: collapse; margin-top: 1.2rem; }
+    .pace-table th, .pace-table td {
+      text-align: left; padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--plate-edge);
+    }
+    .pace-table th {
+      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid);
+    }
+    .pace-table td { color: var(--off-white); font-size: 1rem; }
+    .pace-table td:last-child {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.25rem; color: var(--amber-hot);
+    }
+
+    /* Pass list */
+    .pass-list { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+    .pass-list li {
+      display: grid; grid-template-columns: 92px 1fr; gap: 1rem;
+      padding: 0.9rem 0; border-bottom: 1px solid var(--plate-edge);
+      color: var(--gray-light); line-height: 1.65;
+    }
+    .pass-list li:last-child { border-bottom: 0; }
+    .pass-clock {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      color: var(--amber-hot); font-size: 1.05rem; letter-spacing: 0.02em;
+    }
+    .pass-list strong { color: var(--off-white); }
+    @media (max-width: 560px) {
+      .pass-list li { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    /* Phase headers */
+    .phase {
+      margin-top: 4rem; padding-top: 1.4rem;
+      border-top: 2px solid var(--orange);
+    }
+    .phase-days {
+      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange);
+    }
+    .phase-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.15;
+      color: var(--white); text-transform: uppercase; margin: 0.35rem 0 0.5rem;
+    }
+    .phase-sub { color: var(--gray-light); line-height: 1.7; margin: 0; }
+
+    /* Day cards */
+    .day {
+      display: grid; grid-template-columns: 74px 1fr; gap: 1.3rem;
+      background: var(--plate); border: 1px solid var(--plate-edge);
+      border-radius: 4px; padding: 1.3rem 1.4rem; margin-top: 1rem;
+    }
+    .day-num {
+      font-family: 'Barlow Condensed', sans-serif; text-align: center;
+      border-right: 1px solid var(--plate-edge); padding-right: 0.6rem;
+    }
+    .day-num b {
+      display: block; font-size: 2.1rem; font-weight: 700; line-height: 1;
+      color: var(--off-white);
+    }
+    .day-num span {
+      display: block; font-size: var(--text-xs); letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-mid); margin-top: 0.3rem;
+    }
+    .day-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.15rem; letter-spacing: 0.02em; color: var(--white);
+      margin: 0 0 0.4rem;
+    }
+    .day-body { color: var(--gray-light); line-height: 1.7; margin: 0; font-size: 0.97rem; }
+    .day-body + .day-body { margin-top: 0.6rem; }
+    .day-meta {
+      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green-light); margin-top: 0.7rem;
+    }
+    .day a { color: var(--amber-hot); }
+    .day.day-key { border-color: var(--orange); }
+    @media (max-width: 560px) {
+      .day { grid-template-columns: 1fr; gap: 0.8rem; }
+      .day-num { display: flex; align-items: baseline; gap: 0.5rem;
+                 text-align: left; border-right: 0; padding-right: 0;
+                 border-bottom: 1px solid var(--plate-edge); padding-bottom: 0.6rem; }
+      .day-num b { font-size: 1.5rem; }
+      .day-num span { margin-top: 0; }
+    }
+
+    /* Daily block box */
+    .block-box {
+      background: var(--iron); border: 1px solid var(--plate-edge);
+      border-radius: 4px; padding: 1.4rem 1.5rem; margin-top: 1.4rem;
+    }
+    .block-box h4 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber);
+      margin: 0 0 0.8rem;
+    }
+    .block-box ol { margin: 0; padding-left: 1.2rem; color: var(--gray-light); line-height: 1.75; }
+    .block-box ol strong { color: var(--off-white); }
+
+    /* Traps */
+    .trap {
+      background: var(--plate); border: 1px solid var(--plate-edge);
+      border-left: 3px solid var(--amber);
+      border-radius: 4px; padding: 1.2rem 1.4rem; margin-top: 1rem;
+      scroll-margin-top: 90px;
+    }
+    .trap h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.1rem; color: var(--white); margin: 0 0 0.5rem;
+    }
+    .trap p { color: var(--gray-light); line-height: 1.7; margin: 0; font-size: 0.97rem; }
+    .trap p + p { margin-top: 0.55rem; }
+    .trap em { color: var(--amber-hot); font-style: normal; font-weight: 600; }
+
+    /* Checklist */
+    .check-list { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+    .check-list li {
+      position: relative; padding: 0.55rem 0 0.55rem 1.9rem;
+      color: var(--gray-light); line-height: 1.65;
+      border-bottom: 1px solid var(--plate-edge);
+    }
+    .check-list li:last-child { border-bottom: 0; }
+    .check-list li::before {
+      content: "\2713"; position: absolute; left: 0; top: 0.55rem;
+      color: var(--green-light); font-weight: 700;
+    }
+
+    /* Related links */
+    .rel-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.8rem; margin-top: 1.4rem;
+    }
+    .rel-grid a {
+      display: block; background: var(--plate); border: 1px solid var(--plate-edge);
+      border-radius: 4px; padding: 0.95rem 1.1rem; color: var(--off-white);
+      text-decoration: none; font-size: 0.95rem; line-height: 1.5;
+      transition: border-color var(--duration-fast) var(--ease);
+    }
+    .rel-grid a:hover { border-color: var(--orange); }
+
+    .two-h2 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.15;
+      text-transform: uppercase; color: var(--white);
+      margin: 4rem 0 0.6rem;
+    }
+    .two-lead { color: var(--gray-light); line-height: 1.75; margin: 0; }
+    .two-lead + .two-lead { margin-top: 0.9rem; }
+
+    /* Final CTA */
+    .two-cta {
+      background: var(--iron); border: 1px solid var(--plate-edge);
+      border-radius: 4px; padding: 2rem 1.8rem; margin-top: 2rem; text-align: center;
+    }
+    .two-cta h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-size: 1.6rem; text-transform: uppercase; color: var(--white);
+      margin: 0 0 0.7rem;
+    }
+    .two-cta p { color: var(--gray-light); line-height: 1.7; margin: 0 auto 1.4rem; max-width: 560px; }
+    .two-cta .cta-fine { color: var(--gray-mid); font-size: var(--text-sm); margin-top: 1rem; }
+
+    /* ── PRINT ── */
+    @media print {
+      nav, .mobile-menu, footer, .lvl-bar, .two-cta, .rel-grid,
+      .skip-nav, .glow-orb { display: none !important; }
+      body { background: #fff !important; color: #111 !important; }
+      .how-header { background: none !important; padding: 0 0 1rem !important;
+                    border-bottom: 2px solid #111 !important; }
+      .how-header h1, .phase-title, .two-h2, .day-title, .trap h3, .day-num b {
+        color: #000 !important; }
+      .how-header p, .two-lead, .day-body, .phase-sub, .trap p,
+      .check-list li, .pass-list li, .block-box ol { color: #222 !important; }
+      .day, .trap, .block-box, .two-note, .shape-item {
+        background: #fff !important; border: 1px solid #999 !important;
+        break-inside: avoid; page-break-inside: avoid; }
+      .shape-value, .pass-clock, .pace-table td:last-child,
+      .day-meta, .phase-days, .trap em { color: #000 !important; }
+      .phase { break-before: page; page-break-before: always; }
+      .two-wrap { max-width: 100%; padding: 0; }
+      a { color: #000 !important; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9SH5FTP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- INCLUDE:nav active="resources" -->
+
+  <!-- PAGE HEADER -->
+  <section class="how-header">
+    <div class="how-header-inner">
+      <h1>Two Weeks Out: What To Actually Do Before Your Exam</h1>
+      <p>You have two weeks. You are not going to learn the syllabus in two weeks, and anybody telling you otherwise is selling something. What you <em>can</em> still change is how you write the exam: your pace, your ability to see how a question was built, and whether you walk out having left marks on the table that you had already earned. That is what the next fourteen days are for. About an hour a day. No cramming.</p>
+    </div>
+  </section>
+
+  <div class="lvl-bar" id="lvl-bar">
+    <button type="button" class="lvl-btn" data-level="second" aria-pressed="true">2nd Class</button>
+    <button type="button" class="lvl-btn" data-level="third" aria-pressed="false">3rd Class</button>
+    <button type="button" class="lvl-btn" data-level="fourth" aria-pressed="false">4th Class</button>
+  </div>
+
+  <div class="two-wrap">
+
+    <!-- ── THE EXAM SHAPE ── -->
+    <h2 class="two-h2" style="margin-top:2.5rem;">What You Are Walking Into</h2>
+    <p class="two-lead">Every SOPEEC paper is the same shape, and knowing that shape cold is worth more in the last two weeks than another pass through a textbook.</p>
+
+    <div class="shape-strip">
+      <div class="shape-item"><div class="shape-value">100</div><div class="shape-label">Questions</div></div>
+      <div class="shape-item"><div class="shape-value">3:00</div><div class="shape-label">Hours</div></div>
+      <div class="shape-item"><div class="shape-value">A&ndash;D</div><div class="shape-label">Multiple choice</div></div>
+      <div class="shape-item"><div class="shape-value">1.8</div><div class="shape-label">Min / question</div></div>
+    </div>
+
+    <div class="two-note">Some jurisdictions give you three and a half hours. Plan every one of the next fourteen days around three. If you get the extra half hour on the day, it is a cushion you did not need, and walking in knowing you can finish inside three is worth more than the thirty minutes ever will be.</div>
+
+    <!-- ── PACING ── -->
+    <h2 class="two-h2">The Only Numbers You Need To Memorize</h2>
+    <p class="two-lead">Two sets. The first tells you whether you are drowning. The second is how you actually work the paper.</p>
+
+    <h3 class="day-title" style="margin-top:2rem; font-size:1.25rem;">1. The guardrail</h3>
+    <p class="two-lead">Straight-line pace. Four checkpoints, and you should know them without thinking.</p>
+
+    <table class="pace-table">
+      <thead><tr><th>By question</th><th>Clock reads</th></tr></thead>
+      <tbody>
+        <tr><td>25</td><td>0:45</td></tr>
+        <tr><td>50</td><td>1:30</td></tr>
+        <tr><td>75</td><td>2:15</td></tr>
+        <tr><td>100</td><td>3:00</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-note warn">These are not your target. If you hit them exactly, you finish at the bell with nothing checked and no time to come back to anything. They are your drowning check: if question 25 arrives and the clock says 1:05, you already know you have to change something, and you know it at the forty-five minute mark instead of at two and a half hours when it is too late to fix.</div>
+
+    <h3 class="day-title" style="margin-top:2.5rem; font-size:1.25rem;">2. The three passes</h3>
+    <p class="two-lead">This is the target, and it is how you buy yourself twenty-five minutes of review out of the same three hours.</p>
+
+    <ul class="pass-list">
+      <li><span class="pass-clock">0:00&ndash;1:45</span><span><strong>Pass one.</strong> Start to finish, every question, in order. Answer only what you know cold. Anything that needs real thinking gets flagged and you move on immediately. If a question holds you longer than ninety seconds, that is your signal to flag it, not a reason to dig in. You will see roughly two thirds of the paper fall out in this pass.</span></li>
+        <li><span class="pass-clock">1:45&ndash;2:35</span><span><strong>Pass two.</strong> Work your flagged questions. Do the ones closest to an answer first, not the hardest first. Momentum matters here, and the last thing you want is to burn twelve minutes on your worst question and then rush six that you actually knew.</span></li>
+      <li><span class="pass-clock">2:35&ndash;3:00</span><span><strong>Pass three.</strong> Stop working and start checking. Confirm every single question has an answer marked. Confirm your answer sheet has not slipped a row. Give your flagged questions one look, and one only.</span></li>
+    </ul>
+
+    <div class="two-note warn">Never leave a blank. There is no penalty for a wrong answer and a blank is a guaranteed zero. If pass three finds an empty line and you have nothing, eliminate what you can and pick one.</div>
+
+    <!-- ══ PHASE 1 ══ -->
+    <div class="phase">
+      <div class="phase-days">Days 14 &ndash; 11</div>
+      <h2 class="phase-title">Find out where you actually stand</h2>
+      <p class="phase-sub">You cannot plan two weeks around a guess. Four days to replace the guess with a list.</p>
+    </div>
+
+    <div class="day day-key">
+      <div class="day-num"><b>14</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Sit a full paper, properly</h3>
+        <p class="day-body">Three hours, timed, one sitting. No notes, no phone, no getting up. Pick the paper you are least sure about<span id="lvl-papers"> out of 2A1 through 2B3</span>.</p>
+        <p class="day-body">This is the most useful three hours of the next fortnight and almost nobody does it, because finding out is uncomfortable. Do it anyway. Everything else on this page depends on the result.</p>
+        <p class="day-meta">▸ <a href="/free-practice-exam">Take the free practice exam</a> &middot; one paper, free, no card</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>13</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Score it by topic, not by total</h3>
+        <p class="day-body">Your total tells you nothing you can act on. "68 percent" is not a plan. Go through it question by question and sort your wrong answers into topics, then write down the three topics that cost you the most marks.</p>
+        <p class="day-body">That list of three is your entire study plan for the next two days. Everything not on it is off the table, including the topics you enjoy and the ones you feel like you should review.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>12</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Work topic one</h3>
+        <p class="day-body">One topic, one session. Not a chapter reread. Pull questions on it, get them wrong, and find out specifically why you got them wrong. Rereading feels like studying and produces almost nothing this late.</p>
+        <p class="day-meta">▸ <a href="/articles/active-recall-power-engineering/">Why answering beats rereading</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>11</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Work topics two and three</h3>
+        <p class="day-body">Same way. When you finish today you are done with new material for the rest of the countdown.</p>
+        <p class="day-body">Do not add a fourth topic. The temptation will be real and giving in to it is how the next seven days get eaten by content you will not retain.</p>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 2 ══ -->
+    <div class="phase">
+      <div class="phase-days">Days 10 &ndash; 4</div>
+      <h2 class="phase-title">Build the skill you are actually tested on</h2>
+      <p class="phase-sub">Seven identical days. This block is the whole point of the plan, and it is the part people skip because it does not feel like studying.</p>
+    </div>
+
+    <div class="block-box">
+      <h4>Every day, days 10 through 4 &middot; about an hour</h4>
+      <ol>
+        <li><strong>25 questions in 45 minutes.</strong> Timed, on a clock you can see. Every day, no exceptions, no stopping to look things up mid-set. You are training the pace, not the knowledge.</li>
+        <li><strong>15 minutes on the day's trap.</strong> One specific way exam questions are built to catch you, listed below. Read it, then go back through the set you just wrote and find where it showed up.</li>
+      </ol>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>10</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: qualifier words</h3>
+        <p class="day-body">Always, never, all, only, most, generally. One word decides the option.</p>
+        <p class="day-meta">▸ <a href="#trap-1">Read trap 1</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>9</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: EXCEPT and NOT</h3>
+        <p class="day-body">The question wants the wrong one. Three of your four options are true.</p>
+        <p class="day-meta">▸ <a href="#trap-2">Read trap 2</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>8</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: true but not the best answer</h3>
+        <p class="day-body">The one that catches strong candidates more than weak ones.</p>
+        <p class="day-meta">▸ <a href="#trap-3">Read trap 3</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>7</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: units and conversions</h3>
+        <p class="day-body">The wrong answers are built from the exact slips candidates make.</p>
+        <p class="day-meta">▸ <a href="#trap-4">Read trap 4</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>6</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: regulation versus technical</h3>
+        <p class="day-body">Sometimes the code's answer and the better engineering answer are not the same.</p>
+        <p class="day-meta">▸ <a href="#trap-5">Read trap 5</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>5</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Trap: changing your first answer</h3>
+        <p class="day-body">When it is right to change one, and when it is how you lose marks.</p>
+        <p class="day-meta">▸ <a href="#trap-6">Read trap 6</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>4</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Elimination under time pressure</h3>
+        <p class="day-body">Today's set is the last of the seven. Practice getting from four options to two in under twenty seconds, because a coin flip between two is a fifty percent mark and a blank is zero.</p>
+        <p class="day-body">You have now written 175 timed questions in seven days. That is what walking in calm actually looks like, and it is not a feeling you can talk yourself into on the morning.</p>
+        <p class="day-meta">▸ <a href="/articles/multiple-choice-power-engineering-strategy/">Multiple choice strategy in full</a></p>
+      </div>
+    </div>
+
+    <!-- ══ PHASE 3 ══ -->
+    <div class="phase">
+      <div class="phase-days">Days 3 &ndash; 1</div>
+      <h2 class="phase-title">Taper</h2>
+      <p class="phase-sub">The work is done. These three days exist to make sure you do not undo it.</p>
+    </div>
+
+    <div class="day day-key">
+      <div class="day-num"><b>3</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Full timed paper, same conditions as day 14</h3>
+        <p class="day-body">Three hours, no notes, no phone. Run the three-pass system exactly the way you will on the day.</p>
+        <p class="day-body">Then put this result beside your day 14 result. That gap is your evidence, and for most people it is bigger than they expected. Confidence built on a number you produced yourself holds up on exam morning. Confidence built on telling yourself it will be fine does not.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>2</b><span>Days out</span></div>
+      <div>
+        <h3 class="day-title">Logistics only. No questions.</h3>
+        <p class="day-body">Confirm the location and how long the trip actually takes at that hour. Confirm what is allowed in the room rather than assuming, because calculator and code book rules vary by jurisdiction and finding out at the door is a bad morning.</p>
+        <ul class="check-list">
+          <li>Photo ID and your exam confirmation</li>
+          <li>Approved calculator, fresh batteries, and a spare if you have one</li>
+          <li>Pens, pencils, eraser</li>
+          <li>Code books tabbed, if your exam allows them in</li>
+          <li>Water and something to eat</li>
+          <li>Route confirmed, alarm set, backup alarm set</li>
+        </ul>
+        <p class="day-meta">▸ <a href="/articles/2nd-class-exam-day-what-to-expect/">What exam day actually looks like</a></p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num"><b>1</b><span>Day out</span></div>
+      <div>
+        <h3 class="day-title">Do not study</h3>
+        <p class="day-body">Read your formula sheet once in the morning if it settles you, then put it away. That is the whole day's studying.</p>
+        <p class="day-body">A tired brain reading a chapter for the eleventh time does not add marks tomorrow, it subtracts them. Eat properly. Sleep. This day is not wasted, it is the last piece of preparation and it is the one people are worst at.</p>
+        <p class="day-meta">▸ <a href="/articles/power-engineering-exam-stress/">Handling the nerves</a></p>
+      </div>
+    </div>
+
+    <!-- ── EXAM MORNING ── -->
+    <h2 class="two-h2">Exam Morning</h2>
+    <p class="two-lead">Nothing new here. Just execution.</p>
+    <ul class="check-list">
+      <li>Eat something. Three hours is long enough for an empty stomach to cost you marks.</li>
+      <li>Arrive early enough that traffic cannot beat you. Sitting in the parking lot for twenty minutes is fine. Arriving flustered is not.</li>
+      <li>The second you are allowed to write, put your checkpoints on the scrap sheet: 25 at 0:45, 50 at 1:30, 75 at 2:15.</li>
+      <li>Start pass one. Do not read every question twice. Answer what you know, flag what you do not, keep moving.</li>
+      <li>Anything past ninety seconds on pass one gets flagged. It will be easier the second time and it costs you nothing to come back.</li>
+      <li>At 1:45 you should be at the end of the paper. At 2:35 you stop working and start checking, whether you feel ready to or not.</li>
+      <li>Never leave a blank.</li>
+    </ul>
+    <p class="day-meta" style="margin-top:1.2rem;">▸ <a href="/articles/power-engineering-exam-time-management/">The full time management guide</a></p>
+
+    <!-- ── TRAPS ── -->
+    <h2 class="two-h2">The Six Ways A Question Tries To Beat You</h2>
+    <p class="two-lead">These are not tricks and the examiners are not being unfair. Distractors are written deliberately, from the mistakes real candidates make, and once you can name what a question is doing you stop falling for it. One of these per day through days 10 to 4.</p>
+
+    <div class="trap" id="trap-1">
+      <h3>1. Qualifier words</h3>
+      <p><em>Always, never, all, only, must</em> make an option absolute. In plant engineering, absolutes are usually wrong: there is nearly always a condition or an exception, and the option that admits none of them is usually the one built to be discarded.</p>
+      <p><em>Generally, most, primarily, normally</em> are softer, and softer options survive scrutiny more often. Read the qualifier before you read the rest of the option, because sometimes it is the only thing separating two answers.</p>
+    </div>
+
+    <div class="trap" id="trap-2">
+      <h3>2. EXCEPT and NOT</h3>
+      <p>The question is asking you for the wrong one. Three of your four options will be perfectly true statements, and if you read on autopilot you will pick a true one and feel good about it.</p>
+      <p>Circle the word EXCEPT or NOT on the paper the moment you see it. Then answer the question that was actually asked. Under time pressure, on question 78, this is where reading speed turns into lost marks.</p>
+    </div>
+
+    <div class="trap" id="trap-3">
+      <h3>3. True, but not the best answer</h3>
+      <p>Two options are both correct statements. Only one of them answers the question that was asked. This one catches strong candidates more often than weak ones, because knowing more makes both options look defensible.</p>
+      <p>When you are torn between two, reread the stem, not the options. The stem is what decides it. Ask what specifically is being asked: the cause, the first action, the primary purpose, the code requirement. The best answer is the one that matches that, not the one that is most impressive.</p>
+    </div>
+
+    <div class="trap" id="trap-4">
+      <h3>4. Units and conversions</h3>
+      <p>kPa against psi, kW against kJ/h, gauge against absolute, mass against weight. The wrong answers in a calculation question are not random numbers. They are the results you get from the specific conversion slips candidates actually make, which is exactly why a wrong answer can look so reassuring when you find it in the list.</p>
+      <p>Write your units at every step and cancel them. If your answer is sitting right there in the options, that is not confirmation. Check the conversion anyway.</p>
+    </div>
+
+    <div class="trap" id="trap-5">
+      <h3>5. Regulation versus technical</h3>
+      <p>Some questions ask what the code requires, not what is technically sound. Those are different questions and occasionally they have different answers.</p>
+      <p>If the stem names an act, a regulation, a code or a standard, answer with what the document says even when you can think of better engineering. If it does not, answer with the engineering. Deciding which kind of question you are looking at, before you read the options, is most of the work.</p>
+    </div>
+
+    <div class="trap" id="trap-6">
+      <h3>6. Changing your first answer</h3>
+      <p>Change an answer only when you can name the specific thing you misread: a qualifier you skipped, a NOT you missed, a unit you dropped. That is a real reason and you should absolutely change it.</p>
+      <p>"It feels wrong now" is not a reason. It is anxiety, it shows up in the last twenty minutes, and it is how candidates who were passing talk themselves into failing. If you cannot say what you got wrong the first time, leave it alone.</p>
+    </div>
+
+    <div class="two-note">There is a longer version of all six, with worked examples, in <a href="/articles/sopeec-multiple-choice-traps/">the multiple choice traps guide</a>.</div>
+
+    <!-- ── CTA ── -->
+    <div class="two-cta">
+      <h3>If two weeks is not enough on your own</h3>
+      <p>Take the free practice exam first. If it shows gaps you can close yourself in fourteen days, close them and go write. You do not need to buy anything.</p>
+      <p id="lvl-cta">If it shows gaps you cannot, that is worth knowing now rather than on the day. Full access to every 2nd Class paper, with practice questions, timed exams and an AI tutor that explains what you got wrong, is <sup>$</sup><span data-price="secondClass.current">149</span> a month. Cancel any time.</p>
+      <a href="/enroll"><button class="btn-primary">See What's Included &rarr;</button></a>
+      <p class="cta-fine">Already spoken to me and got a code? Enter it at checkout.</p>
+    </div>
+
+    <!-- ── RELATED ── -->
+    <h2 class="two-h2">Read Next</h2>
+    <div class="rel-grid">
+      <a href="/articles/power-engineering-exam-time-management/">Time management: the three-pass system in full</a>
+      <a href="/articles/sopeec-multiple-choice-traps/">Multiple choice traps, with worked examples</a>
+      <a href="/articles/2nd-class-exam-day-what-to-expect/">Exam day: what to expect</a>
+      <a href="/articles/power-engineering-exam-stress/">Managing exam stress</a>
+      <a href="/articles/mental-prep-power-engineering-exam/">Mental preparation</a>
+      <a href="/articles/active-recall-power-engineering/">Active recall: why answering beats rereading</a>
+    </div>
+
+    <div style="height:5rem;"></div>
+  </div>
+
+  <!-- INCLUDE:footer -->
+
+  <script>
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) { return; }
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        btn.classList.toggle('is-active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+    }());
+  </script>
+
+  <!-- Level switcher. Prices come from window.FSA_PRICING (pricing.js), never
+       from a literal here: quoting one level's price to another level's
+       prospect is exactly the bug that bit generate-dm-code.sh (backlog #80). -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var bar = document.getElementById('lvl-bar');
+      var papersEl = document.getElementById('lvl-papers');
+      var ctaEl = document.getElementById('lvl-cta');
+      if (!bar || !papersEl || !ctaEl) { return; }
+
+      var P = window.FSA_PRICING;
+      if (!P) { return; }   // leave the server-rendered 2nd Class copy alone
+
+      var LEVELS = {
+        second: {
+          papers: ' out of 2A1 through 2B3',
+          cta: function (p) {
+            return 'If it shows gaps you cannot, that is worth knowing now rather than on the day. ' +
+                   'Full access to every 2nd Class paper, with practice questions, timed exams and an AI tutor ' +
+                   'that explains what you got wrong, is $' + p.secondClass.current + ' a month. Cancel any time.';
+          }
+        },
+        third: {
+          papers: ' out of 3A1 through 3B2',
+          cta: function (p) {
+            return 'If it shows gaps you cannot, that is worth knowing now rather than on the day. ' +
+                   'Full access to every 3rd Class paper, with practice questions, timed exams and an AI tutor ' +
+                   'that explains what you got wrong, is $' + p.thirdClass.current + ' a month. Cancel any time.';
+          }
+        },
+        fourth: {
+          papers: ': 4A or 4B',
+          cta: function (p) {
+            return 'If it shows gaps you cannot, that is worth knowing now rather than on the day. ' +
+                   'Full access to your 4th Class paper, with practice questions and timed exams, is $' +
+                   p.fourthClass.current + ' for the year. One paper, bought on its own, and it does not renew.';
+          }
+        }
+      };
+
+      function select(level) {
+        var cfg = LEVELS[level];
+        if (!cfg) { return; }
+        papersEl.textContent = cfg.papers;
+        ctaEl.textContent = cfg.cta(P);
+        bar.querySelectorAll('.lvl-btn').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.dataset.level === level ? 'true' : 'false');
+        });
+      }
+
+      bar.querySelectorAll('.lvl-btn').forEach(function (b) {
+        b.addEventListener('click', function () { select(b.dataset.level); });
+      });
+
+      // Deep link: /two-weeks-out?level=third
+      var q = (new URLSearchParams(window.location.search)).get('level');
+      if (q && LEVELS[q]) { select(q); }
+    });
+  </script>
+
+<script src="/pricing.js" defer></script>
+<script src="/nav.js" defer></script>
+<script
+  src="https://link.msgsndr.com/js/external-tracking.js"
+  data-tracking-id="tk_5f785c45cace41ccb6dd2c072c4c9ed4"
+></script>
+</body>
+</html>

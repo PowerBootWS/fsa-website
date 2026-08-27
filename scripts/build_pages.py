@@ -48,7 +48,8 @@ ROOT_HTML_PAGES = [
     "affiliate-dashboard.html", "affiliate-confirmation.html",
     "enrollment-confirmation.html", "enroll.html",
     "3rd-class-complete.html", "2nd-class-complete.html", "4th-class-complete.html",
-    "library.html", "free-practice-exam.html", "jobs.html", "404.html",
+    "library.html", "free-practice-exam.html", "two-weeks-out.html",
+    "jobs.html", "404.html",
 ]
 ROOT_PASSTHROUGH_FILES = [
     "exit-intent.js", "exit-intent-jobs.js", "exit-intent-exam-articles.js",
