@@ -1,4 +1,15 @@
 :root {
+  /* ── TYPEFACES ── */
+  /* Declared once here and referenced as var() everywhere below. Note this
+     names the faces; it does NOT download them -- a custom property cannot.
+     The Google Fonts <link> that actually fetches them lives in
+     partials/fonts.html and reaches each page via the INCLUDE:fonts marker.
+     Changing a face means editing BOTH, and that is the whole reason the two
+     drifted apart: 61 pages requested 'Barlow', which no rule below ever
+     references, while --font-body never arrived. */
+  --font-display: 'Barlow Condensed', sans-serif;  /* headings, labels, buttons, numerals */
+  --font-body:    'IBM Plex Sans', sans-serif;     /* body copy, paragraphs, form text */
+
   /* ── SURFACE SCALE ── */
   --bg-deep:    #05090F;   /* footer, deepest backdrop */
   --carbon:     #0D1117;   /* page background */
@@ -67,7 +78,7 @@ button:focus-visible {
   z-index: 9999;
   background: var(--orange);
   color: var(--white);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -79,7 +90,7 @@ button:focus-visible {
 .skip-nav:focus { top: 0; }
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   background: var(--carbon);
   color: var(--off-white);
   overflow-x: hidden;
@@ -125,7 +136,7 @@ nav.scrolled {
 }
 
 .logo {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -243,7 +254,7 @@ nav.scrolled {
   border: none;
   padding: 0.55rem 1.4rem;
   border-radius: 4px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -424,7 +435,7 @@ nav.scrolled {
 }
 
 .hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.6rem, 6vw, 4.5rem);
   font-weight: 600;
   line-height: 1.05;
@@ -484,7 +495,7 @@ nav.scrolled {
   border: none;
   padding: 1rem 2.2rem;
   border-radius: 4px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -504,7 +515,7 @@ nav.scrolled {
   border: 1px solid rgba(200,208,218,0.3);
   padding: 1rem 1.8rem;
   border-radius: 4px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -523,7 +534,7 @@ nav.scrolled {
 }
 
 .stat-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 700;
   color: var(--orange);
@@ -563,7 +574,7 @@ nav.scrolled {
 
 .stat-strip-value {
   display: block;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 2.8vw, 2.5rem);
   font-weight: 700;
   color: var(--white);
@@ -613,7 +624,7 @@ nav.scrolled {
 }
 
 .section-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 600;
   color: var(--white);
@@ -687,7 +698,7 @@ nav.scrolled {
 .pillar-card.green-top::before  { background: var(--green-light); }
 
 .pillar-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -750,7 +761,7 @@ nav.scrolled {
 }
 
 .paper-num {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -770,7 +781,7 @@ nav.scrolled {
 }
 
 .paper-name {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -863,7 +874,7 @@ nav.scrolled {
 .book-class[open] > summary .bc-chevron { transform: rotate(90deg); }
 
 .bc-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -886,7 +897,7 @@ nav.scrolled {
 .book-panel .pillars { margin-top: 1rem; grid-template-columns: repeat(3, 1fr); }
 
 .book-subhead {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem; font-weight: 600; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--gray-light);
   margin: 1.6rem 0 1rem;
@@ -908,7 +919,7 @@ nav.scrolled {
 }
 .chapter-card:hover { border-color: #2BA6A0; background: rgba(43,166,160,0.07); }
 .chapter-unit {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
   text-transform: uppercase; color: #38c2bb; margin-bottom: 0.35rem;
 }
@@ -940,7 +951,7 @@ nav.scrolled {
 }
 
 .compare-table th {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -992,7 +1003,7 @@ nav.scrolled {
   border-radius: 2px;
   padding: 0.1rem 0.45rem;
   margin-left: 0.4rem;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.05em;
   vertical-align: middle;
@@ -1039,7 +1050,7 @@ td.them-col .x { color: #888; }
   transform: translateX(-50%);
   background: var(--orange);
   color: var(--white);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -1050,7 +1061,7 @@ td.them-col .x { color: #888; }
 }
 
 .plan-price {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 4rem;
   font-weight: 600;
   color: var(--white);
@@ -1059,7 +1070,7 @@ td.them-col .x { color: #888; }
 }
 
 .plan-name {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1071,7 +1082,7 @@ td.them-col .x { color: #888; }
 .popular .plan-name { color: var(--amber); }
 
 .plan-price {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 3.4rem;
   font-weight: 600;
   color: var(--white);
@@ -1085,7 +1096,7 @@ td.them-col .x { color: #888; }
 }
 
 .plan-price-was {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
   color: var(--gray-mid);
@@ -1106,7 +1117,7 @@ td.them-col .x { color: #888; }
   background: rgba(232,114,12,0.18);
   border: 1px solid rgba(232,114,12,0.45);
   color: var(--amber-hot);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1177,7 +1188,7 @@ td.them-col .x { color: #888; }
   width: 100%;
   padding: 0.9rem;
   border-radius: 5px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1221,7 +1232,7 @@ td.them-col .x { color: #888; }
   margin-bottom: 0.25rem;
 }
 .cs-name {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -1229,7 +1240,7 @@ td.them-col .x { color: #888; }
   letter-spacing: 0.04em;
 }
 .cs-price {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--gray-light);
@@ -1238,7 +1249,7 @@ td.them-col .x { color: #888; }
   background: rgba(58,110,165,0.15);
   border: 1px solid rgba(58,110,165,0.3);
   color: var(--steel-light);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1272,7 +1283,7 @@ td.them-col .x { color: #888; }
 .faq-card.amber-border  { border-top-color: var(--amber-hot); }
 
 .faq-q {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -1316,7 +1327,7 @@ td.them-col .x { color: #888; }
 }
 
 .cta-band h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
   text-transform: uppercase;
@@ -1362,7 +1373,7 @@ footer {
 }
 
 .footer-brand {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--white);
@@ -1437,7 +1448,7 @@ footer {
 }
 
 .container h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1452,7 +1463,7 @@ footer {
 }
 
 .container h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1532,7 +1543,7 @@ footer {
 
 .rate-value {
   display: block;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 3.5rem;
   font-weight: 600;
   color: var(--white);
@@ -1562,7 +1573,7 @@ footer {
 }
 
 .affiliate-benefits h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--white);
@@ -1589,7 +1600,7 @@ footer {
 }
 
 .benefit-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--white);
@@ -1609,7 +1620,7 @@ footer {
 }
 
 .affiliate-example h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--white);
@@ -1637,7 +1648,7 @@ footer {
 
 .example-row.header {
   background: rgba(58, 110, 165, 0.15);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1674,7 +1685,7 @@ footer {
 
 .affiliate-details h2,
 .affiliate-faq h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--white);
@@ -1698,7 +1709,7 @@ footer {
 }
 
 .detail-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1708,7 +1719,7 @@ footer {
 }
 
 .detail-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--orange-glow);
@@ -1743,7 +1754,7 @@ footer {
 }
 
 .payout-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1804,7 +1815,7 @@ footer {
 }
 
 .affiliate-form-section h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--white);
@@ -1865,7 +1876,7 @@ footer {
 }
 
 .confirm-hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 600;
   color: var(--white);
@@ -1908,7 +1919,7 @@ footer {
 }
 
 .confirm-section h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--white);
@@ -1936,7 +1947,7 @@ footer {
 }
 
 .portal-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1945,7 +1956,7 @@ footer {
 }
 
 .portal-link {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--orange-glow);
@@ -1986,7 +1997,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--orange-glow);
@@ -1994,7 +2005,7 @@ footer {
 }
 
 .step-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2047,7 +2058,7 @@ footer {
 }
 
 .feature-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2091,7 +2102,7 @@ footer {
 }
 
 .screen-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--white);
@@ -2234,7 +2245,7 @@ footer {
   border: 1px solid var(--steel);
   border-left: 4px solid var(--steel);
   color: var(--steel-light);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -2306,7 +2317,7 @@ footer {
   background: none;
   border: none;
   color: var(--gray-light);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -2359,7 +2370,7 @@ footer {
 }
 
 .testimonial-featured-cite {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2417,7 +2428,7 @@ footer {
 }
 
 .testimonial-author {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -2451,7 +2462,7 @@ footer {
   flex-wrap: wrap;
 }
 .diagnostic-band-heading {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 600;
   
@@ -2502,7 +2513,7 @@ footer {
   flex: 1 1 300px;
 }
 .magnet-band-heading {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
   color: var(--white);
@@ -2529,7 +2540,7 @@ footer {
   border: 1px solid var(--plate-edge);
   border-radius: 4px;
   padding: 0.65rem 0.9rem;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.97rem;
   color: #fff;
   outline: none;
@@ -2552,7 +2563,7 @@ footer {
   cursor: pointer;
 }
 .magnet-optin span {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: var(--gray-mid);
   line-height: 1.45;
@@ -2563,7 +2574,7 @@ footer {
   background: var(--orange);
   color: #fff;
   border: none;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2580,13 +2591,13 @@ footer {
 }
 .magnet-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .magnet-error {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: #e57373;
   margin-top: 0.6rem;
 }
 .magnet-footnote {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   color: var(--gray-mid);
   margin-top: 0.75rem;
@@ -2602,7 +2613,7 @@ footer {
   margin-bottom: 0.6rem;
 }
 .magnet-success p {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.97rem;
   color: var(--gray-light);
   line-height: 1.55;
@@ -2627,7 +2638,7 @@ footer {
 }
 
 .jobs-hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   text-transform: uppercase;
@@ -2659,7 +2670,7 @@ footer {
 }
 
 .jobs-hero-stat-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--orange);
@@ -2832,7 +2843,7 @@ footer {
   border: 1px solid var(--plate-edge);
   border-left: 3px solid var(--plate-edge);
   color: var(--white);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.92rem;
   padding: 0.75rem 1rem 0.75rem 2.6rem;
   border-radius: 6px;
@@ -2868,7 +2879,7 @@ footer {
   background: var(--plate);
   border: 1px solid var(--plate-edge);
   color: var(--gray-mid);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -2917,7 +2928,7 @@ footer {
   background: var(--plate);
   border: 1px solid var(--plate-edge);
   color: var(--gray-mid);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -2952,7 +2963,7 @@ footer {
 
 .filter-btn-count {
   display: block;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0;
@@ -3029,7 +3040,7 @@ footer {
 }
 
 .job-card-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -3139,7 +3150,7 @@ footer {
 }
 
 .job-detail-meta h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -3165,7 +3176,7 @@ footer {
 }
 
 .job-detail-section h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -3219,7 +3230,7 @@ footer {
 }
 
 .job-summary-panel .job-summary-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -3264,7 +3275,7 @@ footer {
 .job-detail-section h3,
 .job-summary-panel h2,
 .job-summary-panel h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   text-transform: uppercase;
   color: var(--gray-light);
@@ -3422,7 +3433,7 @@ footer {
 }
 
 .how-header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 600;
   line-height: 1.1;
@@ -3489,7 +3500,7 @@ footer {
 }
 
 .home-article-card h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.25;
@@ -3526,7 +3537,7 @@ footer {
   border: 1px solid rgba(200,208,218,0.25);
   padding: 0.8rem 1.8rem;
   border-radius: 4px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -3597,7 +3608,7 @@ footer {
 }
 
 .persona-card-tag {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -3607,7 +3618,7 @@ footer {
 }
 
 .persona-card-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--white);
@@ -3677,7 +3688,7 @@ footer {
 }
 
 .outcome-card-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -3711,7 +3722,7 @@ footer {
 }
 
 .how-process-num {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--orange);
@@ -3722,7 +3733,7 @@ footer {
 }
 
 .how-process-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--white);
@@ -3745,7 +3756,7 @@ footer {
   color: var(--orange);
   opacity: 0.4;
   font-size: 1.4rem;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
 }
 
 .how-steps-learn-more {
@@ -3757,7 +3768,7 @@ footer {
 
 .how-steps-learn-more a {
   color: var(--steel-light);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -3798,7 +3809,7 @@ footer {
 }
 
 .homepage-cta-band h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 600;
   color: var(--white);
@@ -3911,7 +3922,7 @@ footer {
 }
 
 .practice-preview-heading {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 600;
   color: var(--white);
@@ -3966,7 +3977,7 @@ footer {
 }
 
 .job-alert-card-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -3988,7 +3999,7 @@ footer {
   background: none;
   border: 1px solid var(--orange);
   color: var(--orange);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -4014,7 +4025,7 @@ footer {
 }
 
 .job-alert-subscribed-mark {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   color: var(--green-light);
@@ -4064,7 +4075,7 @@ footer {
   background: none;
   border: none;
   color: var(--gray-light);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -4080,7 +4091,7 @@ footer {
 .jobs-alert-modal-close:hover { color: var(--white); }
 
 .jobs-alert-modal-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--white);
@@ -4123,7 +4134,7 @@ footer {
   background: var(--plate);
   border: 1px solid var(--plate-edge);
   color: var(--white);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.9rem;
   padding: 0.55rem 0.75rem;
   border-radius: 2px;
@@ -4196,7 +4207,7 @@ footer {
   background: var(--orange);
   color: var(--white);
   border: none;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.08em;

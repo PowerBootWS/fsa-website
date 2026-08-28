@@ -30,7 +30,7 @@
 }
 
 .articles-header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   line-height: 1.1;
@@ -105,7 +105,7 @@
 }
 
 .articles-section-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -164,7 +164,7 @@
 }
 
 .article-card h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.25;
@@ -205,7 +205,7 @@
 }
 
 .articles-cta h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   color: var(--white);
@@ -257,7 +257,7 @@
 }
 
 .article-page-header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
   line-height: 1.1;
@@ -280,7 +280,7 @@
 }
 
 .article-body h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--white);
@@ -290,7 +290,7 @@
 }
 
 .article-body h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--off-white);
@@ -356,7 +356,7 @@
 }
 
 .article-cta h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--white);
@@ -378,7 +378,7 @@
 }
 
 .article-related h2 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;

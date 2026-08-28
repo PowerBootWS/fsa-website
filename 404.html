@@ -6,10 +6,7 @@
   <title>Page Not Found – Full Steam Ahead</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -37,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .error-code {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(7rem, 22vw, 11rem);
       font-weight: 800;
       line-height: 1;
@@ -59,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .error-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 700;
       color: var(--white);

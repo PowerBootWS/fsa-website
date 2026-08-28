@@ -7,10 +7,7 @@
   <meta name="description" content="Fourteen days to your SOPEEC exam. A day-by-day plan built around pacing, question traps and exam-day execution instead of last-minute cramming. 2nd, 3rd and 4th Class.">
   <link rel="canonical" href="https://fullsteamahead.ca/two-weeks-out">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -45,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding: 0 1.5rem;
     }
     .lvl-btn {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em;
       text-transform: uppercase;
       background: var(--plate); color: var(--gray-light);
@@ -67,11 +64,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .shape-item { background: var(--plate); padding: 1.3rem 0.8rem; text-align: center; }
     .shape-value {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 700;
       font-size: 1.9rem; line-height: 1; color: var(--amber-hot);
     }
     .shape-label {
-      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: var(--text-xs);
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--gray-mid); margin-top: 0.45rem;
     }
@@ -95,12 +92,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-bottom: 1px solid var(--plate-edge);
     }
     .pace-table th {
-      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: var(--text-xs);
       letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid);
     }
     .pace-table td { color: var(--off-white); font-size: 1rem; }
     .pace-table td:last-child {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 700;
       font-size: 1.25rem; color: var(--amber-hot);
     }
 
@@ -113,7 +110,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .pass-list li:last-child { border-bottom: 0; }
     .pass-clock {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 700;
       color: var(--amber-hot); font-size: 1.05rem; letter-spacing: 0.02em;
     }
     .pass-list strong { color: var(--off-white); }
@@ -127,11 +124,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-top: 2px solid var(--orange);
     }
     .phase-days {
-      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: var(--text-xs);
       letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange);
     }
     .phase-title {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 600;
       font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.15;
       color: var(--white); text-transform: uppercase; margin: 0.35rem 0 0.5rem;
     }
@@ -144,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 4px; padding: 1.3rem 1.4rem; margin-top: 1rem;
     }
     .day-num {
-      font-family: 'Barlow Condensed', sans-serif; text-align: center;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); text-align: center;
       border-right: 1px solid var(--plate-edge); padding-right: 0.6rem;
     }
     .day-num b {
@@ -156,14 +153,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-transform: uppercase; color: var(--gray-mid); margin-top: 0.3rem;
     }
     .day-title {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 700;
       font-size: 1.15rem; letter-spacing: 0.02em; color: var(--white);
       margin: 0 0 0.4rem;
     }
     .day-body { color: var(--gray-light); line-height: 1.7; margin: 0; font-size: 0.97rem; }
     .day-body + .day-body { margin-top: 0.6rem; }
     .day-meta {
-      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: var(--text-xs);
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--green-light); margin-top: 0.7rem;
     }
@@ -184,7 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 4px; padding: 1.4rem 1.5rem; margin-top: 1.4rem;
     }
     .block-box h4 {
-      font-family: 'Barlow Condensed', sans-serif; font-size: var(--text-xs);
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: var(--text-xs);
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber);
       margin: 0 0 0.8rem;
     }
@@ -199,7 +196,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       scroll-margin-top: 90px;
     }
     .trap h3 {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 700;
       font-size: 1.1rem; color: var(--white); margin: 0 0 0.5rem;
     }
     .trap p { color: var(--gray-light); line-height: 1.7; margin: 0; font-size: 0.97rem; }
@@ -233,7 +230,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .rel-grid a:hover { border-color: var(--orange); }
 
     .two-h2 {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 600;
       font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.15;
       text-transform: uppercase; color: var(--white);
       margin: 4rem 0 0.6rem;
@@ -247,7 +244,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 4px; padding: 2rem 1.8rem; margin-top: 2rem; text-align: center;
     }
     .two-cta h3 {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-weight: 600;
       font-size: 1.6rem; text-transform: uppercase; color: var(--white);
       margin: 0 0 0.7rem;
     }

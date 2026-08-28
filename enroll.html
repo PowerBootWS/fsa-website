@@ -7,10 +7,7 @@
   <meta name="description" content="Enroll in Full Steam Ahead and get instant access to your power engineering exam prep — 2nd Class (six papers, $149/mo) or 3rd Class (four papers, $99/mo). Cancel anytime, study on any device.">
   <link rel="canonical" href="https://fullsteamahead.ca/enroll">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -61,7 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .enroll-header h1 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 800;
       line-height: 1.1;
@@ -121,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .enroll-form-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -131,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .enroll-form-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.6rem;
       font-weight: 700;
       color: var(--text-primary);
@@ -171,7 +168,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       max-width: 400px;
     }
     .checkout-form-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.35rem;
       font-weight: 700;
       color: var(--text-primary);
@@ -223,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       width: 100%;
       background: var(--orange);
       color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.04em;

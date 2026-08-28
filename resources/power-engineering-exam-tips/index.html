@@ -20,10 +20,7 @@
   <meta property="fb:app_id" content="1729520728215341">
 
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <script type="application/ld+json">
@@ -58,7 +55,7 @@
     }
 
     .lm-brand {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: 0.04em;
@@ -69,7 +66,7 @@
     .lm-brand span { color: var(--orange); }
 
     .lm-nav-back {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -101,7 +98,7 @@
     /* LEFT — copy */
     .lm-badge {
       display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -115,7 +112,7 @@
     }
 
     .lm-h1 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 2.6rem;
       font-weight: 800;
       letter-spacing: 0.02em;
@@ -133,7 +130,7 @@
     }
 
     .lm-section-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -166,7 +163,7 @@
       border-radius: 50%;
       background: rgba(232,114,12,0.15);
       border: 1px solid rgba(232,114,12,0.35);
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.72rem;
       font-weight: 700;
       color: var(--orange);
@@ -185,7 +182,7 @@
     }
 
     .lm-who-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -220,7 +217,7 @@
     }
 
     .lm-card-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.4rem;
       font-weight: 800;
       letter-spacing: 0.03em;
@@ -242,7 +239,7 @@
 
     .lm-field label {
       display: block;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -293,7 +290,7 @@
       background: var(--orange);
       color: #fff;
       border: none;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -348,7 +345,7 @@
       margin-bottom: 0.8rem;
     }
     .lm-success h3 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.3rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -372,7 +369,7 @@
       gap: 1rem;
     }
     .footer-brand {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.1rem;
       font-weight: 800;
       text-transform: uppercase;

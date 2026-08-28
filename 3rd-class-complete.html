@@ -7,10 +7,7 @@
   <meta name="description" content="Everything you need to pass your 3rd Class power engineering exam. Adaptive practice exams, AI tutoring, and step-by-step coaching for all four SOPEEC papers — $99/month.">
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -43,7 +40,7 @@
     }
     .lp-badge {
       display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -52,7 +49,7 @@
       margin-bottom: 1.2rem;
     }
     .lp-hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(2.4rem, 6vw, 3.6rem);
       font-weight: 800;
       line-height: 1.1;
@@ -71,7 +68,7 @@
       display: inline-block;
       background: var(--orange);
       color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.15rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -88,7 +85,7 @@
       margin: 0 auto;
     }
     .lp-section-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -97,7 +94,7 @@
       margin-bottom: 0.75rem;
     }
     .lp-section h2 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 800;
       line-height: 1.15;
@@ -145,7 +142,7 @@
       margin: 0 auto;
     }
     .guarantee-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.6rem;
       font-weight: 800;
       color: var(--text-primary);
@@ -170,7 +167,7 @@
       align-items: center;
     }
     .lp-form-copy h2 {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: clamp(1.8rem, 4vw, 2.4rem);
       font-weight: 800;
       line-height: 1.1;
@@ -186,7 +183,7 @@
       padding: 1.75rem;
     }
     .checkout-form-card { width: 100%; }
-    .checkout-form-heading { font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.35rem; }
+    .checkout-form-heading { font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.35rem; }
     .checkout-form-sub { font-size: 0.88rem; color: var(--gray-mid); margin: 0 0 1.5rem; }
     .checkout-field { margin-bottom: 1rem; }
     .checkout-label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-mid); margin-bottom: 0.4rem; }
@@ -194,7 +191,7 @@
     .checkout-input:focus { outline: none; border-color: var(--orange); }
     .checkout-input::placeholder { color: rgba(255,255,255,0.25); }
     .checkout-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
-    .checkout-btn { display: block; width: 100%; background: var(--orange); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; transition: opacity 0.2s; }
+    .checkout-btn { display: block; width: 100%; background: var(--orange); color: #fff; font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; transition: opacity 0.2s; }
     .checkout-btn:disabled { opacity: 0.6; cursor: not-allowed; }
     .checkout-fine { font-size: 0.8rem; color: var(--gray-mid); margin: 1rem 0 0; text-align: center; opacity: 0.7; }
     @media (max-width: 860px) {

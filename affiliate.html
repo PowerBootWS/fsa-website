@@ -7,10 +7,7 @@
   <meta name="description" content="Earn 20% recurring commission for every student you refer to Full Steam Ahead. No caps, no expiry — commissions continue for as long as your referral stays enrolled.">
   <link rel="canonical" href="https://fullsteamahead.ca/affiliate">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- INCLUDE:fonts -->
   <link rel="stylesheet" href="/styles-v2.css">
 
   <!-- Google Tag Manager -->
@@ -59,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: inline-block;
       background: var(--orange);
       color: var(--white);
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.07em;
@@ -97,7 +94,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       scroll-margin-top: 6rem;
     }
     .signup-heading {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--text-primary);
@@ -150,7 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       width: 100%;
       background: var(--orange);
       color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.04em;

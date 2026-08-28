@@ -9,8 +9,20 @@ see wiki/projects/fsa-website.md for the incident that prompted this).
 
 Source pages mark where the shared blocks go with HTML comments:
 
+    <!-- INCLUDE:fonts -->
     <!-- INCLUDE:nav [active="how-it-works"|"resources"|"enroll"] [enroll_href="..."] -->
     <!-- INCLUDE:footer -->
+
+INCLUDE:fonts goes in <head> and emits the Google Fonts preconnect/preload/noscript
+block. It exists because a CSS custom property cannot download a font: styles-v2.css
+can say `font-family: var(--font-body)`, but something in the document still has to
+fetch the file, and that link was copy-pasted into 66 heads. 61 of them requested
+plain `Barlow`, which no rule in styles-v2.css or articles.css references, while
+`IBM Plex Sans` -- the face `body` is actually set to -- never loaded at all. Nothing
+errored; the body copy just rendered in system sans for months (2026-08-27).
+
+coming-soon.html deliberately has no INCLUDE:fonts marker: it is the only page still
+on the legacy styles.css, where `'Barlow'` is a real rule, so it keeps its own link.
 
 `active` controls which nav item gets the nav-active styling on that page;
 omit it for pages with no active nav item (e.g. the homepage). `enroll_href`
@@ -56,7 +68,12 @@ ROOT_PASSTHROUGH_FILES = [
     "nav.js", "pricing.js", "styles.css", "styles-v2.css",
     "sitemap.xml", "robots.txt",
 ]
-ROOT_PASSTHROUGH_DIRS = ["assets", "resources"]
+ROOT_PASSTHROUGH_DIRS = ["assets"]
+# Trees walked and stitched file-by-file. resources/ moved here from
+# ROOT_PASSTHROUGH_DIRS on 2026-08-27: as passthrough its two lead-magnet
+# landing pages could not receive INCLUDE:fonts (or nav/footer), so they
+# kept a stale hand-pasted font link nobody would have thought to check.
+STITCHED_DIRS = ["articles", "resources"]
 
 ACTIVE_TOKENS = {
     "how-it-works": {"{{ACTIVE_HOW_IT_WORKS}}": ' class="nav-active"'},
@@ -78,6 +95,7 @@ INCLUDE_NAV_RE = re.compile(
     r'\s*-->'
 )
 INCLUDE_FOOTER_RE = re.compile(r'<!--\s*INCLUDE:footer\s*-->')
+INCLUDE_FONTS_RE = re.compile(r'<!--\s*INCLUDE:fonts\s*-->')
 
 
 def render_nav(template: str, active: str | None, enroll_href: str | None) -> str:
@@ -89,12 +107,14 @@ def render_nav(template: str, active: str | None, enroll_href: str | None) -> st
     return out
 
 
-def stitch(html: str, nav_template: str, footer_template: str) -> str:
+def stitch(html: str, nav_template: str, footer_template: str,
+           fonts_template: str) -> str:
     def nav_sub(m: re.Match) -> str:
         return render_nav(nav_template, m.group(1), m.group(2))
 
     html = INCLUDE_NAV_RE.sub(nav_sub, html)
     html = INCLUDE_FOOTER_RE.sub(footer_template, html)
+    html = INCLUDE_FONTS_RE.sub(fonts_template.rstrip("\n"), html)
     return html
 
 
@@ -105,6 +125,7 @@ def build(out_dir: pathlib.Path) -> None:
 
     nav_template = (ROOT / "partials" / "nav.html").read_text()
     footer_template = (ROOT / "partials" / "footer.html").read_text()
+    fonts_template = (ROOT / "partials" / "fonts.html").read_text()
 
     stitched = 0
     copied = 0
@@ -112,7 +133,7 @@ def build(out_dir: pathlib.Path) -> None:
     # Root HTML pages
     for name in ROOT_HTML_PAGES:
         src = ROOT / name
-        html = stitch(src.read_text(), nav_template, footer_template)
+        html = stitch(src.read_text(), nav_template, footer_template, fonts_template)
         (out_dir / name).write_text(html)
         stitched += 1
 
@@ -124,21 +145,23 @@ def build(out_dir: pathlib.Path) -> None:
         shutil.copytree(ROOT / name, out_dir / name)
         copied += 1
 
-    # articles/ — every .html file gets stitched, everything else (articles.css) copied
-    articles_out = out_dir / "articles"
-    for src in (ROOT / "articles").rglob("*"):
-        rel = src.relative_to(ROOT / "articles")
-        dest = articles_out / rel
-        if src.is_dir():
-            dest.mkdir(parents=True, exist_ok=True)
-            continue
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        if src.suffix == ".html":
-            dest.write_text(stitch(src.read_text(), nav_template, footer_template))
-            stitched += 1
-        else:
-            shutil.copy2(src, dest)
-            copied += 1
+    # Stitched trees — every .html file gets the partials, everything else
+    # (articles.css, images) is copied through untouched.
+    for tree in STITCHED_DIRS:
+        tree_out = out_dir / tree
+        for src in (ROOT / tree).rglob("*"):
+            dest = tree_out / src.relative_to(ROOT / tree)
+            if src.is_dir():
+                dest.mkdir(parents=True, exist_ok=True)
+                continue
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            if src.suffix == ".html":
+                dest.write_text(stitch(src.read_text(), nav_template,
+                                       footer_template, fonts_template))
+                stitched += 1
+            else:
+                shutil.copy2(src, dest)
+                copied += 1
 
     print(f"Built {out_dir}: {stitched} HTML pages stitched, {copied} files/dirs copied through")
 
