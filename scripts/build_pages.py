@@ -98,6 +98,40 @@ INCLUDE_FOOTER_RE = re.compile(r'<!--\s*INCLUDE:footer\s*-->')
 INCLUDE_FONTS_RE = re.compile(r'<!--\s*INCLUDE:fonts\s*-->')
 
 
+# Families the shared font link actually downloads, parsed from the partial so the
+# two can never be asserted apart. Anything else named in a font-family rule is a
+# face the browser will not have.
+# Stop at ; } or " -- but NOT at ', or the declaration would be cut off before the
+# family name and the check would pass on everything. That exact mistake made the
+# first version of this guard silently useless.
+FONT_FAMILY_RE = re.compile(r'font-family:[^;}"]*')
+QUOTED_FAMILY_RE = re.compile(r"'([^']+)'")
+
+
+def downloaded_families(fonts_template: str) -> set[str]:
+    return {m.replace("+", " ")
+            for m in re.findall(r"family=([^&:\"]+)", fonts_template)}
+
+
+def check_fonts(name: str, html: str, allowed: set[str]) -> list[str]:
+    """Names in font-family rules that nothing downloads.
+
+    This exists because the failure is invisible: a page naming a face the
+    browser never fetched does not error, does not warn and does not break
+    layout -- it silently renders in system sans. That shipped site-wide for
+    months, and then twice more in one afternoon while being fixed, each time
+    because a literal was matched by exact string instead of by meaning.
+    """
+    if "styles-v2.css" not in html:
+        return []                       # legacy pages carry their own font link
+    bad = []
+    for decl in FONT_FAMILY_RE.findall(html):
+        for fam in QUOTED_FAMILY_RE.findall(decl):
+            if fam not in allowed:
+                bad.append(f"{name}: font-family names '{fam}', which is never downloaded")
+    return bad
+
+
 def render_nav(template: str, active: str | None, enroll_href: str | None) -> str:
     out = template
     tokens = ACTIVE_TOKENS.get(active, {}) if active else {}
@@ -129,11 +163,14 @@ def build(out_dir: pathlib.Path) -> None:
 
     stitched = 0
     copied = 0
+    allowed = downloaded_families(fonts_template)
+    font_errors: list[str] = []
 
     # Root HTML pages
     for name in ROOT_HTML_PAGES:
         src = ROOT / name
         html = stitch(src.read_text(), nav_template, footer_template, fonts_template)
+        font_errors += check_fonts(name, html, allowed)
         (out_dir / name).write_text(html)
         stitched += 1
 
@@ -156,12 +193,22 @@ def build(out_dir: pathlib.Path) -> None:
                 continue
             dest.parent.mkdir(parents=True, exist_ok=True)
             if src.suffix == ".html":
-                dest.write_text(stitch(src.read_text(), nav_template,
-                                       footer_template, fonts_template))
+                html = stitch(src.read_text(), nav_template,
+                              footer_template, fonts_template)
+                font_errors += check_fonts(str(src.relative_to(ROOT)), html, allowed)
+                dest.write_text(html)
                 stitched += 1
             else:
                 shutil.copy2(src, dest)
                 copied += 1
+
+    for sheet in ("styles-v2.css", "articles/articles.css"):
+        font_errors += check_fonts(sheet, 'styles-v2.css' + (ROOT / sheet).read_text(), allowed)
+
+    if font_errors:
+        raise SystemExit("Font check failed:\n  " + "\n  ".join(font_errors) +
+                         "\n\nUse var(--font-display) / var(--font-body), or add the face to "
+                         "partials/fonts.html. See wiki/projects/fsa-website.md.")
 
     print(f"Built {out_dir}: {stitched} HTML pages stitched, {copied} files/dirs copied through")
 
