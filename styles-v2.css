@@ -3474,6 +3474,16 @@ footer {
   }
 }
 
+/* At the default size the button is a 69x29 target — too small to thumb
+   reliably. Phones are where most of this page's traffic is, and a save
+   control people miss defeats the point of putting it on the card. */
+@media (max-width: 768px) {
+  .job-card-save {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+  }
+}
+
 /* Used for the stretched link's accessible name. */
 .visually-hidden {
   position: absolute;
