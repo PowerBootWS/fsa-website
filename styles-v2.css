@@ -1019,6 +1019,10 @@ td.them-col .x { color: #888; }
   padding: 6rem 3rem;
 }
 
+/* The 820px wrap was sized for two cards. Three need the room, or every
+   feature line wraps every three words and the CTA labels break in half. */
+.pricing-wrap-3 { max-width: 1180px; }
+
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
@@ -1026,6 +1030,29 @@ td.them-col .x { color: #888; }
   align-items: stretch;
   margin-top: 3rem;
 }
+
+/* Three-up variant, used since 4th Class joined the grid (2026-08-30). The
+   2nd Class card keeps the wider column so the .popular treatment still reads
+   as the emphasised one. */
+.pricing-grid-3 { grid-template-columns: 1fr 1fr 1.12fr; }
+
+/* Below the three-up breakpoint the cards get too narrow to read, and two
+   columns would leave a lone orphan, so stack instead. */
+@media (max-width: 1100px) {
+  .pricing-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* Small link under a plan's CTA through to that program's own page. */
+.plan-detail-link {
+  display: block;
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--steel-light);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+.plan-detail-link:hover { color: var(--white); text-decoration: underline; }
 
 .price-card {
   background: var(--plate);
@@ -2206,8 +2233,8 @@ footer {
   .pillars { grid-template-columns: 1fr; }
   .papers-grid { grid-template-columns: 1fr 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .price-card.popular { order: -1; }
-  .price-card:not(.popular) { order: 1; }
+  .pricing-grid:not(.pricing-grid-3) .price-card.popular { order: -1; }
+  .pricing-grid:not(.pricing-grid-3) .price-card:not(.popular) { order: 1; }
   .faq-grid { grid-template-columns: 1fr; }
   .trust-track { gap: 2.5rem; }
   .section-wrap { padding: 4rem 1.5rem; }

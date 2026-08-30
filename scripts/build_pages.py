@@ -77,6 +77,7 @@ STITCHED_DIRS = ["articles", "resources"]
 
 ACTIVE_TOKENS = {
     "how-it-works": {"{{ACTIVE_HOW_IT_WORKS}}": ' class="nav-active"'},
+    "programs":     {"{{ACTIVE_PROGRAMS}}": " nav-active"},
     "resources":    {"{{ACTIVE_RESOURCES}}": " nav-active"},
     # Legacy alias: the nav item was called "Exam Prep" until 2026-08-11. Any
     # page still carrying active="exam-prep" keeps highlighting the right item.
@@ -84,9 +85,10 @@ ACTIVE_TOKENS = {
     "enroll":       {"{{ACTIVE_ENROLL}}": ' class="nav-active"'},
 }
 ALL_ACTIVE_PLACEHOLDERS = [
-    "{{ACTIVE_HOW_IT_WORKS}}", "{{ACTIVE_RESOURCES}}", "{{ACTIVE_ENROLL}}",
+    "{{ACTIVE_HOW_IT_WORKS}}", "{{ACTIVE_RESOURCES}}", "{{ACTIVE_PROGRAMS}}",
+    "{{ACTIVE_ENROLL}}",
 ]
-DEFAULT_ENROLL_HREF = "https://fullsteamahead.ca/enroll.html"
+DEFAULT_ENROLL_HREF = "https://fullsteamahead.ca/enroll"
 
 INCLUDE_NAV_RE = re.compile(
     r'<!--\s*INCLUDE:nav'
