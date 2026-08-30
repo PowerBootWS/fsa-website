@@ -288,6 +288,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (window.location.hostname === 'fullsteamahead.ca' || window.location.hostname === 'www.fullsteamahead.ca') {
         API_BASE = 'https://jobs-api.fullsteamahead.ca';
       }
+      var LEARN_BASE = 'https://learn.fullsteamahead.ca';
+
+      // ── Save a job to an FSA account ──
+      // Shared by the listing cards and the detail view.
+      //
+      // GET /jobs (the list) returns lightweight rows only — no apply_url,
+      // job_url, description or ai_summary — but capture-stash requires a url,
+      // and a job saved from a card should carry the same snapshot as one saved
+      // from the detail view. So a card save fetches the full record first; the
+      // detail view already holds it and passes it in as `prefetched`.
+      //
+      // The stash is a short-lived server-side token: learn.* either saves the
+      // job straight away for a logged-in user, or routes through signup/login
+      // and saves once they land. That is the whole point of the flow — the ask
+      // arrives attached to a job the person already wants.
+      function stashJobAndRedirect(jobId, onError, prefetched) {
+        var loaded = prefetched
+          ? Promise.resolve(prefetched)
+          : fetch(API_BASE + '/jobs/' + encodeURIComponent(jobId)).then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.json();
+            });
+
+        loaded
+          .then(function (job) {
+            var classLevelStr = Array.isArray(job.class_level)
+              ? job.class_level.join(' / ')
+              : (job.class_level || '');
+            return fetch(LEARN_BASE + '/api/jobs/capture-stash', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                job_id: job.job_id || jobId || '',
+                title: job.title || '',
+                company: job.company || '',
+                url: job.apply_url || job.job_url || window.location.href,
+                posted_at: job.date_posted || '',
+                description: job.description || '',
+                ai_summary: job.ai_summary || '',
+                location: job.location || '',
+                class_level: classLevelStr,
+                employer_logo_url: job.employer_logo_url || ''
+              })
+            });
+          })
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            window.location.href = LEARN_BASE + '/jobs/capture?token=' + encodeURIComponent(data.token);
+          })
+          .catch(onError);
+      }
 
       // ── DOM refs ──
       var grid = document.getElementById('jobs-grid');
@@ -303,6 +357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var currentSearch = '';
       var currentProvince = '';
       var alertSubscribed = !!localStorage.getItem('fsa-jobs-alerts-subscribed');
+      var SAVE_BTN_LABEL = '<span class="job-card-save-icon" aria-hidden="true">&#128190;</span> Save';
       var alertModal = document.getElementById('jobs-alert-modal');
 
       // ── Filter state URL helpers ──
@@ -471,13 +526,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         empty.style.display = 'none';
         var items = filtered.map(function (job) {
           var logoHtml = job.employer_logo_url
-            ? '<img src="' + escapeHtml(job.employer_logo_url) + '" alt="" class="job-card-logo">'
+            ? '<img src="' + escapeAttr(job.employer_logo_url) + '" alt="" class="job-card-logo">'
             : '<div class="job-card-logo-placeholder">&#127981;</div>';
           var dateHtml = job.first_seen
             ? '<div class="job-card-date">Added ' + escapeHtml(formatDate(job.first_seen)) + '</div>'
             : '';
+          // The card is a <div>, not an <a>: a button cannot legally live inside
+          // an anchor. Navigation comes from .job-card-link, stretched over the
+          // whole card, with the save button layered above it — so the card stays
+          // clickable exactly as before and the button is reachable by keyboard.
           return (
-            '<a href="/jobs?id=' + encodeURIComponent(job.job_id) + filterParams() + '" class="job-card">' +
+            '<div class="job-card">' +
+              '<a href="/jobs?id=' + encodeURIComponent(job.job_id) + filterParams() + '" class="job-card-link">' +
+                '<span class="visually-hidden">' + escapeHtml(job.title) + '</span>' +
+              '</a>' +
               '<div class="job-card-top">' +
                 logoHtml +
                 '<span class="job-card-badge">' + escapeHtml((Array.isArray(job.class_level) ? job.class_level.join(' / ') : job.class_level) || 'Other') + '</span>' +
@@ -485,8 +547,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               '<h3 class="job-card-title">' + escapeHtml(job.title) + '</h3>' +
               '<div class="job-card-company">' + escapeHtml(job.company || '') + '</div>' +
               '<div class="job-card-location">' + escapeHtml(job.location || '') + '</div>' +
-              dateHtml +
-            '</a>'
+              '<div class="job-card-foot">' +
+                dateHtml +
+                '<button type="button" class="job-card-save" data-job-id="' + escapeAttr(job.job_id) + '" aria-label="Save this job to your account">' +
+                  SAVE_BTN_LABEL +
+                '</button>' +
+              '</div>' +
+            '</div>'
           );
         });
         var alertCard = buildAlertCard();
@@ -566,45 +633,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               applyBtn.style.display = 'none';
             }
 
-            var LEARN_BASE = 'https://learn.fullsteamahead.ca';
-            var classLevelStr = Array.isArray(job.class_level) ? job.class_level.join(' / ') : (job.class_level || '');
-            var savePayload = {
-              job_id: job.job_id || '',
-              title: job.title || '',
-              company: job.company || '',
-              url: job.apply_url || job.job_url || window.location.href,
-              posted_at: job.date_posted || '',
-              description: job.description || '',
-              ai_summary: job.ai_summary || '',
-              location: job.location || '',
-              class_level: classLevelStr,
-              employer_logo_url: job.employer_logo_url || '',
-            };
-
             function handleSaveClick() {
               var btns = ['detail-save', 'detail-save-top'].map(function (id) { return document.getElementById(id); });
               btns.forEach(function (btn) { btn.disabled = true; btn.textContent = 'Saving…'; });
 
-              fetch(LEARN_BASE + '/api/jobs/capture-stash', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(savePayload)
-              })
-                .then(function (res) {
-                  if (!res.ok) throw new Error('HTTP ' + res.status);
-                  return res.json();
-                })
-                .then(function (data) {
-                  window.location.href = LEARN_BASE + '/jobs/capture?token=' + encodeURIComponent(data.token);
-                })
-                .catch(function () {
-                  btns.forEach(function (btn) { btn.disabled = false; btn.textContent = '💾 Save This Job'; });
-                  ['detail-save-note', 'detail-save-note-top'].forEach(function (id) {
-                    var note = document.getElementById(id);
-                    note.textContent = 'Could not save this job right now. Please try again.';
-                    note.style.color = '#dc2626';
-                  });
+              // `job` is the full record this view already fetched — pass it
+              // through so the shared helper does not fetch it a second time.
+              stashJobAndRedirect(job.job_id || jobId, function () {
+                btns.forEach(function (btn) { btn.disabled = false; btn.textContent = '💾 Save This Job'; });
+                ['detail-save-note', 'detail-save-note-top'].forEach(function (id) {
+                  var note = document.getElementById(id);
+                  note.textContent = 'Could not save this job right now. Please try again.';
+                  note.style.color = '#dc2626';
                 });
+              }, job);
             }
 
             ['detail-save', 'detail-save-top'].forEach(function (id) {
@@ -679,6 +721,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+      }
+
+      // escapeHtml is textContent-based, so it escapes & < > but NOT quotes —
+      // safe for element text, unsafe inside a quoted attribute. Job data is
+      // scraped from third-party postings and titles already contain apostrophes
+      // today, so anything interpolated into an attribute goes through this.
+      function escapeAttr(text) {
+        return escapeHtml(text == null ? '' : text).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
       }
 
       function formatText(text) {
@@ -757,7 +807,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       grid.addEventListener('click', function (e) {
         if (e.target.classList.contains('job-alert-card-btn')) {
           openAlertModal();
+          return;
         }
+
+        var saveBtn = e.target.closest && e.target.closest('.job-card-save');
+        if (!saveBtn || saveBtn.disabled) return;
+        // The stretched link is a sibling, not an ancestor, so the click never
+        // reaches it — preventDefault is belt and braces.
+        e.preventDefault();
+        e.stopPropagation();
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = 'Saving…';
+        stashJobAndRedirect(saveBtn.getAttribute('data-job-id'), function () {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = SAVE_BTN_LABEL;
+          saveBtn.classList.add('is-error');
+          saveBtn.title = 'Could not save this job right now. Please try again.';
+        });
       });
 
       document.getElementById('jobs-alert-modal-close').addEventListener('click', closeAlertModal);

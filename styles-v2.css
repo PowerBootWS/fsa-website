@@ -3075,6 +3075,7 @@ footer {
 }
 
 .job-card {
+  position: relative;
   background: var(--plate);
   border: 1px solid var(--plate-edge);
   border-bottom: 3px solid var(--plate-edge);
@@ -3084,6 +3085,21 @@ footer {
   display: flex;
   flex-direction: column;
   transition: border-bottom-color var(--duration-fast), transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+/* The card used to be a single <a>. A save button cannot live inside an anchor,
+   so navigation moved to this stretched link: it covers the whole card, keeping
+   the old click target, while .job-card-save sits above it on z-index. */
+.job-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.job-card-link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: -4px;
 }
 
 .job-card:hover {
@@ -3379,6 +3395,96 @@ footer {
   font-size: 0.72rem;
   color: var(--gray-dark);
   margin-top: 0.5rem;
+}
+
+/* ── Job card: footer row (date + save) ── */
+.job-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.job-card-foot .job-card-date {
+  margin-top: 0;
+}
+
+.job-card-save {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  background: none;
+  border: 1px solid var(--plate-edge);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast);
+}
+
+/* Quiet until the card is hovered, so it never competes with the listing scan. */
+.job-card:hover .job-card-save {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.job-card-save:hover,
+.job-card-save:focus-visible {
+  color: var(--white);
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.job-card-save:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.job-card-save[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.job-card-save.is-error {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+.job-card-save-icon {
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+/* Touch devices have no hover, so the button must be legible at rest. */
+@media (hover: none) {
+  .job-card-save {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+}
+
+/* Used for the stretched link's accessible name. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Job detail: date added ── */

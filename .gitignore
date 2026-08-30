@@ -18,3 +18,7 @@ __pycache__/
 assets/library/*.pdf
 
 .superpowers/
+
+# Build output from scripts/build_pages.py — regenerated inside the Docker build,
+# never served from the host and never committed.
+dist/
