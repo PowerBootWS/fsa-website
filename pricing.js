@@ -32,9 +32,18 @@
  *    literal price, so a plain data-price substitution can't cover it).
  */
 
+/*
+ * `was` and `savings` were removed 2026-08-30 with the discount framing they
+ * fed. "Launch pricing — save $50/mo" had run open-ended since launch with no
+ * end date on five pages; permanent urgency reads as fake and the struck-out
+ * $199 anchor was doing no work. Nothing displays a former price any more, and
+ * a price field nobody renders is exactly how a stale number creeps back in --
+ * so they are gone rather than kept "just in case". A real, dated sale later
+ * should re-add them deliberately, alongside the markup that shows them.
+ */
 window.FSA_PRICING = {
-  secondClass: { current: 149, was: 199, cadence: 'month', savings: 50, papers: 6 },
-  thirdClass:  { current: 99,  was: 149, cadence: 'month', savings: 50, papers: 4 },
+  secondClass: { current: 149, cadence: 'month', papers: 6 },
+  thirdClass:  { current: 99,  cadence: 'month', papers: 4 },
   fourthClass: { current: 99,  cadence: 'year', papers: 1 },
   affiliate:   { commissionRate: 20 }
 };

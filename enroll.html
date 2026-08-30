@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Start Your Subscription – Full Steam Ahead – Power Engineering Exam Prep</title>
-  <meta name="description" content="Enroll in Full Steam Ahead and get instant access to your power engineering exam prep — 2nd Class (six papers, $149/mo) or 3rd Class (four papers, $99/mo). Cancel anytime, study on any device.">
+  <title>Start Studying – Full Steam Ahead – Power Engineering Exam Prep</title>
+  <meta name="description" content="Start your power engineering exam prep today — 2nd Class (six papers, $149/mo), 3rd Class (four papers, $99/mo), or a single 4th Class paper for $99 the year. Cancel anytime, study on any device.">
   <link rel="canonical" href="https://fullsteamahead.ca/enroll">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <!-- INCLUDE:fonts -->
@@ -20,8 +20,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Full Steam Ahead">
-  <meta property="og:title" content="Start Your Subscription – Full Steam Ahead – Power Engineering Exam Prep">
-  <meta property="og:description" content="Get instant access to power engineering exam prep — 2nd Class (six papers, $149/mo) or 3rd Class (four papers, $99/mo). Cancel anytime, study on any device.">
+  <meta property="og:title" content="Start Studying – Full Steam Ahead – Power Engineering Exam Prep">
+  <meta property="og:description" content="Power engineering exam prep for the paper you're actually writing — 2nd Class, 3rd Class, or a single 4th Class paper. Cancel anytime, study on any device.">
   <meta property="og:url" content="https://fullsteamahead.ca/enroll">
   <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -31,62 +31,146 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
 
   <style>
-    /* Page-specific layout */
+    /* ------------------------------------------------------------------
+       Page layout.
+
+       Source order IS the mobile order, deliberately. 57% of this page's
+       traffic is mobile, and the old layout put the form first with the
+       value proposition and the what-you-get list below it -- so the first
+       screen was a headline, four price buttons and three input fields,
+       asking for a name and email before saying what was being bought.
+       Median engagement was ~15 seconds and 90% of sessions never started
+       checkout (measured 2026-07-30..08-28: 198 sessions, 20 checkouts,
+       6 paid). Everything a cold visitor needs in order to decide now sits
+       above the form, in one column, in reading order. Desktop splits the
+       same source order into two columns.
+       ------------------------------------------------------------------ */
     .enroll-section {
-      padding: 5rem 1.5rem 4rem;
-      max-width: 1100px;
+      padding: 6rem 1.5rem 4rem;   /* clears the fixed nav (~63px) with room to breathe */
+      max-width: 1120px;
       margin: 0 auto;
     }
 
     .enroll-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "header form"
-        "details form";
-      column-gap: 4rem;
-      row-gap: 0;
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
     }
 
-    .enroll-header { grid-area: header; padding-top: 1rem; }
-    .enroll-form-wrap { grid-area: form; }
-    .enroll-details { grid-area: details; }
-
-    .enroll-header .section-label {
-      margin-bottom: 1rem;
+    @media (min-width: 900px) {
+      .enroll-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        column-gap: 4rem;
+        align-items: start;
+      }
+      /* The form card is the second column and spans the pitch beside it. */
+      .enroll-pitch { grid-column: 1; }
+      .enroll-form-wrap { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 6rem; }
+      .enroll-proof { grid-column: 1 / -1; }
     }
 
     .enroll-header h1 {
-      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.6vw, 3rem);
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.08;
       color: var(--text-primary);
-      margin-bottom: 1.2rem;
+      margin: 0 0 1rem;
     }
+    .enroll-header h1 em { color: var(--orange); font-style: normal; }
 
-    .enroll-header h1 em {
-      color: var(--orange);
-      font-style: normal;
-    }
-
-    .enroll-details .enroll-lead {
-      font-size: 1.05rem;
+    .enroll-sub {
+      font-size: 1.02rem;
       color: var(--gray-mid);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      line-height: 1.65;
+      margin: 0 0 1.25rem;
+    }
+
+    /* One line, high in the page, answering "who is behind this". Nothing
+       else on the marketing site said so before 2026-08-30. */
+    .enroll-trust {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--gray-light);
+      background: rgba(232,114,12,0.07);
+      border: 1px solid rgba(232,114,12,0.28);
+      padding: 0.8rem 0.95rem;
+      margin: 0 0 1.75rem;
+    }
+
+    .enroll-step-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin: 0 0 0.7rem;
+    }
+
+    /* ── Program picker ───────────────────────────────────────────────
+       Was white cards with a green selected state on a dark page, which
+       read as a third-party widget pasted into the site -- a real cost on
+       a payment page. Now built from the site's own surface tokens. */
+    .program-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin: 0 0 2rem;
+    }
+    .program-option {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: flex-start;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      padding: 0.85rem 0.95rem;
+      background: var(--plate);
+      border: 1px solid var(--plate-edge);
+      border-radius: 2px;
+      color: var(--text-primary);
+      transition: border-color var(--duration-fast), background var(--duration-fast);
+    }
+    .program-option:hover { border-color: var(--steel); }
+    .program-option.is-selected {
+      border-color: var(--orange);
+      background: rgba(232,114,12,0.1);
+      box-shadow: inset 0 0 0 1px var(--orange);
+    }
+    .program-option:focus-visible { outline: 2px solid var(--orange-glow); outline-offset: 2px; }
+    .program-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+    .program-meta { font-size: 0.8rem; color: var(--gray-mid); line-height: 1.4; }
+    .program-option.is-selected .program-meta { color: var(--gray-light); }
+
+    /* ── What you get ── */
+    .enroll-papers-line {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin: 0 0 1rem;
     }
 
     .enroll-checklist {
       list-style: none;
       padding: 0;
-      margin: 0 0 2rem;
+      margin: 0 0 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.7rem;
     }
-
     .enroll-checklist li {
       display: flex;
       align-items: flex-start;
@@ -95,152 +179,147 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--text-primary);
       line-height: 1.5;
     }
-
     .enroll-checklist li .chk {
       color: var(--orange);
       font-weight: 700;
-      font-size: 1rem;
       flex-shrink: 0;
       margin-top: 0.05rem;
     }
 
-    .enroll-fine {
-      font-size: 0.8rem;
+    .enroll-value-note {
+      font-size: 0.9rem;
       color: var(--gray-mid);
-      margin-top: 2rem;
+      line-height: 1.6;
+      border-top: 1px solid var(--plate-edge);
+      padding-top: 1.1rem;
+      margin: 0;
     }
 
+    /* ── Form card ── */
     .enroll-form-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
+      background: var(--plate);
+      border: 1px solid var(--plate-edge);
+      border-bottom-width: 3px;
+      border-radius: 0;
+      padding: 1.6rem;
     }
-
-    .enroll-form-label {
-      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 1.2rem;
+    .checkout-price {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin: 0 0 0.3rem;
     }
-
-    .enroll-form-heading {
-      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .enroll-form-sub {
-      font-size: 0.88rem;
+    .checkout-price .cp-amount { font-size: 2.6rem; }
+    .checkout-price .cp-amount sup { font-size: 1.2rem; top: -0.7rem; position: relative; }
+    .checkout-price .cp-cadence {
+      font-size: 0.95rem;
+      font-weight: 600;
       color: var(--gray-mid);
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 860px) {
-      .enroll-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "header"
-          "form"
-          "details";
-        gap: 2.5rem;
-      }
-
-      .enroll-header {
-        padding-top: 0;
-      }
-
-      .enroll-section {
-        padding: 3.5rem 1.25rem 3rem;
-      }
-    }
-
-    /* Checkout form card */
-    .checkout-form-card {
-      width: 100%;
-      max-width: 400px;
-    }
-    .checkout-form-heading {
-      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin: 0 0 0.35rem;
+      letter-spacing: 0.02em;
     }
     .checkout-form-sub {
       font-size: 0.88rem;
       color: var(--gray-mid);
-      margin: 0 0 1.5rem;
+      line-height: 1.5;
+      margin: 0 0 1.4rem;
     }
-    .checkout-field {
-      margin-bottom: 1rem;
-    }
+    .checkout-field { margin-bottom: 0.9rem; }
     .checkout-label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--gray-mid);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
     .checkout-input {
       width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
+      background: var(--iron);
+      border: 1px solid var(--plate-edge);
+      border-radius: 4px;
       color: var(--text-primary);
-      font-family: var(--font-body, 'IBM Plex Sans', sans-serif);
-      font-size: 0.95rem;
-      padding: 0.65rem 0.85rem;
+      font-family: var(--font-body);
+      font-size: 1rem;               /* 16px: anything smaller makes iOS Safari zoom on focus */
+      padding: 0.7rem 0.85rem;
       box-sizing: border-box;
-      transition: border-color 0.2s;
+      transition: border-color var(--duration-fast);
     }
-    .checkout-input:focus {
-      outline: none;
-      border-color: var(--orange);
-    }
-    .checkout-input::placeholder {
-      color: rgba(255,255,255,0.25);
-    }
-    .checkout-error {
-      font-size: 0.85rem;
-      color: #f87171;
-      margin: 0 0 0.75rem;
-    }
+    .checkout-input:focus { outline: none; border-color: var(--orange); }
+    .checkout-input::placeholder { color: var(--gray-dark); }
+    /* The one red on the site. An invalid-field message has to read as an error;
+       DESIGN.md's "no red/black" rule is about the CTA aesthetic, not form validation. */
+    .checkout-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
     .checkout-btn {
       display: block;
       width: 100%;
       background: var(--orange);
       color: #fff;
-      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
-      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 0.85rem 1.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.5rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
-      margin-top: 0.5rem;
-      transition: opacity 0.2s;
+      margin-top: 0.6rem;
+      transition: background var(--duration-fast), box-shadow var(--duration-fast);
     }
-    .checkout-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    .checkout-btn:hover:not(:disabled) { background: var(--orange-glow); box-shadow: 0 10px 28px rgba(232,114,12,0.35); }
+    .checkout-btn:disabled { opacity: 0.6; cursor: not-allowed; }
     .checkout-fine {
       font-size: 0.8rem;
       color: var(--gray-mid);
-      margin: 1rem 0 0;
+      margin: 0.9rem 0 0;
       text-align: center;
-      opacity: 0.7;
+      line-height: 1.5;
+    }
+    /* The page used to be a dead end: a visitor who was not ready had
+       nothing to do but leave. */
+    .checkout-alt {
+      margin: 1.2rem 0 0;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--plate-edge);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      line-height: 1.55;
+    }
+    .checkout-alt a { color: var(--steel-light); text-decoration: none; }
+    .checkout-alt a:hover { color: var(--white); text-decoration: underline; }
+
+    /* ── Proof ── */
+    .enroll-proof { margin-top: 1rem; }
+    .enroll-proof-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      text-align: center;
+      margin: 0 0 1.4rem;
+    }
+
+    @media (max-width: 480px) {
+      /* One per row at phone widths -- two columns here would wrap
+         "4th Class — 4A / One paper · $99 for the year" into an unreadable
+         stack. Laid out as a single row (name left, terms right) rather than
+         stacked, which halves each option's height and keeps the whole picker
+         plus the first of the what-you-get list inside the opening screens. */
+      .program-picker { grid-template-columns: 1fr; gap: 0.5rem; }
+      .program-option {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 0.85rem;
+      }
+      .program-meta { text-align: right; flex-shrink: 0; }
+      .enroll-section { padding: 5.5rem 1.25rem 3rem; }
     }
   </style>
 </head>
@@ -258,183 +337,200 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="enroll-section">
     <div class="enroll-grid">
 
-      <!-- Header: generic hook, always shown first regardless of program -->
-      <div class="enroll-header">
-        <h1 class="reveal" data-delay="60">
-          You've Put In the Hours.<br>
-          Now Get <em>Your Ticket.</em>
-        </h1>
-      </div>
-
-      <!-- Form: signup + program picker. On mobile this comes before the
-           program-specific details below, so the picker is visible before
-           any 2nd/3rd/4th-Class-specific copy — avoids the "wrong page"
-           impression when a non-default program is selected. -->
-      <div class="enroll-form-wrap reveal" data-delay="60">
-        <div class="checkout-form-card">
-          <p class="checkout-form-heading">Create your account to continue</p>
-          <p class="checkout-form-sub">Takes 30 seconds. Secure checkout via Stripe.</p>
-
-          <div class="program-picker" role="radiogroup" aria-label="Choose your program">
-            <button type="button" class="program-option is-selected" data-program="second" role="radio" aria-checked="true">
-              <span class="program-name">2nd Class</span>
-              <span class="program-meta">Six papers · <s>$<span data-price="secondClass.was">199</span></s> $<span data-price="secondClass.current">149</span>/mo</span>
-            </button>
-            <button type="button" class="program-option" data-program="third" role="radio" aria-checked="false">
-              <span class="program-name">3rd Class</span>
-              <span class="program-meta">Four papers · <s>$<span data-price="thirdClass.was">149</span></s> $<span data-price="thirdClass.current">99</span>/mo</span>
-            </button>
-            <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
-              <span class="program-name">4th Class Paper 4A</span>
-              <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span>/yr</span>
-            </button>
-            <button type="button" class="program-option" data-program="fourth_b" role="radio" aria-checked="false">
-              <span class="program-name">4th Class Paper 4B</span>
-              <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span>/yr</span>
-            </button>
-          </div>
-
-          <form id="checkout-form" novalidate>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-first">First Name</label>
-              <input class="checkout-input" type="text" id="cf-first" name="firstName" autocomplete="given-name" required placeholder="e.g. Jordan">
-            </div>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-last">Last Name</label>
-              <input class="checkout-input" type="text" id="cf-last" name="lastName" autocomplete="family-name" required placeholder="e.g. MacLeod">
-            </div>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-email">Email Address</label>
-              <input class="checkout-input" type="email" id="cf-email" name="email" autocomplete="email" required placeholder="you@example.com">
-            </div>
-            <p class="checkout-error" id="checkout-error" style="display:none;"></p>
-            <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
-          </form>
-          <p class="checkout-fine" id="checkout-fine"><s>$<span data-price="secondClass.was">199</span></s> $<span data-price="secondClass.current">149</span>/month &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime</p>
-          <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
-          <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
+      <!-- Everything a cold visitor needs to decide, above the form. -->
+      <div class="enroll-pitch">
+        <div class="enroll-header">
+          <h1 class="reveal" data-delay="40">Study for the Paper You're <em>Actually Writing.</em></h1>
         </div>
-      </div>
 
-      <!-- Details: program-specific pitch, kept below the picker on mobile so it
-           always matches whichever program is currently selected. -->
-      <div class="enroll-details">
-        <p class="enroll-lead reveal" data-delay="120" id="enroll-lead">
-          Fill in your details and you'll have full access to all <span data-price="secondClass.papers">6</span> 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.
+        <p class="enroll-sub reveal" data-delay="80">
+          Pick your level below and you'll be studying within minutes. No textbooks to order,
+          no classroom to sit in, no start date to wait for.
         </p>
 
-        <ul class="enroll-checklist reveal" data-delay="180" id="enroll-checklist">
-          <li><span class="chk">✓</span> <span id="enroll-papers">All <span data-price="secondClass.papers">6</span> 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3</span></li>
+        <p class="enroll-trust reveal" data-delay="100">
+          <span aria-hidden="true">⚙</span>
+          <span>Built by Russ Webb, a First Class Power Engineer who sat every one of these
+          papers himself — 4th through 1st.</span>
+        </p>
+
+        <p class="enroll-step-label reveal" data-delay="120">Step 1 — choose your level</p>
+        <div class="program-picker reveal" data-delay="140" role="radiogroup" aria-label="Choose your program">
+          <button type="button" class="program-option is-selected" data-program="second" role="radio" aria-checked="true">
+            <span class="program-name">2nd Class</span>
+            <span class="program-meta">Six papers · $<span data-price="secondClass.current">149</span>/month</span>
+          </button>
+          <button type="button" class="program-option" data-program="third" role="radio" aria-checked="false">
+            <span class="program-name">3rd Class</span>
+            <span class="program-meta">Four papers · $<span data-price="thirdClass.current">99</span>/month</span>
+          </button>
+          <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
+            <span class="program-name">4th Class — 4A</span>
+            <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span> for the year</span>
+          </button>
+          <button type="button" class="program-option" data-program="fourth_b" role="radio" aria-checked="false">
+            <span class="program-name">4th Class — 4B</span>
+            <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span> for the year</span>
+          </button>
+        </div>
+
+        <p class="enroll-step-label reveal" data-delay="160">Step 2 — here's what you get</p>
+        <p class="enroll-papers-line reveal" data-delay="180" id="enroll-papers-line">
+          All <span data-price="secondClass.papers">6</span> 2nd Class papers, under one subscription.
+        </p>
+
+        <ul class="enroll-checklist reveal" data-delay="200" id="enroll-checklist">
+          <li><span class="chk">✓</span> <span id="enroll-papers">2A1, 2A2, 2A3, 2B1, 2B2, 2B3 — every paper for the ticket</span></li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Step-by-step calculation coaching that mirrors how exams are marked</li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Interactive AI tutoring available anytime, even on night shift</li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Adaptive practice exams that focus on your weak spots</li>
           <li class="checklist-dynamic"><span class="chk">✓</span> Progress saved if you need to pause; resume whenever you're ready</li>
-          <li class="checklist-dynamic"><span class="chk">✓</span> Study on any device, on your schedule</li>
         </ul>
 
-        <div class="papers-note reveal" data-delay="240" style="margin-top:0">
-          <span class="note-icon">💡</span>
-          <span id="enroll-note">Launch pricing: $<span data-price="secondClass.current">149</span>/month instead of the regular $<span data-price="secondClass.was">199</span>; that's $<span data-price="secondClass.savings">50</span> off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.</span>
-        </div>
+        <p class="enroll-value-note reveal" data-delay="220" id="enroll-note">
+          Six months of focused study still costs less than what a single paper costs at a
+          traditional provider — and you study on your rotation, not theirs.
+        </p>
+      </div>
 
-        <p class="enroll-fine" id="enroll-fine"><s>$<span data-price="secondClass.was">199</span></s> <strong>$<span data-price="secondClass.current">149</span>/month</strong> &middot; Launch pricing — save $<span data-price="secondClass.savings">50</span>/mo &middot; Cancel anytime &middot; All <span data-price="secondClass.papers">6</span> papers included</p>
+      <!-- Form: the last thing, not the first. -->
+      <div class="enroll-form-wrap reveal" data-delay="60">
+        <p class="checkout-price">
+          <span class="cp-amount"><sup>$</sup><span id="cp-amount" data-price="secondClass.current">149</span></span>
+          <span class="cp-cadence" id="cp-cadence">/ month</span>
+        </p>
+        <p class="checkout-form-sub" id="checkout-form-sub">Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.</p>
+
+        <form id="checkout-form" novalidate>
+          <div class="checkout-field">
+            <label class="checkout-label" for="cf-first">First Name</label>
+            <input class="checkout-input" type="text" id="cf-first" name="firstName" autocomplete="given-name" required placeholder="e.g. Jordan">
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label" for="cf-last">Last Name</label>
+            <input class="checkout-input" type="text" id="cf-last" name="lastName" autocomplete="family-name" required placeholder="e.g. MacLeod">
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label" for="cf-email">Email Address</label>
+            <input class="checkout-input" type="email" id="cf-email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+          <p class="checkout-error" id="checkout-error" style="display:none;"></p>
+          <button type="submit" class="checkout-btn" id="checkout-btn">Create Account →</button>
+        </form>
+
+        <p class="checkout-fine" id="checkout-fine">Cancel anytime · No contract · Secure checkout via Stripe</p>
+
+        <p class="checkout-alt">
+          Not ready to commit? <a href="/free-practice-exam">Sit a free practice exam first</a> — no card needed.
+        </p>
+
+        <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
+        <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
+      </div>
+
+      <!-- Proof. There was none of any kind on this page before 2026-08-30:
+           no testimonial, no product evidence, no named person behind it. -->
+      <div class="enroll-proof">
+        <p class="enroll-proof-label reveal">From operators who studied here</p>
+        <div class="testimonials-mini">
+          <div class="testimonial-card reveal" data-delay="60">
+            <p class="testimonial-text">Failed once before and didn't want to go through that again. This breaks things down better and the chapter tests showed me where I was weak. Passed this time and felt way more confident.</p>
+            <div class="testimonial-footer"><div class="testimonial-author">Justin F.</div></div>
+          </div>
+          <div class="testimonial-card reveal" data-delay="140">
+            <p class="testimonial-text">Been in the plant 20+ years but exams aren't the same as running equipment. This helped me ease back into it. The AI tutor was actually solid for walking through problems step by step when I got stuck.</p>
+            <div class="testimonial-footer"><div class="testimonial-author">Graham C.</div></div>
+          </div>
+          <div class="testimonial-card reveal" data-delay="220">
+            <p class="testimonial-text">Working 12s, I didn't have time to waste. I liked how it focused on what I struggled with instead of everything. The AI tutor saved me a bunch of time when I was stuck late at night.</p>
+            <div class="testimonial-footer"><div class="testimonial-author">Sarah R.</div></div>
+          </div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <style>
-    .program-picker { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
-    .program-option {
-      flex:1 1 calc(50% - 5px); display:flex; flex-direction:column; gap:3px; align-items:flex-start;
-      padding:12px 14px; border:2px solid #d8dee6; border-radius:10px; background:#fff;
-      cursor:pointer; text-align:left; font:inherit; transition:border-color .15s, background .15s;
-    }
-    .program-option:hover { border-color:#9fb0c3; }
-    .program-option.is-selected { border-color:#0b6; background:#f1fbf6; }
-    .program-name { font-weight:700; font-size:1rem; color:#11202e; }
-    .program-meta { font-size:.82rem; color:#52606d; }
-  </style>
-
   <script src="/pricing.js"></script>
   <script>
-    // Program picker — drives copy + the Stripe checkout link. 2nd Class is the
-    // default; ?class=third (used by deep links from the homepage / how-it-works)
-    // preselects 3rd Class.
+    // Program picker — drives the pitch copy, the price in the form card and
+    // the Stripe checkout link. 2nd Class is the default; ?class=third and
+    // ?class=fourth_a / ?class=fourth_b preselect from a deep link. Note the
+    // keys: a bare ?class=fourth is NOT a program and falls back to 2nd.
     //
-    // All prices are read from window.FSA_PRICING (pricing.js, loaded above,
-    // synchronously, so it's ready before this runs) instead of being
+    // All prices read from window.FSA_PRICING (pricing.js, loaded above,
+    // synchronously, so it is ready before this runs) rather than being
     // hardcoded here — see pricing.js for why.
     (function () {
       var P2 = FSA_PRICING.secondClass, P3 = FSA_PRICING.thirdClass, P4 = FSA_PRICING.fourthClass;
+
+      // 2nd and 3rd Class are the full course. 4th Class is exam prep only --
+      // adaptive practice and chapter quizzes, no lessons and no tutoring --
+      // so the checklist is per-program, not just the papers line.
+      var FULL_COURSE = [
+        'Step-by-step calculation coaching that mirrors how exams are marked',
+        'Interactive AI tutoring available anytime, even on night shift',
+        'Adaptive practice exams that focus on your weak spots',
+        "Progress saved if you need to pause; resume whenever you're ready"
+      ];
+      var EXAM_PREP = [
+        'Adaptive practice exams that focus on your weak spots — retake as often as you need',
+        "Chapter quizzes that track alongside your program's own unit tests",
+        'A full explanation on every question you miss, not just a right-or-wrong mark',
+        "Progress saved if you need to pause; resume whenever you're ready"
+      ];
+
       var PROGRAMS = {
         second: {
           url: 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600',
-          lead: "Fill in your details and you'll have full access to all " + P2.papers + " 2nd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: 'All ' + P2.papers + ' 2nd Class papers — 2A1, 2A2, 2A3, 2B1, 2B2, 2B3',
-          checklist: [
-            'Step-by-step calculation coaching that mirrors how exams are marked',
-            'Interactive AI tutoring available anytime, even on night shift',
-            'Adaptive practice exams that focus on your weak spots',
-            "Progress saved if you need to pause; resume whenever you're ready",
-            'Study on any device, on your schedule'
-          ],
-          note: "Launch pricing: $" + P2.current + "/month instead of the regular $" + P2.was + "; that's $" + P2.savings + " off every month you stay enrolled. With six months of focused study, you'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime · All ' + P2.papers + ' papers included',
-          checkoutFine: 'Was $' + P2.was + ' · now $' + P2.current + '/month · Launch pricing — save $' + P2.savings + '/mo · Cancel anytime'
+          amount: P2.current,
+          cadence: '/ month',
+          headline: 'All ' + P2.papers + ' 2nd Class papers, under one subscription.',
+          papers: '2A1, 2A2, 2A3, 2B1, 2B2, 2B3 — every paper for the ticket',
+          checklist: FULL_COURSE,
+          note: 'Six months of focused study still costs less than what a single paper costs at a traditional provider — and you study on your rotation, not theirs.',
+          sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
         },
         third: {
           url: 'https://buy.stripe.com/00w9AVgmY4d95VU1k11B602',
-          lead: "Fill in your details and you'll have full access to all " + P3.papers + " 3rd Class papers within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: 'All ' + P3.papers + ' 3rd Class papers — 3A1, 3A2, 3B1, 3B2',
-          checklist: [
-            'Step-by-step calculation coaching that mirrors how exams are marked',
-            'Interactive AI tutoring available anytime, even on night shift',
-            'Adaptive practice exams that focus on your weak spots',
-            "Progress saved if you need to pause; resume whenever you're ready",
-            'Study on any device, on your schedule'
-          ],
-          note: "Launch pricing: $" + P3.current + "/month instead of the regular $" + P3.was + "; that's $" + P3.savings + " off every month you stay enrolled. You'll spend less than what a single paper costs at a traditional provider, and walk into the exam room more prepared.",
-          fine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime · All ' + P3.papers + ' papers included',
-          checkoutFine: 'Was $' + P3.was + ' · now $' + P3.current + '/month · Launch pricing — save $' + P3.savings + '/mo · Cancel anytime'
+          amount: P3.current,
+          cadence: '/ month',
+          headline: 'All ' + P3.papers + ' 3rd Class papers, under one subscription.',
+          papers: '3A1, 3A2, 3B1, 3B2 — every paper for the ticket',
+          checklist: FULL_COURSE,
+          note: 'Your first interprovincial ticket, for less per month than a single paper costs at a traditional provider — studied on your rotation, not theirs.',
+          sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
         },
         fourth_a: {
           url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',
-          lead: "Fill in your details and you'll have full access to 4th Class Paper 4A within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: '4th Class Paper 4A',
-          checklist: [
-            'Adaptive practice exams that focus on your weak spots — retake as many times as you need',
-            "Chapter quizzes included — great for keeping pace with a school program's own chapter tests",
-            "Progress saved if you need to pause; resume whenever you're ready",
-            'Study on any device, on your schedule'
-          ],
-          note: '$' + P4.current + '/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
-          fine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew · Paper 4A only',
-          checkoutFine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew'
+          amount: P4.current,
+          cadence: 'for the year',
+          headline: '4th Class Paper 4A, yours for a full year.',
+          papers: 'Paper 4A — the paper you are writing, not the whole certificate',
+          checklist: EXAM_PREP,
+          note: 'Charged once. This is a single annual payment, not a subscription: your access runs a full year and does not renew automatically.',
+          sub: 'One charge, no renewal. Create your account and you\'ll be at secure Stripe checkout in about thirty seconds.',
+          fine: 'One-time annual charge · Does not auto-renew · Secure checkout via Stripe'
         },
         fourth_b: {
           url: 'https://buy.stripe.com/dRm3cx9YA4d9fwu4wd1B604',
-          lead: "Fill in your details and you'll have full access to 4th Class Paper 4B within minutes: no textbooks, no classroom schedule, no waiting.",
-          papers: '4th Class Paper 4B',
-          checklist: [
-            'Adaptive practice exams that focus on your weak spots — retake as many times as you need',
-            "Chapter quizzes included — great for keeping pace with a school program's own chapter tests",
-            "Progress saved if you need to pause; resume whenever you're ready",
-            'Study on any device, on your schedule'
-          ],
-          note: '$' + P4.current + '/year, paid once — this is a single annual charge, not a recurring subscription. Your access runs for a full year and does not renew automatically.',
-          fine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew · Paper 4B only',
-          checkoutFine: '$' + P4.current + '/year · One-time annual charge · Does not auto-renew'
+          amount: P4.current,
+          cadence: 'for the year',
+          headline: '4th Class Paper 4B, yours for a full year.',
+          papers: 'Paper 4B — the paper you are writing, not the whole certificate',
+          checklist: EXAM_PREP,
+          note: 'Charged once. This is a single annual payment, not a subscription: your access runs a full year and does not renew automatically.',
+          sub: 'One charge, no renewal. Create your account and you\'ll be at secure Stripe checkout in about thirty seconds.',
+          fine: 'One-time annual charge · Does not auto-renew · Secure checkout via Stripe'
         }
       };
+
       var selected = 'second';
       var options = Array.prototype.slice.call(document.querySelectorAll('.program-option'));
       var stripeLinkEl = document.getElementById('stripe-proceed');
 
-      // What's actually included differs by program — 2nd/3rd Class have full
-      // lesson content (AI tutoring, calculation coaching); 4th Class is
-      // exam-prep only (adaptive practice + chapter quizzes, no tutoring), so
-      // the checklist itself is per-program, not just the papers line.
       function renderChecklist(items) {
         var ul = document.getElementById('enroll-checklist');
         if (!ul) return;
@@ -460,12 +556,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           o.setAttribute('aria-checked', on ? 'true' : 'false');
         });
         var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
-        set('enroll-lead', p.lead);
+        set('cp-amount', p.amount);
+        set('cp-cadence', p.cadence);
+        set('checkout-form-sub', p.sub);
+        set('enroll-papers-line', p.headline);
         set('enroll-papers', p.papers);
         renderChecklist(p.checklist);
         set('enroll-note', p.note);
-        set('enroll-fine', p.fine);
-        set('checkout-fine', p.checkoutFine);
+        set('checkout-fine', p.fine);
         // Reset the Stripe link to the selected program's clean base URL. The submit
         // handler re-runs FSAAffiliate afterward to re-append affiliate attribution.
         if (stripeLinkEl) stripeLinkEl.setAttribute('href', p.url);
@@ -543,7 +641,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
           errorEl.style.display = 'block';
           btn.disabled = false;
-          btn.textContent = 'Create Account & Continue →';
+          btn.textContent = 'Create Account →';
         });
       });
     }());

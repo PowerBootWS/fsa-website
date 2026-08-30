@@ -1139,7 +1139,11 @@ td.them-col .x { color: #888; }
   line-height: 0;
 }
 
-.plan-launch-badge {
+/* Renamed from .plan-launch-badge 2026-08-30: the launch-discount framing it
+   was built for is gone, and this is now a plain informational label ("all six
+   papers included", "paper 4A or 4B"). Every card in the three-up grid carries
+   one, which is also what keeps the price rows aligned across cards. */
+.plan-badge {
   display: inline-block;
   background: rgba(232,114,12,0.18);
   border: 1px solid rgba(232,114,12,0.45);
