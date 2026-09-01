@@ -214,6 +214,81 @@ def scan_articles(articles_dir: pathlib.Path) -> list[Article]:
     return articles
 
 
+def render_card(a: Article) -> str:
+    badges = "".join(
+        f'<span class="article-card-level">{LEVEL_LABELS[lv]}</span>'
+        for lv in a.levels
+    )
+    title = html_mod.escape(a.title)
+    desc = html_mod.escape(a.description)
+    return (
+        f'        <a href="/articles/{a.slug}/" class="article-card">\n'
+        f'          <div class="article-card-levels">{badges}</div>\n'
+        f"          <h3>{title}</h3>\n"
+        f"          <p>{desc}</p>\n"
+        f'          <span class="article-card-read">Read &rarr;</span>\n'
+        f"        </a>\n"
+    )
+
+
+def render_sections(articles: list[Article], level: str | None) -> str:
+    """Five stage sections. A stage with nothing in it for this level is omitted."""
+    out = []
+    for key, label in STAGES:
+        rows = [a for a in articles
+                if a.stage == key and (level is None or level in a.levels)]
+        if not rows:
+            continue
+        rows.sort(key=lambda a: a.title)
+        out.append(
+            f'    <section class="articles-section">\n'
+            f'      <h2 class="articles-section-title" id="{key}" '
+            f'data-count="{len(rows)}">{label}</h2>\n'
+            f'      <div class="articles-grid">\n\n'
+        )
+        out.extend(render_card(a) + "\n" for a in rows)
+        out.append("      </div>\n    </section>\n\n")
+    return "".join(out)
+
+
+def render_level_nav(current: str | None) -> str:
+    items = [(None, "/articles/", "All Guides")]
+    items += [(lv, f"/articles/{LEVEL_SLUGS[lv]}/", f"For {LEVEL_LABELS[lv]}")
+              for lv in LEVELS]
+    links = []
+    for lv, href, label in items:
+        cls = "hub-level-link hub-level-active" if lv == current else "hub-level-link"
+        aria = ' aria-current="page"' if lv == current else ""
+        links.append(f'      <a href="{href}" class="{cls}"{aria}>{label}</a>\n')
+    return ('    <nav class="hub-level-nav" aria-label="Filter guides by '
+            'certification level">\n' + "".join(links) + "    </nav>\n")
+
+
+# (level, output path, <title>, <h1>, intro paragraph)
+HUB_PAGES = [
+    (None, "articles/index.html",
+     "Power Engineering Guides and Exam Resources",
+     "Power Engineering Guides",
+     "Every guide we have written, organised by where you are in your "
+     "certification. Pick your class above to see only what applies to you."),
+    ("4", "articles/4th-class/index.html",
+     "4th Class Power Engineering Guides",
+     "Guides for 4th Class",
+     "Everything we have for operators working toward their 4th Class ticket, "
+     "from choosing the path through to landing the job."),
+    ("3", "articles/3rd-class/index.html",
+     "3rd Class Power Engineering Guides",
+     "Guides for 3rd Class",
+     "Everything we have for operators upgrading to 3rd Class, from study "
+     "method through exam technique to what the ticket is worth."),
+    ("2", "articles/2nd-class/index.html",
+     "2nd Class Power Engineering Guides",
+     "Guides for 2nd Class",
+     "Everything we have for operators working toward 2nd Class, including "
+     "a guide to each of the six SOPEEC papers."),
+]
+
+
 def downloaded_families(fonts_template: str) -> set[str]:
     return {m.replace("+", " ")
             for m in re.findall(r"family=([^&:\"]+)", fonts_template)}

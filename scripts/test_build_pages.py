@@ -41,8 +41,8 @@ def test_parse_article_reads_all_fields():
 
 
 def test_parse_article_preserves_level_order_as_declared():
-    art = bp.parse_article("s", article_html(levels="2"))
-    assert art.levels == ["2"]
+    art = bp.parse_article("s", article_html(levels="2,4,3"))
+    assert art.levels == ["2", "4", "3"]
 
 
 def test_parse_article_tolerates_whitespace_in_levels():
@@ -118,3 +118,92 @@ def test_scan_articles_reports_every_bad_article_not_just_the_first(tmp_path):
     msg = str(exc.value)
     assert "bad-one" in msg
     assert "bad-two" in msg
+
+
+def art(slug, stage="studying", levels=("4", "3", "2"), title=None, desc="D."):
+    return bp.Article(slug=slug, title=title or slug, description=desc,
+                      levels=list(levels), stage=stage)
+
+
+def test_render_card_links_to_the_article():
+    out = bp.render_card(art("my-slug", title="My Title", desc="My description."))
+    assert 'href="/articles/my-slug/"' in out
+    assert "My Title" in out
+    assert "My description." in out
+
+
+def test_render_card_escapes_html_in_title_and_description():
+    out = bp.render_card(art("s", title="A & B", desc='He said "hi" & left'))
+    assert "A &amp; B" in out
+    assert "&amp;" in out
+    assert '<h3>A & B</h3>' not in out
+
+
+def test_render_card_shows_a_badge_per_level():
+    out = bp.render_card(art("s", levels=("3", "2")))
+    assert "3rd Class" in out
+    assert "2nd Class" in out
+    assert "4th Class" not in out
+
+
+def test_render_sections_unfiltered_includes_every_article():
+    arts = [art("a", "choosing"), art("b", "work"), art("c", "exam")]
+    out = bp.render_sections(arts, None)
+    for slug in ("a", "b", "c"):
+        assert f'href="/articles/{slug}/"' in out
+
+
+def test_render_sections_orders_stages_as_the_journey():
+    arts = [art("w", "work"), art("c", "choosing"), art("e", "exam")]
+    out = bp.render_sections(arts, None)
+    assert out.index("Choosing your ticket") < out.index("Sitting the exam")
+    assert out.index("Sitting the exam") < out.index("Finding work")
+
+
+def test_render_sections_filters_by_level():
+    arts = [art("only2", "exam", levels=("2",)), art("all", "exam")]
+    out = bp.render_sections(arts, "4")
+    assert 'href="/articles/all/"' in out
+    assert 'href="/articles/only2/"' not in out
+
+
+def test_render_sections_omits_a_stage_with_no_articles_for_that_level():
+    arts = [art("only2", "career", levels=("2",)), art("all", "exam")]
+    out = bp.render_sections(arts, "4")
+    assert "Sitting the exam" in out
+    assert "Career paths and pay" not in out
+
+
+def test_render_sections_shows_a_count_per_stage():
+    arts = [art("a", "exam"), art("b", "exam"), art("c", "work")]
+    out = bp.render_sections(arts, None)
+    assert "Sitting the exam" in out
+    assert 'data-count="2"' in out
+
+
+def test_render_level_nav_marks_the_current_view():
+    out = bp.render_level_nav("3")
+    assert 'href="/articles/3rd-class/"' in out
+    assert "hub-level-active" in out
+    assert out.count("hub-level-active") == 1
+
+
+def test_render_level_nav_on_the_full_index_marks_all_guides():
+    out = bp.render_level_nav(None)
+    assert 'href="/articles/"' in out
+    assert out.count("hub-level-active") == 1
+
+
+def test_hub_pages_covers_the_full_index_and_three_levels():
+    outs = [p[1] for p in bp.HUB_PAGES]
+    assert outs == ["articles/index.html", "articles/4th-class/index.html",
+                    "articles/3rd-class/index.html", "articles/2nd-class/index.html"]
+
+
+def test_no_em_dashes_in_any_rendered_output():
+    """Style guide bans em dashes everywhere. Guard the generated markup."""
+    arts = [art("a", "choosing"), art("b", "exam")]
+    blob = bp.render_sections(arts, None) + bp.render_level_nav(None)
+    blob += "".join(p[2] + p[3] + p[4] for p in bp.HUB_PAGES)
+    assert "—" not in blob
+    assert "&mdash;" not in blob
