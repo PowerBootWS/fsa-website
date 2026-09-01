@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} &ndash; Full Steam Ahead</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Full Steam Ahead">
+  <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="fb:app_id" content="1729520728215341">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <!-- INCLUDE:fonts -->
+  <link rel="stylesheet" href="/styles-v2.css">
+  <link rel="stylesheet" href="/articles/articles.css">
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9SH5FTP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- NAV -->
+  <!-- INCLUDE:nav active="resources" -->
+
+  <!-- PAGE HEADER -->
+  <section class="articles-header">
+    <div class="articles-header-inner">
+      <div class="articles-breadcrumb"><a href="/">Home</a> / Resources</div>
+      <h1>{{H1}}</h1>
+      <p>{{INTRO}}</p>
+      <ul class="articles-header-list">
+        <li><a href="#exam-strategy"><strong>Exams</strong></a>: what is on each SOPEEC paper, section by section, and where candidates lose marks.</li>
+        <li><a href="#study-methods"><strong>Study methods</strong></a>: how to prepare around a rotation, when your study time comes in fifteen-minute pieces.</li>
+        <li><a href="#jobs"><strong>Jobs and hiring</strong></a>: who is actually hiring by province, drawn from real postings, plus resumes and interviews.</li>
+        <li><a href="#careers"><strong>Pay and career</strong></a>: what each certificate is worth by province and by sector, and what the next one unlocks.</li>
+      </ul>
+      <p>Most of this is built from primary sources: the current SOPEEC syllabus, published regulator fee schedules, federal wage data, and the live postings on our own <a href="/jobs">job board</a>. Where a number is an estimate, we say so.</p>
+    </div>
+  </section>
+
+    {{LEVEL_NAV}}
+
+  <!-- PILLAR CARDS -->
+  <main class="articles-main">
+    {{SECTIONS}}
+
+    <!-- BOTTOM CTA -->
+    <section class="articles-cta">
+      <div class="articles-cta-inner">
+        <h2>Ready to start studying smarter?</h2>
+        <p>Full Steam Ahead gives you all six 2nd class exam papers, step-by-step solutions, and AI tutoring under one subscription.</p>
+        <a href="https://fullsteamahead.ca/enroll" rel="nofollow noopener"><button class="btn-primary">Start Your Subscription →</button></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <!-- INCLUDE:footer -->
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function openMenu() {
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      hamburger.classList.add('is-open');
+      mobileMenu.classList.add('is-open');
+    }
+    function closeMenu() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+    }
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav');
+      if (mobileMenu.classList.contains('is-open') && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu();
+    });
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+<script src="/nav.js" defer></script>
+<script
+  src="https://link.msgsndr.com/js/external-tracking.js"
+  data-tracking-id="tk_5f785c45cace41ccb6dd2c072c4c9ed4"
+></script>
+</body>
+</html>

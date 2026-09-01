@@ -269,7 +269,7 @@ HUB_PAGES = [
     (None, "articles/index.html",
      "Power Engineering Guides and Exam Resources",
      "Power Engineering Guides",
-     "Every guide we have written, organised by where you are in your "
+     "Every guide we have written, organized by where you are in your "
      "certification. Pick your class above to see only what applies to you."),
     ("4", "articles/4th-class/index.html",
      "4th Class Power Engineering Guides",
@@ -382,6 +382,29 @@ def build(out_dir: pathlib.Path) -> None:
             else:
                 shutil.copy2(src, dest)
                 copied += 1
+
+    # Generated hub pages. These have no source file: articles/index.html was
+    # deleted on 2026-09-01 because a hand-maintained index drifts. The index
+    # is derived from the articles that actually exist.
+    articles = scan_articles(ROOT / "articles")
+    hub_template = (ROOT / "partials" / "article-hub.html").read_text()
+    for level, rel, title, h1, intro in HUB_PAGES:
+        page = hub_template
+        page = page.replace("{{TITLE}}", title)
+        page = page.replace("{{DESCRIPTION}}", intro)
+        page = page.replace("{{CANONICAL}}",
+                            "https://fullsteamahead.ca/"
+                            + rel.replace("index.html", ""))
+        page = page.replace("{{H1}}", h1)
+        page = page.replace("{{INTRO}}", intro)
+        page = page.replace("{{LEVEL_NAV}}", render_level_nav(level))
+        page = page.replace("{{SECTIONS}}", render_sections(articles, level))
+        page = stitch(page, nav_template, footer_template, fonts_template)
+        font_errors += check_fonts(rel, page, allowed)
+        dest = out_dir / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(page)
+        stitched += 1
 
     for sheet in ("styles-v2.css", "articles/articles.css"):
         font_errors += check_fonts(sheet, 'styles-v2.css' + (ROOT / sheet).read_text(), allowed)

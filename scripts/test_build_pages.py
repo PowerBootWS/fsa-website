@@ -207,3 +207,51 @@ def test_no_em_dashes_in_any_rendered_output():
     blob += "".join(p[2] + p[3] + p[4] for p in bp.HUB_PAGES)
     assert "—" not in blob
     assert "&mdash;" not in blob
+
+
+HUB_RELS = ("articles/index.html", "articles/4th-class/index.html",
+            "articles/3rd-class/index.html", "articles/2nd-class/index.html")
+
+
+@pytest.fixture(scope="module")
+def built(tmp_path_factory):
+    """Build the real site ONCE for all integration tests.
+
+    assets/ is about 1 GB and build() copytrees it. Copying that per test would
+    move 4 GB per run and can fill /tmp, so passthrough dirs are disabled for
+    the duration. Nothing asserted below touches assets.
+    """
+    out = tmp_path_factory.mktemp("dist")
+    saved = bp.ROOT_PASSTHROUGH_DIRS
+    bp.ROOT_PASSTHROUGH_DIRS = []
+    try:
+        bp.build(out)
+    finally:
+        bp.ROOT_PASSTHROUGH_DIRS = saved
+    return out
+
+
+def test_build_generates_four_hub_pages(built):
+    for rel in HUB_RELS:
+        assert (built / rel).exists(), f"{rel} was not generated"
+
+
+def test_generated_full_index_lists_every_article(built):
+    html = (built / "articles/index.html").read_text()
+    for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles"):
+        assert f'href="/articles/{a.slug}/"' in html, f"{a.slug} missing from hub"
+
+
+def test_generated_hubs_have_no_placeholders_left(built):
+    for rel in HUB_RELS:
+        html = (built / rel).read_text()
+        assert "{{" not in html, f"unsubstituted placeholder in {rel}"
+        assert "INCLUDE:" not in html, f"unstitched include in {rel}"
+
+
+def test_generated_level_hub_excludes_other_levels(built):
+    html = (built / "articles/4th-class/index.html").read_text()
+    # A 2nd-Class-only article must not appear on the 4th Class hub.
+    assert 'href="/articles/sopeec-2a1-exam-guide/"' not in html
+    # A level-agnostic one must.
+    assert 'href="/articles/sopeec-multiple-choice-traps/"' in html

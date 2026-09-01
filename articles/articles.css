@@ -502,3 +502,56 @@ nav .nav-active {
   color: var(--gray-mid);
   line-height: 1.5;
 }
+
+/* ── Hub level nav and card level badges (2026-09-01, IA restructure) ── */
+
+.hub-level-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.hub-level-link {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.82rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--plate-edge);
+  border-radius: 999px;
+  color: var(--gray-light);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--ease),
+              color var(--duration-fast) var(--ease);
+}
+
+.hub-level-link:hover { border-color: var(--steel-light); color: var(--white); }
+
+.hub-level-active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+}
+
+.hub-level-active:hover { border-color: var(--orange-glow); color: var(--white); }
+
+.article-card-levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.article-card-level {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--plate-edge);
+  border-radius: 3px;
+  color: var(--gray-mid);
+}
