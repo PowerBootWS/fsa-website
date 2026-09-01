@@ -44,9 +44,11 @@ Usage:
 """
 
 import argparse
+import html as html_mod
 import pathlib
 import re
 import shutil
+from dataclasses import dataclass
 
 ROOT = pathlib.Path(__file__).parent.parent
 
@@ -108,6 +110,108 @@ INCLUDE_FONTS_RE = re.compile(r'<!--\s*INCLUDE:fonts\s*-->')
 # first version of this guard silently useless.
 FONT_FAMILY_RE = re.compile(r'font-family:[^;}"]*')
 QUOTED_FAMILY_RE = re.compile(r"'([^']+)'")
+
+
+# ── Article metadata (added 2026-09-01, articles IA restructure) ──
+#
+# Each article declares which certification levels it serves and which journey
+# stage it belongs to, in its own <head>:
+#
+#     <meta name="fsa:levels" content="4,3,2">
+#     <meta name="fsa:stage" content="studying">
+#
+# The hub pages are generated from these, so an article cannot be missing from
+# the hub and a card cannot drift from its article. A missing or malformed tag
+# FAILS THE BUILD -- that is the point. The articles manifest used to be the
+# index and had drifted to describing 34 articles against 48 live; the fix is
+# to have one source of truth, not two that must agree.
+
+LEVELS = ["4", "3", "2"]
+LEVEL_LABELS = {"4": "4th Class", "3": "3rd Class", "2": "2nd Class"}
+LEVEL_SLUGS = {"4": "4th-class", "3": "3rd-class", "2": "2nd-class"}
+STAGES = [
+    ("choosing", "Choosing your ticket"),
+    ("studying", "Studying for it"),
+    ("exam", "Sitting the exam"),
+    ("career", "Career paths and pay"),
+    ("work", "Finding work"),
+]
+STAGE_KEYS = {key for key, _ in STAGES}
+
+META_LEVELS_RE = re.compile(r'<meta\s+name="fsa:levels"\s+content="([^"]*)"\s*/?>')
+META_STAGE_RE = re.compile(r'<meta\s+name="fsa:stage"\s+content="([^"]*)"\s*/?>')
+META_DESC_RE = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"\s*/?>')
+H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+
+
+@dataclass
+class Article:
+    slug: str
+    title: str
+    description: str
+    levels: list[str]
+    stage: str
+
+
+def _text(raw: str) -> str:
+    return html_mod.unescape(re.sub(r"<[^>]+>", "", raw)).strip()
+
+
+def parse_article(slug: str, html: str) -> Article:
+    """Read one article's metadata. Raises ValueError on anything wrong."""
+    m = META_LEVELS_RE.search(html)
+    if not m or not m.group(1).strip():
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:levels\">")
+    levels = [v.strip() for v in m.group(1).split(",") if v.strip()]
+    for lv in levels:
+        if lv not in LEVEL_LABELS:
+            raise ValueError(
+                f"{slug}: fsa:levels contains '{lv}', expected some of {','.join(LEVELS)}"
+            )
+
+    m = META_STAGE_RE.search(html)
+    if not m or not m.group(1).strip():
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:stage\">")
+    stage = m.group(1).strip()
+    if stage not in STAGE_KEYS:
+        raise ValueError(
+            f"{slug}: fsa:stage is '{stage}', expected one of "
+            + ", ".join(sorted(STAGE_KEYS))
+        )
+
+    m = H1_RE.search(html)
+    title = _text(m.group(1)) if m else slug
+    m = META_DESC_RE.search(html)
+    description = html_mod.unescape(m.group(1)).strip() if m else ""
+
+    return Article(slug=slug, title=title, description=description,
+                   levels=levels, stage=stage)
+
+
+def scan_articles(articles_dir: pathlib.Path) -> list[Article]:
+    """Scan articles/ for article directories. Reports ALL problems at once."""
+    articles: list[Article] = []
+    errors: list[str] = []
+    for child in sorted(articles_dir.iterdir()):
+        if not child.is_dir() or child.name.startswith(("_", ".")):
+            continue
+        index = child / "index.html"
+        if not index.exists():
+            errors.append(f"{child.name}: has no index.html")
+            continue
+        try:
+            articles.append(parse_article(child.name, index.read_text()))
+        except ValueError as exc:
+            errors.append(str(exc))
+    if errors:
+        raise SystemExit(
+            "Article metadata check failed:\n  "
+            + "\n  ".join(errors)
+            + "\n\nEvery article needs <meta name=\"fsa:levels\" content=\"...\"> and "
+            "<meta name=\"fsa:stage\" content=\"...\"> in its <head>. "
+            "See docs/superpowers/specs/2026-09-01-articles-ia-restructure-design.md"
+        )
+    return articles
 
 
 def downloaded_families(fonts_template: str) -> set[str]:
