@@ -346,13 +346,17 @@ def test_generated_hub_h1_matches_the_expected_level(built):
 
 
 NAV = pathlib.Path(bp.ROOT) / "partials" / "nav.html"
+FOOTER = pathlib.Path(bp.ROOT) / "partials" / "footer.html"
 
 
 def test_nav_has_no_em_dashes():
-    """Style guide: never. Called out publicly as an AI tell in a 25k-member group."""
-    text = NAV.read_text()
-    assert "—" not in text
-    assert "&mdash;" not in text
+    """Style guide: never. Both shared partials, both forms. The footer is
+    stitched into all 73 pages, so an em dash there (literal or entity)
+    renders site-wide. Called out publicly as an AI tell in a 25k-member group."""
+    for partial in (NAV, FOOTER):
+        text = partial.read_text()
+        assert "—" not in text, f"{partial.name} contains a literal em dash"
+        assert "&mdash;" not in text, f"{partial.name} contains an &mdash; entity"
 
 
 def test_resources_dropdown_points_at_level_hubs():
@@ -385,3 +389,25 @@ def test_nav_still_has_the_free_tools_and_the_escape_hatch():
     assert 'href="/library"' in text
     assert 'href="/free-practice-exam"' in text
     assert 'href="/articles/"' in text
+
+
+def test_sitemap_lists_every_article_and_every_hub():
+    import re as _re
+    sitemap = (pathlib.Path(bp.ROOT) / "sitemap.xml").read_text()
+    locs = set(_re.findall(r"<loc>https://fullsteamahead\.ca/(.*?)</loc>", sitemap))
+    for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles"):
+        assert f"articles/{a.slug}/" in locs, f"{a.slug} missing from sitemap"
+    for slug in ("4th-class", "3rd-class", "2nd-class"):
+        assert f"articles/{slug}/" in locs, f"hub {slug} missing from sitemap"
+    assert "articles/" in locs
+
+
+def test_sitemap_has_no_loc_without_a_page():
+    import re as _re
+    sitemap = (pathlib.Path(bp.ROOT) / "sitemap.xml").read_text()
+    art_locs = set(_re.findall(
+        r"<loc>https://fullsteamahead\.ca/articles/([a-z0-9-]+)/</loc>", sitemap))
+    hubs = {"4th-class", "3rd-class", "2nd-class"}
+    slugs = {a.slug for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles")}
+    orphans = art_locs - slugs - hubs
+    assert not orphans, f"sitemap lists pages that do not exist: {sorted(orphans)}"

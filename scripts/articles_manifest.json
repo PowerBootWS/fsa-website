@@ -72,7 +72,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "2nd Class Exam Guide"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "P2",
@@ -146,7 +147,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "How to Study"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "P3",
@@ -218,7 +220,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Career Outcomes"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A1",
@@ -278,7 +281,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "Multiple-Choice Strategy"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A2",
@@ -338,7 +342,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "SOPEEC Exam Traps"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A3",
@@ -398,7 +403,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "Exam Time Management"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A4",
@@ -456,7 +462,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "Mental Prep"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A5",
@@ -514,7 +521,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "Exam Stress"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "A6",
@@ -574,7 +582,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "Exam Day"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B1",
@@ -632,7 +641,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Active Recall"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B2",
@@ -690,7 +700,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Spaced Repetition"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B3",
@@ -750,7 +761,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "AI Tutoring"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B4",
@@ -808,7 +820,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Study Schedule"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B5",
@@ -868,7 +881,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Past Paper Practice"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "B6",
@@ -927,7 +941,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "How Long to Prepare"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C1",
@@ -984,7 +999,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Chief Engineer Roles"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C2",
@@ -1042,7 +1058,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Salary"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C3",
@@ -1100,7 +1117,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Industries"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C4",
@@ -1157,7 +1175,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Promotion Timeline"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C5",
@@ -1214,7 +1233,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "3rd vs. 2nd Class"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "P4",
@@ -1293,7 +1313,8 @@
         "pillar_name": "Career & Jobs",
         "pillar_slug": "power-engineering-jobs-guide",
         "article_short_title": "Hiring Guide"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "D1",
@@ -1364,7 +1385,8 @@
         "pillar_name": "Class Progression",
         "pillar_slug": "power-engineering-class-progression-guide",
         "article_short_title": "Classes Explained"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "D2",
@@ -1431,7 +1453,8 @@
         "pillar_name": "Class Progression",
         "pillar_slug": "power-engineering-class-progression-guide",
         "article_short_title": "Finding Jobs"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "D3",
@@ -1495,7 +1518,8 @@
         "pillar_name": "Class Progression",
         "pillar_slug": "power-engineering-class-progression-guide",
         "article_short_title": "Resume Tips"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "D4",
@@ -1559,7 +1583,8 @@
         "pillar_name": "Class Progression",
         "pillar_slug": "power-engineering-class-progression-guide",
         "article_short_title": "Interview Prep"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "D5",
@@ -1624,7 +1649,8 @@
         "pillar_name": "Class Progression",
         "pillar_slug": "power-engineering-class-progression-guide",
         "article_short_title": "Salary Negotiation"
-      }
+      },
+      "status": "published"
     },
     {
       "id": "C6",
@@ -1686,7 +1712,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Salary by Class"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "C7",
@@ -1744,7 +1771,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "4th Class Salary"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "C8",
@@ -1806,7 +1834,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Process to PE"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "C9",
@@ -1864,7 +1893,8 @@
         "pillar_name": "Career & Industry",
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Stationary vs. PE"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "A7",
@@ -1925,7 +1955,8 @@
         "pillar_name": "Exam Strategy",
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "ABSA Exams"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "A8",
@@ -1989,7 +2020,8 @@
           "category": "Exam Strategy",
           "description": "The specific mistakes SOPEEC questions are designed to catch, across 4th, 3rd and 2nd class papers."
         }
-      ]
+      ],
+      "status": "published"
     },
     {
       "id": "B7",
@@ -2053,7 +2085,8 @@
         "pillar_name": "Study Methods",
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Pan Global vs. AI"
-      }
+      },
+      "status": "planned"
     },
     {
       "id": "P33",
@@ -2110,7 +2143,8 @@
         "pillar_name": "Jobs & Getting Hired",
         "pillar_slug": "power-engineering-jobs-guide",
         "article_short_title": "Following Up"
-      }
+      },
+      "status": "published"
     }
   ]
 }
