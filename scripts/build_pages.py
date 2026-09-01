@@ -379,7 +379,11 @@ def build(out_dir: pathlib.Path) -> None:
     for tree in STITCHED_DIRS:
         tree_out = out_dir / tree
         for src in (ROOT / tree).rglob("*"):
-            dest = tree_out / src.relative_to(ROOT / tree)
+            rel = src.relative_to(ROOT / tree)
+            dir_parts = rel.parts if src.is_dir() else rel.parts[:-1]
+            if any(part.startswith(("_", ".")) for part in dir_parts):
+                continue
+            dest = tree_out / rel
             if src.is_dir():
                 dest.mkdir(parents=True, exist_ok=True)
                 continue

@@ -232,6 +232,22 @@ def built(tmp_path_factory):
     return out
 
 
+def test_build_does_not_publish_the_article_template(built):
+    """articles/_template/ is a source scaffold full of REPLACE: placeholders,
+    not a real article. robots.txt says Allow: /, so anything the walk emits
+    here is crawlable -- the STITCHED_DIRS walk must skip it the same way
+    scan_articles already does."""
+    assert not (built / "articles" / "_template").exists()
+
+
+def test_build_still_copies_articles_css_and_resources(built):
+    """The underscore/dot skip in the STITCHED_DIRS walk must not take the
+    loose articles.css file or the resources/ tree down with it."""
+    assert (built / "articles" / "articles.css").exists()
+    assert (built / "resources").is_dir()
+    assert any((built / "resources").iterdir())
+
+
 def test_build_generates_four_hub_pages(built):
     for rel in HUB_RELS:
         assert (built / rel).exists(), f"{rel} was not generated"
@@ -351,7 +367,7 @@ FOOTER = pathlib.Path(bp.ROOT) / "partials" / "footer.html"
 
 def test_nav_has_no_em_dashes():
     """Style guide: never. Both shared partials, both forms. The footer is
-    stitched into all 73 pages, so an em dash there (literal or entity)
+    stitched into every page, so an em dash there (literal or entity)
     renders site-wide. Called out publicly as an AI tell in a 25k-member group."""
     for partial in (NAV, FOOTER):
         text = partial.read_text()
