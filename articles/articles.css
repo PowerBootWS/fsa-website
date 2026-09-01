@@ -423,3 +423,82 @@ nav .nav-active {
     padding: 100px 1.25rem 2.5rem;
   }
 }
+
+/* ── Worked-problem components (added 2026-09-01 for the shunt generator
+   efficiency case file; reusable for any future worked calculation) ── */
+
+.quiz-card {
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-top: 2px solid var(--steel);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+}
+
+.quiz-card .quiz-card-label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--gray-mid);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.quiz-card p { margin: 0 0 0.75rem; font-size: 0.95rem; }
+.quiz-card ul, .quiz-card ol { margin: 0 0 0.75rem 1.25rem; font-size: 0.95rem; }
+.quiz-card ul li, .quiz-card ol li { margin-bottom: 0.3rem; }
+.quiz-card > :last-child { margin-bottom: 0; }
+
+.calc-table-wrap { overflow-x: auto; margin: 1.75rem 0; }
+
+.calc-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.calc-table th,
+.calc-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--plate-edge);
+  text-align: left;
+  vertical-align: top;
+}
+
+.calc-table thead th {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.76rem;
+  color: var(--gray-mid);
+  border-bottom: 2px solid var(--orange);
+}
+
+.calc-table td.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-table tr.is-missed td { background: rgba(232, 114, 12, 0.10); }
+
+.calc-table tr.is-total td {
+  border-top: 2px solid var(--plate-edge);
+  border-bottom: none;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.article-figure { margin: 2rem 0; }
+.article-figure-scroll { overflow-x: auto; }
+.article-figure svg { width: 100%; min-width: 600px; height: auto; display: block; }
+
+.article-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--gray-mid);
+  line-height: 1.5;
+}

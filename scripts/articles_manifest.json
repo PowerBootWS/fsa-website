@@ -1928,6 +1928,70 @@
       }
     },
     {
+      "id": "A8",
+      "title": "Shunt Generator Efficiency, and How to Spot a Wrong Answer Key",
+      "slug": "shunt-generator-efficiency-calculation",
+      "keyword": "shunt generator efficiency",
+      "supporting_keywords": [
+        "dc generator efficiency calculation",
+        "brush contact loss",
+        "armature copper loss",
+        "power engineering practice question wrong answer",
+        "3rd class power engineering electrical",
+        "dc machine losses"
+      ],
+      "category": "Exam Strategy",
+      "word_target": 1500,
+      "type": "cluster",
+      "notes": "Worked case file built from a real student submission (2026-09-01). An operator sent in a shunt generator efficiency question from a free online quiz bank; she omitted the brush contact loss, and the quiz's own answer key was also wrong (the correct 90.6% is not among the five options). Article works the full calculation, explains why the brush drop is a separate loss line and not part of I2R, demonstrates the generated-EMF cross-check as a second independent route to the input figure, then shows that option e (91.66%) is the same method minus the brush loss and that option d (92.4%) is not reproducible by any method tried. Closes on the study-methods point: a question bank marks you wrong without showing working, which can train the wrong method. This is the evidence piece the two practice-material comparison articles were missing, so cross-link both ways. Student is female; refer to her as she. Verified arithmetic: Il=217.39A, If=4.18A, Ia=221.57A, armature 1669W, brush 554W, field 962W, friction+iron 2000W, total 5185W, input 55185W, efficiency 90.60%. Style: no em dashes anywhere.",
+      "pillar_slug": "2nd-class-power-engineering-exam-guide",
+      "published_date": "2026-09-01",
+      "intro": "An operator sent me a shunt generator efficiency question she had been marked wrong on. She had made one mistake. So had the answer key, and the correct answer was not one of the five options.",
+      "meta_description": "A full worked shunt generator efficiency calculation, including the brush contact loss most operators miss, plus the cross-check that tells you when a practice answer key is wrong.",
+      "internal_links": [
+        {
+          "slug": "power-engineering-practice-exam-comparison",
+          "anchor_text": "comparison of the practice exam options"
+        },
+        {
+          "slug": "practice-questions-vs-full-course",
+          "anchor_text": "whether practice questions alone are enough"
+        },
+        {
+          "slug": "sopeec-multiple-choice-traps",
+          "anchor_text": "traps SOPEEC multiple-choice questions are built around"
+        },
+        {
+          "slug": "3rd-class-power-engineering-exam-guide",
+          "anchor_text": "3rd class exam guide"
+        },
+        {
+          "slug": "2nd-class-power-engineering-exam-guide",
+          "anchor_text": "2nd class exam guide"
+        }
+      ],
+      "related_cards": [
+        {
+          "slug": "practice-questions-vs-full-course",
+          "title": "Are Practice Questions Enough to Pass 2nd Class?",
+          "category": "Study Methods",
+          "description": "What a question bank does well, where it fails, and what each type of candidate actually needs."
+        },
+        {
+          "slug": "power-engineering-practice-exam-comparison",
+          "title": "Power Engineering Practice Exams Compared",
+          "category": "Study Methods",
+          "description": "Past papers, free question sets, paid banks or a full platform, and how to test quality yourself."
+        },
+        {
+          "slug": "sopeec-multiple-choice-traps",
+          "title": "The Most Common Traps in SOPEEC Multiple-Choice Questions",
+          "category": "Exam Strategy",
+          "description": "The specific mistakes SOPEEC questions are designed to catch, across 4th, 3rd and 2nd class papers."
+        }
+      ]
+    },
+    {
       "id": "B7",
       "title": "Pan Global Textbooks vs. AI-Adaptive Learning: A Better Way to Study for Power Engineering Exams",
       "slug": "pan-global-vs-ai-adaptive-learning",

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shunt Generator Efficiency: Working It Out, and Spotting a Wrong Answer Key – Full Steam Ahead</title>
+
+  <meta name="description" content="A full worked shunt generator efficiency calculation, including the brush contact loss most operators miss, plus the cross-check that tells you when a practice answer key is wrong.">
+
+  <link rel="canonical" href="https://fullsteamahead.ca/articles/shunt-generator-efficiency-calculation/">
+
+  <meta property="og:title" content="Shunt Generator Efficiency: Working It Out, and Spotting a Wrong Answer Key – Full Steam Ahead">
+  <meta property="og:description" content="A full worked shunt generator efficiency calculation, including the brush contact loss most operators miss, plus the cross-check that tells you when a practice answer key is wrong.">
+  <meta property="og:url" content="https://fullsteamahead.ca/articles/shunt-generator-efficiency-calculation/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="fb:app_id" content="1729520728215341">
+  <meta name="twitter:image" content="https://fullsteamahead.ca/assets/og-image.jpg">
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <!-- INCLUDE:fonts -->
+  <link rel="stylesheet" href="/styles-v2.css">
+  <link rel="stylesheet" href="/articles/articles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Shunt Generator Efficiency: Working It Out, and Spotting a Wrong Answer Key",
+    "description": "A full worked shunt generator efficiency calculation, including the brush contact loss most operators miss, plus the cross-check that tells you when a practice answer key is wrong.",
+    "datePublished": "2026-09-01",
+    "dateModified": "2026-09-01",
+    "url": "https://fullsteamahead.ca/articles/shunt-generator-efficiency-calculation/",
+    "author": {
+      "@type": "Organization",
+      "name": "Full Steam Ahead",
+      "url": "https://fullsteamahead.ca"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Full Steam Ahead",
+      "url": "https://fullsteamahead.ca",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fullsteamahead.ca/assets/FSA Logo Main - Light.webp"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://fullsteamahead.ca/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://fullsteamahead.ca/articles/" },
+        { "@type": "ListItem", "position": 3, "name": "Exam Strategy", "item": "https://fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/" },
+        { "@type": "ListItem", "position": 4, "name": "Shunt Generator Efficiency", "item": "https://fullsteamahead.ca/articles/shunt-generator-efficiency-calculation/" }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9SH5FTP');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9SH5FTP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- NAV -->
+  <!-- INCLUDE:nav active="resources" -->
+
+  <!-- PAGE HEADER -->
+  <header class="article-page-header">
+    <div class="article-page-header-inner">
+      <div class="articles-breadcrumb">
+        <a href="/">Home</a> / <a href="/articles/">Resources</a> / <a href="/articles/2nd-class-power-engineering-exam-guide/">Exam Strategy</a> / Shunt Generator Efficiency
+      </div>
+      <div class="article-meta">
+        <span class="article-meta-tag">Exam Strategy</span>
+        <span class="article-meta-date">Published September 1, 2026</span>
+      </div>
+      <h1>Shunt Generator Efficiency, and How to Spot a Wrong Answer Key</h1>
+      <p class="article-intro">An operator sent me a shunt generator efficiency question she had been marked wrong on. She had made one mistake. So had the answer key, and the correct answer was not one of the five options.</p>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <div class="article-body-wrap">
+    <article class="article-body">
+
+      <p>An operator studying for her electrical paper sent me a photo of her working. She had taken a shunt generator efficiency question off a free online quiz bank, worked it through, got an answer she was reasonably happy with, and the quiz marked her wrong. She wanted to know where she had gone off the rails.</p>
+
+      <p>She had made one mistake, and it is a good one to know about because almost everybody makes it once. But the bigger problem was that the answer the quiz wanted was also wrong. The correct answer was not one of the five options on the screen. She had spent an evening trying to reverse engineer her way toward a number that cannot be produced from the values in the question.</p>
+
+      <p>It is worth walking the whole thing through, because the skill that gets you out of that situation is not more electrical theory. It is knowing how to check an answer against itself. Once you can do that, you stop being at the mercy of whoever wrote the material you are studying from, and that includes us.</p>
+
+      <h2>The question</h2>
+
+      <div class="quiz-card">
+        <span class="quiz-card-label">From a free online quiz bank</span>
+        <p>Calculate shunt generator efficiency given the following:</p>
+        <ul>
+          <li>Output = 50 kW</li>
+          <li>Voltage = 230 V</li>
+          <li>Field circuit resistance = 55 ohms</li>
+          <li>Armature circuit resistance = 0.034 ohms</li>
+          <li>Voltage drop at the brushes = 2.5 volts</li>
+          <li>Friction and iron losses = 2 kW</li>
+        </ul>
+        <p>Select one:</p>
+        <ol type="a">
+          <li>73 %</li>
+          <li>89.34 %</li>
+          <li>84 %</li>
+          <li>92.4 %</li>
+          <li>91.66 %</li>
+        </ol>
+      </div>
+
+      <p>DC machine efficiency turns up in the electrical work at both 3rd and 2nd class, and the method below is the same at either level. Only the numbers change.</p>
+
+      <h2>Three currents, not one</h2>
+
+      <p>This is a shunt generator, so the field winding sits across the armature terminals rather than in series with the load. That means three different currents are flowing and they are not the same number.</p>
+
+      <ul>
+        <li><strong>Line current</strong> (what the load draws): 50,000 W &divide; 230 V = <strong>217.39 A</strong></li>
+        <li><strong>Shunt field current</strong>: 230 V &divide; 55 &Omega; = <strong>4.18 A</strong></li>
+        <li><strong>Armature current</strong>: 217.39 + 4.18 = <strong>221.57 A</strong></li>
+      </ul>
+
+      <p>The armature has to supply both the load and its own field, so the armature current is the larger of the three. This is the first place people quietly lose marks. Use 217 A for the armature copper loss instead of 221.6 A and you are already off, by about 60 W here. On a question with tighter answer options that is the difference between two choices.</p>
+
+      <h2>The brush loss, which is where she went wrong</h2>
+
+      <p>The question gives you a voltage drop at the brushes of 2.5 V. She wrote it into her list of givens and then never used it again.</p>
+
+      <p>Current has to cross a carbon brush face onto a rotating copper commutator. That interface drops voltage, and power gets burned doing it. Volts times amps, the same as anything else:</p>
+
+      <p><strong>Brush loss = 2.5 V &times; 221.57 A = 554 W</strong></p>
+
+      <p>Here is the part that catches people out. You cannot roll that into the armature resistance and call it handled. The brush contact drop stays roughly constant across a wide range of load, which is exactly why the question hands it to you as a voltage and not as an ohm value. If it behaved like a resistance you would square the current. It does not, so you simply multiply. It is its own line in the loss total and it stays that way.</p>
+
+      <h2>Adding up the losses</h2>
+
+      <div class="calc-table-wrap">
+      <table class="calc-table">
+        <thead>
+          <tr><th>Loss</th><th>How you get it</th><th class="num">Watts</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Armature copper</td><td>221.57&sup2; &times; 0.034</td><td class="num">1,669</td></tr>
+          <tr class="is-missed"><td>Brush contact</td><td>2.5 &times; 221.57</td><td class="num">554</td></tr>
+          <tr><td>Shunt field copper</td><td>4.18&sup2; &times; 55</td><td class="num">962</td></tr>
+          <tr><td>Friction and iron</td><td>given</td><td class="num">2,000</td></tr>
+          <tr class="is-total"><td>Total losses</td><td></td><td class="num">5,185</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Efficiency on a generator is output over input, and the input is the output plus everything you had to waste to get it:</p>
+
+      <p><strong>Efficiency = 50,000 &divide; (50,000 + 5,185) &times; 100 = 50,000 &divide; 55,185 &times; 100 = 90.6 %</strong></p>
+
+      <figure class="article-figure">
+        <div class="article-figure-scroll">
+        <svg viewBox="0 0 720 328" role="img" aria-labelledby="pf-title pf-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="pf-title">Power flow through the shunt generator</title>
+          <desc id="pf-desc">Of 55,185 watts going in, 50,000 watts comes out as useful output and 5,185 watts is lost. Those losses break down as 2,000 watts friction and iron, 1,669 watts armature copper, 962 watts shunt field copper, and 554 watts brush contact.</desc>
+
+          <text x="40" y="34" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" fill="#a8b4c0">Mechanical input from the prime mover: 55,185 W</text>
+          <text x="680" y="34" text-anchor="end" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" fill="#E8720C">Losses 9.4 %</text>
+
+          <rect x="40" y="52" width="579.9" height="52" fill="#2A4A6E" stroke="#4D88C2" stroke-width="1"/>
+          <rect x="619.9" y="52" width="60.1" height="52" fill="#E8720C"/>
+          <text x="330" y="74" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Useful output 50,000 W</text>
+          <text x="330" y="93" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" fill="#C8D0DA">90.6 % efficiency</text>
+
+          <path d="M 619.9 104 L 680 104 L 680 206 L 40 206 Z" fill="#E8720C" fill-opacity="0.10"/>
+          <line x1="619.9" y1="104" x2="40" y2="206" stroke="#E8720C" stroke-width="1" stroke-dasharray="4 3" stroke-opacity="0.55"/>
+          <line x1="680" y1="104" x2="680" y2="206" stroke="#E8720C" stroke-width="1" stroke-dasharray="4 3" stroke-opacity="0.55"/>
+
+          <text x="40" y="196" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" fill="#a8b4c0">The 5,185 W of losses, to scale:</text>
+
+          <rect x="40" y="206" width="206.0" height="52" fill="#E8720C"/>
+          <rect x="246.0" y="206" width="68.4" height="52" fill="#FFAA2C" stroke="#FFFFFF" stroke-width="2"/>
+          <rect x="314.4" y="206" width="118.7" height="52" fill="#4D88C2"/>
+          <rect x="433.1" y="206" width="246.9" height="52" fill="#52A882"/>
+
+          <text x="143.0" y="237" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">1,669 W</text>
+          <text x="280.2" y="237" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="11.5" font-weight="700" fill="#0D1117">554 W</text>
+          <text x="373.8" y="237" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">962 W</text>
+          <text x="556.6" y="237" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="12.5" font-weight="600" fill="#0D1117">2,000 W</text>
+
+          <rect x="40" y="280" width="11" height="11" fill="#E8720C"/>
+          <text x="58" y="290" font-family="'IBM Plex Sans',sans-serif" font-size="12" fill="#C8D0DA">Armature copper</text>
+          <rect x="380" y="280" width="11" height="11" fill="#FFAA2C" stroke="#FFFFFF" stroke-width="1.5"/>
+          <text x="398" y="290" font-family="'IBM Plex Sans',sans-serif" font-size="12" fill="#C8D0DA">Brush contact (the one that gets missed)</text>
+          <rect x="40" y="304" width="11" height="11" fill="#4D88C2"/>
+          <text x="58" y="314" font-family="'IBM Plex Sans',sans-serif" font-size="12" fill="#C8D0DA">Shunt field copper</text>
+          <rect x="380" y="304" width="11" height="11" fill="#52A882"/>
+          <text x="398" y="314" font-family="'IBM Plex Sans',sans-serif" font-size="12" fill="#C8D0DA">Friction and iron</text>
+        </svg>
+        </div>
+        <figcaption>The losses are small next to the output, which is why dropping one of them still produces an answer that looks plausible. The 554 W brush loss is only one percent of the input, and leaving it out moves the efficiency by about a full point.</figcaption>
+      </figure>
+
+      <h2>The check that matters more than the answer</h2>
+
+      <p>Any efficiency answer you produce can be checked a second way, and on a generator the second way is the generated EMF. This is the part most operators have never been shown, and it is the whole reason this student ended up with a defensible answer instead of a guess.</p>
+
+      <p>Whatever the armature generates internally has to cover three things: the terminal voltage, the drop across the armature resistance, and the drop at the brushes.</p>
+
+      <p><strong>E = 230 + (221.57 &times; 0.034) + 2.5 = 230 + 7.53 + 2.5 = 240.03 V</strong></p>
+
+      <p>Multiply that by the armature current and you have the total power the armature is developing:</p>
+
+      <p><strong>240.03 V &times; 221.57 A = 53,185 W</strong></p>
+
+      <p>Add the 2,000 W of friction and iron losses, because those are mechanical and magnetic drag the prime mover has to overcome before the armature develops anything at all:</p>
+
+      <p><strong>53,185 + 2,000 = 55,185 W of input</strong></p>
+
+      <p>That is the same input figure as before, and it got there without ever adding up a list of losses. Two independent routes landing on the same number is about as much confidence as you can get on a question like this. If they had disagreed, one of them had a mistake in it and I would have gone hunting.</p>
+
+      <div class="article-callout"><p><strong>Practical rule:</strong> On any efficiency question, get to the answer twice by two different routes. Sum the losses one way, build the input from the generated EMF the other way. If the two agree you are done. If they do not, you have found your own error before the exam found it for you.</p></div>
+
+      <h2>Now look at the answer options again</h2>
+
+      <p>The correct answer is 90.6 %. The five options were 73, 89.34, 84, 92.4 and 91.66. None of them is 90.6.</p>
+
+      <p>Option e, 91.66 %, is the tell. Take the exact method above and delete the brush loss, and you land somewhere between 91.5 and 91.7 % depending on how you carry your rounding. That is not a coincidence. Whoever wrote the quiz made the same mistake the student made. They put a brush voltage drop into the question and then never spent it.</p>
+
+      <p>Option d, 92.4 %, is the one she had been told was correct, and it is the one she had been trying to work toward. I could not reproduce it by any method I tried, right or wrong. Not the full calculation, not the calculation with the brush loss removed, which gives 91.5. Not with the field loss removed, which gives 92.2. Not with both removed, which gives 93.2. If there is a route from those six given values to 92.4 %, I did not find it.</p>
+
+      <p>So she had spent an evening chasing a number that most likely came from nowhere, using a method that would have cost her marks in the exam room, on a quiz that was never going to tell her either way.</p>
+
+      <h2>Two habits that would have caught this</h2>
+
+      <h3>Every given has to appear in your solution</h3>
+
+      <p>This is the one that would have saved her. If you write a value down in your list of givens and it never shows up again anywhere in your working, that is where your error is. Go and find it before you look at the options.</p>
+
+      <p>Occasionally a question includes a value you genuinely do not need, to see whether you will chase it. That is rare on calculation questions. Treat an unused given as your mistake until you can say out loud, specifically, why it is not needed.</p>
+
+      <h3>Arrive at the answer twice</h3>
+
+      <p>Covered above, and it applies well beyond generators. Boiler efficiency by the direct method and by the losses method. Pump power from head and flow, then from motor input and efficiency. Any time you can reach the same number by a second road, do it. It costs you a minute and it turns an answer you hope is right into one you know is right.</p>
+
+      <h2>What to do when your answer is not on the list</h2>
+
+      <p>Every SOPEEC paper from 5th class through 2nd class is multiple choice, so this comes up. Working practice questions, it happens fairly often. On a real paper it should not, and if it does, the odds are strongly on you rather than the paper.</p>
+
+      <ul>
+        <li>Re-read the stem before you re-do the arithmetic. A missed unit or a qualifier is a far more common cause than a calculation slip.</li>
+        <li>Check whether one of the options matches your answer with a single term left out. If it does, decide which of you dropped it. That one check is what identified option e here.</li>
+        <li>If you still cannot resolve it, take the closest option, flag it, and move on. The clock costs you more than the mark does.</li>
+        <li>Afterwards, if you are working practice material, go back and settle it properly. That is where the actual learning happens.</li>
+      </ul>
+
+      <h2>What this says about how you study</h2>
+
+      <p>The mistake itself is not a big deal. Nearly everybody drops a brush loss once, and having done it once you never do it again.</p>
+
+      <p>What matters is what the material did with it. She got marked wrong, was shown a letter, and got no working at all. So the only lesson on offer was that her method produced the wrong number and she should adjust it until it produced a d. That is backwards, and in this case it would have trained her toward a method that is wrong in a way she would have carried straight into the exam.</p>
+
+      <p>This is the practical difference between a question bank and worked material. A question tells you whether you got it right. A worked solution tells you why, and it gives you something you can argue with when it is wrong. If you are studying off free question sets, and plenty of good operators do, use them for recall and drilling rather than for learning a method. Work the ones you got wrong by hand. If you cannot reproduce the key's answer, do not assume the problem is you.</p>
+
+      <p>If you are weighing up what to study from, we have written an honest <a href="/articles/power-engineering-practice-exam-comparison/">comparison of the practice exam options</a> and a breakdown of <a href="/articles/practice-questions-vs-full-course/">whether practice questions alone are enough</a>. It is also worth knowing the <a href="/articles/sopeec-multiple-choice-traps/">traps SOPEEC multiple-choice questions are built around</a>, and if you are working toward your next ticket, our <a href="/articles/3rd-class-power-engineering-exam-guide/">3rd class exam guide</a> and <a href="/articles/2nd-class-power-engineering-exam-guide/">2nd class exam guide</a> cover the full picture.</p>
+
+      <p>And if you are stuck on a question and cannot work out whether it is you or the question, send it over. That is how this article came about.</p>
+
+    </article>
+
+    <!-- BOTTOM CTA -->
+    <div class="article-cta">
+      <h3>Study smarter with Full Steam Ahead</h3>
+      <p>2nd and 3rd Class: every paper, AI tutoring, and adaptive practice, from $<span data-price="thirdClass.current">99</span>/month. 4th Class: exam-prep practice exams and chapter quizzes, $<span data-price="fourthClass.current">99</span>/year. Built for working operators.</p>
+      <a href="https://fullsteamahead.ca/enroll" rel="nofollow noopener"><button class="btn-primary">See Pricing →</button></a>
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <aside class="article-related">
+      <h2>Related Guides</h2>
+      <div class="article-related-grid">
+
+        <a href="/articles/practice-questions-vs-full-course/" class="article-card">
+          <div class="article-card-tag">Study Methods</div>
+          <h3>Are Practice Questions Enough to Pass 2nd Class?</h3>
+          <p>What a question bank does well, where it fails, and what each type of candidate actually needs.</p>
+          <span class="article-card-read">Read →</span>
+        </a>
+
+        <a href="/articles/power-engineering-practice-exam-comparison/" class="article-card">
+          <div class="article-card-tag">Study Methods</div>
+          <h3>Power Engineering Practice Exams Compared</h3>
+          <p>Past papers, free question sets, paid banks or a full platform, and how to test quality yourself.</p>
+          <span class="article-card-read">Read →</span>
+        </a>
+
+        <a href="/articles/sopeec-multiple-choice-traps/" class="article-card">
+          <div class="article-card-tag">Exam Strategy</div>
+          <h3>The Most Common Traps in SOPEEC Multiple-Choice Questions</h3>
+          <p>The specific mistakes SOPEEC questions are designed to catch, across 4th, 3rd and 2nd class papers.</p>
+          <span class="article-card-read">Read →</span>
+        </a>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- FOOTER -->
+  <!-- INCLUDE:footer -->
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function openMenu() {
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      hamburger.classList.add('is-open');
+      mobileMenu.classList.add('is-open');
+    }
+    function closeMenu() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+    }
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav');
+      if (mobileMenu.classList.contains('is-open') && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu();
+    });
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+  <script src="/exit-intent.js" defer></script>
+<script src="/pricing.js" defer></script>
+<script src="/nav.js" defer></script>
+</body>
+</html>
