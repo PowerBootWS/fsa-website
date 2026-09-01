@@ -343,3 +343,45 @@ def test_generated_hub_h1_matches_the_expected_level(built):
         html = (built / rel).read_text()
         assert f"<h1>{expected_h1}</h1>" in html, \
             f"{rel}: expected h1 '{expected_h1}' not found"
+
+
+NAV = pathlib.Path(bp.ROOT) / "partials" / "nav.html"
+
+
+def test_nav_has_no_em_dashes():
+    """Style guide: never. Called out publicly as an AI tell in a 25k-member group."""
+    text = NAV.read_text()
+    assert "—" not in text
+    assert "&mdash;" not in text
+
+
+def test_resources_dropdown_points_at_level_hubs():
+    text = NAV.read_text()
+    for slug in ("4th-class", "3rd-class", "2nd-class"):
+        assert f'href="/articles/{slug}/"' in text
+
+
+def test_resources_dropdown_promotes_no_individual_article():
+    """The old menu sent people to five specific articles, three of them
+    2nd-Class-branded. A 4th Class candidate had no route to anything."""
+    text = NAV.read_text()
+    for gone in ("2nd-class-power-engineering-exam-guide",
+                 "how-to-study-for-power-engineering-exams",
+                 "2nd-class-power-engineering-certificate-careers",
+                 "power-engineering-jobs-guide",
+                 "sopeec-2nd-class-exam-papers"):
+        assert gone not in text, f"nav still links directly to {gone}"
+
+
+def test_mobile_menu_also_carries_the_level_hubs():
+    text = NAV.read_text()
+    mobile = text[text.index('class="mobile-menu"'):]
+    for slug in ("4th-class", "3rd-class", "2nd-class"):
+        assert f'href="/articles/{slug}/"' in mobile
+
+
+def test_nav_still_has_the_free_tools_and_the_escape_hatch():
+    text = NAV.read_text()
+    assert 'href="/library"' in text
+    assert 'href="/free-practice-exam"' in text
+    assert 'href="/articles/"' in text
