@@ -4486,3 +4486,10 @@ footer {
 .chapter-card.fpe-paper-card.is-selected .chapter-unit {
   color: var(--orange);
 }
+
+/* Visual grouping inside the Resources dropdown (2026-09-01) */
+.nav-dropdown-menu .nav-dropdown-sep {
+  border-top: 1px solid var(--plate-edge);
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+}

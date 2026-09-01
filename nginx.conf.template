@@ -16,6 +16,22 @@ server {
     # Redirect .html URLs to clean URLs (301 so Google migrates indexed pages)
     rewrite ^/(.+)\.html$ /$1 permanent;
 
+    # Article slugs renamed 2026-09-01: the URL said 2nd Class while the
+    # content served every level. Keep these; they are the only thing standing
+    # between an old Facebook-group link and a 404.
+    location ^~ /articles/2nd-class-exam-day-what-to-expect {
+        return 301 /articles/power-engineering-exam-day/;
+    }
+    location ^~ /articles/how-long-to-prepare-2nd-class-exam {
+        return 301 /articles/how-long-to-prepare-power-engineering-exam/;
+    }
+    location ^~ /articles/past-papers-2nd-class-power-engineering {
+        return 301 /articles/past-papers-power-engineering/;
+    }
+    location ^~ /articles/cost-of-2nd-class-power-engineering-exam-prep {
+        return 301 /articles/cost-of-power-engineering-exam-prep/;
+    }
+
     location = / {
         try_files /index.html =404;
     }

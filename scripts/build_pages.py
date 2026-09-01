@@ -44,9 +44,11 @@ Usage:
 """
 
 import argparse
+import html as html_mod
 import pathlib
 import re
 import shutil
+from dataclasses import dataclass
 
 ROOT = pathlib.Path(__file__).parent.parent
 
@@ -108,6 +110,232 @@ INCLUDE_FONTS_RE = re.compile(r'<!--\s*INCLUDE:fonts\s*-->')
 # first version of this guard silently useless.
 FONT_FAMILY_RE = re.compile(r'font-family:[^;}"]*')
 QUOTED_FAMILY_RE = re.compile(r"'([^']+)'")
+
+
+# ── Article metadata (added 2026-09-01, articles IA restructure) ──
+#
+# Each article declares which certification levels it serves and which journey
+# stage it belongs to, in its own <head>:
+#
+#     <meta name="fsa:levels" content="4,3,2">
+#     <meta name="fsa:stage" content="studying">
+#
+# The hub pages are generated from these, so an article cannot be missing from
+# the hub and a card cannot drift from its article. A missing or malformed tag
+# FAILS THE BUILD -- that is the point. The articles manifest used to be the
+# index and had drifted to describing 34 articles against 48 live; the fix is
+# to have one source of truth, not two that must agree.
+
+LEVELS = ["4", "3", "2"]
+LEVEL_LABELS = {"4": "4th Class", "3": "3rd Class", "2": "2nd Class"}
+LEVEL_SLUGS = {"4": "4th-class", "3": "3rd-class", "2": "2nd-class"}
+STAGES = [
+    ("choosing", "Choosing your ticket"),
+    ("studying", "Studying for it"),
+    ("exam", "Sitting the exam"),
+    ("career", "Career paths and pay"),
+    ("work", "Finding work"),
+]
+STAGE_KEYS = {key for key, _ in STAGES}
+
+META_LEVELS_RE = re.compile(r'<meta\s+name="fsa:levels"\s+content="([^"]*)"\s*/?>')
+META_STAGE_RE = re.compile(r'<meta\s+name="fsa:stage"\s+content="([^"]*)"\s*/?>')
+META_DESC_RE = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"\s*/?>')
+H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+
+
+@dataclass
+class Article:
+    slug: str
+    title: str
+    description: str
+    levels: list[str]
+    stage: str
+
+
+def _text(raw: str) -> str:
+    return html_mod.unescape(re.sub(r"<[^>]+>", "", raw)).strip()
+
+
+def _find_one(pattern: re.Pattern, name: str, slug: str, html: str) -> str | None:
+    """Return the single content="..." value for a meta tag, or None if absent.
+
+    Raises if the tag appears more than once -- a second copy (duplicate, or a
+    stray leftover from a copy-paste) must be caught, not silently ignored.
+    """
+    matches = pattern.findall(html)
+    if len(matches) > 1:
+        raise ValueError(f"{slug}: <meta name=\"{name}\"> appears more than once")
+    return matches[0] if matches else None
+
+
+def parse_article(slug: str, html: str) -> Article:
+    """Read one article's metadata. Raises ValueError on anything wrong."""
+    # Strip HTML comments first, so a commented-out leftover tag (e.g. from a
+    # copy-paste during editing) cannot be matched instead of, or ahead of,
+    # the real one.
+    stripped = HTML_COMMENT_RE.sub("", html)
+
+    raw = _find_one(META_LEVELS_RE, "fsa:levels", slug, stripped)
+    if raw is None or not raw.strip():
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:levels\">")
+    levels = [v.strip() for v in raw.split(",") if v.strip()]
+    if not levels:
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:levels\">")
+    for lv in levels:
+        if lv not in LEVEL_LABELS:
+            raise ValueError(
+                f"{slug}: fsa:levels contains '{lv}', expected some of {','.join(LEVELS)}"
+            )
+
+    raw = _find_one(META_STAGE_RE, "fsa:stage", slug, stripped)
+    if raw is None or not raw.strip():
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:stage\">")
+    stage = raw.strip()
+    if stage not in STAGE_KEYS:
+        raise ValueError(
+            f"{slug}: fsa:stage is '{stage}', expected one of "
+            + ", ".join(sorted(STAGE_KEYS))
+        )
+
+    m = H1_RE.search(stripped)
+    title = _text(m.group(1)) if m else slug
+    m = META_DESC_RE.search(stripped)
+    description = html_mod.unescape(m.group(1)).strip() if m else ""
+
+    return Article(slug=slug, title=title, description=description,
+                   levels=levels, stage=stage)
+
+
+def scan_articles(articles_dir: pathlib.Path) -> list[Article]:
+    """Scan articles/ for article directories. Reports ALL problems at once."""
+    articles: list[Article] = []
+    errors: list[str] = []
+    for child in sorted(articles_dir.iterdir()):
+        if not child.is_dir() or child.name.startswith(("_", ".")):
+            continue
+        index = child / "index.html"
+        if not index.exists():
+            errors.append(f"{child.name}: has no index.html")
+            continue
+        try:
+            articles.append(parse_article(child.name, index.read_text()))
+        except ValueError as exc:
+            errors.append(str(exc))
+    if errors:
+        raise SystemExit(
+            "Article metadata check failed:\n  "
+            + "\n  ".join(errors)
+            + "\n\nEvery article needs <meta name=\"fsa:levels\" content=\"...\"> and "
+            "<meta name=\"fsa:stage\" content=\"...\"> in its <head>. "
+            "See docs/superpowers/specs/2026-09-01-articles-ia-restructure-design.md"
+        )
+    return articles
+
+
+def render_card(a: Article) -> str:
+    badges = "".join(
+        f'<span class="article-card-level">{LEVEL_LABELS[lv]}</span>'
+        for lv in a.levels
+    )
+    title = html_mod.escape(a.title)
+    desc = html_mod.escape(a.description)
+    return (
+        f'        <a href="/articles/{a.slug}/" class="article-card">\n'
+        f'          <div class="article-card-levels">{badges}</div>\n'
+        f"          <h3>{title}</h3>\n"
+        f"          <p>{desc}</p>\n"
+        f'          <span class="article-card-read">Read &rarr;</span>\n'
+        f"        </a>\n"
+    )
+
+
+def render_sections(articles: list[Article], level: str | None) -> str:
+    """Five stage sections. A stage with nothing in it for this level is omitted."""
+    out = []
+    for key, label in STAGES:
+        rows = [a for a in articles
+                if a.stage == key and (level is None or level in a.levels)]
+        if not rows:
+            continue
+        rows.sort(key=lambda a: a.title)
+        out.append(
+            f'    <section class="articles-section">\n'
+            f'      <h2 class="articles-section-title" id="{key}" '
+            f'data-count="{len(rows)}">{label}</h2>\n'
+            f'      <div class="articles-grid">\n\n'
+        )
+        out.extend(render_card(a) + "\n" for a in rows)
+        out.append("      </div>\n    </section>\n\n")
+    return "".join(out)
+
+
+def render_level_nav(current: str | None) -> str:
+    items = [(None, "/articles/", "All Guides")]
+    items += [(lv, f"/articles/{LEVEL_SLUGS[lv]}/", f"For {LEVEL_LABELS[lv]}")
+              for lv in LEVELS]
+    links = []
+    for lv, href, label in items:
+        cls = "hub-level-link hub-level-active" if lv == current else "hub-level-link"
+        aria = ' aria-current="page"' if lv == current else ""
+        links.append(f'      <a href="{href}" class="{cls}"{aria}>{label}</a>\n')
+    return ('    <div class="hub-level-nav" role="navigation" aria-label="Filter '
+            'guides by certification level">\n' + "".join(links) + "    </div>\n")
+
+
+# (level, output path, <title>, <h1>, intro paragraph, bottom CTA paragraph)
+#
+# The CTA is level-specific: what a 4th Class candidate actually buys ($99 per
+# paper per year, non-renewing) is not what a 2nd Class candidate buys ($149/
+# month for all six papers), and a hub pitching the wrong product converts
+# nobody. Every price in a CTA string is a data-price span, never a bare
+# number -- see pricing.js.
+HUB_PAGES = [
+    (None, "articles/index.html",
+     "Power Engineering Guides and Exam Resources",
+     "Power Engineering Guides",
+     "Every guide we have written, organized by where you are in your "
+     "certification. Filter by class to see only what applies to you.",
+     "Full Steam Ahead covers every certification level: single 4th Class "
+     "papers, a 3rd Class subscription, and a 2nd Class subscription, each "
+     "with step-by-step solutions and AI tutoring."),
+    ("4", "articles/4th-class/index.html",
+     "4th Class Power Engineering Guides",
+     "Guides for 4th Class",
+     "Everything we have for operators working toward their 4th Class ticket, "
+     "from choosing the path through to landing the job.",
+     "Full Steam Ahead sells 4A and 4B as separate papers, $"
+     '<span data-price="fourthClass.current">99</span> per paper for the '
+     "year with no renewal, including practice exams and chapter quizzes."),
+    ("3", "articles/3rd-class/index.html",
+     "3rd Class Power Engineering Guides",
+     "Guides for 3rd Class",
+     "Everything we have for operators upgrading to 3rd Class, from study "
+     "method through exam technique to what the ticket is worth.",
+     "Full Steam Ahead gives you all four 3rd Class exam papers, "
+     "step-by-step solutions, and AI tutoring under one $"
+     '<span data-price="thirdClass.current">99</span>/month subscription.'),
+    ("2", "articles/2nd-class/index.html",
+     "2nd Class Power Engineering Guides",
+     "Guides for 2nd Class",
+     "Everything we have for operators working toward 2nd Class, including "
+     "a guide to each of the six SOPEEC papers.",
+     "Full Steam Ahead gives you all six 2nd Class exam papers, "
+     "step-by-step solutions, and AI tutoring under one $"
+     '<span data-price="secondClass.current">149</span>/month subscription.'),
+]
+
+
+# Slugs renamed 2026-09-01 because the URL said 2nd Class while the content
+# served every level. Kept here so the nginx redirects and the guard test
+# read from one list. Do NOT delete entries: the redirects depend on them.
+RENAMES = {
+    "2nd-class-exam-day-what-to-expect": "power-engineering-exam-day",
+    "how-long-to-prepare-2nd-class-exam": "how-long-to-prepare-power-engineering-exam",
+    "past-papers-2nd-class-power-engineering": "past-papers-power-engineering",
+    "cost-of-2nd-class-power-engineering-exam-prep": "cost-of-power-engineering-exam-prep",
+}
 
 
 def downloaded_families(fonts_template: str) -> set[str]:
@@ -189,7 +417,11 @@ def build(out_dir: pathlib.Path) -> None:
     for tree in STITCHED_DIRS:
         tree_out = out_dir / tree
         for src in (ROOT / tree).rglob("*"):
-            dest = tree_out / src.relative_to(ROOT / tree)
+            rel = src.relative_to(ROOT / tree)
+            dir_parts = rel.parts if src.is_dir() else rel.parts[:-1]
+            if any(part.startswith(("_", ".")) for part in dir_parts):
+                continue
+            dest = tree_out / rel
             if src.is_dir():
                 dest.mkdir(parents=True, exist_ok=True)
                 continue
@@ -203,6 +435,30 @@ def build(out_dir: pathlib.Path) -> None:
             else:
                 shutil.copy2(src, dest)
                 copied += 1
+
+    # Generated hub pages. These have no source file: articles/index.html was
+    # deleted on 2026-09-01 because a hand-maintained index drifts. The index
+    # is derived from the articles that actually exist.
+    articles = scan_articles(ROOT / "articles")
+    hub_template = (ROOT / "partials" / "article-hub.html").read_text()
+    for level, rel, title, h1, intro, cta in HUB_PAGES:
+        page = hub_template
+        page = page.replace("{{TITLE}}", title)
+        page = page.replace("{{DESCRIPTION}}", intro)
+        page = page.replace("{{CANONICAL}}",
+                            "https://fullsteamahead.ca/"
+                            + rel.replace("index.html", ""))
+        page = page.replace("{{H1}}", h1)
+        page = page.replace("{{INTRO}}", intro)
+        page = page.replace("{{CTA}}", cta)
+        page = page.replace("{{LEVEL_NAV}}", render_level_nav(level))
+        page = page.replace("{{SECTIONS}}", render_sections(articles, level))
+        page = stitch(page, nav_template, footer_template, fonts_template)
+        font_errors += check_fonts(rel, page, allowed)
+        dest = out_dir / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(page)
+        stitched += 1
 
     for sheet in ("styles-v2.css", "articles/articles.css"):
         font_errors += check_fonts(sheet, 'styles-v2.css' + (ROOT / sheet).read_text(), allowed)
