@@ -81,6 +81,36 @@ def test_parse_article_rejects_empty_levels():
         bp.parse_article("s", article_html(levels=""))
 
 
+def test_parse_article_rejects_levels_that_are_empty_after_the_split():
+    """content=", ," passes a truthy-string check on the raw value (", ,"
+    is non-empty) but splits down to zero real levels. The emptiness check
+    must run after the split, not before it."""
+    with pytest.raises(ValueError, match="fsa:levels"):
+        bp.parse_article("s", article_html(levels=", ,"))
+
+
+def test_parse_article_ignores_a_commented_out_levels_tag():
+    """A commented-out leftover tag must not be matched ahead of, or instead
+    of, the real one."""
+    html = article_html().replace(
+        '<meta name="fsa:levels" content="4,3,2">',
+        '<!-- <meta name="fsa:levels" content="5,6"> -->\n'
+        '  <meta name="fsa:levels" content="4,3,2">',
+    )
+    art = bp.parse_article("s", html)
+    assert art.levels == ["4", "3", "2"]
+
+
+def test_parse_article_rejects_a_duplicate_levels_tag():
+    html = article_html().replace(
+        '<meta name="fsa:levels" content="4,3,2">',
+        '<meta name="fsa:levels" content="4,3,2">\n'
+        '  <meta name="fsa:levels" content="2">',
+    )
+    with pytest.raises(ValueError, match="more than once"):
+        bp.parse_article("s", html)
+
+
 def test_scan_articles_finds_all_and_sorts_by_slug(tmp_path):
     for slug in ("zebra", "alpha", "middle"):
         d = tmp_path / slug
@@ -205,7 +235,7 @@ def test_no_em_dashes_in_any_rendered_output():
     """Style guide bans em dashes everywhere. Guard the generated markup."""
     arts = [art("a", "choosing"), art("b", "exam")]
     blob = bp.render_sections(arts, None) + bp.render_level_nav(None)
-    blob += "".join(p[2] + p[3] + p[4] for p in bp.HUB_PAGES)
+    blob += "".join(p[2] + p[3] + p[4] + p[5] for p in bp.HUB_PAGES)
     assert "—" not in blob
     assert "&mdash;" not in blob
 
@@ -337,7 +367,7 @@ def test_generated_hub_h1_placeholder_is_substituted(built):
     reads its expectation from the same HUB_PAGES list build() renders from,
     so it cannot catch a wrong value in HUB_PAGES itself -- see
     test_generated_hub_h1_matches_the_expected_level below for that."""
-    for level, rel, title, h1, intro in bp.HUB_PAGES:
+    for level, rel, title, h1, intro, cta in bp.HUB_PAGES:
         html = (built / rel).read_text()
         assert f"<h1>{h1}</h1>" in html, f"{rel}: expected h1 '{h1}' not found"
 
@@ -359,6 +389,59 @@ def test_generated_hub_h1_matches_the_expected_level(built):
         html = (built / rel).read_text()
         assert f"<h1>{expected_h1}</h1>" in html, \
             f"{rel}: expected h1 '{expected_h1}' not found"
+
+
+CTA_P_RE = re.compile(
+    r"<h2>Ready to start studying smarter\?</h2>\s*<p>(.*?)</p>", re.S
+)
+
+# Independent oracle for the bottom CTA (I-3): before this fix, all four hubs
+# pitched the 2nd Class subscription, including on the 4th and 3rd Class
+# hubs. Deliberately not read from HUB_PAGES -- see HUB_H1 above for why.
+HUB_CTA_MUST_CONTAIN = {
+    "articles/index.html": [],
+    "articles/4th-class/index.html": [
+        'data-price="fourthClass.current"', "4A", "4B",
+    ],
+    "articles/3rd-class/index.html": [
+        'data-price="thirdClass.current"', "four",
+    ],
+    "articles/2nd-class/index.html": [
+        'data-price="secondClass.current"', "six",
+    ],
+}
+
+HUB_CTA_MUST_NOT_CONTAIN = {
+    "articles/index.html": [
+        'data-price="secondClass', 'data-price="thirdClass', 'data-price="fourthClass',
+    ],
+    "articles/4th-class/index.html": [
+        'data-price="secondClass', 'data-price="thirdClass', "2nd Class", "3rd Class",
+    ],
+    "articles/3rd-class/index.html": [
+        'data-price="secondClass', 'data-price="fourthClass', "2nd Class", "4th Class",
+    ],
+    "articles/2nd-class/index.html": [
+        'data-price="thirdClass', 'data-price="fourthClass', "3rd Class", "4th Class",
+    ],
+}
+
+
+def test_generated_hub_cta_matches_the_expected_level(built):
+    """A 4th Class candidate landing on 'Guides for 4th Class' must not be
+    pitched the $149/month 2nd Class subscription, and vice versa. This
+    literal map knows what each hub's CTA should, and should not, say --
+    it does not read HUB_PAGES, so a wrong CTA string cannot pass by
+    agreeing with itself."""
+    for rel, must_contain in HUB_CTA_MUST_CONTAIN.items():
+        html = (built / rel).read_text()
+        m = CTA_P_RE.search(html)
+        assert m, f"{rel}: could not find the bottom CTA paragraph"
+        cta = m.group(1)
+        for needle in must_contain:
+            assert needle in cta, f"{rel}: CTA missing expected '{needle}'"
+        for needle in HUB_CTA_MUST_NOT_CONTAIN[rel]:
+            assert needle not in cta, f"{rel}: CTA wrongly contains '{needle}'"
 
 
 NAV = pathlib.Path(bp.ROOT) / "partials" / "nav.html"

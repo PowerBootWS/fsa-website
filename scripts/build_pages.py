@@ -142,6 +142,7 @@ META_LEVELS_RE = re.compile(r'<meta\s+name="fsa:levels"\s+content="([^"]*)"\s*/?
 META_STAGE_RE = re.compile(r'<meta\s+name="fsa:stage"\s+content="([^"]*)"\s*/?>')
 META_DESC_RE = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"\s*/?>')
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
 
 
 @dataclass
@@ -157,31 +158,50 @@ def _text(raw: str) -> str:
     return html_mod.unescape(re.sub(r"<[^>]+>", "", raw)).strip()
 
 
+def _find_one(pattern: re.Pattern, name: str, slug: str, html: str) -> str | None:
+    """Return the single content="..." value for a meta tag, or None if absent.
+
+    Raises if the tag appears more than once -- a second copy (duplicate, or a
+    stray leftover from a copy-paste) must be caught, not silently ignored.
+    """
+    matches = pattern.findall(html)
+    if len(matches) > 1:
+        raise ValueError(f"{slug}: <meta name=\"{name}\"> appears more than once")
+    return matches[0] if matches else None
+
+
 def parse_article(slug: str, html: str) -> Article:
     """Read one article's metadata. Raises ValueError on anything wrong."""
-    m = META_LEVELS_RE.search(html)
-    if not m or not m.group(1).strip():
+    # Strip HTML comments first, so a commented-out leftover tag (e.g. from a
+    # copy-paste during editing) cannot be matched instead of, or ahead of,
+    # the real one.
+    stripped = HTML_COMMENT_RE.sub("", html)
+
+    raw = _find_one(META_LEVELS_RE, "fsa:levels", slug, stripped)
+    if raw is None or not raw.strip():
         raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:levels\">")
-    levels = [v.strip() for v in m.group(1).split(",") if v.strip()]
+    levels = [v.strip() for v in raw.split(",") if v.strip()]
+    if not levels:
+        raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:levels\">")
     for lv in levels:
         if lv not in LEVEL_LABELS:
             raise ValueError(
                 f"{slug}: fsa:levels contains '{lv}', expected some of {','.join(LEVELS)}"
             )
 
-    m = META_STAGE_RE.search(html)
-    if not m or not m.group(1).strip():
+    raw = _find_one(META_STAGE_RE, "fsa:stage", slug, stripped)
+    if raw is None or not raw.strip():
         raise ValueError(f"{slug}: missing or empty <meta name=\"fsa:stage\">")
-    stage = m.group(1).strip()
+    stage = raw.strip()
     if stage not in STAGE_KEYS:
         raise ValueError(
             f"{slug}: fsa:stage is '{stage}', expected one of "
             + ", ".join(sorted(STAGE_KEYS))
         )
 
-    m = H1_RE.search(html)
+    m = H1_RE.search(stripped)
     title = _text(m.group(1)) if m else slug
-    m = META_DESC_RE.search(html)
+    m = META_DESC_RE.search(stripped)
     description = html_mod.unescape(m.group(1)).strip() if m else ""
 
     return Article(slug=slug, title=title, description=description,
@@ -264,28 +284,46 @@ def render_level_nav(current: str | None) -> str:
             'guides by certification level">\n' + "".join(links) + "    </div>\n")
 
 
-# (level, output path, <title>, <h1>, intro paragraph)
+# (level, output path, <title>, <h1>, intro paragraph, bottom CTA paragraph)
+#
+# The CTA is level-specific: what a 4th Class candidate actually buys ($99 per
+# paper per year, non-renewing) is not what a 2nd Class candidate buys ($149/
+# month for all six papers), and a hub pitching the wrong product converts
+# nobody. Every price in a CTA string is a data-price span, never a bare
+# number -- see pricing.js.
 HUB_PAGES = [
     (None, "articles/index.html",
      "Power Engineering Guides and Exam Resources",
      "Power Engineering Guides",
      "Every guide we have written, organized by where you are in your "
-     "certification. Pick your class above to see only what applies to you."),
+     "certification. Filter by class to see only what applies to you.",
+     "Full Steam Ahead covers every certification level: single 4th Class "
+     "papers, a 3rd Class subscription, and a 2nd Class subscription, each "
+     "with step-by-step solutions and AI tutoring."),
     ("4", "articles/4th-class/index.html",
      "4th Class Power Engineering Guides",
      "Guides for 4th Class",
      "Everything we have for operators working toward their 4th Class ticket, "
-     "from choosing the path through to landing the job."),
+     "from choosing the path through to landing the job.",
+     "Full Steam Ahead sells 4A and 4B as separate papers, $"
+     '<span data-price="fourthClass.current">99</span> per paper for the '
+     "year with no renewal, including practice exams and chapter quizzes."),
     ("3", "articles/3rd-class/index.html",
      "3rd Class Power Engineering Guides",
      "Guides for 3rd Class",
      "Everything we have for operators upgrading to 3rd Class, from study "
-     "method through exam technique to what the ticket is worth."),
+     "method through exam technique to what the ticket is worth.",
+     "Full Steam Ahead gives you all four 3rd Class exam papers, "
+     "step-by-step solutions, and AI tutoring under one $"
+     '<span data-price="thirdClass.current">99</span>/month subscription.'),
     ("2", "articles/2nd-class/index.html",
      "2nd Class Power Engineering Guides",
      "Guides for 2nd Class",
      "Everything we have for operators working toward 2nd Class, including "
-     "a guide to each of the six SOPEEC papers."),
+     "a guide to each of the six SOPEEC papers.",
+     "Full Steam Ahead gives you all six 2nd Class exam papers, "
+     "step-by-step solutions, and AI tutoring under one $"
+     '<span data-price="secondClass.current">149</span>/month subscription.'),
 ]
 
 
@@ -403,7 +441,7 @@ def build(out_dir: pathlib.Path) -> None:
     # is derived from the articles that actually exist.
     articles = scan_articles(ROOT / "articles")
     hub_template = (ROOT / "partials" / "article-hub.html").read_text()
-    for level, rel, title, h1, intro in HUB_PAGES:
+    for level, rel, title, h1, intro, cta in HUB_PAGES:
         page = hub_template
         page = page.replace("{{TITLE}}", title)
         page = page.replace("{{DESCRIPTION}}", intro)
@@ -412,6 +450,7 @@ def build(out_dir: pathlib.Path) -> None:
                             + rel.replace("index.html", ""))
         page = page.replace("{{H1}}", h1)
         page = page.replace("{{INTRO}}", intro)
+        page = page.replace("{{CTA}}", cta)
         page = page.replace("{{LEVEL_NAV}}", render_level_nav(level))
         page = page.replace("{{SECTIONS}}", render_sections(articles, level))
         page = stitch(page, nav_template, footer_template, fonts_template)
