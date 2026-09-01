@@ -4,6 +4,7 @@ First test file in this repo. Run with:
     python3 -m pytest scripts/test_build_pages.py -v
 """
 import pathlib
+import re
 import sys
 
 import pytest
@@ -263,3 +264,60 @@ def test_render_level_nav_avoids_the_bare_nav_element():
     out = bp.render_level_nav("4")
     assert "<nav" not in out
     assert 'role="navigation"' in out
+
+
+ANCHOR_HREF_RE = re.compile(r'href="#([^"]+)"')
+ID_ATTR_RE = re.compile(r'\bid="([^"]+)"')
+
+
+def test_generated_hub_in_page_anchors_resolve_to_a_real_id(built):
+    """Generic on purpose: the defect class is 'a hand-written #anchor drifts
+    from the generated ids', not any specific anchor. This must catch the next
+    one too, e.g. if a STAGES key is ever renamed again."""
+    for rel in HUB_RELS:
+        html = (built / rel).read_text()
+        ids = set(ID_ATTR_RE.findall(html))
+        anchors = set(ANCHOR_HREF_RE.findall(html))
+        dangling = sorted(a for a in anchors if a not in ids)
+        assert not dangling, f"{rel}: anchor(s) {dangling} have no matching id=... on the page"
+
+
+CARD_COUNTS = {
+    "articles/index.html": 48,
+    "articles/4th-class/index.html": 31,
+    "articles/3rd-class/index.html": 34,
+    "articles/2nd-class/index.html": 45,
+}
+
+
+def test_generated_hub_card_counts_match_the_spec(built):
+    for rel, expected in CARD_COUNTS.items():
+        html = (built / rel).read_text()
+        actual = html.count('class="article-card"')
+        assert actual == expected, f"{rel}: expected {expected} cards, found {actual}"
+
+
+def test_generated_3rd_class_hub_excludes_other_levels(built):
+    html = (built / "articles/3rd-class/index.html").read_text()
+    # A 4th-Class-only article must not appear on the 3rd Class hub.
+    assert 'href="/articles/how-to-become-a-4th-class-power-engineer/"' not in html
+    # A 2nd-Class-only article must not appear either.
+    assert 'href="/articles/sopeec-2a1-exam-guide/"' not in html
+    # A level-agnostic one must.
+    assert 'href="/articles/sopeec-multiple-choice-traps/"' in html
+
+
+def test_generated_2nd_class_hub_excludes_other_levels(built):
+    html = (built / "articles/2nd-class/index.html").read_text()
+    # A 4th-Class-only article must not appear on the 2nd Class hub.
+    assert 'href="/articles/how-to-become-a-4th-class-power-engineer/"' not in html
+    # A level-agnostic one must.
+    assert 'href="/articles/sopeec-multiple-choice-traps/"' in html
+
+
+def test_generated_hub_h1_matches_its_hub_pages_entry(built):
+    """Swapping two levels' title/h1/intro strings while leaving rel and level
+    correct would pass every other test silently. Pin the h1 to its page."""
+    for level, rel, title, h1, intro in bp.HUB_PAGES:
+        html = (built / rel).read_text()
+        assert f"<h1>{h1}</h1>" in html, f"{rel}: expected h1 '{h1}' not found"
