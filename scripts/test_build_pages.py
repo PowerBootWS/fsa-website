@@ -315,9 +315,31 @@ def test_generated_2nd_class_hub_excludes_other_levels(built):
     assert 'href="/articles/sopeec-multiple-choice-traps/"' in html
 
 
-def test_generated_hub_h1_matches_its_hub_pages_entry(built):
-    """Swapping two levels' title/h1/intro strings while leaving rel and level
-    correct would pass every other test silently. Pin the h1 to its page."""
+def test_generated_hub_h1_placeholder_is_substituted(built):
+    """Plumbing check only: confirms {{H1}} in the template actually gets
+    replaced with the value build() reads out of HUB_PAGES for that page. It
+    reads its expectation from the same HUB_PAGES list build() renders from,
+    so it cannot catch a wrong value in HUB_PAGES itself -- see
+    test_generated_hub_h1_matches_the_expected_level below for that."""
     for level, rel, title, h1, intro in bp.HUB_PAGES:
         html = (built / rel).read_text()
         assert f"<h1>{h1}</h1>" in html, f"{rel}: expected h1 '{h1}' not found"
+
+
+HUB_H1 = {
+    "articles/index.html": "Power Engineering Guides",
+    "articles/4th-class/index.html": "Guides for 4th Class",
+    "articles/3rd-class/index.html": "Guides for 3rd Class",
+    "articles/2nd-class/index.html": "Guides for 2nd Class",
+}
+
+
+def test_generated_hub_h1_matches_the_expected_level(built):
+    """Independent oracle, deliberately not read from HUB_PAGES: swapping two
+    levels' h1 strings inside HUB_PAGES itself would make build() and the
+    plumbing test above agree on the wrong value. This literal map is the
+    only thing in the suite that knows what each page's h1 SHOULD say."""
+    for rel, expected_h1 in HUB_H1.items():
+        html = (built / rel).read_text()
+        assert f"<h1>{expected_h1}</h1>" in html, \
+            f"{rel}: expected h1 '{expected_h1}' not found"
