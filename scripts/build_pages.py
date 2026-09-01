@@ -260,8 +260,8 @@ def render_level_nav(current: str | None) -> str:
         cls = "hub-level-link hub-level-active" if lv == current else "hub-level-link"
         aria = ' aria-current="page"' if lv == current else ""
         links.append(f'      <a href="{href}" class="{cls}"{aria}>{label}</a>\n')
-    return ('    <nav class="hub-level-nav" aria-label="Filter guides by '
-            'certification level">\n' + "".join(links) + "    </nav>\n")
+    return ('    <div class="hub-level-nav" role="navigation" aria-label="Filter '
+            'guides by certification level">\n' + "".join(links) + "    </div>\n")
 
 
 # (level, output path, <title>, <h1>, intro paragraph)

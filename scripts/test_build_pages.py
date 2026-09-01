@@ -255,3 +255,11 @@ def test_generated_level_hub_excludes_other_levels(built):
     assert 'href="/articles/sopeec-2a1-exam-guide/"' not in html
     # A level-agnostic one must.
     assert 'href="/articles/sopeec-multiple-choice-traps/"' in html
+
+
+def test_render_level_nav_avoids_the_bare_nav_element():
+    """styles-v2.css has a global `nav { position: fixed; ... }` rule that would
+    yank this out of flow and cover the site nav. Use a div with role=navigation."""
+    out = bp.render_level_nav("4")
+    assert "<nav" not in out
+    assert 'role="navigation"' in out
