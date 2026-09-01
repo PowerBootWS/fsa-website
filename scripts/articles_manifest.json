@@ -40,11 +40,11 @@
           "anchor_text": "time management on exam day"
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "anchor_text": "what to expect on exam day"
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "anchor_text": "practice with past papers"
         }
       ],
@@ -62,7 +62,7 @@
           "description": "Techniques for elimination, handling trick wording, and pacing yourself through each paper."
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "title": "What to Expect on Power Engineering Exam Day",
           "category": "Exam Strategy",
           "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."
@@ -115,7 +115,7 @@
           "anchor_text": "spaced repetition scheduling"
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "anchor_text": "past paper practice"
         },
         {
@@ -131,7 +131,7 @@
           "description": "Why re-reading your notes fails \u2014 and what to do instead."
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "title": "Past Paper Practice: The Highest-ROI Study Method for Power Engineering Exams",
           "category": "Study Methods",
           "description": "How to use past papers effectively, analyze your mistakes, and close knowledge gaps fast."
@@ -332,7 +332,7 @@
           "description": "Everything from paper structure and scoring to study strategy and exam-day execution."
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "title": "Past Paper Practice: The Highest-ROI Study Method for 2nd Class",
           "category": "Study Methods",
           "description": "How to use past papers to expose knowledge gaps and build exam-ready pattern recognition."
@@ -393,7 +393,7 @@
           "description": "Mindset, pre-exam routine, and how to handle a blank-mind moment mid-paper."
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "title": "What to Expect on Power Engineering Exam Day",
           "category": "Exam Strategy",
           "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."
@@ -452,7 +452,7 @@
           "description": "Per-question pacing and how to stop running out of time mid-paper."
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "title": "What to Expect on Power Engineering Exam Day",
           "category": "Exam Strategy",
           "description": "Logistics, allowed materials, and the most common day-of mistakes operators make."
@@ -493,7 +493,7 @@
           "anchor_text": "mental preparation for the exam"
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "anchor_text": "what to expect on exam day"
         }
       ],
@@ -505,7 +505,7 @@
           "description": "Pre-exam routines, handling blank-mind moments, and building exam-day confidence."
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "title": "What to Expect on Power Engineering Exam Day",
           "category": "Exam Strategy",
           "description": "Logistics, allowed materials, and the most common day-of mistakes operators make."
@@ -527,7 +527,7 @@
     {
       "id": "A6",
       "title": "What to Expect on Power Engineering Exam Day",
-      "slug": "2nd-class-exam-day-what-to-expect",
+      "slug": "power-engineering-exam-day",
       "keyword": "power engineering exam day",
       "supporting_keywords": [
         "absa exams",
@@ -613,7 +613,7 @@
           "anchor_text": "how to schedule review with spaced repetition"
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "anchor_text": "past paper practice"
         }
       ],
@@ -631,7 +631,7 @@
           "description": "How to schedule your review sessions so material sticks for the long haul."
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "title": "Past Paper Practice: The Highest-ROI Study Method for Power Engineering Exams",
           "category": "Study Methods",
           "description": "Why past papers beat notes, and how to turn wrong answers into genuine learning."
@@ -729,7 +729,7 @@
           "anchor_text": "our complete study system for power engineering exams"
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "anchor_text": "past paper practice as the highest-ROI study activity"
         },
         {
@@ -739,7 +739,7 @@
       ],
       "related_cards": [
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "title": "Past Paper Practice: The Highest-ROI Study Method for Power Engineering Exams",
           "category": "Study Methods",
           "description": "Why past papers beat notes, and how to use AI to analyze your mistakes."
@@ -788,7 +788,7 @@
           "anchor_text": "our complete study system for power engineering exams"
         },
         {
-          "slug": "how-long-to-prepare-2nd-class-exam",
+          "slug": "how-long-to-prepare-power-engineering-exam",
           "anchor_text": "how long to realistically prepare for the 2nd class exam"
         },
         {
@@ -798,7 +798,7 @@
       ],
       "related_cards": [
         {
-          "slug": "how-long-to-prepare-2nd-class-exam",
+          "slug": "how-long-to-prepare-power-engineering-exam",
           "title": "How Long Does It Take to Prepare for Power Engineering Exams?",
           "category": "Study Methods",
           "description": "Realistic timelines for 4th, 3rd, and 2nd class, factors that affect your prep window, and how to self-assess your readiness."
@@ -826,7 +826,7 @@
     {
       "id": "B5",
       "title": "Past Paper Practice: The Highest-ROI Study Method for Power Engineering Exams",
-      "slug": "past-papers-2nd-class-power-engineering",
+      "slug": "past-papers-power-engineering",
       "keyword": "power engineering practice exams",
       "supporting_keywords": [
         "absa exams",
@@ -887,7 +887,7 @@
     {
       "id": "B6",
       "title": "How Long Does It Take to Prepare for Power Engineering Exams?",
-      "slug": "how-long-to-prepare-2nd-class-exam",
+      "slug": "how-long-to-prepare-power-engineering-exam",
       "keyword": "how long to study for power engineering exams",
       "supporting_keywords": [
         "power engineering course",
@@ -1923,7 +1923,7 @@
           "anchor_text": "our complete 2nd class exam guide"
         },
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "anchor_text": "what to expect on exam day"
         },
         {
@@ -1933,7 +1933,7 @@
       ],
       "related_cards": [
         {
-          "slug": "2nd-class-exam-day-what-to-expect",
+          "slug": "power-engineering-exam-day",
           "title": "What to Expect on Power Engineering Exam Day",
           "category": "Exam Strategy",
           "description": "Logistics, allowed materials, format, and the most common day-of mistakes operators make."
@@ -2057,7 +2057,7 @@
           "anchor_text": "how AI tutoring helps you understand concepts"
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "anchor_text": "past paper practice as the highest-ROI study activity"
         }
       ],
@@ -2075,7 +2075,7 @@
           "description": "What AI tutoring actually offers for power engineering study and how to use it effectively."
         },
         {
-          "slug": "past-papers-2nd-class-power-engineering",
+          "slug": "past-papers-power-engineering",
           "title": "Past Paper Practice: The Highest-ROI Study Method for Power Engineering Exams",
           "category": "Study Methods",
           "description": "Why past papers beat notes, and how to turn wrong answers into genuine learning."

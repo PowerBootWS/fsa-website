@@ -289,6 +289,17 @@ HUB_PAGES = [
 ]
 
 
+# Slugs renamed 2026-09-01 because the URL said 2nd Class while the content
+# served every level. Kept here so the nginx redirects and the guard test
+# read from one list. Do NOT delete entries: the redirects depend on them.
+RENAMES = {
+    "2nd-class-exam-day-what-to-expect": "power-engineering-exam-day",
+    "how-long-to-prepare-2nd-class-exam": "how-long-to-prepare-power-engineering-exam",
+    "past-papers-2nd-class-power-engineering": "past-papers-power-engineering",
+    "cost-of-2nd-class-power-engineering-exam-prep": "cost-of-power-engineering-exam-prep",
+}
+
+
 def downloaded_families(fonts_template: str) -> set[str]:
     return {m.replace("+", " ")
             for m in re.findall(r"family=([^&:\"]+)", fonts_template)}

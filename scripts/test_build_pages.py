@@ -411,3 +411,22 @@ def test_sitemap_has_no_loc_without_a_page():
     slugs = {a.slug for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles")}
     orphans = art_locs - slugs - hubs
     assert not orphans, f"sitemap lists pages that do not exist: {sorted(orphans)}"
+
+
+def test_no_file_references_a_renamed_slug():
+    """After the rename, an old slug may appear ONLY in the redirect config."""
+    import subprocess
+    for old in bp.RENAMES:
+        out = subprocess.run(
+            ["grep", "-rl", old, ".",
+             "--include=*.html", "--include=*.json", "--include=*.xml",
+             "--exclude-dir=dist", "--exclude-dir=.git"],
+            capture_output=True, text=True, cwd=bp.ROOT).stdout.split()
+        assert not out, f"{old} still referenced in {out}"
+
+
+def test_renamed_articles_exist_at_their_new_slug():
+    slugs = {a.slug for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles")}
+    for old, new in bp.RENAMES.items():
+        assert new in slugs, f"{new} does not exist"
+        assert old not in slugs, f"{old} still exists"

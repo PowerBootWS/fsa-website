@@ -26,15 +26,15 @@ ASSIGNMENT = {
     "power-engineering-classes-canada": ("choosing", "4,3,2"),
     "how-to-become-a-4th-class-power-engineer": ("choosing", "4"),
     "3rd-class-vs-2nd-class-power-engineering": ("choosing", "3,2"),
-    "cost-of-2nd-class-power-engineering-exam-prep": ("choosing", "4,3,2"),
-    "how-long-to-prepare-2nd-class-exam": ("choosing", "4,3,2"),
+    "cost-of-power-engineering-exam-prep": ("choosing", "4,3,2"),
+    "how-long-to-prepare-power-engineering-exam": ("choosing", "4,3,2"),
     # Studying for it
     "how-to-study-for-power-engineering-exams": ("studying", "4,3,2"),
     "active-recall-power-engineering": ("studying", "4,3,2"),
     "spaced-repetition-power-engineering": ("studying", "4,3,2"),
     "study-schedule-power-engineering-job": ("studying", "4,3,2"),
     "ai-tutoring-power-engineering-study": ("studying", "4,3,2"),
-    "past-papers-2nd-class-power-engineering": ("studying", "4,3,2"),
+    "past-papers-power-engineering": ("studying", "4,3,2"),
     "power-engineering-practice-exam-comparison": ("studying", "4,3,2"),
     "practice-questions-vs-full-course": ("studying", "4,3,2"),
     # Sitting the exam
@@ -46,7 +46,7 @@ ASSIGNMENT = {
     "power-engineering-exam-time-management": ("exam", "4,3,2"),
     "mental-prep-power-engineering-exam": ("exam", "4,3,2"),
     "power-engineering-exam-stress": ("exam", "4,3,2"),
-    "2nd-class-exam-day-what-to-expect": ("exam", "4,3,2"),
+    "power-engineering-exam-day": ("exam", "4,3,2"),
     "sopeec-2nd-class-exam-papers": ("exam", "2"),
     "sopeec-2a1-exam-guide": ("exam", "2"),
     "sopeec-2a2-exam-guide": ("exam", "2"),
@@ -90,9 +90,12 @@ def apply(slug, stage, levels, check):
     stripped = EXISTING_RE.sub("", html)
     block = (f'  <meta name="fsa:levels" content="{levels}">\n'
              f'  <meta name="fsa:stage" content="{stage}">\n')
-    m = CANONICAL_RE.search(stripped)
-    if not m:
-        return f"{slug}: no <link rel=\"canonical\"> to anchor the insert to"
+    matches = list(CANONICAL_RE.finditer(stripped))
+    if len(matches) != 1:
+        sys.exit(f"{slug}: expected exactly one <link rel=\"canonical\">, "
+                  f"found {len(matches)} -- refusing to guess which one to "
+                  "anchor the insert to")
+    m = matches[0]
     new = stripped[:m.end()] + block + stripped[m.end():]
     if new == html:
         return None
