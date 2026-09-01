@@ -775,50 +775,71 @@ Then edit `partials/article-hub.html`:
 Verify the result:
 
 ```bash
-grep -c "{{TITLE}}\|{{DESCRIPTION}}\|{{CANONICAL}}\|{{H1}}\|{{INTRO}}\|{{LEVEL_NAV}}\|{{SECTIONS}}" partials/article-hub.html
-grep -c "article-card" partials/article-hub.html
-grep -c "INCLUDE:nav\|INCLUDE:footer\|INCLUDE:fonts" partials/article-hub.html
+for ph in TITLE DESCRIPTION CANONICAL H1 INTRO LEVEL_NAV SECTIONS; do
+  printf "%-11s %s\n" "$ph" "$(grep -c "{{$ph}}" partials/article-hub.html)"
+done
+echo "article-card: $(grep -c 'article-card' partials/article-hub.html)"
+echo "INCLUDE:     $(grep -c 'INCLUDE:' partials/article-hub.html)"
 ```
-Expected: 9 placeholder hits (TITLE and DESCRIPTION and CANONICAL appear twice each), **0** `article-card` hits (all hand-written cards gone), 3 INCLUDE markers.
+Expected: TITLE, DESCRIPTION and CANONICAL each appear 2 or more times (they are in both the head and the OG block); H1, INTRO, LEVEL_NAV and SECTIONS each appear exactly 1; `article-card` is **0** (every hand-written card is gone); `INCLUDE:` is 3.
+
+Do not chase an exact total. What matters is that no placeholder is 0 and no hand-written card survives.
 
 - [ ] **Step 2: Write the failing integration test**
 
 Append to `scripts/test_build_pages.py`:
 
 ```python
-def test_build_generates_four_hub_pages(tmp_path):
-    """Integration: build the real site into a temp dir and check the hubs."""
-    bp.build(tmp_path)
-    for rel in ("articles/index.html", "articles/4th-class/index.html",
-                "articles/3rd-class/index.html", "articles/2nd-class/index.html"):
-        assert (tmp_path / rel).exists(), f"{rel} was not generated"
+HUB_RELS = ("articles/index.html", "articles/4th-class/index.html",
+            "articles/3rd-class/index.html", "articles/2nd-class/index.html")
 
 
-def test_generated_full_index_lists_every_article(tmp_path):
-    bp.build(tmp_path)
-    html = (tmp_path / "articles/index.html").read_text()
-    arts = bp.scan_articles(pathlib.Path(bp.ROOT) / "articles")
-    for a in arts:
+@pytest.fixture(scope="module")
+def built(tmp_path_factory):
+    """Build the real site ONCE for all integration tests.
+
+    assets/ is about 1 GB and build() copytrees it. Copying that per test would
+    move 4 GB per run and can fill /tmp, so passthrough dirs are disabled for
+    the duration. Nothing asserted below touches assets.
+    """
+    out = tmp_path_factory.mktemp("dist")
+    saved = bp.ROOT_PASSTHROUGH_DIRS
+    bp.ROOT_PASSTHROUGH_DIRS = []
+    try:
+        bp.build(out)
+    finally:
+        bp.ROOT_PASSTHROUGH_DIRS = saved
+    return out
+
+
+def test_build_generates_four_hub_pages(built):
+    for rel in HUB_RELS:
+        assert (built / rel).exists(), f"{rel} was not generated"
+
+
+def test_generated_full_index_lists_every_article(built):
+    html = (built / "articles/index.html").read_text()
+    for a in bp.scan_articles(pathlib.Path(bp.ROOT) / "articles"):
         assert f'href="/articles/{a.slug}/"' in html, f"{a.slug} missing from hub"
 
 
-def test_generated_level_hubs_have_no_placeholders_left(tmp_path):
-    bp.build(tmp_path)
-    for rel in ("articles/index.html", "articles/4th-class/index.html",
-                "articles/3rd-class/index.html", "articles/2nd-class/index.html"):
-        html = (tmp_path / rel).read_text()
+def test_generated_hubs_have_no_placeholders_left(built):
+    for rel in HUB_RELS:
+        html = (built / rel).read_text()
         assert "{{" not in html, f"unsubstituted placeholder in {rel}"
         assert "INCLUDE:" not in html, f"unstitched include in {rel}"
 
 
-def test_generated_level_hub_excludes_other_levels(tmp_path):
-    bp.build(tmp_path)
-    html = (tmp_path / "articles/4th-class/index.html").read_text()
+def test_generated_level_hub_excludes_other_levels(built):
+    html = (built / "articles/4th-class/index.html").read_text()
     # A 2nd-Class-only article must not appear on the 4th Class hub.
     assert 'href="/articles/sopeec-2a1-exam-guide/"' not in html
     # A level-agnostic one must.
     assert 'href="/articles/sopeec-multiple-choice-traps/"' in html
 ```
+
+`build()` reads `ROOT_PASSTHROUGH_DIRS` as a module global at call time, so the
+fixture's temporary reassignment is enough. Do not change `build()` for this.
 
 - [ ] **Step 3: Run to verify it fails**
 
@@ -961,7 +982,7 @@ Expected: first run prints `Article metadata check failed:` naming `sopeec-multi
 
 ```bash
 git add scripts/build_pages.py scripts/test_build_pages.py partials/article-hub.html articles/articles.css
-git rm --cached articles/index.html 2>/dev/null; git add -u articles/index.html
+git add -u
 git commit -m "feat(articles): generate the hub and three level views at build time
 
 articles/index.html is deleted and replaced by generated output from
