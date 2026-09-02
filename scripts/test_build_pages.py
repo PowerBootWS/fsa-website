@@ -329,10 +329,10 @@ def test_generated_hub_in_page_anchors_resolve_to_a_real_id(built):
 
 
 CARD_COUNTS = {
-    "articles/index.html": 57,
-    "articles/4th-class/index.html": 36,
-    "articles/3rd-class/index.html": 39,
-    "articles/2nd-class/index.html": 46,
+    "articles/index.html": 61,
+    "articles/4th-class/index.html": 40,
+    "articles/3rd-class/index.html": 43,
+    "articles/2nd-class/index.html": 50,
 }
 
 

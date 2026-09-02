@@ -1835,7 +1835,7 @@
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Process to PE"
       },
-      "status": "planned"
+      "status": "published"
     },
     {
       "id": "C9",
@@ -1894,7 +1894,7 @@
         "pillar_slug": "2nd-class-power-engineering-certificate-careers",
         "article_short_title": "Stationary vs. PE"
       },
-      "status": "planned"
+      "status": "published"
     },
     {
       "id": "A7",
@@ -1956,7 +1956,7 @@
         "pillar_slug": "2nd-class-power-engineering-exam-guide",
         "article_short_title": "ABSA Exams"
       },
-      "status": "planned"
+      "status": "published"
     },
     {
       "id": "A8",
@@ -2038,7 +2038,7 @@
       "category": "Study Methods",
       "word_target": 1500,
       "type": "cluster",
-      "notes": "Honest framing: Pan Global textbooks are the industry standard reference used by operators at every class level \u2014 4th through 2nd \u2014 and most are told to read them repeatedly until the material sticks. This article explains why passive re-reading fails for technical exam prep \u2014 it creates an illusion of familiarity without building true retrieval ability. Explicitly note that Pan Global publishes texts for all class levels and the re-reading problem applies equally whether you're studying 4th class or 2nd class. Then introduce AI-adaptive learning as the complement/superior alternative: when a student doesn't understand something, the AI tutor explains differently rather than repeating the same text; it identifies and targets weak areas; it adapts to shift schedules. Position this as respectful of Pan Global (it's the standard text across all classes) but honest about the limitations of solo textbook study. Strong conversion article. Tie directly to FSA product. Link to B1 (active recall), B3 (AI tutoring), and B5 (past papers).",
+      "notes": "SUPERSEDED 2026-09-01, do not write. PanGlobal Training Systems ceased operations in 2025 and its Power Engineering Learning Materials passed to NAIT, SAIT and BCIT, who released the full set free under Creative Commons. A comparison against a defunct vendor would date the site immediately, and framing a free CC-licensed resource as a competitor reads badly to an audience that can simply download it. The underlying argument, that the free books are the right textbooks but a textbook is not a study system, is now carried by articles/free-power-engineering-textbooks/, which also serves the book and PDF search intent where this site already ranks page one.",
       "pillar_slug": "how-to-study-for-power-engineering-exams",
       "published_date": "2026-05-30",
       "intro": "Most operators \u2014 at every class level \u2014 are told to read Pan Global textbooks repeatedly until the material sticks. Here's why that approach often falls short \u2014 and what actually works for technical exam prep.",
@@ -2086,7 +2086,7 @@
         "pillar_slug": "how-to-study-for-power-engineering-exams",
         "article_short_title": "Pan Global vs. AI"
       },
-      "status": "planned"
+      "status": "superseded"
     },
     {
       "id": "P33",
