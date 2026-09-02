@@ -4940,3 +4940,75 @@ footer {
   .fpe-sample-reveal > summary,
   .fpe-sample-reveal > summary::before { transition: none; }
 }
+
+/* ===========================================================================
+   4TH CLASS PART BUNDLES (2026-09-02)
+
+   Sits directly under each part's subhead in the 4th Class panel. Deliberately
+   NOT styled as a primary orange CTA: the page's orange belongs to /enroll, and
+   a bundle is a convenience on top of the unit downloads rather than the
+   headline action. Steel reads as "utility" against the orange download buttons
+   below it, which is the correct hierarchy — most people want one unit.
+
+   The size sits next to the button, not inside a tooltip, because a quarter of
+   a gigabyte on plant-floor mobile data is a decision and not a detail.
+   =========================================================================== */
+
+.bundle-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin: -0.4rem 0 1.4rem;
+  padding: 0.9rem 1rem;
+  background: var(--iron);
+  border: 1px solid var(--plate-edge);
+  border-left: 3px solid var(--steel);
+}
+
+.bundle-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--steel);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease),
+              background var(--duration-fast) var(--ease);
+}
+
+.bundle-btn:hover {
+  color: var(--white);
+  border-color: var(--steel-light);
+  background: rgba(58,110,165,0.15);
+}
+
+.bundle-btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.bundle-note {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--gray-mid);
+}
+
+@media (max-width: 700px) {
+  .bundle-row { flex-direction: column; align-items: stretch; }
+  .bundle-btn { text-align: center; }
+  .bundle-note { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bundle-btn { transition: none; }
+}

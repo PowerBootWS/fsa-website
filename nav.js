@@ -165,6 +165,10 @@
   // Textbook filenames follow PowerEngineering_{Second|Third|Fourth}Class{A|B}_Book{N}_E{25|30|35}.pdf
   // (with one known exception carrying a trailing -1, which this still matches).
   var TEXTBOOK_RE = /PowerEngineering_(First|Second|Third|Fourth)Class([AB])_Book(\d+)/i;
+  // Whole-part bundles (4th Class only, added 2026-09-02) — one zip per paper.
+  // Tracked as their own category so a bundle download is never confused with a
+  // single unit when the library is ranked by demand: one bundle is twelve books.
+  var BUNDLE_RE = /PowerEngineering_(First|Second|Third|Fourth)Class([AB])_AllUnits/i;
   var CLASS_LABEL = { first: '1st Class', second: '2nd Class', third: '3rd Class', fourth: '4th Class' };
 
   function ensureGtag() {
@@ -188,6 +192,7 @@
   }
 
   function classify(url, pathname) {
+    if (BUNDLE_RE.test(pathname)) return 'textbook-bundle';
     if (TEXTBOOK_RE.test(pathname)) return 'textbook';
     if (pathname.indexOf('/assets/lead-magnets/') === 0) return 'lead-magnet';
     if (url.host !== window.location.host) return 'external';
@@ -221,11 +226,11 @@
 
     // Which book, so the library can be ranked by actual demand rather than
     // by guesswork about which class level people come here for.
-    var book = pathname.match(TEXTBOOK_RE);
+    var book = pathname.match(TEXTBOOK_RE) || pathname.match(BUNDLE_RE);
     if (book) {
       params.book_class = CLASS_LABEL[book[1].toLowerCase()] || book[1];
       params.book_part = book[2].toUpperCase();
-      params.book_number = book[3];
+      if (book[3]) params.book_number = book[3];
     }
 
     // The size is printed next to every library download; carrying it through
