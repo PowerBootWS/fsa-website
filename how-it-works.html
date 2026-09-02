@@ -48,6 +48,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- THE SHORT VERSION (2026-09-02)
+       This page holds attention well once people are on it (75.6% engagement)
+       but averages only ~31 seconds of engaged time per view across nine
+       sections — it is being skimmed, not read. Rather than fight that, this
+       gives the skim a landing place: the five facts the page exists to
+       establish, each linking down to the section that argues it properly.
+
+       Prices are read at runtime from window.FSA_PRICING via data-price. Do
+       not hand-write a number in here — pricing.js is the one source, and the
+       fallback text inside each span exists only for the pre-script paint. -->
+  <div class="hiw-short">
+    <div class="hiw-short-label">The short version</div>
+    <ul class="hiw-short-list">
+      <li>
+        <span class="hiw-short-key">What it is</span>
+        <span class="hiw-short-val">Self-paced SOPEEC exam prep for 2nd, 3rd and 4th Class, built around working shift rotations rather than a classroom timetable. <a href="#how">How it works &darr;</a></span>
+      </li>
+      <li>
+        <span class="hiw-short-key">What it costs</span>
+        <span class="hiw-short-val">2nd Class $<span data-price="secondClass.current">149</span>/month and 3rd Class $<span data-price="thirdClass.current">99</span>/month, every paper for the ticket included. 4th Class is $<span data-price="fourthClass.current">99</span> per paper for a year, charged once and never renewing. <a href="#pricing">Compare the three &darr;</a></span>
+      </li>
+      <li>
+        <span class="hiw-short-key">How long</span>
+        <span class="hiw-short-val">Most people take 6&ndash;12 months. There is no fixed timeline, no access window closing on you, and you can cancel and resume without repurchasing. <a href="#papers">Every paper covered &darr;</a></span>
+      </li>
+      <li>
+        <span class="hiw-short-key">What's different</span>
+        <span class="hiw-short-val">You work calculations one step at a time with feedback at each stage instead of watching a finished solution, and the AI tutor answers "why was that wrong?" at 11pm after a twelve-hour shift. <a href="#how">See the three pillars &darr;</a></span>
+      </li>
+      <li>
+        <span class="hiw-short-key">Versus a course</span>
+        <span class="hiw-short-val">A traditional program runs about $1,600 per paper on a fixed schedule: $9,600 and up for a 2nd Class ticket, and you repurchase if your plans change. <a href="#compare">Full comparison &darr;</a></span>
+      </li>
+    </ul>
+  </div>
+
   <!-- HOW IT WORKS -->
   <div id="how" class="dark-section">
     <div class="section-wrap">
@@ -209,7 +245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="divider"></div>
 
   <!-- COMPARISON TABLE -->
-  <div class="dark-section">
+  <div class="dark-section" id="compare">
     <div class="section-wrap">
       <h2 class="section-title reveal">How We Stack Up</h2>
       <p class="section-sub reveal" data-delay="120">Traditional programs were built for classrooms. This one was built for working operators.</p>

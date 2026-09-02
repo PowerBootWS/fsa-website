@@ -4493,3 +4493,318 @@ footer {
   margin-top: 0.35rem;
   padding-top: 0.35rem;
 }
+
+/* ===========================================================================
+   LIBRARY SECTION JUMP BAR (2026-09-02)
+
+   /library is a 41 KB page holding 35 downloads across six sections, and it
+   had exactly two id anchors on it — neither of them a book. Someone arriving
+   for 3rd Class Book 2 had to scroll past the whole of 4th Class to reach it,
+   on a page where 64% of traffic is mobile. This is the findability fix: it
+   adds a way through the page without moving a single download.
+
+   Sticks at top:64px, directly under the fixed nav — same treatment as
+   .job-detail-back, which is the existing precedent for a sticky strip on
+   this site. Active pill takes its colour from the class accent bars already
+   established by .book-class::before, so the colour language of the page is
+   reused rather than a second one invented, and orange stays a signal rather
+   than becoming the default state of six pills.
+   =========================================================================== */
+
+.lib-jump {
+  position: sticky;
+  top: 64px;
+  z-index: 99;
+  background: rgba(5,9,15,0.97);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--plate-edge);
+}
+
+.lib-jump-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lib-jump-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  flex-shrink: 0;
+}
+
+.lib-jump-list {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Horizontal scroll rather than wrapping: the bar has to stay one row tall
+     or it eats the viewport it is meant to help navigate. */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.lib-jump-list::-webkit-scrollbar { display: none; }
+
+.lib-jump-link {
+  --jump-accent: var(--orange);
+  display: block;
+  white-space: nowrap;
+  padding: 0.85rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color var(--duration-fast) var(--ease),
+              border-bottom-color var(--duration-fast) var(--ease);
+}
+
+.lib-jump-link:hover { color: var(--white); }
+
+.lib-jump-link.is-active {
+  color: var(--jump-accent);
+  border-bottom-color: var(--jump-accent);
+}
+
+/* Matches .book-class.class-*::before so a pill and its panel bar agree. */
+.lib-jump-link.jump-4th { --jump-accent: #2BA6A0; }
+.lib-jump-link.jump-3rd { --jump-accent: var(--amber); }
+.lib-jump-link.jump-2nd { --jump-accent: var(--orange); }
+.lib-jump-link.jump-1st { --jump-accent: var(--gray-mid); }
+
+.lib-jump-link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: -2px;
+}
+
+/* Clearance for the fixed nav (64px) plus the jump bar itself (~46px). */
+#lib-4th, #lib-3rd, #lib-2nd, #lib-1st,
+#lib-exam-info, #lib-references {
+  scroll-margin-top: 122px;
+}
+
+@media (max-width: 900px) {
+  .lib-jump-inner {
+    padding: 0 1rem;
+    gap: 0.6rem;
+  }
+  /* The label is the first thing to go — the pills are self-explanatory and
+     the row is tight on a phone. */
+  .lib-jump-label { display: none; }
+  .lib-jump-link {
+    padding: 0.75rem 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+  #lib-4th, #lib-3rd, #lib-2nd, #lib-1st,
+  #lib-exam-info, #lib-references {
+    scroll-margin-top: 108px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lib-jump-link { transition: none; }
+}
+
+/* ===========================================================================
+   CROSS-REFERENCE BAND (2026-09-02)
+
+   /jobs and /library together take ~4,700 landing sessions a quarter and
+   neither linked to /how-it-works, which was reachable from the nav, the
+   homepage and 404.html and nowhere else — 365 pageviews against 9,221
+   sessions. This is the bridge, placed after the visitor has been given what
+   they came for rather than interrupting them on the way to it.
+
+   Deliberately a ghost button, not a second orange CTA: both host pages
+   already spend their one orange signal on /enroll, and DESIGN.md's One
+   Signal Rule holds.
+   =========================================================================== */
+
+.xref-band {
+  border-top: 1px solid var(--plate-edge);
+  border-bottom: 1px solid var(--plate-edge);
+  background: var(--iron);
+  padding: 2rem 1.5rem;
+}
+
+.xref-band-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.xref-band-text { flex: 1 1 380px; }
+
+.xref-band-heading {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--off-white);
+  margin-bottom: 0.35rem;
+}
+
+.xref-band-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--gray-mid);
+  max-width: 60ch;
+}
+
+.xref-band-cta {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(200,208,218,0.3);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease);
+}
+
+.xref-band-cta:hover {
+  color: var(--white);
+  border-color: var(--steel-light);
+}
+
+.xref-band-cta:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .xref-band-inner { flex-direction: column; align-items: flex-start; }
+  .xref-band-cta { width: 100%; text-align: center; }
+}
+
+/* ===========================================================================
+   HOW IT WORKS — THE SHORT VERSION (2026-09-02)
+
+   /how-it-works holds 75.6% engagement but only ~31 seconds of engaged time
+   per pageview across nine sections including a comparison table and an FAQ.
+   People skim it. This gives the skim somewhere to land: the five things the
+   page exists to say, each one linking down to the section that proves it.
+   Readers who want the argument still scroll into it; readers who wanted the
+   facts have them in ten seconds instead of leaving without them.
+   =========================================================================== */
+
+.hiw-short {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0;
+}
+
+.hiw-short-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.9rem;
+}
+
+.hiw-short-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--plate-edge);
+}
+
+.hiw-short-list li {
+  border-bottom: 1px solid var(--plate-edge);
+  padding: 0.9rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.hiw-short-key {
+  flex: 0 0 9.5rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+}
+
+.hiw-short-val {
+  flex: 1 1 auto;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  color: var(--off-white);
+}
+
+.hiw-short-val a {
+  color: var(--gray-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--plate-edge);
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  transition: color var(--duration-fast) var(--ease),
+              border-bottom-color var(--duration-fast) var(--ease);
+}
+
+.hiw-short-val a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.hiw-short-val a:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+#how, #papers, #compare, #pricing, #faq { scroll-margin-top: 80px; }
+
+@media (max-width: 700px) {
+  .hiw-short { padding: 2rem 1.1rem 0; }
+  .hiw-short-list li { flex-direction: column; gap: 0.3rem; }
+  .hiw-short-key { flex: none; }
+}
+
+/* The pill row scrolls horizontally on a phone and the cut-off edge alone is a
+   weak signal that there is more to the right. A fade over the trailing edge
+   says "keep going" without adding a control to a bar that has to stay one row
+   tall. Pointer-events off so it never eats a tap on the pill underneath. */
+@media (max-width: 900px) {
+  .lib-jump-inner { position: relative; }
+  .lib-jump-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.5rem;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(5,9,15,0), rgba(5,9,15,0.97));
+  }
+}

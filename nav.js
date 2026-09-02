@@ -133,3 +133,117 @@
     applyExamLinkAttribution();
   }
 })();
+
+// ---------------------------------------------------------------------------
+// File-download tracking (added 2026-09-02)
+//
+// GA4 Enhanced Measurement's built-in `file_download` event has never been
+// switched on for this property: a check of 180 days of event data, both
+// hostname-filtered and property-wide, returned nine event names and
+// file_download was not among them. The consequence was that /library — the
+// single largest free asset on the site, 35 PDFs and ~1,100 landing sessions a
+// quarter — produced no data whatsoever. There was no way to tell which books
+// were in demand, whether visitors downloaded anything at all, or whether a
+// download ever preceded an enrolment.
+//
+// This fires the event from our own code rather than from the GA4 admin
+// toggle, so it lives in version control, deploys with the site, and cannot be
+// silently switched off in a UI nobody is looking at.
+//
+// The gtag bootstrap mirrors what jobs.html already does inline for
+// `jobs_banner_click` / `jobs_alert_subscribe` — a pattern proven to reach GA4
+// on this property while GTM is also present. `send_page_view: false` is what
+// keeps it from double-counting pageviews against the GTM container.
+// ---------------------------------------------------------------------------
+(function () {
+  var GA4_ID = 'G-5ZFF5FB8R8';
+
+  // Extensions worth counting as a download. Anything carrying an explicit
+  // `download` attribute is tracked regardless of extension.
+  var TRACKED_EXT = /\.(pdf|zip|csv|xlsx?|docx?|pptx?|epub|mp3)$/i;
+
+  // Textbook filenames follow PowerEngineering_{Second|Third|Fourth}Class{A|B}_Book{N}_E{25|30|35}.pdf
+  // (with one known exception carrying a trailing -1, which this still matches).
+  var TEXTBOOK_RE = /PowerEngineering_(First|Second|Third|Fourth)Class([AB])_Book(\d+)/i;
+  var CLASS_LABEL = { first: '1st Class', second: '2nd Class', third: '3rd Class', fourth: '4th Class' };
+
+  function ensureGtag() {
+    // GTM defines window.gtag in most GA4 container setups, and jobs.html
+    // defines it inline. In either case the GA4 stream is already registered
+    // and an event sent through it routes correctly, so leave it alone.
+    if (typeof window.gtag === 'function') return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+      document.head.appendChild(s);
+    }
+
+    window.gtag('js', new Date());
+    window.gtag('config', GA4_ID, { send_page_view: false });
+  }
+
+  function classify(url, pathname) {
+    if (TEXTBOOK_RE.test(pathname)) return 'textbook';
+    if (pathname.indexOf('/assets/lead-magnets/') === 0) return 'lead-magnet';
+    if (url.host !== window.location.host) return 'external';
+    return 'other';
+  }
+
+  function trackDownload(link) {
+    var url;
+    try {
+      url = new URL(link.getAttribute('href'), window.location.href);
+    } catch (e) {
+      return;
+    }
+
+    var pathname = url.pathname;
+    var isExplicit = link.hasAttribute('download');
+    if (!isExplicit && !TRACKED_EXT.test(pathname)) return;
+
+    var fileName = pathname.split('/').pop() || pathname;
+    var extMatch = fileName.match(/\.([a-z0-9]+)$/i);
+    var linkText = (link.textContent || '').replace(/\s+/g, ' ').trim();
+
+    var params = {
+      file_name: fileName,
+      file_extension: extMatch ? extMatch[1].toLowerCase() : '',
+      link_url: url.href,
+      link_text: linkText.slice(0, 100),
+      file_category: classify(url, pathname),
+      page_path: window.location.pathname
+    };
+
+    // Which book, so the library can be ranked by actual demand rather than
+    // by guesswork about which class level people come here for.
+    var book = pathname.match(TEXTBOOK_RE);
+    if (book) {
+      params.book_class = CLASS_LABEL[book[1].toLowerCase()] || book[1];
+      params.book_part = book[2].toUpperCase();
+      params.book_number = book[3];
+    }
+
+    // The size is printed next to every library download; carrying it through
+    // makes it possible to spot a large file people start and abandon.
+    var sizeEl = link.parentElement && link.parentElement.querySelector('.chapter-size');
+    if (sizeEl) params.file_size = sizeEl.textContent.trim();
+
+    try {
+      ensureGtag();
+      window.gtag('event', 'file_download', params);
+    } catch (e) {}
+  }
+
+  // Delegated so it covers links added after load (the jobs page builds cards
+  // client-side) without every page having to opt in.
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!link) return;
+    trackDownload(link);
+  }, true);
+})();

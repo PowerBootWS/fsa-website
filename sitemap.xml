@@ -4,7 +4,7 @@
   <!-- Core pages -->
   <url>
     <loc>https://fullsteamahead.ca/</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -90,21 +90,21 @@
 
   <url>
     <loc>https://fullsteamahead.ca/jobs</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fullsteamahead.ca/how-it-works</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://fullsteamahead.ca/library</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
