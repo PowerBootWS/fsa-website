@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "name": "How many questions are in the free practice exam?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You choose: 25, 50, or 100 questions, drawn from the real exam-format question bank for the paper you pick. Either length ends with a full chapter-by-chapter debrief showing exactly where you're strong and where you're not: with AI feedback for 2nd and 3rd Class; 4th Class gets a full stats breakdown."
+          "text": "You choose: 25, 50, or 100 questions, drawn from the real exam-format question bank for the paper you pick. Every length ends with a full chapter-by-chapter debrief showing exactly where you're strong and where you're not: with AI feedback for 2nd and 3rd Class; 4th Class gets a full stats breakdown."
         }
       },
       {
@@ -58,6 +58,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "No, the free practice exam is one paper only, once, verified by email. Choose whichever paper you're least confident on: 2nd Class, 3rd Class, or 4th Class Part A or B. Want more? A subscription unlocks every paper for 2nd/3rd Class, or exam-specific access for 4th Class Part A/B."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the free practice exam take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That is your choice when you start. 25 questions gives you 45 minutes, 50 gives you 90 minutes, and the full 100 gives you 3 hours. The 100-question run matches the real paper on both count and clock, so it is the one to pick if what you want to know is whether you would finish in time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this the same format as the real SOPEEC exam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every jurisdiction's paper is now 100 multiple-choice questions in 3 hours with a 65% pass mark, and the free practice exam uses that same format and the same question bank our members study on. The questions are weighted toward the difficulty that actually decides a pass rather than the easy end of the bank."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I take it on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It runs in the browser on a phone, tablet or desktop, with nothing to install. Most people sit the 25-question version on a phone and save the full 100-question run for a laptop and a quiet three hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from the practice questions in the textbooks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A textbook question tells you the right answer. This tells you why the answer you picked was wrong, and then aggregates that across the whole paper into a chapter-by-chapter breakdown, so you finish knowing which two or three chapters are costing you the pass. That is the part a book cannot do."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I have not started studying yet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sit it anyway, and sit it early. A diagnostic taken before you study is more useful than one taken after, because it tells you where to spend the months rather than confirming what you already suspected. Nobody sees the score but you."
         }
       }
     ]
@@ -77,8 +117,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- PAGE HEADER -->
   <section class="how-header">
     <div class="how-header-inner">
-      <h1>Free Practice Exam: Find Out If You'd Pass, Before Exam Day</h1>
-      <p>Textbooks and study guides tell you <em>what</em> to study. This tells you where you actually stand. Pick one paper: 2nd Class, 3rd Class, or 4th Class Part A/B. Take 25, 50, or 100 real exam-format questions, and get a chapter-by-chapter debrief, with AI feedback for 2nd and 3rd Class: the same experience full members get. No credit card, no commitment, just verify your email and go.</p>
+      <h1>Free Power Engineering Practice Test: Find Out If You'd Pass, Before Exam Day</h1>
+      <p>A textbook tells you <em>what</em> to study. This tells you where you actually stand. Pick your paper below, sit 25, 50 or 100 real exam-format questions, and get a chapter-by-chapter debrief. Free, no credit card.</p>
     </div>
   </section>
 
@@ -86,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div>
     <div class="section-wrap">
       <h2 class="section-title reveal" data-delay="60">Step 1: Choose Your Certificate</h2>
-      <p class="section-sub reveal" data-delay="120">Every 2nd, 3rd, and 4th Class paper is available for a free practice run. You only get one, so pick the paper you're least sure about.</p>
+      <p class="section-sub reveal" data-delay="120">Every 2nd, 3rd and 4th Class paper is here. You get one free exam, so pick the paper you are least sure about: that is the one worth measuring.</p>
 
       <div class="pillars" id="fpe-class-picker">
         <div class="pillar-card orange-top fpe-class-card" data-class="second" role="button" tabindex="0" aria-pressed="false">
@@ -102,18 +142,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pillar-card amber-top fpe-class-card" data-class="fourth_a" role="button" tabindex="0" aria-pressed="false">
           <div class="pillar-icon">📙</div>
           <div class="pillar-title">4th Class – Part A</div>
-          <p class="pillar-desc">Paper 4A, the whole exam. This is the one free exam you get.</p>
+          <p class="pillar-desc">Paper 4A, the whole exam: mechanics, thermodynamics, plant and fire safety, electrotechnology, instrumentation and boiler design.</p>
         </div>
         <div class="pillar-card green-top fpe-class-card" data-class="fourth_b" role="button" tabindex="0" aria-pressed="false">
           <div class="pillar-icon">📙</div>
           <div class="pillar-title">4th Class – Part B</div>
-          <p class="pillar-desc">Paper 4B, the whole exam. This is the one free exam you get.</p>
+          <p class="pillar-desc">Paper 4B, the whole exam: prime movers, pumps and compressors, boiler operation, water treatment, refrigeration and HVAC.</p>
         </div>
       </div>
 
       <div id="fpe-paper-step" class="fpe-hidden" style="margin-top:3.5rem;">
         <h2 class="section-title reveal" data-delay="60">Step 2: Choose Your Paper</h2>
-        <p class="section-sub reveal" data-delay="120">Pick the paper you want to practice. This is your one free exam, verified by email, so choose carefully.</p>
+        <p class="section-sub reveal" data-delay="120">Pick the paper you want to sit.</p>
 
         <div class="chapter-grid" id="fpe-papers-second">
           <div class="chapter-card fpe-paper-card" data-paper="2A1" role="button" tabindex="0" aria-pressed="false">
@@ -173,6 +213,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="divider"></div>
 
+  <!-- WHAT YOU GET + SAMPLE QUESTION (2026-09-02)
+       This page ran 11.3 seconds of engaged time per view, the lowest of any
+       substantive page on the site, and drew 4 search impressions in 90 days
+       (both branded) off 515 words that were almost entirely picker labels.
+       It asked for an email without ever showing what the thing was. These two
+       sections are the answer to both problems: they tell a visitor what they
+       are about to sit, and they give the page something to actually rank for.
+       The sample is a real question from the live 3A1 bank, not a mock-up. -->
+  <div class="dark-section">
+    <div class="section-wrap">
+      <h2 class="section-title reveal">What You're Actually Sitting</h2>
+      <p class="section-sub reveal" data-delay="120">Not a quiz, and not a teaser. It is the same question bank and the same debrief a paying member gets, on one paper.</p>
+
+      <div class="pillars">
+        <div class="pillar-card orange-top reveal" data-delay="0">
+          <div class="pillar-title">You Choose the Length</div>
+          <p class="pillar-desc">25 questions in 45 minutes, 50 in 90, or the full 100 in 3 hours. The 100-question run is the real thing: same count, same clock, same multiple-choice format as the paper you will write.</p>
+        </div>
+        <div class="pillar-card steel-top reveal" data-delay="100">
+          <div class="pillar-title">Real Questions, Not Samples</div>
+          <p class="pillar-desc">Every question is drawn from the live bank members study on, weighted toward the difficulty that actually decides a pass. Nothing on this page is written specially to look easy.</p>
+        </div>
+        <div class="pillar-card amber-top reveal" data-delay="200">
+          <div class="pillar-title">A Chapter-by-Chapter Debrief</div>
+          <p class="pillar-desc">Your result is not a percentage. It is a breakdown of which chapters you are solid on and which ones you are not, so you know where the next month of study should go.</p>
+        </div>
+        <div class="pillar-card green-top reveal" data-delay="300">
+          <div class="pillar-title">Feedback on Every Miss</div>
+          <p class="pillar-desc">2nd and 3rd Class get AI feedback explaining why the answer you picked was wrong, not just which one was right. 4th Class gets a full statistical breakdown by chapter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SAMPLE QUESTION -->
+  <div>
+    <div class="section-wrap">
+      <h2 class="section-title reveal">A Real Question From the 3rd Class Bank</h2>
+      <p class="section-sub reveal" data-delay="120">This is question 3A1-4, exactly as it appears in the exam. Have a go before you scroll.</p>
+
+      <div class="fpe-sample reveal" data-delay="150">
+        <div class="fpe-sample-meta">Paper 3A1 &middot; Applied Mechanics &middot; Calculation</div>
+        <p class="fpe-sample-q">A pump and skid assembly has a total mass of 2000 kg. The coefficient of static friction between the skid and the concrete floor is 0.26. What minimum horizontal force is required to start the assembly moving?</p>
+        <ol class="fpe-sample-opts">
+          <li>520 N</li>
+          <li>7700 N</li>
+          <li class="is-correct">5101 N</li>
+          <li>4905 N</li>
+        </ol>
+
+        <details class="fpe-sample-reveal">
+          <summary>Show the debrief for this question</summary>
+          <div class="fpe-sample-body">
+            <p><strong>Correct: 5101 N.</strong> F = &mu;<sub>s</sub> &times; m &times; g = 0.26 &times; 2000 &times; 9.81 = 5101 N.</p>
+            <p>The three wrong answers are the three mistakes people actually make on this question, which is the point of the debrief:</p>
+            <ul>
+              <li><strong>520 N:</strong> you dropped the 9.81 and multiplied 0.26 &times; 2000. Mass is not weight.</li>
+              <li><strong>4905 N:</strong> your method was right; you used 0.25 instead of 0.26. That is a reading error, not a knowledge gap, and it is worth knowing which of the two you are making.</li>
+              <li><strong>7700 N:</strong> wrong coefficient or wrong <em>g</em>.</li>
+            </ul>
+            <p>Get this wrong across several questions and the debrief will not just say "applied mechanics, 60%". It will show you that friction problems are where you are losing marks, and whether you are losing them on the physics or the arithmetic.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
   <!-- FAQ -->
   <div id="faq">
     <div class="section-wrap">
@@ -182,7 +291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="faq-card orange-border reveal" data-delay="0">
           <div class="faq-q">How many questions are in the free practice exam?</div>
-          <p class="faq-a">You choose: 25, 50, or 100 questions, drawn from the real exam-format question bank for the paper you pick. Either length ends with a full chapter-by-chapter debrief showing exactly where you're strong and where you're not: with AI feedback for 2nd and 3rd Class; 4th Class gets a full stats breakdown.</p>
+          <p class="faq-a">You choose: 25, 50, or 100 questions, drawn from the real exam-format question bank for the paper you pick. Every length ends with a full chapter-by-chapter debrief showing exactly where you're strong and where you're not: with AI feedback for 2nd and 3rd Class; 4th Class gets a full stats breakdown.</p>
         </div>
 
         <div class="faq-card reveal" data-delay="30">
@@ -195,6 +304,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="faq-a">No, the free practice exam is one paper only, once, verified by email. Choose whichever paper you're least confident on: 2nd Class, 3rd Class, or 4th Class Part A or B. Want more? A subscription unlocks every paper for 2nd/3rd Class, or exam-specific access for 4th Class Part A/B.</p>
         </div>
 
+
+        <div class="faq-card reveal" data-delay="90">
+          <div class="faq-q">How long does the free practice exam take?</div>
+          <p class="faq-a">That is your choice when you start. 25 questions gives you 45 minutes, 50 gives you 90 minutes, and the full 100 gives you 3 hours. The 100-question run matches the real paper on both count and clock, so it is the one to pick if what you want to know is whether you would finish in time.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="120">
+          <div class="faq-q">Is this the same format as the real SOPEEC exam?</div>
+          <p class="faq-a">Yes. Every jurisdiction's paper is now 100 multiple-choice questions in 3 hours with a 65% pass mark, and the free practice exam uses that same format and the same question bank our members study on. The questions are weighted toward the difficulty that actually decides a pass rather than the easy end of the bank.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="150">
+          <div class="faq-q">Can I take it on my phone?</div>
+          <p class="faq-a">Yes. It runs in the browser on a phone, tablet or desktop, with nothing to install. Most people sit the 25-question version on a phone and save the full 100-question run for a laptop and a quiet three hours.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="180">
+          <div class="faq-q">How is this different from the practice questions in the textbooks?</div>
+          <p class="faq-a">A textbook question tells you the right answer. This tells you why the answer you picked was wrong, and then aggregates that across the whole paper into a chapter-by-chapter breakdown, so you finish knowing which two or three chapters are costing you the pass. That is the part a book cannot do.</p>
+        </div>
+
+        <div class="faq-card reveal" data-delay="210">
+          <div class="faq-q">What if I have not started studying yet?</div>
+          <p class="faq-a">Sit it anyway, and sit it early. A diagnostic taken before you study is more useful than one taken after, because it tells you where to spend the months rather than confirming what you already suspected. Nobody sees the score but you.</p>
+        </div>
       </div>
     </div>
   </div>

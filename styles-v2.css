@@ -4808,3 +4808,135 @@ footer {
     background: linear-gradient(to right, rgba(5,9,15,0), rgba(5,9,15,0.97));
   }
 }
+
+/* ===========================================================================
+   FREE PRACTICE EXAM — SAMPLE QUESTION (2026-09-02)
+
+   The page asked for an email without ever showing what the exam was, and ran
+   11.3s of engaged time per view for it. This block shows one real question
+   from the live 3A1 bank, with its debrief behind a <details> so the reader
+   can genuinely attempt it first.
+
+   Note the :has() rule below: the correct option is NOT marked until the
+   debrief is opened, or "have a go before you scroll" is a lie. Browsers
+   without :has() simply never highlight it, which fails in the safe direction.
+   =========================================================================== */
+
+.fpe-sample {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-bottom: 3px solid var(--plate-edge);
+  padding: 1.6rem;
+}
+
+.fpe-sample-meta {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.9rem;
+}
+
+.fpe-sample-q {
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--off-white);
+  margin-bottom: 1.3rem;
+}
+
+.fpe-sample-opts {
+  list-style: none;
+  counter-reset: opt;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.fpe-sample-opts li {
+  counter-increment: opt;
+  border: 1px solid var(--plate-edge);
+  background: var(--iron);
+  padding: 0.75rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--gray-light);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.fpe-sample-opts li::before {
+  content: counter(opt, upper-alpha);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--gray-mid);
+}
+
+/* Only once the reader has committed by opening the debrief. */
+.fpe-sample:has(.fpe-sample-reveal[open]) .fpe-sample-opts li.is-correct {
+  border-color: var(--green-light);
+  background: rgba(82,168,130,0.12);
+  color: var(--off-white);
+}
+
+.fpe-sample:has(.fpe-sample-reveal[open]) .fpe-sample-opts li.is-correct::after {
+  content: '✓';
+  margin-left: auto;
+  color: var(--green-light);
+  font-weight: 700;
+}
+
+.fpe-sample-reveal {
+  border-top: 1px solid var(--plate-edge);
+  padding-top: 1.1rem;
+}
+
+.fpe-sample-reveal > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.fpe-sample-reveal > summary::-webkit-details-marker { display: none; }
+.fpe-sample-reveal > summary::before { content: '▸ '; display: inline-block; transition: transform var(--duration-fast) var(--ease); }
+.fpe-sample-reveal[open] > summary::before { transform: rotate(90deg); }
+.fpe-sample-reveal > summary:hover { color: var(--orange-glow); }
+.fpe-sample-reveal > summary:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+.fpe-sample-body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--gray-light);
+  padding-top: 1rem;
+}
+
+.fpe-sample-body p { margin-bottom: 0.9rem; }
+.fpe-sample-body strong { color: var(--off-white); }
+.fpe-sample-body ul { margin: 0 0 0.9rem 1.1rem; }
+.fpe-sample-body li { margin-bottom: 0.55rem; }
+
+@media (max-width: 700px) {
+  .fpe-sample { padding: 1.2rem; }
+  .fpe-sample-opts { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fpe-sample-reveal > summary,
+  .fpe-sample-reveal > summary::before { transition: none; }
+}
