@@ -102,7 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: border-color 0.2s;
     }
     .signup-input:focus { outline: none; border-color: var(--orange); }
-    /* Honeypot — visually and programmatically hidden, but not display:none
+    /* Honeypot: visually and programmatically hidden, but not display:none
        (some bots skip that). Off-screen, unreachable by tab, unlabeled to AT. */
     .signup-honeypot {
       position: absolute;
@@ -243,7 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="submit">Send Login Link</button>
       </form>
       <p id="affiliate-login-message" class="affiliate-login-message"></p>
-      <p class="affiliate-login-apply">Not an affiliate yet? <a href="#" id="show-signup-link">Sign up here</a> — it takes 30 seconds.</p>
+      <p class="affiliate-login-apply">Not an affiliate yet? <a href="#" id="show-signup-link">Sign up here</a>, it takes 30 seconds.</p>
     </div>
 
     <div id="affiliate-signup" class="affiliate-login" hidden>
@@ -525,7 +525,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }).catch(function () {
           // fall through — same generic message either way
         }).then(function () {
-          loginMessage.textContent = 'If that email is registered, a login link is on its way — check your inbox.';
+          loginMessage.textContent = 'If that email is registered, a login link is on its way: check your inbox.';
         });
       });
 
