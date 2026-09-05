@@ -62,13 +62,30 @@
 })();
 
 (function () {
+  // Matches MAX_FIELD_LENGTH in fsa-affiliate-program's click handler, which
+  // clamps again server-side — this only keeps the ping URL sane.
+  var MAX_TRACK_FIELD = 512;
+
+  // The landing URL and the external referrer both have to be passed
+  // explicitly. The Referer header on this ping is useless for either: it is
+  // a same-origin fetch from fullsteamahead.ca, so the default referrer
+  // policy reduces it to the bare origin, which is why every click row logged
+  // before 2026-09-05 has landing_path 'https://fullsteamahead.ca/' and
+  // nothing else. document.referrer here still holds the real external source
+  // (the Facebook post, the Reddit comment) that sent the visitor.
   function initAffiliateTracking() {
     var params = new URLSearchParams(window.location.search);
     var code = params.get('am_id');
     if (!code) return;
     document.cookie = 'fsa_affiliate=' + encodeURIComponent(code) + '; max-age=7776000; path=/';
     try {
-      fetch('https://fsa-lead-capture.powerboot.workers.dev/track?am_id=' + encodeURIComponent(code), { mode: 'no-cors' });
+      var url = 'https://fsa-lead-capture.powerboot.workers.dev/track?am_id=' + encodeURIComponent(code);
+      var landingPath = (window.location.pathname + window.location.search).slice(0, MAX_TRACK_FIELD);
+      url += '&landingPath=' + encodeURIComponent(landingPath);
+      if (document.referrer) {
+        url += '&referrer=' + encodeURIComponent(document.referrer.slice(0, MAX_TRACK_FIELD));
+      }
+      fetch(url, { mode: 'no-cors' });
     } catch (e) {}
   }
   initAffiliateTracking();
