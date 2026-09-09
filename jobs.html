@@ -186,6 +186,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
+  <!-- JOBS BY PROVINCE (2026-09-09, backlog #99)
+       Internal links into the provincial jobs cluster, which as of today is
+       the last piece of #96 still unindexed: five of the six provincial pages
+       have never been crawled, and power-engineering-jobs-guide (their only
+       real parent) has never been crawled either. The generated /articles/ hub
+       already links to all seven and has not been enough on its own, so these
+       links come from /jobs instead: the site's biggest front door (505
+       impressions, avg position 7.2 over 90 days) and the topically correct
+       parent for them. It is also the block a visitor scrolling listings
+       actually wants, which is why it sits under the results rather than in a
+       footer. -->
+  <div class="jobs-province-band">
+    <div class="jobs-province-inner">
+      <div class="section-label" style="color:var(--orange)">Know Your Market</div>
+      <h2 class="jobs-province-heading">Power engineering jobs by province</h2>
+      <p class="jobs-province-sub">We read every posting that comes through this board. These are the write-ups: who is actually hiring in each province, which ticket they ask for, and what the work pays.</p>
+      <div class="jobs-province-grid">
+        <a href="/articles/power-engineering-jobs-alberta/" class="jobs-province-card">
+          <span class="jobs-province-name">Alberta</span>
+          <span class="jobs-province-meta">480 postings analysed</span>
+        </a>
+        <a href="/articles/power-engineering-jobs-bc/" class="jobs-province-card">
+          <span class="jobs-province-name">British Columbia</span>
+          <span class="jobs-province-meta">269 postings analysed</span>
+        </a>
+        <a href="/articles/power-engineering-jobs-ontario/" class="jobs-province-card">
+          <span class="jobs-province-name">Ontario</span>
+          <span class="jobs-province-meta">254 postings analysed</span>
+        </a>
+        <a href="/articles/power-engineering-jobs-manitoba/" class="jobs-province-card">
+          <span class="jobs-province-name">Manitoba</span>
+          <span class="jobs-province-meta">100 postings analysed</span>
+        </a>
+        <a href="/articles/power-engineering-jobs-nova-scotia/" class="jobs-province-card">
+          <span class="jobs-province-name">Nova Scotia</span>
+          <span class="jobs-province-meta">69 postings analysed</span>
+        </a>
+        <a href="/articles/power-engineering-jobs-saskatchewan/" class="jobs-province-card">
+          <span class="jobs-province-name">Saskatchewan</span>
+          <span class="jobs-province-meta">55 postings analysed</span>
+        </a>
+      </div>
+      <p class="jobs-province-footnote">Searching across provinces, or not sure where to start? The <a href="/articles/power-engineering-jobs-guide/">complete power engineering job search guide</a> covers the whole hiring journey, from what your certificate class qualifies you for through to negotiating the offer.</p>
+    </div>
+  </div>
+
   <!-- Scroll reveal -->
   <script>
     (function () {

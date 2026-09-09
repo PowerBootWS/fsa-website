@@ -5012,3 +5012,96 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .bundle-btn { transition: none; }
 }
+
+/* ===========================================================================
+   JOBS BY PROVINCE (2026-09-09, backlog #99)
+   Link block under the /jobs listings into the six provincial jobs articles
+   and their guide. Visual language follows .xref-band directly above: iron
+   fill, plate-edge rules, display font for the heading, body font for copy.
+   =========================================================================== */
+
+.jobs-province-band {
+  border-top: 1px solid var(--plate-edge);
+  background: var(--iron);
+  padding: 3rem 1.5rem;
+}
+
+.jobs-province-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.jobs-province-heading {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--off-white);
+  margin: 0.4rem 0 0.6rem;
+}
+
+.jobs-province-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--gray-mid);
+  max-width: 62ch;
+  margin-bottom: 1.6rem;
+}
+
+.jobs-province-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.jobs-province-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--plate-edge);
+  border-radius: 4px;
+  text-decoration: none;
+  background: transparent;
+  transition: border-color var(--duration-fast) var(--ease),
+              background var(--duration-fast) var(--ease);
+}
+
+.jobs-province-card:hover {
+  border-color: var(--steel-light);
+  background: rgba(77,136,194,0.06);
+}
+
+.jobs-province-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.jobs-province-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--gray-light);
+}
+
+.jobs-province-card:hover .jobs-province-name { color: var(--white); }
+
+.jobs-province-meta {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+}
+
+.jobs-province-footnote {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--gray-mid);
+  max-width: 68ch;
+  margin-top: 1.5rem;
+}
+
+.jobs-province-footnote a { color: var(--gray-light); }
+.jobs-province-footnote a:hover { color: var(--white); }

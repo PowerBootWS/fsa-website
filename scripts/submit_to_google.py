@@ -1,18 +1,35 @@
 #!/usr/bin/env python3
 """
-Google Search Console — Sitemap submission + URL indexing request.
+Google Search Console — sitemap submission + URL index-status reporting.
+
+⚠️  This script CANNOT ask Google to index a URL, and never could.
+    Submitting the sitemap is real and works. The per-URL half only calls the
+    URL Inspection API, which is READ-ONLY: it reports what Google already
+    thinks of a URL. There is no "request indexing" method in any Search
+    Console API -- that button exists only in the GSC web UI, one URL at a
+    time. (The separate Indexing API accepts JobPosting and BroadcastEvent
+    pages only, which none of ours are.)
+
+    Until 2026-09-09 this file said otherwise: the function was called
+    request_indexing(), printed "Requesting indexing for N URL(s)" and
+    "Indexing requests: N ok", and read the wrong response key so the status
+    it printed was always "verdict=unknown coverage=". Publishing an article
+    and running this looked like a submission and was not one. Backlog #96
+    recorded "each was submitted at publish time and Google acknowledged the
+    request" on that basis; that was never true. Getting a page crawled is an
+    internal-linking and authority problem (backlog #99), not a submission one.
 
 First run: opens a browser for OAuth consent. Saves token to scripts/google_token.json
 for subsequent runs (no browser needed after that).
 
 Usage:
-  # Submit sitemap and request indexing for all URLs:
+  # Submit sitemap, then report index status for all known URLs:
   python3 scripts/submit_to_google.py
 
   # Submit sitemap only:
   python3 scripts/submit_to_google.py --sitemap-only
 
-  # Request indexing for a single URL:
+  # Inspect a single URL:
   python3 scripts/submit_to_google.py --url https://fullsteamahead.ca/articles/2nd-class-power-engineering-exam-guide/
 
 Requires:
@@ -128,33 +145,50 @@ def submit_sitemap(service):
         print(f"  Sitemap submission error: {e}")
 
 
-def request_indexing(service, urls):
-    print(f"\nRequesting indexing for {len(urls)} URL(s)...")
-    # GSC URL Inspection API — inspect and request indexing
-    success = 0
+def inspect_urls(service, urls):
+    """Report each URL's current index status.
+
+    This does NOT ask Google to index anything -- see the module docstring.
+    It is a read-only status report, and the only thing the API offers.
+    """
+    print(f"\nInspecting index status for {len(urls)} URL(s)...")
+    print("(read-only: this does not request indexing -- see docstring)")
+    counts = {}
     failed = 0
     for url in urls:
         try:
             result = service.urlInspection().index().inspect(
                 body={"inspectionUrl": url, "siteUrl": SITE_URL}
             ).execute()
-            verdict = result.get("urlInspectionResult", {}).get("indexStatusResult", {}).get("verdict", "unknown")
-            coverage = result.get("urlInspectionResult", {}).get("indexStatusResult", {}).get("coverageState", "")
-            print(f"  [ok] {url}")
-            print(f"       verdict={verdict} coverage={coverage}")
-            success += 1
+            # The response key is "inspectionResult". This used to read
+            # "urlInspectionResult", which never matched, so every line
+            # printed "verdict=unknown coverage=" no matter the real state
+            # and nobody could see that 28 of 61 articles were unindexed.
+            index = result.get("inspectionResult", {}).get("indexStatusResult", {})
+            verdict = index.get("verdict", "unknown")
+            coverage = index.get("coverageState", "")
+            last_crawl = index.get("lastCrawlTime", "never")
+            counts[coverage or verdict] = counts.get(coverage or verdict, 0) + 1
+            flag = "ok" if verdict == "PASS" else "--"
+            print(f"  [{flag}] {url}")
+            print(f"       verdict={verdict} coverage={coverage} last_crawl={last_crawl[:10]}")
         except Exception as e:
             print(f"  [!!] {url}")
             print(f"       {e}")
             failed += 1
 
-    print(f"\nIndexing requests: {success} ok, {failed} failed.")
+    print("\nIndex status summary:")
+    for state, n in sorted(counts.items(), key=lambda kv: -kv[1]):
+        print(f"  {n:3d}  {state}")
+    if failed:
+        print(f"  {failed:3d}  inspection failed")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Submit FSA sitemap and request Google indexing")
+    parser = argparse.ArgumentParser(
+        description="Submit the FSA sitemap and report URL index status")
     parser.add_argument("--sitemap-only", action="store_true", help="Only submit the sitemap, skip URL inspection")
-    parser.add_argument("--url", help="Request indexing for a single URL only")
+    parser.add_argument("--url", help="Inspect a single URL only")
     args = parser.parse_args()
 
     try:
@@ -174,7 +208,7 @@ def main():
 
     if not args.sitemap_only:
         urls = [args.url] if args.url else ALL_URLS
-        request_indexing(service, urls)
+        inspect_urls(service, urls)
 
     print("\nDone.")
 
