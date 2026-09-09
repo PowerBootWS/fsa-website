@@ -100,6 +100,7 @@ INCLUDE_NAV_RE = re.compile(
 )
 INCLUDE_FOOTER_RE = re.compile(r'<!--\s*INCLUDE:footer\s*-->')
 INCLUDE_FONTS_RE = re.compile(r'<!--\s*INCLUDE:fonts\s*-->')
+INCLUDE_HOME_GUIDES_RE = re.compile(r'<!--\s*INCLUDE:home-guides\s*-->')
 
 
 # Families the shared font link actually downloads, parsed from the partial so the
@@ -271,6 +272,96 @@ def render_sections(articles: list[Article], level: str | None) -> str:
     return "".join(out)
 
 
+# ── Homepage "Guides & Resources" cards (added 2026-09-09, backlog #119) ──
+#
+# The homepage used to carry a hardcoded `var ARTICLES = [...]` of 20 articles
+# and shuffle 3 of them in client-side. It had frozen before the 3rd Class, 4th
+# Class and jobs content existed -- 41 of 61 live articles could never appear --
+# and because the cards were injected by JS, the served HTML contained a
+# "Loading guides…" placeholder and no article links at all. That wasted the
+# strongest internal-link surface on the site (`/` sits at avg position 4.4).
+# Same drift the hub pages were fixed for on 2026-09-01, same fix: derive it.
+#
+# ONE CARD PER JOURNEY STAGE, AND EVERY CARD MUST APPLY TO EVERY VISITOR.
+# The homepage is class-agnostic -- a 3rd Class candidate and a 4th Class
+# candidate land on the same page -- so a random draw that happened to serve
+# five 2nd-Class-specific articles would be showing most arrivals content for a
+# ticket they are not working on. Cards are therefore drawn only from articles
+# tagged for ALL THREE levels (fsa:levels = 4,3,2), which every stage has at
+# least two of. Level-specific guidance is what /articles/4th-class/,
+# /articles/3rd-class/ and /articles/2nd-class/ are for, and the section links
+# on to those.
+#
+# The pick is deterministic (first by title within the stage) so an article's
+# homepage link is stable across builds rather than changing on every page load
+# -- a link Google sees once and never again is not much of a link. To feature a
+# specific article for a stage instead, name it in HOME_GUIDE_OVERRIDES; the
+# build fails if the slug does not exist or is not valid for that stage, so the
+# override cannot rot the way the old array did.
+
+HOME_GUIDE_OVERRIDES: dict[str, str] = {
+    # Alphabetical-by-title hands "choosing" the ABSA Alberta fee article, which
+    # is province-specific and about exam fees -- a poor first card for someone
+    # who does not yet know which ticket they want. The classes explainer is the
+    # actual orientation piece for that stage and is national.
+    "choosing": "power-engineering-classes-canada",
+}
+
+
+def pick_home_articles(articles: list[Article]) -> list[Article]:
+    """One all-levels article per stage, in STAGES order. Raises if a stage is empty."""
+    picked: list[Article] = []
+    errors: list[str] = []
+    for key, label in STAGES:
+        pool = sorted(
+            (a for a in articles
+             if a.stage == key and set(a.levels) == set(LEVELS)),
+            key=lambda a: a.title,
+        )
+        override = HOME_GUIDE_OVERRIDES.get(key)
+        if override is not None:
+            match = next((a for a in pool if a.slug == override), None)
+            if match is None:
+                errors.append(
+                    f"HOME_GUIDE_OVERRIDES[{key!r}] = {override!r}: no such article, "
+                    f"or it is not stage '{key}' with fsa:levels covering all of "
+                    + ",".join(LEVELS)
+                )
+                continue
+            picked.append(match)
+            continue
+        if not pool:
+            errors.append(
+                f"homepage guides: stage '{key}' ({label}) has no article tagged "
+                f"for all of {','.join(LEVELS)}; every stage needs at least one, "
+                f"or the homepage would silently drop a stage"
+            )
+            continue
+        picked.append(pool[0])
+    if errors:
+        raise SystemExit("Homepage guides check failed:\n  " + "\n  ".join(errors))
+    return picked
+
+
+def render_home_cards(articles: list[Article]) -> str:
+    """The homepage guides grid, matching .home-article-card in styles-v2.css."""
+    labels = dict(STAGES)
+    out = []
+    for i, a in enumerate(pick_home_articles(articles)):
+        desc = html_mod.escape(a.description)
+        out.append(
+            f'        <a href="/articles/{a.slug}/" class="home-article-card reveal" '
+            f'data-delay="{i * 100}">\n'
+            f'          <div class="home-article-card-tag">'
+            f'{html_mod.escape(labels[a.stage])}</div>\n'
+            f"          <h3>{html_mod.escape(a.title)}</h3>\n"
+            f"          <p>{desc}</p>\n"
+            f'          <span class="home-article-card-read">Read &rarr;</span>\n'
+            f"        </a>\n"
+        )
+    return "".join(out)
+
+
 def render_level_nav(current: str | None) -> str:
     items = [(None, "/articles/", "All Guides")]
     items += [(lv, f"/articles/{LEVEL_SLUGS[lv]}/", f"For {LEVEL_LABELS[lv]}")
@@ -372,13 +463,16 @@ def render_nav(template: str, active: str | None, enroll_href: str | None) -> st
 
 
 def stitch(html: str, nav_template: str, footer_template: str,
-           fonts_template: str) -> str:
+           fonts_template: str, home_guides: str = "") -> str:
     def nav_sub(m: re.Match) -> str:
         return render_nav(nav_template, m.group(1), m.group(2))
 
     html = INCLUDE_NAV_RE.sub(nav_sub, html)
     html = INCLUDE_FOOTER_RE.sub(footer_template, html)
     html = INCLUDE_FONTS_RE.sub(fonts_template.rstrip("\n"), html)
+    # Only index.html carries this marker; passing the block to every page is
+    # harmless and keeps substitution in one place.
+    html = INCLUDE_HOME_GUIDES_RE.sub(lambda _m: home_guides.rstrip("\n"), html)
     return html
 
 
@@ -396,10 +490,16 @@ def build(out_dir: pathlib.Path) -> None:
     allowed = downloaded_families(fonts_template)
     font_errors: list[str] = []
 
+    # Scanned up here, not just before the hub pages: index.html's guides grid
+    # is derived from the same article metadata (see render_home_cards).
+    articles = scan_articles(ROOT / "articles")
+    home_guides = render_home_cards(articles)
+
     # Root HTML pages
     for name in ROOT_HTML_PAGES:
         src = ROOT / name
-        html = stitch(src.read_text(), nav_template, footer_template, fonts_template)
+        html = stitch(src.read_text(), nav_template, footer_template,
+                      fonts_template, home_guides)
         font_errors += check_fonts(name, html, allowed)
         (out_dir / name).write_text(html)
         stitched += 1
@@ -439,7 +539,6 @@ def build(out_dir: pathlib.Path) -> None:
     # Generated hub pages. These have no source file: articles/index.html was
     # deleted on 2026-09-01 because a hand-maintained index drifts. The index
     # is derived from the articles that actually exist.
-    articles = scan_articles(ROOT / "articles")
     hub_template = (ROOT / "partials" / "article-hub.html").read_text()
     for level, rel, title, h1, intro, cta in HUB_PAGES:
         page = hub_template

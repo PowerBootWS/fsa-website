@@ -529,3 +529,96 @@ def test_renamed_articles_exist_at_their_new_slug():
     for old, new in bp.RENAMES.items():
         assert new in slugs, f"{new} does not exist"
         assert old not in slugs, f"{old} still exists"
+
+
+# ── Homepage guides grid (backlog #119) ─────────────────────────────────────
+#
+# The homepage used to hold a hardcoded 20-article array rendered client-side,
+# three at random. These tests pin the two properties that fix cost us: the
+# cards are derived from real articles (so they cannot go stale), and they are
+# in the served HTML (so the links actually exist for a crawler).
+
+
+def _article(slug, title, levels, stage, description="d"):
+    return bp.Article(slug=slug, title=title, description=description,
+                      levels=list(levels), stage=stage)
+
+
+@pytest.fixture
+def no_overrides(monkeypatch):
+    """The checked-in overrides name real articles; synthetic fixtures have none."""
+    monkeypatch.setattr(bp, "HOME_GUIDE_OVERRIDES", {})
+
+
+def _one_per_stage(**over):
+    """A minimal all-levels article for every stage, so pick_home_articles passes."""
+    return [_article(over.get(k, f"{k}-slug"), f"{k} title", ["4", "3", "2"], k)
+            for k, _ in bp.STAGES]
+
+
+def test_pick_home_articles_returns_one_per_stage_in_order(no_overrides):
+    picked = bp.pick_home_articles(_one_per_stage())
+    assert [a.stage for a in picked] == [k for k, _ in bp.STAGES]
+
+
+def test_pick_home_articles_skips_level_specific_articles(no_overrides):
+    """A 2nd-Class-only article must never reach the class-agnostic homepage."""
+    arts = _one_per_stage()
+    arts.append(_article("second-class-only", "AAA sorts first", ["2"], "exam"))
+    picked = bp.pick_home_articles(arts)
+    assert "second-class-only" not in {a.slug for a in picked}
+
+
+def test_pick_home_articles_is_deterministic_by_title(no_overrides):
+    arts = _one_per_stage()
+    arts.append(_article("aaa", "AAA sorts first", ["4", "3", "2"], "exam"))
+    first = bp.pick_home_articles(arts)
+    second = bp.pick_home_articles(list(reversed(arts)))
+    assert [a.slug for a in first] == [a.slug for a in second]
+    assert next(a.slug for a in first if a.stage == "exam") == "aaa"
+
+
+def test_pick_home_articles_fails_when_a_stage_has_no_all_levels_article(no_overrides):
+    arts = [a for a in _one_per_stage() if a.stage != "exam"]
+    arts.append(_article("exam-2nd-only", "t", ["2"], "exam"))
+    with pytest.raises(SystemExit) as exc:
+        bp.pick_home_articles(arts)
+    assert "exam" in str(exc.value)
+
+
+def test_home_guide_override_selects_that_article(monkeypatch):
+    arts = _one_per_stage()
+    arts.append(_article("chosen", "ZZZ sorts last", ["4", "3", "2"], "exam"))
+    monkeypatch.setattr(bp, "HOME_GUIDE_OVERRIDES", {"exam": "chosen"})
+    picked = bp.pick_home_articles(arts)
+    assert next(a.slug for a in picked if a.stage == "exam") == "chosen"
+
+
+def test_home_guide_override_rejects_an_unknown_or_wrong_stage_slug(monkeypatch):
+    """The old array rotted silently. An override that no longer fits must not."""
+    monkeypatch.setattr(bp, "HOME_GUIDE_OVERRIDES", {"exam": "does-not-exist"})
+    with pytest.raises(SystemExit) as exc:
+        bp.pick_home_articles(_one_per_stage())
+    assert "does-not-exist" in str(exc.value)
+
+
+def test_real_overrides_are_valid():
+    """Guards the checked-in HOME_GUIDE_OVERRIDES against article renames."""
+    bp.pick_home_articles(bp.scan_articles(pathlib.Path(bp.ROOT) / "articles"))
+
+
+def test_built_homepage_has_the_cards_in_the_served_html(built):
+    html = (built / "index.html").read_text()
+    assert "INCLUDE:home-guides" not in html, "home-guides include not stitched"
+    assert "article-card-placeholder" not in html, "JS placeholder still shipped"
+    assert "var ARTICLES" not in html, "hardcoded article array is back"
+    picked = bp.pick_home_articles(bp.scan_articles(pathlib.Path(bp.ROOT) / "articles"))
+    assert len(picked) == len(bp.STAGES)
+    for a in picked:
+        assert f'href="/articles/{a.slug}/"' in html, f"{a.slug} missing from homepage"
+
+
+def test_built_homepage_cards_carry_every_stage_label(built):
+    html = (built / "index.html").read_text()
+    for _key, label in bp.STAGES:
+        assert f'<div class="home-article-card-tag">{label}</div>' in html
