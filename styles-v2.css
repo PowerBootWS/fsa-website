@@ -5105,3 +5105,142 @@ footer {
 
 .jobs-province-footnote a { color: var(--gray-light); }
 .jobs-province-footnote a:hover { color: var(--white); }
+
+/* ── COMPARE PAGE (/compare) ────────────────────────────────────────────────
+   Three provenance cards plus a four-column comparison table. The table is
+   wider than the three-column one on /how-it-works, so it gets a scroll
+   container rather than shrinking type below the 0.8rem floor on a phone. */
+
+.cred-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.cred-card {
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-bottom: 3px solid var(--plate-edge);
+  padding: 1.4rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-bottom-color 0.25s ease;
+}
+
+.cred-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  border-bottom-color: var(--orange);
+}
+
+/* The one orange signal in this section sits on the card the section is
+   actually arguing for. The other two stay neutral by design. */
+.cred-card-us { border-bottom-color: var(--orange); }
+
+.cred-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--off-white);
+}
+
+.cred-role {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  margin-top: 0.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--plate-edge);
+}
+
+.cred-card-us .cred-role { color: var(--amber-hot); }
+
+.cred-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.cred-list li {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--gray-light);
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.7rem;
+}
+
+.cred-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 1px;
+  background: var(--steel-dim);
+}
+
+.cred-card-us .cred-list li::before { background: var(--orange); }
+
+.cred-list strong { color: var(--off-white); font-weight: 600; }
+
+.cred-note {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--gray-mid);
+  margin: 1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--plate-edge);
+}
+
+/* Four columns do not fit a phone at a legible size. Scroll the table rather
+   than dropping the type, and keep the gutter promise on the page itself. */
+.compare-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-table-4 { min-width: 720px; }
+
+.cost-note {
+  background: var(--plate);
+  border: 1px solid var(--plate-edge);
+  border-top: 3px solid var(--amber-hot);
+  padding: 1.6rem;
+  margin-top: 2.5rem;
+  max-width: 75ch;
+}
+
+.cost-note p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gray-light);
+  margin: 0 0 1rem;
+}
+
+.cost-note p:last-child { margin-bottom: 0; }
+.cost-note strong { color: var(--off-white); font-weight: 600; }
+
+.cost-fine {
+  font-size: 0.85rem !important;
+  color: var(--gray-mid) !important;
+  padding-top: 1rem;
+  border-top: 1px solid var(--plate-edge);
+}
+
+@media (max-width: 700px) {
+  .cred-grid { gap: 1.1rem; margin-top: 1.8rem; }
+  .cost-note { padding: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cred-card { transition: none; }
+  .cred-card:hover { transform: none; }
+}
