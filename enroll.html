@@ -364,6 +364,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="program-name">3rd Class</span>
             <span class="program-meta">Four papers · $<span data-price="thirdClass.current">99</span>/month</span>
           </button>
+          <button type="button" class="program-option" data-program="second_annual" role="radio" aria-checked="false">
+            <span class="program-name">2nd Class: annual</span>
+            <span class="program-meta">Six papers · $<span data-price="secondClassAnnual.current">894</span> for the year</span>
+          </button>
+          <button type="button" class="program-option" data-program="third_annual" role="radio" aria-checked="false">
+            <span class="program-name">3rd Class: annual</span>
+            <span class="program-meta">Four papers · $<span data-price="thirdClassAnnual.current">594</span> for the year</span>
+          </button>
           <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
             <span class="program-name">4th Class: 4A</span>
             <span class="program-meta">One paper · $<span data-price="fourthClass.current">99</span> for the year</span>
@@ -463,6 +471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // hardcoded here — see pricing.js for why.
     (function () {
       var P2 = FSA_PRICING.secondClass, P3 = FSA_PRICING.thirdClass, P4 = FSA_PRICING.fourthClass;
+      var P2A = FSA_PRICING.secondClassAnnual, P3A = FSA_PRICING.thirdClassAnnual;
 
       // 2nd and 3rd Class are the full course. 4th Class is exam prep only --
       // adaptive practice and chapter quizzes, no lessons and no tutoring --
@@ -502,6 +511,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           note: 'Your first interprovincial ticket, for less per month than a single paper costs at a traditional provider, studied on your rotation, not theirs.',
           sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
           fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
+        },
+        // Annual prepay. Same course and the same class_code as the monthly plan;
+        // the only difference is the billing interval on the Stripe price, which is
+        // what tells the webhook listener to stop it renewing. The pitch is
+        // deliberately "a year at a discount" and not "pay once and you are done":
+        // a 2nd Class ticket usually takes longer than a year, and promising
+        // otherwise only sets up a disappointment at month twelve.
+        second_annual: {
+          url: 'https://buy.stripe.com/cNi28t9YA395dom4wd1B605',
+          amount: P2A.current,
+          cadence: 'for the year',
+          headline: 'All ' + P2A.papers + ' 2nd Class papers, for a full year.',
+          papers: '2A1, 2A2, 2A3, 2B1, 2B2, 2B3: every paper for the ticket',
+          checklist: FULL_COURSE,
+          note: 'A full year of study for $' + P2A.current + ' up front, instead of $' + P2.current + ' a month. Worth it if you are working steadily toward the ticket; if you are writing one paper soon, the monthly plan costs you less.',
+          sub: "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          fine: 'One annual charge · Does not auto-renew · Secure checkout via Stripe'
+        },
+        third_annual: {
+          url: 'https://buy.stripe.com/7sY3cx1s48tp2JI4wd1B606',
+          amount: P3A.current,
+          cadence: 'for the year',
+          headline: 'All ' + P3A.papers + ' 3rd Class papers, for a full year.',
+          papers: '3A1, 3A2, 3B1, 3B2: every paper for the ticket',
+          checklist: FULL_COURSE,
+          note: 'A full year of study for $' + P3A.current + ' up front, instead of $' + P3.current + ' a month. Worth it if you are working steadily toward the ticket; if you are writing one paper soon, the monthly plan costs you less.',
+          sub: "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          fine: 'One annual charge · Does not auto-renew · Secure checkout via Stripe'
         },
         fourth_a: {
           url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',

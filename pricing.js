@@ -45,6 +45,12 @@ window.FSA_PRICING = {
   secondClass: { current: 149, cadence: 'month', papers: 6 },
   thirdClass:  { current: 99,  cadence: 'month', papers: 4 },
   fourthClass: { current: 99,  cadence: 'year', papers: 1 },
+  // Annual prepay, added 2026-09-14. Same course, same papers and the same
+  // subscriptions.class_code as the monthly plans — only the billing interval
+  // differs — so these are a cadence of the plans above, not new programs.
+  // Priced at 6x the monthly rate.
+  secondClassAnnual: { current: 894, cadence: 'year', papers: 6 },
+  thirdClassAnnual:  { current: 594, cadence: 'year', papers: 4 },
   affiliate:   { commissionRate: 20 }
 };
 
