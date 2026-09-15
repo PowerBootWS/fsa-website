@@ -151,6 +151,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--white);
     }
     .program-meta { font-size: 0.8rem; color: var(--gray-mid); line-height: 1.4; }
+    /* The annual price sits under the monthly one rather than becoming its own
+       option, so the picker stays a choice of LEVEL. Cadence is chosen in the form. */
+    .program-meta-alt { display: block; font-size: 0.75rem; opacity: 0.85; }
     .program-option.is-selected .program-meta { color: var(--gray-light); }
 
     /* ── What you get ── */
@@ -217,6 +220,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-weight: 600;
       color: var(--gray-mid);
       letter-spacing: 0.02em;
+    }
+    /* Billing cadence: monthly vs annual prepay. Rendered only for 2nd and 3rd
+       Class. 4th Class is annual-only, so the picker is hidden outright rather
+       than shown with one dead option. NOTE the [hidden] rules: `display: grid`
+       here is author CSS and outranks the UA stylesheet's [hidden]{display:none},
+       so without them the picker stays visible on 4th Class. */
+    .cadence-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 0 0 0.9rem;
+    }
+    .cadence-picker[hidden], .cadence-note[hidden] { display: none; }
+    .cadence-option {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      align-items: flex-start;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      padding: 0.65rem 0.75rem;
+      background: var(--iron);
+      border: 1px solid var(--plate-edge);
+      border-radius: 4px;
+      color: var(--text-primary);
+      transition: border-color var(--duration-fast), background var(--duration-fast);
+    }
+    .cadence-option:hover { border-color: var(--steel); }
+    .cadence-option.is-selected {
+      border-color: var(--orange);
+      background: rgba(232,114,12,0.1);
+      box-shadow: inset 0 0 0 1px var(--orange);
+    }
+    .cadence-option:focus-visible { outline: 2px solid var(--orange-glow); outline-offset: 2px; }
+    .cadence-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+    .cadence-price { font-size: 0.8rem; color: var(--gray-mid); }
+    .cadence-option.is-selected .cadence-price { color: var(--gray-light); }
+    .cadence-tag {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .cadence-note {
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      line-height: 1.55;
+      margin: 0 0 1.2rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--plate-edge);
     }
     .checkout-form-sub {
       font-size: 0.88rem;
@@ -358,19 +421,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="program-picker reveal" data-delay="140" role="radiogroup" aria-label="Choose your program">
           <button type="button" class="program-option is-selected" data-program="second" role="radio" aria-checked="true">
             <span class="program-name">2nd Class</span>
-            <span class="program-meta">Six papers · $<span data-price="secondClass.current">149</span>/month</span>
+            <span class="program-meta">Six papers · $<span data-price="secondClass.current">149</span>/month
+              <span class="program-meta-alt">or $<span data-price="secondClassAnnual.current">894</span> for the year</span>
+            </span>
           </button>
           <button type="button" class="program-option" data-program="third" role="radio" aria-checked="false">
             <span class="program-name">3rd Class</span>
-            <span class="program-meta">Four papers · $<span data-price="thirdClass.current">99</span>/month</span>
-          </button>
-          <button type="button" class="program-option" data-program="second_annual" role="radio" aria-checked="false">
-            <span class="program-name">2nd Class: annual</span>
-            <span class="program-meta">Six papers · $<span data-price="secondClassAnnual.current">894</span> for the year</span>
-          </button>
-          <button type="button" class="program-option" data-program="third_annual" role="radio" aria-checked="false">
-            <span class="program-name">3rd Class: annual</span>
-            <span class="program-meta">Four papers · $<span data-price="thirdClassAnnual.current">594</span> for the year</span>
+            <span class="program-meta">Four papers · $<span data-price="thirdClass.current">99</span>/month
+              <span class="program-meta-alt">or $<span data-price="thirdClassAnnual.current">594</span> for the year</span>
+            </span>
           </button>
           <button type="button" class="program-option" data-program="fourth_a" role="radio" aria-checked="false">
             <span class="program-name">4th Class: 4A</span>
@@ -407,6 +466,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="cp-amount"><sup>$</sup><span id="cp-amount" data-price="secondClass.current">149</span></span>
           <span class="cp-cadence" id="cp-cadence">/ month</span>
         </p>
+        <div class="cadence-picker" id="cadence-picker" role="radiogroup" aria-label="Choose monthly or annual billing">
+          <button type="button" class="cadence-option is-selected" data-cadence="monthly" role="radio" aria-checked="true">
+            <span class="cadence-name">Monthly</span>
+            <span class="cadence-price">$<span id="cad-monthly-amount">149</span> a month</span>
+          </button>
+          <button type="button" class="cadence-option" data-cadence="annual" role="radio" aria-checked="false">
+            <span class="cadence-name">One year
+              <span class="cadence-tag" id="cad-tag">6 months free</span>
+            </span>
+            <span class="cadence-price">$<span id="cad-annual-amount">894</span> once</span>
+          </button>
+        </div>
+        <p class="cadence-note" id="cadence-note"></p>
+
         <p class="checkout-form-sub" id="checkout-form-sub">Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.</p>
 
         <form id="checkout-form" novalidate>
@@ -462,9 +535,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="/pricing.js"></script>
   <script>
     // Program picker — drives the pitch copy, the price in the form card and
-    // the Stripe checkout link. 2nd Class is the default; ?class=third and
-    // ?class=fourth_a / ?class=fourth_b preselect from a deep link. Note the
-    // keys: a bare ?class=fourth is NOT a program and falls back to 2nd.
+    // the Stripe checkout link. 2nd Class is the default; ?class=third,
+    // ?class=second_annual / ?class=third_annual and ?class=fourth_a /
+    // ?class=fourth_b preselect from a deep link. Note the keys: a bare
+    // ?class=fourth is NOT a program and falls back to 2nd, and the annual
+    // keys are picker keys only. Both still provision class_code second/third.
     //
     // All prices read from window.FSA_PRICING (pricing.js, loaded above,
     // synchronously, so it is ready before this runs) rather than being
@@ -512,34 +587,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
           fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
         },
-        // Annual prepay. Same course and the same class_code as the monthly plan;
-        // the only difference is the billing interval on the Stripe price, which is
-        // what tells the webhook listener to stop it renewing. The pitch is
-        // deliberately "a year at a discount" and not "pay once and you are done":
-        // a 2nd Class ticket usually takes longer than a year, and promising
-        // otherwise only sets up a disappointment at month twelve.
-        second_annual: {
-          url: 'https://buy.stripe.com/cNi28t9YA395dom4wd1B605',
-          amount: P2A.current,
-          cadence: 'for the year',
-          headline: 'All ' + P2A.papers + ' 2nd Class papers, for a full year.',
-          papers: '2A1, 2A2, 2A3, 2B1, 2B2, 2B3: every paper for the ticket',
-          checklist: FULL_COURSE,
-          note: 'A full year of study for $' + P2A.current + ' up front, instead of $' + P2.current + ' a month. Worth it if you are working steadily toward the ticket; if you are writing one paper soon, the monthly plan costs you less.',
-          sub: "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
-          fine: 'One annual charge · Does not auto-renew · Secure checkout via Stripe'
-        },
-        third_annual: {
-          url: 'https://buy.stripe.com/7sY3cx1s48tp2JI4wd1B606',
-          amount: P3A.current,
-          cadence: 'for the year',
-          headline: 'All ' + P3A.papers + ' 3rd Class papers, for a full year.',
-          papers: '3A1, 3A2, 3B1, 3B2: every paper for the ticket',
-          checklist: FULL_COURSE,
-          note: 'A full year of study for $' + P3A.current + ' up front, instead of $' + P3.current + ' a month. Worth it if you are working steadily toward the ticket; if you are writing one paper soon, the monthly plan costs you less.',
-          sub: "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
-          fine: 'One annual charge · Does not auto-renew · Secure checkout via Stripe'
-        },
         fourth_a: {
           url: 'https://buy.stripe.com/28E28t5IkbFB5VU3s91B603',
           amount: P4.current,
@@ -564,9 +611,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       };
 
+      // Annual prepay for 2nd and 3rd Class. Deliberately NOT separate programs:
+      // same course, same papers, same subscriptions.class_code, and only the
+      // billing interval on the Stripe price differs. That is why cadence is a
+      // choice inside the form rather than two more buttons in the level picker,
+      // which would have asked the reader to pick a level and a billing period in
+      // one control. 4th Class has no entry here because it is annual-only.
+      var ANNUAL = {
+        second: { url: 'https://buy.stripe.com/cNi28t9YA395dom4wd1B605', amount: P2A.current, monthly: P2.current, papers: P2A.papers },
+        third:  { url: 'https://buy.stripe.com/7sY3cx1s48tp2JI4wd1B606', amount: P3A.current, monthly: P3.current, papers: P3A.papers }
+      };
+
+      // ?class=second_annual / ?class=third_annual land on the right level with the
+      // annual cadence preselected. The program pages link in that way.
+      var DEEP_ANNUAL = { second_annual: 'second', third_annual: 'third' };
+
+      var ANNUAL_SUB = "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.";
+      var ANNUAL_FINE = 'One annual charge · Does not auto-renew · Secure checkout via Stripe';
+
       var selected = 'second';
+      var cadence = 'monthly';
       var options = Array.prototype.slice.call(document.querySelectorAll('.program-option'));
+      var cadenceOptions = Array.prototype.slice.call(document.querySelectorAll('.cadence-option'));
+      var cadencePicker = document.getElementById('cadence-picker');
+      var cadenceNote = document.getElementById('cadence-note');
       var stripeLinkEl = document.getElementById('stripe-proceed');
+
+      function set(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; }
 
       function renderChecklist(items) {
         var ul = document.getElementById('enroll-checklist');
@@ -584,6 +655,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
 
+      // The plan actually being bought: the selected level, at the selected cadence.
+      // Single source for the price, the copy and the Stripe link, so the button can
+      // never send someone to a checkout that disagrees with the price shown.
+      function currentPlan() {
+        var p = PROGRAMS[selected];
+        var a = ANNUAL[selected];
+        if (cadence !== 'annual' || !a) {
+          return { url: p.url, amount: p.amount, cadence: p.cadence, sub: p.sub, fine: p.fine };
+        }
+        return { url: a.url, amount: a.amount, cadence: 'for the year', sub: ANNUAL_SUB, fine: ANNUAL_FINE };
+      }
+
+      function applyCadence() {
+        var a = ANNUAL[selected];
+        var offersAnnual = !!a;
+        // 4th Class cannot be monthly, so never leave a stale annual selection behind
+        // when switching to it from a 2nd/3rd Class annual.
+        if (!offersAnnual) cadence = 'monthly';
+        if (cadencePicker) cadencePicker.hidden = !offersAnnual;
+        if (cadenceNote) cadenceNote.hidden = !offersAnnual;
+
+        if (offersAnnual) {
+          var yearOfMonthly = a.monthly * 12;
+          var freeMonths = Math.round((yearOfMonthly - a.amount) / a.monthly);
+          set('cad-monthly-amount', a.monthly);
+          set('cad-annual-amount', a.amount);
+          set('cad-tag', freeMonths + ' months free');
+          cadenceOptions.forEach(function (o) {
+            var on = o.dataset.cadence === cadence;
+            o.classList.toggle('is-selected', on);
+            o.setAttribute('aria-checked', on ? 'true' : 'false');
+          });
+          if (cadenceNote) {
+            cadenceNote.textContent = cadence === 'annual'
+              ? '$' + a.amount + ' once, instead of $' + yearOfMonthly + ' across twelve months. That is ' + freeMonths
+                + ' months free, and it does not renew. All ' + a.papers + ' papers are included the whole year, so when you pass one you move on to the next without paying again.'
+              : 'You pay for the months you actually study. Cancel any time, pick it back up when you start the next paper, and your progress is still there.';
+          }
+        }
+
+        var plan = currentPlan();
+        set('cp-amount', plan.amount);
+        set('cp-cadence', plan.cadence);
+        set('checkout-form-sub', plan.sub);
+        set('checkout-fine', plan.fine);
+        // Reset the Stripe link to the selected plan's clean base URL. The submit
+        // handler re-runs FSAAffiliate afterward to re-append affiliate attribution.
+        if (stripeLinkEl) stripeLinkEl.setAttribute('href', plan.url);
+      }
+
       function applyProgram(program) {
         selected = PROGRAMS[program] ? program : 'second';
         var p = PROGRAMS[selected];
@@ -592,29 +713,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           o.classList.toggle('is-selected', on);
           o.setAttribute('aria-checked', on ? 'true' : 'false');
         });
-        var set = function (id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; };
-        set('cp-amount', p.amount);
-        set('cp-cadence', p.cadence);
-        set('checkout-form-sub', p.sub);
         set('enroll-papers-line', p.headline);
         set('enroll-papers', p.papers);
         renderChecklist(p.checklist);
         set('enroll-note', p.note);
-        set('checkout-fine', p.fine);
-        // Reset the Stripe link to the selected program's clean base URL. The submit
-        // handler re-runs FSAAffiliate afterward to re-append affiliate attribution.
-        if (stripeLinkEl) stripeLinkEl.setAttribute('href', p.url);
+        applyCadence();
       }
 
       options.forEach(function (o) {
         o.addEventListener('click', function () { applyProgram(o.dataset.program); });
       });
+      cadenceOptions.forEach(function (o) {
+        o.addEventListener('click', function () { cadence = o.dataset.cadence; applyCadence(); });
+      });
 
       var initial = new URLSearchParams(window.location.search).get('class');
-      applyProgram(PROGRAMS[initial] ? initial : 'second');
+      if (initial && DEEP_ANNUAL[initial]) {
+        cadence = 'annual';
+        applyProgram(DEEP_ANNUAL[initial]);
+      } else {
+        applyProgram(PROGRAMS[initial] ? initial : 'second');
+      }
 
       // Expose the current base URL so the submit handler can reset before FSAAffiliate.
-      window.__fsaSelectedStripeUrl = function () { return PROGRAMS[selected].url; };
+      window.__fsaSelectedStripeUrl = function () { return currentPlan().url; };
     }());
   </script>
 
