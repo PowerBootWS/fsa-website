@@ -189,14 +189,8 @@
     .checkout-form-card { width: 100%; }
     .checkout-form-heading { font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.35rem; }
     .checkout-form-sub { font-size: 0.88rem; color: var(--gray-mid); margin: 0 0 1.5rem; }
-    .checkout-field { margin-bottom: 1rem; }
-    .checkout-label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-mid); margin-bottom: 0.4rem; }
-    .checkout-input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: var(--text-primary); font-family: var(--font-body, 'IBM Plex Sans', sans-serif); font-size: 0.95rem; padding: 0.65rem 0.85rem; box-sizing: border-box; transition: border-color 0.2s; }
-    .checkout-input:focus { outline: none; border-color: var(--orange); }
-    .checkout-input::placeholder { color: rgba(255,255,255,0.25); }
-    .checkout-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
-    .checkout-btn { display: block; width: 100%; background: var(--orange); color: #fff; font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; transition: opacity 0.2s; }
-    .checkout-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .checkout-btn { display: block; width: 100%; background: var(--orange); color: #fff; font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; text-align: center; text-decoration: none; margin-top: 0.5rem; transition: opacity 0.2s; }
+    .checkout-btn:hover { background: var(--orange-glow); color: #fff; }
     .checkout-fine { font-size: 0.8rem; color: var(--gray-mid); margin: 1rem 0 0; text-align: center; opacity: 0.7; }
     @media (max-width: 860px) {
       .lp-form-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -310,26 +304,16 @@
 
       <div class="lp-form-wrap reveal" data-delay="80">
         <div class="checkout-form-card">
-          <p class="checkout-form-heading">Create your account to continue</p>
-          <p class="checkout-form-sub">Takes 30 seconds. Secure checkout via Stripe.</p>
-          <form id="checkout-form" novalidate>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-first">First Name</label>
-              <input class="checkout-input" type="text" id="cf-first" name="firstName" autocomplete="given-name" required placeholder="e.g. Jordan">
-            </div>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-last">Last Name</label>
-              <input class="checkout-input" type="text" id="cf-last" name="lastName" autocomplete="family-name" required placeholder="e.g. MacLeod">
-            </div>
-            <div class="checkout-field">
-              <label class="checkout-label" for="cf-email">Email Address</label>
-              <input class="checkout-input" type="email" id="cf-email" name="email" autocomplete="email" required placeholder="you@example.com">
-            </div>
-            <p class="checkout-error" id="checkout-error" style="display:none;"></p>
-            <button type="submit" class="checkout-btn" id="checkout-btn">Create Account &amp; Continue →</button>
-          </form>
+          <p class="checkout-form-heading">Ready when you are</p>
+          <p class="checkout-form-sub">You enter your name and email on Stripe's secure checkout page, not here.</p>
+          <!-- The CTA IS the Stripe link. No name/email form here (removed 2026-09-15):
+               it only fed an abandoned-checkout follow-up that was never built, and the
+               address it collected was a prefill the buyer could overtype at Stripe, so it
+               could disagree with the address every downstream system is keyed on. Name and
+               email now come from Stripe checkout (session.customer_details) and nowhere else.
+               nav.js FSAAffiliate appends client_reference_id=ref_<code> from the cookie. -->
+          <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="checkout-btn refgrow-stripe-payment-link" rel="nofollow noopener">Continue to Checkout →</a>
           <p class="checkout-fine">$<span data-price="secondClass.current">149</span>/month &middot; Cancel anytime &middot; No contract &middot; Secure checkout via Stripe</p>
-          <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
         </div>
       </div>
 
@@ -339,75 +323,6 @@
   <!-- FOOTER -->
   <!-- INCLUDE:footer -->
 
-  <script>
-    window.__fsaSelectedStripeUrl = function () {
-      return 'https://buy.stripe.com/3cI14peeQ395ckie6N1B600';
-    };
-  </script>
-
-  <script>
-    (function () {
-      var form = document.getElementById('checkout-form');
-      var btn = document.getElementById('checkout-btn');
-      var errorEl = document.getElementById('checkout-error');
-      var stripeLink = document.getElementById('stripe-proceed');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var firstName = document.getElementById('cf-first').value.trim();
-        var lastName = document.getElementById('cf-last').value.trim();
-        var email = document.getElementById('cf-email').value.trim().toLowerCase();
-
-        errorEl.style.display = 'none';
-        errorEl.textContent = '';
-
-        if (!firstName || !lastName || !email) {
-          errorEl.textContent = 'Please fill in all fields.';
-          errorEl.style.display = 'block';
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          errorEl.textContent = 'Please enter a valid email address.';
-          errorEl.style.display = 'block';
-          return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = 'Creating your account…';
-
-        var checkoutPayload = { firstName: firstName, lastName: lastName, email: email };
-        try {
-          var _cm = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/);
-          if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]);
-        } catch(e) {}
-
-        fetch('https://fsa-lead-capture.powerboot.workers.dev/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(checkoutPayload)
-        })
-        .then(function (res) {
-          if (!res.ok) { throw new Error('server'); }
-          return res.json();
-        })
-        .then(function (data) {
-          if (!data.success) { throw new Error('server'); }
-          if (window.__fsaSelectedStripeUrl) { stripeLink.setAttribute('href', window.__fsaSelectedStripeUrl()); }
-          if (window.FSAAffiliate && FSAAffiliate.processStripePaymentLinks) { FSAAffiliate.processStripePaymentLinks(); }
-          var url = new URL(stripeLink.href);
-          url.searchParams.set('prefilled_email', email);
-          stripeLink.href = url.toString();
-          stripeLink.click();
-        })
-        .catch(function () {
-          errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
-          errorEl.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Create Account & Continue →';
-        });
-      });
-    }());
-  </script>
 
   <script>
     (function () {

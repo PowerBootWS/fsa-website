@@ -287,33 +287,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.5;
       margin: 0 0 1.4rem;
     }
-    .checkout-field { margin-bottom: 0.9rem; }
-    .checkout-label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray-mid);
-      margin-bottom: 0.35rem;
-    }
-    .checkout-input {
-      width: 100%;
-      background: var(--iron);
-      border: 1px solid var(--plate-edge);
-      border-radius: 4px;
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 1rem;               /* 16px: anything smaller makes iOS Safari zoom on focus */
-      padding: 0.7rem 0.85rem;
-      box-sizing: border-box;
-      transition: border-color var(--duration-fast);
-    }
-    .checkout-input:focus { outline: none; border-color: var(--orange); }
-    .checkout-input::placeholder { color: var(--gray-dark); }
-    /* The one red on the site. An invalid-field message has to read as an error;
-       DESIGN.md's "no red/black" rule is about the CTA aesthetic, not form validation. */
-    .checkout-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
+    /* An <a> straight to Stripe, not a submit button — there is no form to submit. */
     .checkout-btn {
       display: block;
       width: 100%;
@@ -324,6 +298,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
       padding: 0.9rem 1.5rem;
       border: none;
       border-radius: 4px;
@@ -331,8 +307,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-top: 0.6rem;
       transition: background var(--duration-fast), box-shadow var(--duration-fast);
     }
-    .checkout-btn:hover:not(:disabled) { background: var(--orange-glow); box-shadow: 0 10px 28px rgba(232,114,12,0.35); }
-    .checkout-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .checkout-btn:hover { background: var(--orange-glow); box-shadow: 0 10px 28px rgba(232,114,12,0.35); color: #fff; }
     .checkout-fine {
       font-size: 0.8rem;
       color: var(--gray-mid);
@@ -480,33 +455,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="cadence-note" id="cadence-note"></p>
 
-        <p class="checkout-form-sub" id="checkout-form-sub">Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.</p>
+        <p class="checkout-form-sub" id="checkout-form-sub">Cancel anytime. You enter your name and email on Stripe's secure checkout page, not here.</p>
 
-        <form id="checkout-form" novalidate>
-          <div class="checkout-field">
-            <label class="checkout-label" for="cf-first">First Name</label>
-            <input class="checkout-input" type="text" id="cf-first" name="firstName" autocomplete="given-name" required placeholder="e.g. Jordan">
-          </div>
-          <div class="checkout-field">
-            <label class="checkout-label" for="cf-last">Last Name</label>
-            <input class="checkout-input" type="text" id="cf-last" name="lastName" autocomplete="family-name" required placeholder="e.g. MacLeod">
-          </div>
-          <div class="checkout-field">
-            <label class="checkout-label" for="cf-email">Email Address</label>
-            <input class="checkout-input" type="email" id="cf-email" name="email" autocomplete="email" required placeholder="you@example.com">
-          </div>
-          <p class="checkout-error" id="checkout-error" style="display:none;"></p>
-          <button type="submit" class="checkout-btn" id="checkout-btn">Create Account →</button>
-        </form>
+        <!-- The CTA IS the Stripe link. There is deliberately no name/email form here
+             (removed 2026-09-15). The form's only purpose was an abandoned-checkout
+             follow-up that was never built, and because the address it collected was a
+             prefill the buyer could overtype at Stripe, it could disagree with the
+             address Stripe actually returns — which is the one every downstream system
+             is keyed on. Name and email now come from Stripe's own checkout
+             (session.customer_details) and nowhere else.
+             FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate
+             cookie and appends client_reference_id=ref_<code>; applyCadence() re-runs it
+             after every href change, so program choice and attribution both hold. -->
+        <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="checkout-btn refgrow-stripe-payment-link" rel="nofollow noopener">Continue to Checkout →</a>
 
         <p class="checkout-fine" id="checkout-fine">Cancel anytime · No contract · Secure checkout via Stripe</p>
 
         <p class="checkout-alt">
           Not ready to commit? <a href="/free-practice-exam">Sit a free practice exam first</a>, no card needed.
         </p>
-
-        <!-- Hidden Stripe link — FSAAffiliate.processStripePaymentLinks() (nav.js) reads the fsa_affiliate cookie and rewrites this href to append client_reference_id=ref_<code> for affiliate attribution. The submit handler resets the base href to the selected program's link, re-runs FSAAffiliate, then navigates — so program choice and attribution both hold. -->
-        <a id="stripe-proceed" href="https://buy.stripe.com/3cI14peeQ395ckie6N1B600" class="refgrow-stripe-payment-link" rel="nofollow noopener" style="display:none;"></a>
       </div>
 
       <!-- Proof. There was none of any kind on this page before 2026-08-30:
@@ -573,7 +540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           papers: '2A1, 2A2, 2A3, 2B1, 2B2, 2B3: every paper for the ticket',
           checklist: FULL_COURSE,
           note: 'Six months of focused study still costs less than what a single paper costs at a traditional provider, and you study on your rotation, not theirs.',
-          sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          sub: "Cancel anytime. You enter your name and email on Stripe's secure checkout page, not here.",
           fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
         },
         third: {
@@ -584,7 +551,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           papers: '3A1, 3A2, 3B1, 3B2: every paper for the ticket',
           checklist: FULL_COURSE,
           note: 'Your first interprovincial ticket, for less per month than a single paper costs at a traditional provider, studied on your rotation, not theirs.',
-          sub: "Cancel anytime. Create your account and you'll be at secure Stripe checkout in about thirty seconds.",
+          sub: "Cancel anytime. You enter your name and email on Stripe's secure checkout page, not here.",
           fine: 'Cancel anytime · No contract · Secure checkout via Stripe'
         },
         fourth_a: {
@@ -595,7 +562,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           papers: 'Paper 4A: the paper you are writing, not the whole certificate',
           checklist: EXAM_PREP,
           note: 'Charged once. This is a single annual payment, not a subscription: your access runs a full year and does not renew automatically.',
-          sub: 'One charge, no renewal. Create your account and you\'ll be at secure Stripe checkout in about thirty seconds.',
+          sub: 'One charge, no renewal. You enter your name and email on Stripe's secure checkout page, not here.',
           fine: 'One-time annual charge · Does not auto-renew · Secure checkout via Stripe'
         },
         fourth_b: {
@@ -606,7 +573,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           papers: 'Paper 4B: the paper you are writing, not the whole certificate',
           checklist: EXAM_PREP,
           note: 'Charged once. This is a single annual payment, not a subscription: your access runs a full year and does not renew automatically.',
-          sub: 'One charge, no renewal. Create your account and you\'ll be at secure Stripe checkout in about thirty seconds.',
+          sub: 'One charge, no renewal. You enter your name and email on Stripe's secure checkout page, not here.',
           fine: 'One-time annual charge · Does not auto-renew · Secure checkout via Stripe'
         }
       };
@@ -626,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // annual cadence preselected. The program pages link in that way.
       var DEEP_ANNUAL = { second_annual: 'second', third_annual: 'third' };
 
-      var ANNUAL_SUB = "One charge for the year. Create your account and you'll be at secure Stripe checkout in about thirty seconds.";
+      var ANNUAL_SUB = "One charge for the year. You enter your name and email on Stripe's secure checkout page, not here.";
       var ANNUAL_FINE = 'One annual charge · Does not auto-renew · Secure checkout via Stripe';
 
       var selected = 'second';
@@ -700,9 +667,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         set('cp-cadence', plan.cadence);
         set('checkout-form-sub', plan.sub);
         set('checkout-fine', plan.fine);
-        // Reset the Stripe link to the selected plan's clean base URL. The submit
-        // handler re-runs FSAAffiliate afterward to re-append affiliate attribution.
-        if (stripeLinkEl) stripeLinkEl.setAttribute('href', plan.url);
+        // Reset the Stripe link to the selected plan's clean base URL, then re-append
+        // affiliate attribution. Setting href wipes client_reference_id, so FSAAffiliate
+        // has to run again on every program/cadence change or an affiliate's referral is
+        // silently lost the moment the visitor switches level or billing period.
+        // Idempotent: it always overwrites client_reference_id from the current cookie.
+        if (stripeLinkEl) {
+          stripeLinkEl.setAttribute('href', plan.url);
+          if (window.FSAAffiliate && FSAAffiliate.processStripePaymentLinks) {
+            FSAAffiliate.processStripePaymentLinks();
+          }
+        }
       }
 
       function applyProgram(program) {
@@ -735,74 +710,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         applyProgram(PROGRAMS[initial] ? initial : 'second');
       }
 
-      // Expose the current base URL so the submit handler can reset before FSAAffiliate.
-      window.__fsaSelectedStripeUrl = function () { return currentPlan().url; };
-    }());
-  </script>
-
-  <script>
-    (function () {
-      var form = document.getElementById('checkout-form');
-      var btn = document.getElementById('checkout-btn');
-      var errorEl = document.getElementById('checkout-error');
-      var stripeLink = document.getElementById('stripe-proceed');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var firstName = document.getElementById('cf-first').value.trim();
-        var lastName = document.getElementById('cf-last').value.trim();
-        var email = document.getElementById('cf-email').value.trim().toLowerCase();
-
-        errorEl.style.display = 'none';
-        errorEl.textContent = '';
-
-        if (!firstName || !lastName || !email) {
-          errorEl.textContent = 'Please fill in all fields.';
-          errorEl.style.display = 'block';
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          errorEl.textContent = 'Please enter a valid email address.';
-          errorEl.style.display = 'block';
-          return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = 'Creating your account…';
-
-        var checkoutPayload = { firstName: firstName, lastName: lastName, email: email };
-        try { var _cm = document.cookie.match(/(?:^|;\s*)fsa_affiliate=([^;]+)/); if (_cm) checkoutPayload.affiliateCode = decodeURIComponent(_cm[1]); } catch(e) {}
-        fetch('https://fsa-lead-capture.powerboot.workers.dev/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(checkoutPayload)
-        })
-        .then(function (res) {
-          if (!res.ok) { throw new Error('server'); }
-          return res.json();
-        })
-        .then(function (data) {
-          if (!data.success) { throw new Error('server'); }
-          // Re-apply affiliate attribution right before navigating. Idempotent:
-          // FSAAffiliate always overwrites client_reference_id from the current
-          // fsa_affiliate cookie, so re-running it here is safe even if the
-          // initial page-load processing already set it once.
-          // Reset to the selected program's clean base URL before FSAAffiliate re-appends
-          // affiliate attribution, so program choice and attribution both survive.
-          if (window.__fsaSelectedStripeUrl) { stripeLink.setAttribute('href', window.__fsaSelectedStripeUrl()); }
-          if (window.FSAAffiliate && FSAAffiliate.processStripePaymentLinks) { FSAAffiliate.processStripePaymentLinks(); }
-          var url = new URL(stripeLink.href);
-          url.searchParams.set('prefilled_email', email);
-          stripeLink.href = url.toString();
-          stripeLink.click();
-        })
-        .catch(function () {
-          errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
-          errorEl.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Create Account →';
-        });
-      });
     }());
   </script>
 
