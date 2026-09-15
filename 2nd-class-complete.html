@@ -135,7 +135,11 @@
     .guarantee-block {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.12);
-      border-left: 4px solid var(--orange);
+      /* border-top, not border-left. A thick colored stripe down one side of a
+         card is banned in DESIGN.md and was called out there as known debt;
+         the site standard for a card accent is a 3px top border, which is what
+         the FAQ cards and CTA callouts in styles-v2.css already use. */
+      border-top: 3px solid var(--orange);
       border-radius: 12px;
       padding: 2rem 2rem 1.75rem;
       max-width: 740px;
@@ -252,6 +256,23 @@
       <li class="reveal" data-delay="200"><span class="chk">✓</span><span>Progress saved: pause and resume on any device</span></li>
       <li class="reveal" data-delay="230"><span class="chk">✓</span><span>Study at your own pace: no cohorts, no deadlines, no classroom</span></li>
     </ul>
+  </div>
+
+  <hr class="lp-divider">
+
+  <!-- SECTION 3b: TICKET, NOT PAPER -->
+  <div class="lp-section">
+    <p class="lp-section-label reveal" data-delay="0">One purchase, six papers</p>
+    <h2 class="reveal" data-delay="60">You Never Buy a Paper Twice</h2>
+    <p class="reveal" data-delay="100">
+      Most exam prep is sold one paper at a time. That means choosing which papers you can justify this year, then going back and buying the next one when you're ready. <strong>Your subscription covers all six 2nd Class papers from the day you start.</strong>
+    </p>
+    <p class="reveal" data-delay="140">
+      Start on whichever paper you like. When you've passed it, move to the next one and carry on. No second checkout, no add-on, no re-enrolment, and your progress on everything you've already done stays exactly where it was. Most students move between papers as they pass them, and the platform is built around that rather than around a fixed course schedule.
+    </p>
+    <p class="reveal" data-delay="180">
+      It also means the pace is yours. Spend a month on a paper you mostly know and three on the one that's fighting you. Stop when you're not studying and pick it back up when you are. <strong>You pay for the months you use.</strong>
+    </p>
   </div>
 
   <hr class="lp-divider">
