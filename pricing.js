@@ -25,9 +25,13 @@
  *
  * 3. Computed values derived from a price (affiliate.html's commission
  *    table): mark the element data-commission="students:metric", where
- *    metric is "monthly" or "annual". Computed as
- *    secondClass.current * (affiliate.commissionRate / 100) * students,
- *    x12 for annual. Added 2026-07-28 — same drift problem, one level removed
+ *    metric is "monthly", "annual" or "annual-prepay". The first two are
+ *    secondClass.current * (affiliate.commissionRate / 100) * students, x12 for
+ *    annual. "annual-prepay" is commission on the annual PRICE paid once
+ *    (secondClassAnnual.current * rate * students) and is deliberately a
+ *    different number: the annual costs six months, not twelve, so reusing
+ *    "annual" for it would overstate the payout by double.
+ *    Added 2026-07-28 — same drift problem, one level removed
  *    (the table's numbers are commissionRate x price x student count, not a
  *    literal price, so a plain data-price substitution can't cover it).
  */
@@ -75,8 +79,20 @@ window.FSA_PRICING = {
     var parts = el.getAttribute('data-commission').split(':');
     var students = parseInt(parts[0], 10);
     var metric = parts[1];
+    // 'monthly'       one month of commission from a monthly subscriber
+    // 'annual'        twelve months of that same monthly commission
+    // 'annual-prepay' commission on the annual prepay price, paid once rather
+    //                 than month by month. A different number entirely, because
+    //                 the annual costs six months rather than twelve.
     var monthly = perStudentMonthly * students;
-    var value = metric === 'annual' ? monthly * 12 : monthly;
+    var value;
+    if (metric === 'annual') {
+      value = monthly * 12;
+    } else if (metric === 'annual-prepay') {
+      value = window.FSA_PRICING.secondClassAnnual.current * (rate / 100) * students;
+    } else {
+      value = monthly;
+    }
     el.textContent = '$' + Math.round(value).toLocaleString('en-US');
   }
 })();
