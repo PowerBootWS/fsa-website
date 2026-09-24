@@ -267,7 +267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input class="jobs-alert-input" type="email" name="email" autocomplete="email" required>
         </label>
         <fieldset class="jobs-alert-fieldset">
-          <legend>Which class(es)?</legend>
+          <legend>Which classes of jobs do you want to see?</legend>
           <div class="jobs-alert-checkbox-group">
             <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="5th Class"> 5th Class</label>
             <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="4th Class"> 4th Class</label>
@@ -276,6 +276,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label class="jobs-alert-check-label"><input type="checkbox" name="classes" value="1st Class"> 1st Class</label>
           </div>
         </fieldset>
+        <label class="jobs-alert-label">What ticket do you hold right now? (optional)
+          <select class="jobs-alert-input" name="currentClass">
+            <option value="">Prefer not to say</option>
+            <option value="none">Not ticketed yet</option>
+            <option value="5th Class">5th Class</option>
+            <option value="4th Class">4th Class</option>
+            <option value="3rd Class">3rd Class</option>
+            <option value="2nd Class">2nd Class</option>
+            <option value="1st Class">1st Class</option>
+          </select>
+        </label>
         <fieldset class="jobs-alert-fieldset">
           <legend>Province: leave all unchecked for all provinces</legend>
           <div class="jobs-alert-provinces-scroll">
@@ -931,6 +942,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var provinces = Array.from(form.querySelectorAll('input[name="provinces"]:checked')).map(function (cb) { return cb.value; });
         var freqEl = form.querySelector('input[name="frequency"]:checked');
         var frequency = freqEl ? freqEl.value : 'daily';
+        var currentClass = form.querySelector('[name="currentClass"]').value;
 
         if (!firstName || !lastName) { setFeedback(feedback, 'Please enter your first and last name.', 'error'); return; }
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setFeedback(feedback, 'Please enter a valid email address.', 'error'); return; }
@@ -945,7 +957,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         fetch(API_BASE + '/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, classes: classes, provinces: provinces, frequency: frequency })
+          body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, classes: classes, provinces: provinces, frequency: frequency, currentClass: currentClass })
         })
           .then(function (res) { return res.json(); })
           .then(function (data) {
