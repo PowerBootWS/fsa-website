@@ -67,7 +67,7 @@
     .lp-cta-hero {
       display: inline-block;
       background: var(--orange);
-      color: #fff;
+      color: var(--white);
       font-family: var(--font-display, 'Barlow Condensed', sans-serif);
       font-size: 1.15rem;
       font-weight: 700;
@@ -161,8 +161,8 @@
     .checkout-form-card { width: 100%; }
     .checkout-form-heading { font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.35rem; }
     .checkout-form-sub { font-size: 0.88rem; color: var(--gray-mid); margin: 0 0 1.5rem; }
-    .checkout-btn { display: block; width: 100%; background: var(--orange); color: #fff; font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; text-align: center; text-decoration: none; margin-top: 0.5rem; transition: opacity 0.2s; }
-    .checkout-btn:hover { background: var(--orange-glow); color: #fff; }
+    .checkout-btn { display: block; width: 100%; background: var(--orange); color: var(--white); font-family: var(--font-display, 'Barlow Condensed', sans-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.85rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; text-align: center; text-decoration: none; margin-top: 0.5rem; transition: opacity 0.2s; }
+    .checkout-btn:hover { background: var(--orange-glow); color: var(--white); }
     .checkout-fine { font-size: 0.8rem; color: var(--gray-mid); margin: 1rem 0 0; text-align: center; opacity: 0.7; }
     .program-picker { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
     .program-option {
@@ -268,6 +268,7 @@
                nav.js FSAAffiliate appends client_reference_id=ref_<code> from the cookie. -->
           <a id="stripe-proceed" href="https://buy.stripe.com/28E28t5IkbFB5VU3s91B603" class="checkout-btn refgrow-stripe-payment-link" rel="nofollow noopener">Continue to Checkout →</a>
           <p class="checkout-fine" id="checkout-fine">$<span data-price="fourthClass.current">99</span>/year &middot; One-time annual charge &middot; Does not auto-renew &middot; Paper 4A only</p>
+          <p class="checkout-fine">Employer covering your exam prep? Your invoice is ready to download from your account any time, even after your year is up.</p>
         </div>
       </div>
 
