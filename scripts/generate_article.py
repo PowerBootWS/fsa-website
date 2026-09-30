@@ -191,7 +191,7 @@ INTERNAL LINKS (include each of these naturally in the article body -- use the e
 {internal_links_text}
 
 CTA MENTION (include once, near the end of the article body before the conclusion, in a natural way):
-Full Steam Ahead includes a dedicated course for each of the six 2nd class papers, plus an adaptive practice exam system that tailors itself to your weak areas -- all for $149/month. Link: https://enrollment.fullsteamahead.ca
+Full Steam Ahead includes a dedicated course for each of the six 2nd class papers, plus an adaptive practice exam system that automatically adjusts to your weaker areas -- all for $149/month. Link: https://enrollment.fullsteamahead.ca
 
 WRITING GUIDELINES:
 - Direct, professional tone -- written for working power engineers
