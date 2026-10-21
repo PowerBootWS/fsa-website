@@ -155,6 +155,9 @@ class Article:
     stage: str
 
 
+CANONICAL_RE = re.compile(r'<link\s+rel="canonical"\s+href="([^"]*)"', re.I)
+
+
 def _text(raw: str) -> str:
     return html_mod.unescape(re.sub(r"<[^>]+>", "", raw)).strip()
 
@@ -199,6 +202,17 @@ def parse_article(slug: str, html: str) -> Article:
             f"{slug}: fsa:stage is '{stage}', expected one of "
             + ", ".join(sorted(STAGE_KEYS))
         )
+
+    # Template leftovers outside comments. Five articles shipped 2026-05-30
+    # with canonical, og:url and JSON-LD pointing at /articles/SLUG/, a 404,
+    # which tells Google the real page is a dead one (audit 2026-10-21).
+    for marker in ("PILLAR-SLUG", "/articles/SLUG/", "REPLACE:"):
+        if marker in stripped:
+            raise ValueError(f"{slug}: template placeholder '{marker}' left in the page")
+    for m in CANONICAL_RE.finditer(stripped):
+        want = f"https://fullsteamahead.ca/articles/{slug}/"
+        if m.group(1) != want:
+            raise ValueError(f"{slug}: canonical is {m.group(1)}, expected {want}")
 
     m = H1_RE.search(stripped)
     title = _text(m.group(1)) if m else slug

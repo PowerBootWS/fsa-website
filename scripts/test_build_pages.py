@@ -329,10 +329,10 @@ def test_generated_hub_in_page_anchors_resolve_to_a_real_id(built):
 
 
 CARD_COUNTS = {
-    "articles/index.html": 61,
-    "articles/4th-class/index.html": 40,
-    "articles/3rd-class/index.html": 43,
-    "articles/2nd-class/index.html": 50,
+    "articles/index.html": 62,
+    "articles/4th-class/index.html": 41,
+    "articles/3rd-class/index.html": 44,
+    "articles/2nd-class/index.html": 51,
 }
 
 
@@ -622,3 +622,23 @@ def test_built_homepage_cards_carry_every_stage_label(built):
     html = (built / "index.html").read_text()
     for _key, label in bp.STAGES:
         assert f'<div class="home-article-card-tag">{label}</div>' in html
+
+
+def test_parse_article_rejects_template_placeholder_canonical():
+    html = article_html().replace(
+        "</head>", '<link rel="canonical" href="https://fullsteamahead.ca/articles/SLUG/">\n</head>')
+    with pytest.raises(ValueError, match="placeholder"):
+        bp.parse_article("real-slug", html)
+
+
+def test_parse_article_rejects_canonical_for_another_page():
+    html = article_html().replace(
+        "</head>", '<link rel="canonical" href="https://fullsteamahead.ca/articles/other/">\n</head>')
+    with pytest.raises(ValueError, match="canonical"):
+        bp.parse_article("real-slug", html)
+
+
+def test_parse_article_allows_placeholders_inside_comments():
+    html = article_html().replace(
+        "</body>", '<!-- e.g. <a href="/articles/PILLAR-SLUG/">x</a> REPLACE: y -->\n</body>')
+    assert bp.parse_article("real-slug", html).slug == "real-slug"
