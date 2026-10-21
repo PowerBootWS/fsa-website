@@ -265,13 +265,12 @@ def call_openrouter(prompt: str, model: str, max_tokens: int = 4096, reasoning: 
     data = response.json()
     message = data["choices"][0]["message"]
     content = message.get("content")
-    if content is None:
-        # Some reasoning models may return reasoning text when content is empty
-        reasoning_text = message.get("reasoning", "")
-        if reasoning_text:
-            content = reasoning_text
-        else:
-            raise RuntimeError("API returned empty content and no reasoning text.")
+    if not content:
+        # Never fall back to the model's reasoning text: that would publish its
+        # private working notes as the article.
+        raise RuntimeError(
+            f"API returned empty content (finish_reason={data['choices'][0].get('finish_reason')})."
+        )
     return content.strip()
 
 
