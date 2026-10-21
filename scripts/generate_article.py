@@ -556,7 +556,7 @@ def main():
     parser.add_argument("--all", action="store_true", help="Generate all articles in strategy order")
     parser.add_argument("--pillars", action="store_true", help="Generate pillar articles only")
     parser.add_argument("--cluster", choices=["A", "B", "C", "D"], help="Generate all articles in a cluster")
-    parser.add_argument("--model", default=None, help="Override writing/research model (default: OPENROUTER_MODEL env var or anthropic/claude-sonnet-4-6)")
+    parser.add_argument("--model", default=None, help="Override writing/research model (default: OPENROUTER_MODEL env var or anthropic/claude-sonnet-5)")
     parser.add_argument("--reasoning", action="store_true", help="Enable reasoning mode (model-dependent, e.g. moonshotai/kimi-k2.6)")
     parser.add_argument("--dry-run", action="store_true", help="Print prompts without calling the API")
     args = parser.parse_args()
