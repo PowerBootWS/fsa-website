@@ -55,7 +55,7 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Writing model: default to Claude Sonnet via OpenRouter. Override with --model or OPENROUTER_MODEL env var.
-WRITING_MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-4-6")
+WRITING_MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-5")
 
 # Research model: use the same model for simplicity. Can be overridden.
 RESEARCH_MODEL = WRITING_MODEL
