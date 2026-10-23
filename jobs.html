@@ -49,41 +49,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- NAV -->
   <!-- INCLUDE:nav -->
 
-  <!-- JOB BOARD CONTENT -->
+  <!-- JOB BOARD CONTENT
+       Slim header so listings sit above the fold (Indeed-style). The full
+       intro paragraph, stats and the exam-prep promo live in the
+       "About this board" band at the bottom of the page. -->
   <div class="jobs-hero">
     <div class="jobs-hero-inner">
-      <h1 class="reveal" data-delay="60">Power Engineering Jobs</h1>
-      <p class="jobs-hero-sub reveal" data-delay="120">The only job board in Canada built exclusively for Power Engineers: every class, every province. Listings are pulled from active postings across the country every 12 hours, and each role includes an AI-generated summary so you can assess the opportunity before digging into the full posting.</p>
-      <div class="jobs-hero-stats">
-        <div class="jobs-hero-stat reveal" data-delay="180">
-          <span class="jobs-hero-stat-value">Every 12h</span>
-          <span class="jobs-hero-stat-label">Updated</span>
-        </div>
-        <div class="jobs-hero-stat-divider"></div>
-        <div class="jobs-hero-stat reveal" data-delay="260">
-          <span class="jobs-hero-stat-value">All Classes</span>
-          <span class="jobs-hero-stat-label">5th &rarr; 1st</span>
-        </div>
-        <div class="jobs-hero-stat-divider"></div>
-        <div class="jobs-hero-stat reveal" data-delay="340">
-          <span class="jobs-hero-stat-value">Canada-Wide</span>
-          <span class="jobs-hero-stat-label">Coverage</span>
-        </div>
-      </div>
+      <h1>Power Engineering Jobs</h1>
+      <p class="jobs-hero-sub">Active Power Engineering jobs across Canada, every class and every province, updated every 12 hours.</p>
     </div>
   </div>
 
   <div class="jobs-wrap">
-    <!-- Promo banner -->
-    <div class="jobs-promo-banner reveal" id="jobs-promo-banner">
-      <div class="jobs-promo-text">
-        <span class="jobs-promo-eyebrow">Advance your career</span>
-        <strong class="jobs-promo-headline">4th to 3rd. 3rd to 2nd. Every step up unlocks higher-paying roles.</strong>
-        <span class="jobs-promo-sub">Full Steam Ahead has the structured exam prep to get you there.</span>
-      </div>
-      <a href="/enroll" class="jobs-promo-cta" onclick="gtag('event', 'jobs_banner_click', { event_category: 'CTA', event_label: 'Jobs Page Promo Banner' })">Learn More &rarr;</a>
-    </div>
-
     <!-- Search bar -->
     <div class="jobs-search-bar reveal">
       <div class="jobs-search-input-wrap">
@@ -229,6 +206,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
       <p class="jobs-province-footnote">Searching across provinces, or not sure where to start? The <a href="/articles/power-engineering-jobs-guide/">complete power engineering job search guide</a> covers the whole hiring journey, from what your certificate class qualifies you for through to negotiating the offer.</p>
+    </div>
+  </div>
+
+  <!-- ABOUT THIS BOARD: intro copy + stats + exam-prep promo, moved here
+       from the top of the page so visitors land on the listings first. -->
+  <div class="jobs-about-band">
+    <div class="jobs-about-inner">
+      <h2 class="jobs-about-heading">About this job board</h2>
+      <p class="jobs-about-text">The only job board in Canada built exclusively for Power Engineers: every class, every province. Listings are pulled from active postings across the country every 12 hours, and each role includes an AI-generated summary so you can assess the opportunity before digging into the full posting.</p>
+      <div class="jobs-hero-stats">
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">Every 12h</span>
+          <span class="jobs-hero-stat-label">Updated</span>
+        </div>
+        <div class="jobs-hero-stat-divider"></div>
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">All Classes</span>
+          <span class="jobs-hero-stat-label">5th &rarr; 1st</span>
+        </div>
+        <div class="jobs-hero-stat-divider"></div>
+        <div class="jobs-hero-stat">
+          <span class="jobs-hero-stat-value">Canada-Wide</span>
+          <span class="jobs-hero-stat-label">Coverage</span>
+        </div>
+      </div>
+      <div class="jobs-promo-banner" id="jobs-promo-banner">
+        <div class="jobs-promo-text">
+          <span class="jobs-promo-eyebrow">Advance your career</span>
+          <strong class="jobs-promo-headline">4th to 3rd. 3rd to 2nd. Every step up unlocks higher-paying roles.</strong>
+          <span class="jobs-promo-sub">Full Steam Ahead has the structured exam prep to get you there.</span>
+        </div>
+        <a href="/enroll" class="jobs-promo-cta" onclick="gtag('event', 'jobs_banner_click', { event_category: 'CTA', event_label: 'Jobs Page Promo Banner' })">Learn More &rarr;</a>
+      </div>
     </div>
   </div>
 

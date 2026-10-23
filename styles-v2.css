@@ -2721,11 +2721,11 @@ footer {
 .jobs-hero {
   background: var(--iron);
   border-bottom: 1px solid var(--plate-edge);
-  padding: 9rem 3rem 3rem;
+  padding: calc(64px + 1.75rem) 3rem 1.25rem;
 }
 
 .jobs-hero-inner {
-  max-width: 1100px;
+  max-width: calc(1100px - 6rem); /* line up with .jobs-wrap content edge */
   margin: 0 auto;
 }
 
@@ -2736,15 +2736,46 @@ footer {
   text-transform: uppercase;
   color: var(--white);
   line-height: 1;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .jobs-hero-sub {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--gray-mid);
   max-width: 620px;
+  line-height: 1.5;
+}
+
+/* ── About this board (bottom band: intro copy, stats, promo) ── */
+.jobs-about-band {
+  border-top: 1px solid var(--plate-edge);
+  padding: 3rem 1.5rem;
+}
+
+.jobs-about-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.jobs-about-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--off-white);
+  margin-bottom: 0.6rem;
+}
+
+.jobs-about-text {
+  font-size: var(--text-sm);
+  color: var(--gray-mid);
+  max-width: 62ch;
   line-height: 1.6;
   margin-bottom: 1.4rem;
+}
+
+.jobs-about-band .jobs-promo-banner {
+  margin: 2rem 0 0;
 }
 
 .jobs-hero-stats {
@@ -3601,14 +3632,14 @@ footer {
 
 @media (max-width: 900px) {
   .jobs-grid { grid-template-columns: repeat(2, 1fr); }
-  .jobs-hero { padding: 8.5rem 2rem 2rem; }
+  .jobs-hero { padding: calc(64px + 1.5rem) 2rem 1.1rem; }
   .jobs-wrap { padding: 2rem 2rem 4rem; }
   .jobs-province-select { min-width: 150px; }
 }
 
 @media (max-width: 600px) {
   .jobs-grid { grid-template-columns: 1fr; }
-  .jobs-hero { padding: 8rem 1.5rem 2rem; }
+  .jobs-hero { padding: calc(64px + 1.25rem) 1.5rem 1rem; }
   .jobs-wrap { padding: 1.5rem 1.5rem 3rem; }
   .job-detail-header { flex-direction: column; gap: 0.8rem; }
   .job-detail-save-top { align-items: flex-start; width: 100%; }
