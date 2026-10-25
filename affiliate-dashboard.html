@@ -271,6 +271,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .discount-history table { width: 100%; border-collapse: collapse; }
     .discount-history td { padding: 0.4rem 0.5rem 0.4rem 0; border-bottom: 1px solid var(--border); }
     .discount-history tr:last-child td { border-bottom: none; }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .media-item {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .media-item:hover { border-color: var(--orange); }
+    .media-item strong { display: block; margin-bottom: 0.2rem; }
+    .media-item span { font-size: var(--text-xs); color: var(--gray-mid); }
     .status-badge.expired { background: rgba(168,180,192,0.15); color: var(--gray-mid); }
   </style>
 </head>
@@ -362,6 +379,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="discount-history" class="discount-history" hidden>
           <div class="referral-link-label">Recent Codes</div>
           <table><tbody id="discount-history-body"></tbody></table>
+        </div>
+      </div>
+      <div class="discount-panel" id="media-kit">
+        <h2>Media Kit</h2>
+        <p>Everything you need to share FSA. Put your referral link in wherever a template says [LINK] or [YOUR AFFILIATE LINK].</p>
+        <div class="media-grid">
+          <a class="media-item" href="https://affiliates.fullsteamahead.ca/media/documents/affiliate-guide/AFFILIATE-GUIDE.pdf" target="_blank" rel="noopener"><strong>Affiliate Guide</strong><span>How it works, what you earn, discount codes (PDF)</span></a>
+          <a class="media-item" href="https://affiliates.fullsteamahead.ca/media/documents/email-templates/fsa-affiliate-emails.pdf" target="_blank" rel="noopener"><strong>Email Templates</strong><span>15 ready-to-send emails (PDF)</span></a>
+          <a class="media-item" href="https://affiliates.fullsteamahead.ca/media/documents/sms-templates/fsa-affiliate-sms.pdf" target="_blank" rel="noopener"><strong>Text Message Templates</strong><span>15 short texts (PDF)</span></a>
+          <a class="media-item" href="https://affiliates.fullsteamahead.ca/" target="_blank" rel="noopener"><strong>Social Media Images</strong><span>Facebook, Instagram, LinkedIn and Stories sizes</span></a>
         </div>
       </div>
       <div class="stat-grid">
