@@ -106,45 +106,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 0 0 1.5rem;
       line-height: 1.5;
     }
-    .signup-form { text-align: left; }
-    .signup-field { margin-bottom: 1rem; }
-    .signup-label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--gray-mid);
-      margin-bottom: 0.4rem;
-    }
-    .signup-input {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
-      color: var(--text-primary);
-      font-family: var(--font-body, 'IBM Plex Sans', sans-serif);
-      font-size: 0.95rem;
-      padding: 0.65rem 0.85rem;
-      box-sizing: border-box;
-      transition: border-color 0.2s;
-    }
-    .signup-input:focus { outline: none; border-color: var(--orange); }
-    .signup-input::placeholder { color: rgba(255,255,255,0.25); }
-    /* Honeypot: visually and programmatically hidden, but not display:none
-       (some bots skip that). Off-screen, unreachable by tab, unlabeled to AT. */
-    .signup-honeypot {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-    .signup-error { font-size: 0.85rem; color: #f87171; margin: 0 0 0.75rem; }
-    .signup-success { font-size: 0.9rem; color: var(--green-light); margin: 0 0 0.75rem; }
     .signup-btn {
       display: block;
       width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
       background: var(--orange);
       color: #fff;
       font-family: var(--font-display, 'Barlow Condensed', sans-serif);
@@ -159,7 +126,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transition: opacity 0.2s, background 0.2s;
     }
     .signup-btn:hover { background: var(--orange-glow); }
-    .signup-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .signup-login { font-size: 0.85rem; color: var(--gray-mid); margin: 1rem 0 0; }
+    .signup-login a { color: var(--orange-glow); }
   </style>
 </head>
 <body>
@@ -177,8 +145,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Dashboard access bar -->
     <div class="aff-dashboard-bar reveal" data-delay="120">
-      <p><strong>Already an affiliate?</strong> Log in to view your referrals, clicks, and earnings.</p>
-      <a href="/affiliate-dashboard" class="aff-dashboard-btn">Go to Affiliate Dashboard →</a>
+      <p><strong>Already an affiliate?</strong> Log in to your Full Steam Ahead account to see your referrals, clicks and earnings.</p>
+      <a href="https://learn.fullsteamahead.ca/affiliate" class="aff-dashboard-btn">Go to your Referrals page →</a>
     </div>
 
     <!-- Hero: commission rate -->
@@ -190,30 +158,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="affiliate-tagline">Earn <span data-price="affiliate.commissionRate">20</span>% of every payment made by every student who enrolls using your affiliate link. If they pay monthly, that is 20% every month for as long as they stay enrolled. If they prepay a year, it is 20% of the whole year, paid at once. No caps. No expiry.</p>
     </div>
 
-    <!-- Become an affiliate: public self-serve signup -->
+    <!-- Become an affiliate: sign up for a portal account, then press Join -->
     <div class="signup-card reveal" data-delay="120" id="become-an-affiliate">
       <h2 class="signup-heading">Become an Affiliate</h2>
-      <p class="signup-sub">No approval wait. Sign up and we'll email your referral link and dashboard access right away.</p>
-      <form id="affiliate-signup-form" class="signup-form" novalidate>
-        <div class="signup-field">
-          <label class="signup-label" for="signup-name">Name</label>
-          <input class="signup-input" type="text" id="signup-name" name="name" autocomplete="name" required placeholder="e.g. Jordan MacLeod">
-        </div>
-        <div class="signup-field">
-          <label class="signup-label" for="signup-email">Email Address</label>
-          <input class="signup-input" type="email" id="signup-email" name="email" autocomplete="email" required placeholder="you@example.com">
-        </div>
-        <!-- Honeypot: hidden from real visitors, tabindex/autocomplete off so it's
-             invisible to screen readers and password managers too. A filled value
-             marks the submission as a bot to the backend. -->
-        <div class="signup-field signup-honeypot" aria-hidden="true">
-          <label for="signup-company">Company</label>
-          <input type="text" id="signup-company" name="company" tabindex="-1" autocomplete="off">
-        </div>
-        <p class="signup-error" id="signup-error" style="display:none;"></p>
-        <p class="signup-success" id="signup-success" style="display:none;"></p>
-        <button type="submit" class="signup-btn" id="signup-btn">Sign Up as an Affiliate →</button>
-      </form>
+      <p class="signup-sub">Create a free Full Steam Ahead account, then press Join on your Referrals page. Your link is ready right away.</p>
+      <a href="https://learn.fullsteamahead.ca/signup?next=/affiliate" class="signup-btn">Create Your Free Account →</a>
+      <p class="signup-login">Already have an account? <a href="https://learn.fullsteamahead.ca/login?next=/affiliate">Log in</a></p>
     </div>
 
     <!-- Program details -->
@@ -247,7 +197,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="payout-icon">💳</div>
           <div>
             <div class="payout-title">Payouts via Interac e-Transfer</div>
-            <p class="payout-text">Commission payments are sent automatically by Interac e-Transfer to the email address on your affiliate account. Keep your email up to date in the <a href="/affiliate-dashboard">affiliate dashboard</a>.</p>
+            <p class="payout-text">Commission payments are sent automatically by Interac e-Transfer to the email address on your affiliate account. Keep your email up to date in your <a href="https://learn.fullsteamahead.ca/affiliate">Referrals page</a>.</p>
           </div>
         </div>
       </div>
@@ -260,7 +210,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="benefit-card reveal" data-delay="0">
           <div class="benefit-icon">🔗</div>
           <div class="benefit-title">Share Your Link</div>
-          <p><a href="#become-an-affiliate" style="color:var(--orange-glow);">Sign up above</a> to get your unique referral link by email, right away. Share it anywhere: social media, forums, direct messages.</p>
+          <p><a href="#become-an-affiliate" style="color:var(--orange-glow);">Create your account above</a>, then press Join on your Referrals page to get your unique referral link, right away. Share it anywhere: social media, forums, direct messages.</p>
         </div>
         <div class="benefit-card reveal" data-delay="100">
           <div class="benefit-icon">📊</div>
@@ -338,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="faq-card reveal" data-delay="100">
           <div class="faq-q">How do I track my referrals?</div>
-          <div class="faq-a">Log in to your <a href="/affiliate-dashboard">affiliate dashboard</a> to see clicks, referrals, and earnings in real time. Everything is tracked automatically; no manual reporting needed.</div>
+          <div class="faq-a">Log in to your <a href="https://learn.fullsteamahead.ca/affiliate">Referrals page</a> to see clicks, referrals, and earnings in real time. Everything is tracked automatically; no manual reporting needed.</div>
         </div>
       </div>
     </div>
@@ -347,65 +297,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- CTA: apply or log in -->
     <div style="text-align:center;margin:3rem 0 1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal" data-delay="60">
-      <a href="#become-an-affiliate" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;">Sign Up as an Affiliate →</a>
-      <a href="/affiliate-dashboard" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;background:transparent;border:1px solid var(--border);color:var(--gray-light);">Already In? Log In →</a>
+      <a href="https://learn.fullsteamahead.ca/signup?next=/affiliate" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;">Sign Up as an Affiliate →</a>
+      <a href="https://learn.fullsteamahead.ca/login?next=/affiliate" class="aff-dashboard-btn" style="font-size:1.1rem;padding:0.85rem 2rem;background:transparent;border:1px solid var(--border);color:var(--gray-light);">Already In? Log In →</a>
     </div>
 
   </div>
-
-  <!-- Affiliate signup form -->
-  <script>
-    (function () {
-      var form = document.getElementById('affiliate-signup-form');
-      var btn = document.getElementById('signup-btn');
-      var errorEl = document.getElementById('signup-error');
-      var successEl = document.getElementById('signup-success');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var name = document.getElementById('signup-name').value.trim();
-        var email = document.getElementById('signup-email').value.trim().toLowerCase();
-        var company = document.getElementById('signup-company').value; // honeypot
-
-        errorEl.style.display = 'none';
-        errorEl.textContent = '';
-        successEl.style.display = 'none';
-
-        if (!name || !email) {
-          errorEl.textContent = 'Please fill in your name and email.';
-          errorEl.style.display = 'block';
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          errorEl.textContent = 'Please enter a valid email address.';
-          errorEl.style.display = 'block';
-          return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = 'Signing you up…';
-
-        fetch('https://affiliate-api.fullsteamahead.ca/auth/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name, email: email, company: company }),
-        })
-        .then(function (res) {
-          if (!res.ok) { throw new Error('server'); }
-          return res.json();
-        })
-        .then(function () {
-          window.location.href = '/affiliate-confirmation';
-        })
-        .catch(function () {
-          errorEl.textContent = 'Something went wrong. Please try again or email support@fullsteamahead.ca.';
-          errorEl.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Sign Up as an Affiliate →';
-        });
-      });
-    }());
-  </script>
 
   <!-- Scroll reveal -->
   <script>
