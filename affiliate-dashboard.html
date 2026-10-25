@@ -221,6 +221,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .status-badge.enrolled { background: rgba(82,168,130,0.15); color: var(--green-light); }
     .status-badge.not-enrolled { background: rgba(168,180,192,0.15); color: var(--gray-mid); }
     .dashboard-empty { color: var(--gray-mid); padding: 2rem; text-align: center; }
+    .discount-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .discount-panel h2 {
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+      font-size: 1.3rem;
+      margin: 0 0 0.5rem;
+    }
+    .discount-panel p { font-size: var(--text-sm); color: var(--gray-mid); margin: 0 0 0.75rem; }
+    .discount-panel ul { font-size: var(--text-sm); color: var(--gray-mid); margin: 0 0 1rem 1.1rem; padding: 0; }
+    .discount-panel li { margin-bottom: 0.25rem; }
+    .discount-panel button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .discount-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px dashed var(--orange);
+      border-radius: 8px;
+    }
+    .discount-code-value {
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber-hot);
+      letter-spacing: 0.04em;
+      word-break: break-all;
+    }
+    .discount-message {
+      width: 100%;
+      min-height: 6rem;
+      margin: 0.75rem 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: var(--font-body, 'IBM Plex Sans', sans-serif);
+      font-size: 0.9rem;
+      padding: 0.65rem 0.85rem;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .discount-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .discount-error { color: #f87171; font-size: var(--text-sm); margin-top: 0.75rem; }
+    .discount-history { margin-top: 1rem; font-size: var(--text-sm); }
+    .discount-history table { width: 100%; border-collapse: collapse; }
+    .discount-history td { padding: 0.4rem 0.5rem 0.4rem 0; border-bottom: 1px solid var(--border); }
+    .discount-history tr:last-child td { border-bottom: none; }
+    .status-badge.expired { background: rgba(168,180,192,0.15); color: var(--gray-mid); }
   </style>
 </head>
 <body>
@@ -286,6 +337,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="referral-link-value" id="referral-link-value">–</div>
         </div>
         <button id="referral-copy-btn" class="referral-copy-btn" type="button">Copy Link</button>
+      </div>
+      <div class="discount-panel" id="discount-panel">
+        <h2>Discount Codes</h2>
+        <p>For a lead who's close to signing up. Generate a code right before you send it.</p>
+        <ul>
+          <li>20% off their first month of 2nd Class or 3rd Class Complete</li>
+          <li>One use, and it expires 48 hours after you generate it</li>
+          <li>You don't earn commission on that first month. Every payment after that pays your normal 20%</li>
+          <li>If they use your code, the sale is credited to you, whichever link they clicked last</li>
+        </ul>
+        <button id="discount-generate-btn" class="referral-copy-btn" type="button">Generate a Code</button>
+        <p id="discount-error" class="discount-error" hidden></p>
+        <div id="discount-result" class="discount-result" hidden>
+          <div class="referral-link-label">Your Code</div>
+          <div class="discount-code-value" id="discount-code-value"></div>
+          <div class="stat-label" id="discount-code-expiry"></div>
+          <textarea id="discount-message" class="discount-message" aria-label="Message to send"></textarea>
+          <div class="discount-actions">
+            <button id="discount-copy-code" class="referral-copy-btn" type="button">Copy Code</button>
+            <button id="discount-copy-message" class="referral-copy-btn" type="button">Copy Message</button>
+          </div>
+        </div>
+        <div id="discount-history" class="discount-history" hidden>
+          <div class="referral-link-label">Recent Codes</div>
+          <table><tbody id="discount-history-body"></tbody></table>
+        </div>
       </div>
       <div class="stat-grid">
         <div class="stat-tile"><div class="stat-value" id="stat-clicks">–</div><div class="stat-label">Clicks</div></div>
@@ -486,6 +563,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           document.getElementById('stat-outstanding').textContent = formatCents(summary.outstandingCents);
           renderLeads(leadsData.leads || []);
           showDashboard();
+          loadDiscountCodes();
         }).catch(function () {
           showLogin('Something went wrong loading your dashboard. Please try again shortly.');
         });
@@ -543,6 +621,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           copyBtn.textContent = 'Copied!';
           setTimeout(function () { copyBtn.textContent = original; }, 1500);
         });
+      });
+
+      function formatDateTime(iso) {
+        var d = new Date(iso);
+        return d.toLocaleString('en-CA', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+      }
+
+      function renderDiscountHistory(codes) {
+        var wrap = document.getElementById('discount-history');
+        var tbody = document.getElementById('discount-history-body');
+        tbody.innerHTML = '';
+        if (!codes || !codes.length) { wrap.hidden = true; return; }
+        wrap.hidden = false;
+        codes.forEach(function (c) {
+          var tr = document.createElement('tr');
+          var codeCell = document.createElement('td');
+          codeCell.textContent = c.code;
+          tr.appendChild(codeCell);
+          var whenCell = document.createElement('td');
+          whenCell.textContent = c.status === 'active' ? 'Expires ' + formatDateTime(c.expiresAt) : 'Made ' + formatDate(c.createdAt);
+          tr.appendChild(whenCell);
+          var statusCell = document.createElement('td');
+          var badge = document.createElement('span');
+          var cls = { active: 'enrolled', used: 'enrolled', expired: 'expired' }[c.status] || 'expired';
+          badge.className = 'status-badge ' + cls;
+          badge.textContent = { active: 'Active', used: 'Used', expired: 'Expired' }[c.status] || c.status;
+          statusCell.appendChild(badge);
+          tr.appendChild(statusCell);
+          tbody.appendChild(tr);
+        });
+      }
+
+      function loadDiscountCodes() {
+        var token = getSession();
+        if (!token) return;
+        fetch(API + '/dashboard/discount-codes', { headers: { Authorization: 'Bearer ' + token } })
+          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (data) { if (data) renderDiscountHistory(data.codes); })
+          .catch(function () {});
+      }
+
+      var discountBtn = document.getElementById('discount-generate-btn');
+      var discountError = document.getElementById('discount-error');
+      discountBtn.addEventListener('click', function () {
+        var token = getSession();
+        if (!token) { showLogin('Your session expired. Please log in again.'); return; }
+        discountBtn.disabled = true;
+        discountBtn.textContent = 'Generating…';
+        discountError.hidden = true;
+        fetch(API + '/dashboard/discount-codes', {
+          method: 'POST',
+          headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+          body: '{}',
+        }).then(function (res) {
+          if (res.status === 401) { clearSession(); showLogin('Your session expired. Please log in again.'); return null; }
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data && data.error ? data.error : 'Something went wrong. Please try again.');
+            return data;
+          });
+        }).then(function (data) {
+          if (!data) return;
+          var expiry = formatDateTime(data.expiresAt);
+          var link = document.getElementById('referral-link-value').textContent;
+          document.getElementById('discount-code-value').textContent = data.code;
+          document.getElementById('discount-code-expiry').textContent = 'Expires ' + expiry;
+          document.getElementById('discount-message').value =
+            'Here\'s 20% off your first month of Full Steam Ahead (2nd or 3rd Class Complete). ' +
+            'Enter code ' + data.code + ' in the "Add promotion code" box at checkout. ' +
+            'It only works once and expires ' + expiry + '. Sign up here: ' + link;
+          document.getElementById('discount-result').hidden = false;
+          loadDiscountCodes();
+        }).catch(function (err) {
+          discountError.textContent = err && err.message ? err.message : 'Something went wrong. Please try again.';
+          discountError.hidden = false;
+        }).then(function () {
+          discountBtn.disabled = false;
+          discountBtn.textContent = 'Generate a Code';
+        });
+      });
+
+      function copyWithFeedback(btn, text) {
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function () {
+          var original = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function () { btn.textContent = original; }, 1500);
+        });
+      }
+      var copyCodeBtn = document.getElementById('discount-copy-code');
+      copyCodeBtn.addEventListener('click', function () {
+        copyWithFeedback(copyCodeBtn, document.getElementById('discount-code-value').textContent);
+      });
+      var copyMsgBtn = document.getElementById('discount-copy-message');
+      copyMsgBtn.addEventListener('click', function () {
+        copyWithFeedback(copyMsgBtn, document.getElementById('discount-message').value);
       });
 
       var urlToken = new URL(window.location.href).searchParams.get('token');
