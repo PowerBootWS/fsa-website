@@ -288,6 +288,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .media-item:hover { border-color: var(--orange); }
     .media-item strong { display: block; margin-bottom: 0.2rem; }
     .media-item span { font-size: var(--text-xs); color: var(--gray-mid); }
+    .dashboard-section-title {
+      font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+      font-size: 1.3rem;
+      margin: 2rem 0 0.25rem;
+    }
+    .dashboard-section-note { font-size: var(--text-sm); color: var(--gray-mid); margin: 0 0 0.75rem; }
+    .leads-table td.num, .leads-table th.num { text-align: right; white-space: nowrap; }
     .status-badge.expired { background: rgba(168,180,192,0.15); color: var(--gray-mid); }
   </style>
 </head>
@@ -403,6 +410,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <tbody id="leads-table-body"></tbody>
         </table>
         <p id="leads-empty" class="dashboard-empty" hidden>No leads attributed yet.</p>
+      </div>
+      <h2 class="dashboard-section-title">Customers</h2>
+      <p class="dashboard-section-note">People who bought through your link or code.</p>
+      <div class="leads-table-wrap">
+        <table class="leads-table">
+          <thead><tr><th>Name</th><th>Program</th><th>Since</th><th>Status</th><th>You've Earned</th></tr></thead>
+          <tbody id="customers-table-body"></tbody>
+        </table>
+        <p id="customers-empty" class="dashboard-empty" hidden>No customers yet. When someone you refer buys, they'll show here.</p>
+      </div>
+      <h2 class="dashboard-section-title">Commissions</h2>
+      <p class="dashboard-section-note">Every payment you've earned on. Paid out by e-Transfer.</p>
+      <div class="leads-table-wrap">
+        <table class="leads-table">
+          <thead><tr><th>Date</th><th>Customer</th><th>Payment</th><th>Your Commission</th><th>Status</th></tr></thead>
+          <tbody id="commissions-table-body"></tbody>
+        </table>
+        <p id="commissions-empty" class="dashboard-empty" hidden>No commissions yet.</p>
       </div>
     </div>
   </div>
@@ -520,7 +545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       function setSession(token) { localStorage.setItem(SESSION_KEY, token); }
       function clearSession() { localStorage.removeItem(SESSION_KEY); }
 
-      function formatCents(cents) { return '$' + (cents / 100).toFixed(2); }
+      function formatCents(cents) { return (cents < 0 ? '-' : '') + '$' + (Math.abs(cents) / 100).toFixed(2); }
 
       function formatDate(iso) {
         var d = new Date(iso);
@@ -591,6 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           renderLeads(leadsData.leads || []);
           showDashboard();
           loadDiscountCodes();
+          loadCustomersAndCommissions();
         }).catch(function () {
           showLogin('Something went wrong loading your dashboard. Please try again shortly.');
         });
@@ -678,6 +704,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           tr.appendChild(statusCell);
           tbody.appendChild(tr);
         });
+      }
+
+      function cell(tr, text, cls) {
+        var td = document.createElement('td');
+        td.textContent = text;
+        if (cls) td.className = cls;
+        tr.appendChild(td);
+        return td;
+      }
+
+      function badge(td, text, cls) {
+        var b = document.createElement('span');
+        b.className = 'status-badge ' + cls;
+        b.textContent = text;
+        td.appendChild(b);
+      }
+
+      function renderCustomers(customers) {
+        var tbody = document.getElementById('customers-table-body');
+        var empty = document.getElementById('customers-empty');
+        tbody.innerHTML = '';
+        if (!customers.length) { empty.hidden = false; return; }
+        empty.hidden = true;
+        customers.forEach(function (c) {
+          var tr = document.createElement('tr');
+          cell(tr, c.firstName || c.email);
+          cell(tr, c.program || '–');
+          cell(tr, formatDate(c.since));
+          var st = cell(tr, '');
+          if (c.status === 'active') badge(st, c.endsAt ? 'Active until ' + formatDate(c.endsAt) : 'Active', 'enrolled');
+          else badge(st, 'Ended', 'not-enrolled');
+          cell(tr, formatCents(c.earnedCents), 'num');
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderCommissions(rows) {
+        var tbody = document.getElementById('commissions-table-body');
+        var empty = document.getElementById('commissions-empty');
+        tbody.innerHTML = '';
+        if (!rows.length) { empty.hidden = false; return; }
+        empty.hidden = true;
+        rows.forEach(function (r) {
+          var tr = document.createElement('tr');
+          cell(tr, formatDate(r.date));
+          var who = r.firstName || r.email;
+          if (r.type === 'refund') who += ' (refund)';
+          if (r.type === 'discount') who += ' (discount code, first month)';
+          cell(tr, who);
+          cell(tr, formatCents(r.paymentCents), 'num');
+          cell(tr, formatCents(r.commissionCents), 'num');
+          var st = cell(tr, '');
+          if (r.paidAt) badge(st, 'Paid ' + formatDate(r.paidAt), 'enrolled');
+          else badge(st, 'Unpaid', 'not-enrolled');
+          tbody.appendChild(tr);
+        });
+      }
+
+      function loadCustomersAndCommissions() {
+        var token = getSession();
+        if (!token) return;
+        var headers = { Authorization: 'Bearer ' + token };
+        fetch(API + '/dashboard/customers', { headers: headers })
+          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (data) { if (data) renderCustomers(data.customers || []); })
+          .catch(function () {});
+        fetch(API + '/dashboard/commissions', { headers: headers })
+          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (data) { if (data) renderCommissions(data.commissions || []); })
+          .catch(function () {});
       }
 
       function loadDiscountCodes() {
