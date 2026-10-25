@@ -756,7 +756,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           cell(tr, formatCents(r.paymentCents), 'num');
           cell(tr, formatCents(r.commissionCents), 'num');
           var st = cell(tr, '');
-          if (r.paidAt) badge(st, 'Paid ' + formatDate(r.paidAt), 'enrolled');
+          if (r.commissionCents === 0) badge(st, 'No commission', 'not-enrolled');
+          else if (r.paidAt) badge(st, 'Paid ' + formatDate(r.paidAt), 'enrolled');
           else badge(st, 'Unpaid', 'not-enrolled');
           tbody.appendChild(tr);
         });
